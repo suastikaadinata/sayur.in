@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Sayur.in</string>
+    <string name="prompt_password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
+</resources>
