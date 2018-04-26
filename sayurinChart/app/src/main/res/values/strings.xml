@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">sayurinChart</string>
+    <string name="item_to_order">Item to Order</string>
+    <string name="rp_8_000">Rp. 8.000</string>
+    <string name="harga_ikat">Harga / Ikat</string>
+    <string name="bayam">Bayam</string>
+    <string name="add_note">add note...</string>
+    <string name="_8">8</string>
+    <string name="todo">TODO</string>
+</resources>

@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorBackground"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorFrameBackground"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="@string/item_to_order"
+                android:textColor="@color/colorTextOrange"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="97dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/colorFrameBackground"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="77dp"
+                android:layout_height="77dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:contentDescription="@string/todo"
+                android:src="@mipmap/ic_launcher_round" />
+
+            <TextView
+                android:id="@+id/textView_namaSayur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="95dp"
+                android:layout_marginStart="93dp"
+                android:text="@string/bayam"
+                android:textColor="@color/colorTextGreen"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="95dp"
+                android:layout_marginStart="93dp"
+                android:layout_marginTop="20dp"
+                android:text="@string/harga_ikat"
+                android:textColor="#afafaf"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/textView_hargaSayur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="95dp"
+                android:layout_marginStart="93dp"
+                android:layout_marginTop="35dp"
+                android:text="@string/rp_8_000"
+                android:textColor="@color/colorTextOrange"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="93dp"
+                android:layout_marginStart="91dp"
+                android:layout_marginTop="55dp"
+                android:background="@color/colorBackground"
+                android:ems="22"
+                android:hint="@string/add_note"
+                android:inputType="textPersonName"
+                android:padding="3dp"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="235dp"
+                android:background="@drawable/custom_layout"
+                android:orientation="horizontal"
+                >
+
+                <Button
+                    android:id="@+id/buttonMinus"
+                    android:layout_width="0dp"
+                    android:layout_height="27dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/minus_btn" />
+
+                <TextView
+                    android:id="@+id/textView_jumlahSayur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/_8"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorTextGreen"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/buttonPlus"
+                    android:layout_width="0dp"
+                    android:layout_height="27dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/btn_add" />
+            </LinearLayout>
+
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="31dp"
+                android:layout_height="27dp"
+                android:layout_marginLeft="335dp"
+                android:layout_marginStart="335dp"
+                android:background="@drawable/delete_btn" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="@color/colorFrameBackground"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Alamat pengiriman"
+                android:textColor="@color/colorTextOrange"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#a3a3a3"
+                android:layout_marginLeft="280dp"
+                android:textSize="20dp"
+                android:text="Ubah" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="25dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="330dp"
+                android:background="@drawable/ic_edit_black_24dp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="97dp"
+            android:layout_marginTop="2dp"
+            android:background="@color/colorFrameBackground"
+            android:padding="10dp">
+
+
+        </FrameLayout>
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
