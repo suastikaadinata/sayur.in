@@ -1,0 +1,4 @@
+#Thu Apr 26 09:10:26 ICT 2018
+base.0=D\:\\AndroidStudio\\Projects\\Sayurin2\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\308
+path.0=classes.dex
+renamed.0=classes.dex
