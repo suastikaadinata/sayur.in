@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Process"
+    tools:showIn="@layout/process">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#eae7e7"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="60dp"
+            android:background="#ffffff"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Item to Order"
+                android:textColor="#ff8200"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="97dp"
+            android:layout_marginTop="2dp"
+            android:background="#ffffff"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="77dp"
+                android:layout_height="77dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:contentDescription="profile image"
+                android:src="@mipmap/ic_launcher_round" />
+
+            <TextView
+                android:id="@+id/textView_namaSayur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="95dp"
+                android:layout_marginStart="93dp"
+                android:text="Bayam"
+                android:textColor="#5faf50"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="95dp"
+                android:layout_marginStart="93dp"
+                android:layout_marginTop="20dp"
+                android:text="harga / ikat"
+                android:textColor="#afafaf"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/textView_hargaSayur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="95dp"
+                android:layout_marginStart="93dp"
+                android:layout_marginTop="35dp"
+                android:text="Rp. 12.000"
+                android:textColor="#ff8200"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="93dp"
+                android:layout_marginStart="91dp"
+                android:layout_marginTop="55dp"
+                android:background="#eae7e7"
+                android:ems="22"
+                android:hint="add note.."
+                android:inputType="textPersonName"
+                android:padding="3dp"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
+            <LinearLayout
+                android:layout_width="100dp"
+                android:layout_height="28dp"
+                android:layout_marginLeft="250dp"
+                android:orientation="horizontal">
+
+
+                <TextView
+                    android:id="@+id/textView_jumlahSayur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Jumlah : 1"
+                    android:textAlignment="center"
+                    android:textColor="#5faf50"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+
+            </LinearLayout>
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="#ffffff"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Alamat pengiriman"
+                android:textColor="#ff8200"
+                android:textSize="20sp" />
+
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="97dp"
+            android:layout_marginTop="2dp"
+            android:background="#ffffff"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/LocationView"
+                android:layout_width="40dp"
+                android:layout_height="30dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:contentDescription="profile image"
+                android:src="@drawable/ic_location_on_black_24dp" />
+
+
+            <TextView
+                android:id="@+id/textView_Lokasi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="55dp"
+                android:layout_marginStart="50dp"
+                android:text="Jl. Soekarno Hatta No .12 , Gang kuda"
+                android:textColor="#5faf50"
+                android:textSize="16sp"
+                 />
+
+            <TextView
+                android:id="@+id/textView_Lokasi2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="55dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="21dp"
+                android:text="Lowokwaru, Malang."
+                android:textColor="#5faf50"
+                android:textSize="16sp"
+                 />
+
+            <EditText
+                android:id="@+id/editText1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="55dp"
+                android:layout_marginStart="50dp"
+                android:layout_marginTop="49dp"
+                android:background="#eae7e7"
+                android:ems="22"
+                android:hint="add note.."
+                android:inputType="textPersonName"
+                android:padding="3dp"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+        </FrameLayout>
+
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="20dp"
+            android:background="#ffffff"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/textWaktuPengiriman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Waktu Pengiriman"
+                android:textColor="#ff8200"
+                android:textSize="20sp" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="2dp"
+            android:background="#ffffff"
+            android:padding="10dp">
+
+
+            <TextView
+                android:id="@+id/textViewTanggal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Rabu , 18 April 2018"
+                android:textColor="#5faf50"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/textViewjam"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="275dp"
+                android:layout_marginStart="270dp"
+                android:text="08.00 WIB"
+                android:textColor="#5faf50"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="#ffffff"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/textMetodePembayaran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Metode Pembayaran"
+                android:textColor="#ff8200"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="97dp"
+            android:layout_marginTop="2dp"
+            android:background="#ffffff"
+            android:padding="10dp">
+
+
+            <TextView
+                android:id="@+id/textViewCOD"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="2dp"
+                android:text="Cash ON Delivery (COD)"
+                android:textColor="#5faf50"
+                android:textSize="16sp"
+                 />
+
+            <TextView
+                android:id="@+id/textViewTransfer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="40dp"
+                android:text="Transfer"
+                android:textColor="#5faf50"
+                android:textSize="16sp"
+                 />
+
+            <CheckBox
+                android:layout_width="37dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="300dp"
+                android:layout_marginStart="295dp" />
+
+            <CheckBox
+                android:layout_width="37dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="300dp"
+                android:layout_marginStart="295dp"
+                android:layout_marginTop="35dp" />
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+            android:layout_marginTop="20dp"
+            android:background="#ffffff"
+            android:padding="10dp">
+
+            <TextView
+                android:id="@+id/textDetailPembayaran"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Detail Pembayaran"
+                android:textColor="#ff8200"
+                android:textSize="20sp" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="97dp"
+            android:layout_marginTop="2dp"
+            android:background="#ffffff"
+            android:padding="10dp">
+
+
+            <TextView
+                android:id="@+id/textViewhargabarang"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="2dp"
+                android:text="Harga Barang"
+                android:textColor="#5faf50"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textViewbiayapengiriman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="25dp"
+                android:text="Biaya Pengiriman"
+                android:textColor="#5faf50"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textViewTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="50dp"
+                android:text="Total"
+                android:textColor="#5faf50"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+
+            <TextView
+                android:id="@+id/textViewhargabarang2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="275dp"
+                android:layout_marginStart="270dp"
+                android:layout_marginTop="2dp"
+                android:text="Rp. 12.000,-"
+                android:textColor="#5faf50"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textViewbiayapengiriman2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="280dp"
+                android:layout_marginStart="278dp"
+                android:layout_marginTop="25dp"
+                android:text="Rp. 3.000,-"
+                android:textColor="#5faf50"
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/textViewTotal2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="270dp"
+                android:layout_marginStart="258dp"
+                android:layout_marginTop="50dp"
+                android:text="Rp. 15.000,-"
+                android:textColor="#5faf50"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+        </FrameLayout>
+        <Button
+            android:layout_width="300dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="Simpan"
+            android:id="@+id/btn_simpan"
+            android:textColor="#fff"
+            android:background="@drawable/selector_xml_btn_green"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="30dp"
+            />
+    </LinearLayout>
+
+
+
+</ScrollView>
