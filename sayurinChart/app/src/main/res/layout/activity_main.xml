@@ -475,15 +475,22 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:background="@color/colorFrameBackground">
+                android:layout_marginBottom="20dp"
+                android:layout_marginRight="55dp"
+                android:layout_marginLeft="55dp"
+                >
 
                 <Button
                     android:id="@+id/button4"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
                     android:background="@drawable/button_custom"
                     android:text="Order"
-                    android:textColor="#ffffff" />
+                    android:textColor="#ffffff"
+                    android:textSize="20dp"
+                    />
             </RelativeLayout>
 
         </LinearLayout>
