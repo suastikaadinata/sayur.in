@@ -9,14 +9,14 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/colorBackground">
+        android:background="@color/colorBackground"
+      >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/colorBackground"
-            android:orientation="vertical"
-            >
+            android:orientation="vertical">
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -100,9 +100,10 @@
 
                 <LinearLayout
                     android:id="@+id/linearLayout"
-                    android:layout_width="72dp"
-                    android:layout_height="24dp"
+                    android:layout_width="91dp"
+                    android:layout_height="30dp"
                     android:layout_alignTop="@+id/imageView"
+                    android:layout_marginEnd="-3dp"
                     android:layout_toStartOf="@+id/button2"
                     android:background="@drawable/custom_layout">
 
@@ -118,10 +119,10 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="30"
-                        android:text="@string/_8"
+                        android:text="20"
                         android:textAlignment="center"
                         android:textColor="@color/colorTextGreen"
-                        android:textSize="14sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <Button
@@ -134,8 +135,8 @@
 
                 <Button
                     android:id="@+id/button2"
-                    android:layout_width="33dp"
-                    android:layout_height="24dp"
+                    android:layout_width="48dp"
+                    android:layout_height="29dp"
                     android:layout_alignEnd="@+id/editText"
                     android:layout_alignTop="@+id/imageView"
                     android:background="@drawable/delete_btn" />
@@ -210,7 +211,7 @@
 
                 <EditText
                     android:id="@+id/editText2"
-                    android:layout_width="362dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
@@ -268,8 +269,7 @@
                 android:layout_height="42dp"
                 android:layout_marginTop="2dp"
                 android:background="@color/colorFrameBackground"
-                android:padding="10dp"
-                >
+                android:padding="10dp">
 
                 <TextView
                     android:id="@+id/textView7"
@@ -290,9 +290,9 @@
                     android:layout_height="match_parent"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
                     android:padding="1dp"
                     android:text="11.15 WIB"
-                    android:layout_marginRight="10dp"
                     android:textColor="@color/colorTextGreen"
                     android:textSize="13dp" />
             </RelativeLayout>
@@ -328,13 +328,13 @@
                     android:id="@+id/editText10"
                     android:layout_width="match_parent"
                     android:layout_height="31dp"
+                    android:layout_marginLeft="10dp"
                     android:layout_marginRight="0dp"
                     android:layout_toLeftOf="@id/checkbox1"
                     android:padding="1dp"
                     android:text="Cash On Delivery (COD)"
                     android:textColor="@color/colorTextGreen"
-                    android:textSize="13sp"
-                    android:layout_marginLeft="10dp"/>
+                    android:textSize="13sp" />
 
                 <CheckBox
                     android:id="@+id/checkbox1"
@@ -342,8 +342,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
-                    android:layout_marginEnd="10dp"
-                    />
+                    android:layout_marginEnd="10dp" />
 
                 <TextView
                     android:id="@+id/editText11"
@@ -351,12 +350,12 @@
                     android:layout_height="31dp"
                     android:layout_below="@+id/editText10"
                     android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="10dp"
+                    android:layout_toLeftOf="@id/checkbox2"
                     android:padding="1dp"
                     android:text="Transfer"
-                    android:layout_toLeftOf="@id/checkbox2"
                     android:textColor="@color/colorTextGreen"
-                    android:textSize="13sp"
-                    android:layout_marginLeft="10dp"/>
+                    android:textSize="13sp" />
 
                 <CheckBox
                     android:id="@+id/checkbox2"
@@ -365,8 +364,128 @@
                     android:layout_below="@+id/editText10"
                     android:layout_toEndOf="@+id/editText10" />
 
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="45dp"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorFrameBackground"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/textView10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Detail Pembayaran"
+                    android:textColor="@color/colorTextOrange"
+                    android:textSize="20sp" />
 
             </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/frameLayout4"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_marginTop="2dp"
+                android:background="@color/colorFrameBackground"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/editText12"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="0dp"
+                    android:layout_toLeftOf="@id/editText13"
+                    android:padding="1dp"
+                    android:text="Harga (Barang)"
+                    android:textColor="@color/colorTextGreen"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/editText13"
+                    android:layout_width="70dp"
+                    android:layout_height="21dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignTop="@+id/editText12"
+                    android:padding="1dp"
+                    android:text="Rp. 12.000"
+                    android:textColor="@color/colorTextOrange"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/editText14"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignStart="@+id/editText12"
+                    android:layout_below="@+id/editText12"
+                    android:layout_toLeftOf="@id/editText15"
+                    android:padding="1dp"
+                    android:text="Biaya Pegiriman"
+                    android:textColor="@color/colorTextGreen"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:id="@+id/editText15"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignEnd="@+id/editText13"
+                    android:layout_below="@+id/editText12"
+                    android:padding="1dp"
+                    android:text="Rp. 3000"
+                    android:textColor="@color/colorTextOrange"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/editText16"
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignStart="@+id/editText12"
+                    android:layout_marginBottom="0dp"
+                    android:layout_toLeftOf="@id/editText17"
+                    android:padding="1dp"
+                    android:paddingTop="60dp"
+                    android:text="Total"
+                    android:textColor="@color/colorTextGreen"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/editText17"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:layout_alignBottom="@+id/editText16"
+                    android:layout_alignEnd="@+id/editText13"
+                    android:padding="1dp"
+                    android:text="Rp. 15.000"
+                    android:textColor="@color/colorTextOrange"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/frameLayout5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@color/colorFrameBackground">
+
+                <Button
+                    android:id="@+id/button4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/button_custom"
+                    android:text="Order"
+                    android:textColor="#ffffff" />
+            </RelativeLayout>
+
         </LinearLayout>
     </ScrollView>
 
