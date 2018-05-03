@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Process"
     tools:showIn="@layout/process">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -31,7 +36,7 @@
                 android:textSize="20sp" />
         </FrameLayout>
 
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="97dp"
             android:layout_marginTop="2dp"
@@ -43,7 +48,6 @@
                 android:layout_width="77dp"
                 android:layout_height="77dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
                 android:contentDescription="profile image"
                 android:src="@mipmap/ic_launcher_round" />
 
@@ -51,8 +55,8 @@
                 android:id="@+id/textView_namaSayur"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="95dp"
-                android:layout_marginStart="93dp"
+                android:layout_toRightOf="@id/imageView"
+                android:layout_marginLeft="5dp"
                 android:text="Bayam"
                 android:textColor="#5faf50"
                 android:textSize="16sp"
@@ -62,9 +66,10 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="95dp"
-                android:layout_marginStart="93dp"
-                android:layout_marginTop="20dp"
+                android:layout_toRightOf="@id/imageView"
+                android:layout_marginLeft="5dp"
+                android:layout_marginTop="2dp"
+                android:layout_below="@id/textView_namaSayur"
                 android:text="harga / ikat"
                 android:textColor="#afafaf"
                 android:textSize="12sp"
@@ -74,34 +79,28 @@
                 android:id="@+id/textView_hargaSayur"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="95dp"
-                android:layout_marginStart="93dp"
-                android:layout_marginTop="35dp"
+                android:layout_toRightOf="@id/imageView"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/textView3"
+                android:layout_marginTop="2dp"
                 android:text="Rp. 12.000"
                 android:textColor="#ff8200"
                 android:textSize="12sp"
                 android:textStyle="bold" />
-
-            <EditText
-                android:id="@+id/editText"
+            <TextView
+                android:id="@+id/textViewnote1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="93dp"
-                android:layout_marginStart="91dp"
-                android:layout_marginTop="55dp"
-                android:background="#eae7e7"
-                android:ems="22"
-                android:hint="add note.."
-                android:inputType="textPersonName"
-                android:padding="3dp"
+                android:layout_toRightOf="@id/imageView"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/textView_hargaSayur"
+                android:text="note : Yang segar."
+                android:layout_marginTop="2dp"
+                android:textColor="#afafaf"
                 android:textSize="12sp"
                 android:textStyle="italic" />
 
-            <LinearLayout
-                android:layout_width="100dp"
-                android:layout_height="28dp"
-                android:layout_marginLeft="250dp"
-                android:orientation="horizontal">
+
 
 
                 <TextView
@@ -112,14 +111,13 @@
                     android:text="Jumlah : 1"
                     android:textAlignment="center"
                     android:textColor="#5faf50"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:layout_alignParentRight="true"
+                    />
 
 
-            </LinearLayout>
-
-
-        </FrameLayout>
+        </RelativeLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -141,9 +139,9 @@
 
         </FrameLayout>
 
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="97dp"
+            android:layout_height="77dp"
             android:layout_marginTop="2dp"
             android:background="#ffffff"
             android:padding="10dp">
@@ -153,49 +151,37 @@
                 android:layout_width="40dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
                 android:contentDescription="profile image"
                 android:src="@drawable/ic_location_on_black_24dp" />
 
 
             <TextView
                 android:id="@+id/textView_Lokasi"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="55dp"
-                android:layout_marginStart="50dp"
-                android:text="Jl. Soekarno Hatta No .12 , Gang kuda"
+                android:layout_toRightOf="@id/LocationView"
+                android:layout_marginLeft="2dp"
+                android:text="Jl. Soekarno Hatta No .12 , Gang kuda , Lowokwaru , Malang"
                 android:textColor="#5faf50"
                 android:textSize="16sp"
                  />
+
+
 
             <TextView
-                android:id="@+id/textView_Lokasi2"
-                android:layout_width="wrap_content"
+                android:id="@+id/textViewnote2"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="21dp"
-                android:text="Lowokwaru, Malang."
-                android:textColor="#5faf50"
-                android:textSize="16sp"
-                 />
-
-            <EditText
-                android:id="@+id/editText1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="55dp"
-                android:layout_marginStart="50dp"
-                android:layout_marginTop="49dp"
-                android:background="#eae7e7"
-                android:ems="22"
-                android:hint="add note.."
-                android:inputType="textPersonName"
-                android:padding="3dp"
+                android:layout_marginLeft="15dp"
+                android:layout_below="@id/LocationView"
+                android:text="note : Tanyakan Tetangga"
+                android:layout_marginTop="13dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentLeft="true"
+                android:textColor="#afafaf"
                 android:textSize="12sp"
                 android:textStyle="italic" />
-        </FrameLayout>
+        </RelativeLayout>
 
 
         <FrameLayout
@@ -217,7 +203,7 @@
 
         </FrameLayout>
 
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="45dp"
             android:layout_marginTop="2dp"
@@ -227,11 +213,12 @@
 
             <TextView
                 android:id="@+id/textViewTanggal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginStart="10dp"
                 android:text="Rabu , 18 April 2018"
+                android:layout_toLeftOf="@id/textViewjam"
                 android:textColor="#5faf50"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -241,13 +228,12 @@
                 android:id="@+id/textViewjam"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="275dp"
-                android:layout_marginStart="270dp"
+                android:layout_alignParentRight="true"
                 android:text="08.00 WIB"
                 android:textColor="#5faf50"
                 android:textSize="16sp"
                 android:textStyle="bold" />
-        </FrameLayout>
+        </RelativeLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -267,9 +253,9 @@
                 android:textSize="20sp" />
         </FrameLayout>
 
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="97dp"
+            android:layout_height="80dp"
             android:layout_marginTop="2dp"
             android:background="#ffffff"
             android:padding="10dp">
@@ -277,42 +263,41 @@
 
             <TextView
                 android:id="@+id/textViewCOD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                android:layout_height="31dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="2dp"
                 android:text="Cash ON Delivery (COD)"
+                android:layout_toLeftOf="@id/checkbox1"
                 android:textColor="#5faf50"
                 android:textSize="16sp"
                  />
 
             <TextView
                 android:id="@+id/textViewTransfer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="40dp"
+                android:layout_width="match_parent"
+                android:layout_height="31dp"
+                android:layout_below="@+id/textViewCOD"
                 android:text="Transfer"
+                android:layout_marginLeft="10dp"
                 android:textColor="#5faf50"
                 android:textSize="16sp"
+                android:layout_toLeftOf="@id/checkbox2"
                  />
 
             <CheckBox
-                android:layout_width="37dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="300dp"
-                android:layout_marginStart="295dp" />
+                android:id="@+id/checkbox1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true" />
 
             <CheckBox
-                android:layout_width="37dp"
-                android:layout_height="25dp"
-                android:layout_marginLeft="300dp"
-                android:layout_marginStart="295dp"
-                android:layout_marginTop="35dp" />
+                android:id="@+id/checkbox2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@+id/checkbox1" />
 
-        </FrameLayout>
+        </RelativeLayout>
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -332,9 +317,9 @@
                 android:textSize="20sp" />
         </FrameLayout>
 
-        <FrameLayout
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="97dp"
+            android:layout_height="90dp"
             android:layout_marginTop="2dp"
             android:background="#ffffff"
             android:padding="10dp">
@@ -342,33 +327,34 @@
 
             <TextView
                 android:id="@+id/textViewhargabarang"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
+                android:layout_toLeftOf="@id/textViewhargabarang2"
                 android:layout_marginTop="2dp"
+                android:layout_marginLeft="10dp"
                 android:text="Harga Barang"
                 android:textColor="#5faf50"
                 android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/textViewbiayapengiriman"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+               android:layout_toLeftOf="@id/textViewbiayapengiriman2"
+                android:layout_below="@id/textViewhargabarang"
+                android:layout_marginTop="3dp"
                 android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="25dp"
                 android:text="Biaya Pengiriman"
                 android:textColor="#5faf50"
                 android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/textViewTotal"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="50dp"
+                android:layout_below="@id/textViewbiayapengiriman"
+                android:layout_marginTop="3dp"
                 android:text="Total"
                 android:textColor="#5faf50"
                 android:textSize="16sp"
@@ -379,8 +365,7 @@
                 android:id="@+id/textViewhargabarang2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="275dp"
-                android:layout_marginStart="270dp"
+                 android:layout_alignParentRight="true"
                 android:layout_marginTop="2dp"
                 android:text="Rp. 12.000,-"
                 android:textColor="#5faf50"
@@ -390,9 +375,9 @@
                 android:id="@+id/textViewbiayapengiriman2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="280dp"
-                android:layout_marginStart="278dp"
-                android:layout_marginTop="25dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginTop="3dp"
+                android:layout_below="@id/textViewhargabarang2"
                 android:text="Rp. 3.000,-"
                 android:textColor="#5faf50"
                 android:textSize="14sp" />
@@ -401,28 +386,38 @@
                 android:id="@+id/textViewTotal2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="270dp"
-                android:layout_marginStart="258dp"
-                android:layout_marginTop="50dp"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/textViewbiayapengiriman2"
+                android:layout_marginTop="3dp"
                 android:text="Rp. 15.000,-"
                 android:textColor="#5faf50"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-        </FrameLayout>
-        <Button
-            android:layout_width="300dp"
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="30dp"
-            android:text="Simpan"
-            android:id="@+id/btn_simpan"
-            android:textColor="#fff"
-            android:background="@drawable/selector_xml_btn_green"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="30dp"
-            />
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="55dp"
+            android:layout_marginLeft="55dp"
+            >
+
+            <Button
+                android:id="@+id/button_simpan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/selector_xml_btn_green"
+                android:text="SIMPAN"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                />
+        </RelativeLayout>
     </LinearLayout>
 
-
-
 </ScrollView>
+
+</android.support.constraint.ConstraintLayout>

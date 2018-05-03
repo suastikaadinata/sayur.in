@@ -39,7 +39,6 @@
             android:ems="10"
             android:id="@+id/txt_username"
             android:hint="Email / No Telp"
-            android:paddingLeft="0dp"
             android:drawablePadding="5dp"/>
 
     </android.support.design.widget.TextInputLayout>

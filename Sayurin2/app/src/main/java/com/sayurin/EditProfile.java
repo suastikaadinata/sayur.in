@@ -11,7 +11,9 @@ public class EditProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.editprofile);
 
-
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbarEditProfile);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Profile");
 
     }
 }

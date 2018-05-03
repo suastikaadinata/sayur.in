@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,5 +13,93 @@
         android:background="#eae7e7"
         android:orientation="vertical">
 
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:layout_gravity="fill"
+            android:layout_marginTop="60dp"
+            android:background="#ffff"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="77dp"
+                android:layout_height="77dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="30dp"
+                android:contentDescription="profile image"
+                android:src="@mipmap/ic_launcher" />
+
+
+            <EditText
+                android:id="@+id/editText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="93dp"
+                android:layout_marginStart="91dp"
+                android:layout_marginTop="30dp"
+                android:ems="22"
+                android:hint="Nama"
+                android:inputType="text"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/editText2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="93dp"
+                android:layout_marginStart="91dp"
+                android:layout_marginTop="60dp"
+                android:ems="22"
+                android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
+            <EditText
+                android:id="@+id/editText3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="93dp"
+                android:layout_marginStart="91dp"
+                android:layout_marginTop="90dp"
+                android:ems="22"
+                android:hint="No. Telepon"
+                android:inputType="number"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
+            <TextView
+                android:id="@+id/textView_simpan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:text="Simpan"
+                android:textAlignment="center"
+                android:textColor="#5faf50"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/button"
+                android:layout_width="77dp"
+                android:layout_height="30dp"
+                android:layout_below="@id/imageView"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="5dp"
+                android:background="@drawable/selector_xml_btn_yellow"
+                android:drawableLeft="@drawable/ic_add_a_photo_white_24dp"
+                android:paddingLeft="5dp"
+                android:text="Ubah"
+                android:textColor="#ffff"
+                android:textSize="14sp" />
+        </RelativeLayout>
+
+
     </LinearLayout>
-</ScrollView>
+</android.support.constraint.ConstraintLayout>
