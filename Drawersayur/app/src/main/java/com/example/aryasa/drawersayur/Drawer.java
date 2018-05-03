@@ -1,10 +1,13 @@
 package com.example.aryasa.drawersayur;
 
-import android.support.v4.app.FragmentTransaction;
+import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -13,9 +16,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 public class Drawer extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+    String id, username;
+    SharedPreferences sharedpreferences;
+    public static final String TAG_ID = "id";
+    public static final String TAG_USERNAME = "username";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,6 +32,24 @@ public class Drawer extends AppCompatActivity
         setContentView(R.layout.activity_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        sharedpreferences = getSharedPreferences(Login.my_shared_preferences, Context.MODE_PRIVATE);
+
+        id = getIntent().getStringExtra(TAG_ID);
+        username = getIntent().getStringExtra(TAG_USERNAME);
+
+        View header =((NavigationView)findViewById(R.id.nav_view)).getHeaderView(0);
+        ((TextView)header.findViewById(R.id.nama_user)).setText(id);
+        ((TextView)header.findViewById(R.id.email_user)).setText(username);
+
+        ((ImageView)header.findViewById(R.id.image_user)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Drawer.this, Login.class);
+                startActivity(intent);
+            }
+        });
+
 
         HomeFragment fragment = new HomeFragment();
         FragmentTransaction fragmentTransaction= getSupportFragmentManager().beginTransaction();
@@ -60,9 +87,10 @@ public class Drawer extends AppCompatActivity
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.drawer, menu);
-        return true;
+     //// Inflate the menu; this adds items to the action bar if it is present.
+     getMenuInflater().inflate(R.menu.drawer, menu);
+     return true;
+
     }
 
     @Override
@@ -73,8 +101,12 @@ public class Drawer extends AppCompatActivity
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.search) {
             return true;
+        }
+        if (id == R.id.cart) {
+            Intent cart = new Intent(Drawer.this, Chart.class);
+            startActivity(cart);
         }
 
         return super.onOptionsItemSelected(item);
@@ -87,10 +119,7 @@ public class Drawer extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_history) {
-            HomeFragment fragment = new HomeFragment();
-            FragmentTransaction fragmentTransaction= getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.frameLayout, fragment);
-            fragmentTransaction.commit();
+
 
         } else if (id == R.id.nav_manage) {
 

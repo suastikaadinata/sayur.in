@@ -34,6 +34,13 @@
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:text="kuantitas barang"
+                android:textColor="#808080"
+                />
 
             <TextView
                 android:id="@+id/harga_sayur"

@@ -33,12 +33,12 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home2, container, false);
         ArrayList<Sayur> listSayur = new ArrayList<Sayur>();
-        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.tulip));
-        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.carnation));
-        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.tulip));
-        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.carnation));
-        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.tulip));
-        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.carnation));
+        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.sayur));
+        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.sayur1));
+        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.sayur));
+        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.sayur1));
+        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.sayur));
+        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.sayur1));
 
 
         RecyclerView mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview1);
