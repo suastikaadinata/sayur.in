@@ -36,8 +36,8 @@
         <activity android:name=".SplashScreen" />
         <activity android:name=".Chating" />
         <activity android:name=".Cart" />
-        <activity android:name=".EditProfile"/>
-
+        <activity android:name=".EditProfile" />
+        <activity android:name=".History"></activity>
     </application>
 
 </manifest>

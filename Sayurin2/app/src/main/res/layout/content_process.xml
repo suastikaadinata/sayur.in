@@ -49,7 +49,7 @@
                 android:layout_height="77dp"
                 android:layout_marginLeft="10dp"
                 android:contentDescription="profile image"
-                android:src="@mipmap/ic_launcher_round" />
+                android:src="@mipmap/ic_launcher" />
 
             <TextView
                 android:id="@+id/textView_namaSayur"
@@ -58,6 +58,7 @@
                 android:layout_toRightOf="@id/imageView"
                 android:layout_marginLeft="5dp"
                 android:text="Bayam"
+                android:layout_marginTop="5dp"
                 android:textColor="#5faf50"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -100,15 +101,13 @@
                 android:textSize="12sp"
                 android:textStyle="italic" />
 
-
-
-
                 <TextView
                     android:id="@+id/textView_jumlahSayur"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="Jumlah : 1"
+                    android:layout_marginRight="10dp"
                     android:textAlignment="center"
                     android:textColor="#5faf50"
                     android:textSize="16sp"
@@ -232,6 +231,7 @@
                 android:text="08.00 WIB"
                 android:textColor="#5faf50"
                 android:textSize="16sp"
+                android:layout_marginRight="10dp"
                 android:textStyle="bold" />
         </RelativeLayout>
 
@@ -288,16 +288,85 @@
                 android:id="@+id/checkbox1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true" />
 
             <CheckBox
                 android:id="@+id/checkbox2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"
                 android:layout_below="@+id/checkbox1" />
 
         </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:background="#f2f5f7"
+            android:layout_marginTop="1dp"
+            android:padding="10dp">
+
+
+            <TextView
+                android:id="@+id/textViewTransfer2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp"
+                android:text="Transfer ke rekening :"
+                android:layout_toLeftOf="@id/textViewjamtes"
+                android:textColor="#5faf50"
+                android:textSize="16sp"
+             />
+
+            <TextView
+                android:id="@+id/textViewNorekening"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="xxx xxx 999 999"
+                android:layout_marginTop="2dp"
+                android:layout_below="@id/textViewTransfer2"
+                android:layout_toLeftOf="@id/textViewjamtes"
+                android:textColor="#5faf50"
+                android:textSize="16sp"
+                />
+            <TextView
+                android:id="@+id/textViewKeterangan"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="Pengriman akan diproses setelah mengkonfirmasikan pembayaran dengan me-upload foto bukti pembayaran"
+                android:layout_marginTop="2dp"
+                android:layout_below="@id/textViewNorekening"
+                android:layout_toLeftOf="@id/textViewjamtes"
+                android:textColor="#afafaf"
+                android:textSize="14sp"
+                />
+
+            <ImageView
+                android:id="@+id/imageViewupload"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="11dp"
+                android:layout_marginTop="20dp"
+                android:src="@drawable/ic_file_upload_orange_24dp"
+                />
+            <TextView
+                android:id="@+id/textViewjamtes"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:text="Upload"
+                android:layout_below="@id/imageViewupload"
+                android:textColor="#ff8200"
+                android:textSize="16sp" />
+        </RelativeLayout>
+
 
         <FrameLayout
             android:layout_width="match_parent"
@@ -369,6 +438,7 @@
                 android:layout_marginTop="2dp"
                 android:text="Rp. 12.000,-"
                 android:textColor="#5faf50"
+                android:layout_marginRight="10dp"
                 android:textSize="14sp" />
 
             <TextView
@@ -378,6 +448,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_marginTop="3dp"
                 android:layout_below="@id/textViewhargabarang2"
+                android:layout_marginRight="10dp"
                 android:text="Rp. 3.000,-"
                 android:textColor="#5faf50"
                 android:textSize="14sp" />
@@ -392,6 +463,7 @@
                 android:text="Rp. 15.000,-"
                 android:textColor="#5faf50"
                 android:textSize="16sp"
+                android:layout_marginRight="10dp"
                 android:textStyle="bold" />
 
         </RelativeLayout>
