@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".Process"
+            android:name=".History"
             android:label="@string/app_name"
             android:noHistory="true"
             android:screenOrientation="portrait">
@@ -37,7 +37,9 @@
         <activity android:name=".Chating" />
         <activity android:name=".Cart" />
         <activity android:name=".EditProfile" />
-        <activity android:name=".History"></activity>
+        <activity android:name=".Process" />
+        <activity android:name=".TabFragmentInprogress" />
+        <activity android:name=".TabFragmentCompleted"></activity>
     </application>
 
 </manifest>
