@@ -13,14 +13,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
-import android.os.Bundle;
 import android.support.v4.view.MenuItemCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
-import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.widget.TextView;
+
 
 public class MainActivity extends AppCompatActivity {
     Button btn_logout;

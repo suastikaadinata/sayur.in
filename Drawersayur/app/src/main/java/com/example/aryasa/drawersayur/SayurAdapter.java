@@ -39,7 +39,6 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
         holder.mTitle.setText(mSayurlist.get(position).getNama_sayur());
         holder.mHarga.setText(mSayurlist.get(position).getHarga_sayur());
         //holder.mCardView.
-
     }
 
     class SayurViewHolder extends RecyclerView.ViewHolder{
