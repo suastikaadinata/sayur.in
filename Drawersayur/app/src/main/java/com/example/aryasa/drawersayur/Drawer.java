@@ -33,14 +33,14 @@ public class Drawer extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        sharedpreferences = getSharedPreferences(Login.my_shared_preferences, Context.MODE_PRIVATE);
+       sharedpreferences = getSharedPreferences(Login.my_shared_preferences, Context.MODE_PRIVATE);
 
         id = getIntent().getStringExtra(TAG_ID);
         username = getIntent().getStringExtra(TAG_USERNAME);
 
         View header =((NavigationView)findViewById(R.id.nav_view)).getHeaderView(0);
-        ((TextView)header.findViewById(R.id.nama_user)).setText(id);
-        ((TextView)header.findViewById(R.id.email_user)).setText(username);
+       ((TextView)header.findViewById(R.id.nama_user)).setText(id);
+       ((TextView)header.findViewById(R.id.email_user)).setText(username);
 
         ((ImageView)header.findViewById(R.id.image_user)).setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +49,7 @@ public class Drawer extends AppCompatActivity
                 startActivity(intent);
             }
         });
+
 
         HomeFragment fragment = new HomeFragment();
         FragmentTransaction fragmentTransaction= getSupportFragmentManager().beginTransaction();
@@ -89,6 +90,7 @@ public class Drawer extends AppCompatActivity
      //// Inflate the menu; this adds items to the action bar if it is present.
      getMenuInflater().inflate(R.menu.drawer, menu);
      return true;
+
     }
 
     @Override
@@ -117,11 +119,24 @@ public class Drawer extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_history) {
-
+            Intent intent = new Intent(Drawer.this, History.class);
+            finish();
+            startActivity(intent);
 
         } else if (id == R.id.nav_manage) {
 
+        } else if (id == R.id.nav_logout) {
+            SharedPreferences.Editor editor = sharedpreferences.edit();
+            editor.putBoolean(Login.session_status, false);
+            editor.putString(TAG_ID, null);
+            editor.putString(TAG_USERNAME, null);
+            editor.commit();
+
+            Intent intent = new Intent(Drawer.this, Drawer.class);
+            finish();
+            startActivity(intent);
         }
+
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

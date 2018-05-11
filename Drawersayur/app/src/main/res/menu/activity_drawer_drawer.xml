@@ -24,6 +24,10 @@
                 android:id="@+id/nav_version"
                 android:icon="@drawable/ic_smartphone_version"
                 android:title="Version" />
+            <item
+                android:id="@+id/nav_logout"
+                android:icon="@drawable/ic_keyboard_return_black_24dp"
+                android:title="Logout" />
         </menu>
     </item>
 

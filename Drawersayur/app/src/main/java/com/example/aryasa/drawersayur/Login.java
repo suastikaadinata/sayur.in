@@ -93,22 +93,27 @@ public class Login extends AppCompatActivity{
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                String username = txt_username.getText().toString();
-                String password = txt_password.getText().toString();
+               String username = txt_username.getText().toString();
+               String password = txt_password.getText().toString();
 
-                // mengecek kolom yang kosong
-                if (username.trim().length() > 0 && password.trim().length() > 0) {
-                    if (conMgr.getActiveNetworkInfo() != null
-                            && conMgr.getActiveNetworkInfo().isAvailable()
-                            && conMgr.getActiveNetworkInfo().isConnected()) {
-                        checkLogin(username, password);
-                    } else {
-                        Toast.makeText(getApplicationContext() ,"No Internet Connection", Toast.LENGTH_LONG).show();
-                    }
+              //   mengecek kolom yang kosong
+             if (username.trim().length() > 0 && password.trim().length() > 0) {
+                    //if (conMgr.getActiveNetworkInfo() != null
+                      //     && conMgr.getActiveNetworkInfo().isAvailable()
+                     //      && conMgr.getActiveNetworkInfo().isConnected()) {
+                      // checkLogin(username, password);
+                  // } else {
+                    //   Toast.makeText(getApplicationContext() ,"No Internet Connection", Toast.LENGTH_LONG).show();
+                  // }
+                 intent = new Intent(Login.this, Drawer.class);
+                 finish();
+                 startActivity(intent);
                 } else {
                     // Prompt user to enter credentials
                     Toast.makeText(getApplicationContext() ,"Kolom tidak boleh kosong", Toast.LENGTH_LONG).show();
-                }
+               }
+
+
             }
         });
 
