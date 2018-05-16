@@ -9,21 +9,45 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'nomor_telepon','password', 'foto', 'tipe', 
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public function isAdmin()
+    {
+        return $this->tipe == 'admin';
+    }
+
+    public function foto()
+    {
+        if($this->foto == null){
+            //return '/images/default-profile.png';
+        }else{
+            //return '/images/' . $this->foto;
+        }
+    }
+
+    public function karanjang()
+    {
+        return $this->hasMany(Keranjang::class);
+    }
+
+    public function pembayaran()
+    {
+        return $this->hasMany(Pembayaran::class);
+    }
+
+    public function pengiriman()
+    {
+        return $this->hasMany(Pengiriman::class);
+    }
+
+    public function chatting()
+    {
+        return $this->hasMany(Chatting::class);
+    }
 }
