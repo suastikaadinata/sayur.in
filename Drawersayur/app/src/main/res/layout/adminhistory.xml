@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".TabFragmentCompleted">
+    tools:context=".Adminhistory">
 
 
     <LinearLayout
@@ -19,7 +19,7 @@
             android:background="#ffffff"
             android:padding="10dp">
 
-            <TextView
+            <TextView=ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg===========
                 android:id="@+id/textView1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="110dp"
+            android:layout_height="165dp"
             android:layout_marginTop="2dp"
             android:background="#ffffff"
             android:padding="10dp">
@@ -96,6 +96,36 @@
                 android:textColor="#5faf50"
                 android:textSize="14sp"
                 />
+
+            <TextView
+                android:id="@+id/textViewKodeTransaksi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/imageView"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/textViewnote1"
+                android:text="Kode Transaksi : XXX123"
+                android:layout_marginTop="2dp"
+                android:textColor="#ff8200"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+            <TextView
+                android:id="@+id/textViewStatus"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/imageView"
+                android:layout_marginLeft="5dp"
+                android:layout_below="@id/textViewKodeTransaksi"
+                android:text="Status : Belum Dibayar"
+                android:layout_marginTop="2dp"
+                android:textColor="#ff8200"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                />
+
+
 
             <TextView
                 android:id="@+id/textView_kirim"

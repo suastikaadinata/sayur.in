@@ -35,7 +35,10 @@
         <activity android:name=".Process" />
         <activity android:name=".History" />
         <activity android:name=".Adminubahsayur" />
-        <activity android:name=".Admintambahsayur"></activity>
+        <activity android:name=".Admintambahsayur" />
+        <activity android:name=".Adminviewuser" />
+        <activity android:name=".Admindetailtransaksi" />
+        <activity android:name=".Adminhistory"></activity>
     </application>
 
 </manifest>

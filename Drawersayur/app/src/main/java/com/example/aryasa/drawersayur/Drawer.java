@@ -1,5 +1,6 @@
 package com.example.aryasa.drawersayur;
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,8 +20,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Drawer extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class Drawer extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+    Dialog myDialog;
     String id, username;
     SharedPreferences sharedpreferences;
     public static final String TAG_ID = "id";
@@ -32,6 +33,7 @@ public class Drawer extends AppCompatActivity
         setContentView(R.layout.activity_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        myDialog = new Dialog(this);
 
        sharedpreferences = getSharedPreferences(Login.my_shared_preferences, Context.MODE_PRIVATE);
 
@@ -89,8 +91,9 @@ public class Drawer extends AppCompatActivity
     public boolean onCreateOptionsMenu(Menu menu) {
      //// Inflate the menu; this adds items to the action bar if it is present.
      getMenuInflater().inflate(R.menu.drawer, menu);
-     return true;
 
+
+        return true;
     }
 
     @Override
@@ -122,7 +125,6 @@ public class Drawer extends AppCompatActivity
             Intent intent = new Intent(Drawer.this, History.class);
             finish();
             startActivity(intent);
-
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_logout) {
@@ -142,4 +144,12 @@ public class Drawer extends AppCompatActivity
         drawer.closeDrawer(GravityCompat.START);
         return true;
     }
+
+
+
+    public void ShowPopup(View v) {
+        myDialog.setContentView(R.layout.popupbtnadd);
+        myDialog.show();
+    }
 }
+
