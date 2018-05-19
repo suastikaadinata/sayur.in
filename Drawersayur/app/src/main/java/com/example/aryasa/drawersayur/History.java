@@ -1,5 +1,6 @@
 package com.example.aryasa.drawersayur;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -9,6 +10,8 @@ import com.example.aryasa.drawersayur.Adpater.PageAdapter;
 
 
 public class History extends AppCompatActivity {
+
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +31,7 @@ public class History extends AppCompatActivity {
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
 
-        tabLayout.setOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+        tabLayout. addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
@@ -45,5 +48,11 @@ public class History extends AppCompatActivity {
             }
         });
     }
-
+    @Override
+    public void onBackPressed() {
+        intent = new Intent(History.this, Drawer.class);
+        finish();
+        startActivity(intent);
+    }
 }
+

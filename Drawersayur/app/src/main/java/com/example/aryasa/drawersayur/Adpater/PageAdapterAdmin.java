@@ -4,13 +4,15 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.aryasa.drawersayur.Fragment.FragmentAdminHistoryCompleted;
+import com.example.aryasa.drawersayur.Fragment.FragmentAdminHistoryInprogress;
 import com.example.aryasa.drawersayur.Fragment.TabFragmentCompleted;
 import com.example.aryasa.drawersayur.Fragment.TabFragmentInprogress;
 
-public class PageAdapter extends FragmentStatePagerAdapter {
+public class PageAdapterAdmin extends FragmentStatePagerAdapter {
     int mNumOfTabs;
 
-    public PageAdapter(FragmentManager fm, int NumOfTabs) {
+    public PageAdapterAdmin(FragmentManager fm, int NumOfTabs) {
         super(fm);
         this.mNumOfTabs = NumOfTabs;
     }
@@ -20,10 +22,10 @@ public class PageAdapter extends FragmentStatePagerAdapter {
 
         switch (position) {
             case 0:
-                TabFragmentInprogress tab1 = new TabFragmentInprogress();
+                FragmentAdminHistoryInprogress tab1 = new FragmentAdminHistoryInprogress();
                 return tab1;
             case 1:
-                TabFragmentCompleted tab2 = new TabFragmentCompleted();
+                FragmentAdminHistoryCompleted tab2 = new FragmentAdminHistoryCompleted();
                 return tab2;
             default:
                 return null;

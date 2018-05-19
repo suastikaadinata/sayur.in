@@ -93,7 +93,22 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="30"
                     android:background="@drawable/btn_add" />
+
             </LinearLayout>
+
+            <Button
+                android:elevation="5dp"
+                android:layout_width="wrap_content"
+                android:layout_height="35dp"
+                android:background="@color/colorPrimaryDark"
+                android:text="Add"
+                android:paddingLeft="10dp"
+                android:layout_marginRight="4dp"
+                android:layout_alignParentRight="true"
+                android:drawableLeft="@drawable/ic_shopping_basket"
+                android:textColor="#ffffff"
+                android:layout_marginTop="40dp"
+                />
 
 
         </RelativeLayout>
