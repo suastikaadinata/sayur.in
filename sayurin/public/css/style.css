@@ -1,0 +1,144 @@
+html{
+    position: relative;
+    min-height: 100%;
+}
+
+body{
+    background-color: #f5f5f5;
+}
+
+.btn{
+    background-color: #5faf50;
+    color: white;   
+    border-color: #5faf50;
+}
+
+.btn:hover, .btn:focus{
+    background-color: #2ecc71;
+    border-color: #2ecc71;
+    color: white;
+}
+
+.form-group .form-control{
+    box-shadow: none;
+    margin-bottom: 5px;
+}
+
+.form-control:focus{
+    border-color: #5faf50;
+}
+
+header{
+    width: 100%;
+    height: 80px;
+    background-color: #5faf50;
+}
+
+.section-left-side{
+    margin-top: 20px;
+    padding: 15px;
+}
+
+.section-left-side a{
+    color: black;
+    text-decoration: none;
+}
+
+.section-left-side a:hover{
+    color: #5faf50;
+}
+
+.section-core{
+    width: 100%;
+    border-left: 5px solid #5faf50;
+    padding-bottom: 300px;
+}
+
+footer{
+    padding: 50px;
+    width: 100%;
+    background-color: #ecf0f1;
+    border-top: 5px solid #5faf50;
+}
+
+.all-header{
+    width: 100%;
+    border-bottom: 5px solid #5faf50;
+    padding: 10px;
+}
+
+.status-pesanan-container{
+    background-color: white;
+    border: 3px solid #bdc3c7;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+}
+
+.sayur-home-container, .user-home-container, .manage-sayur-container{
+    width: 100%;
+    background-color: white;
+    padding: 15px;
+    border: 3px solid #bdc3c7;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.sayur-home-container:hover, .user-home-container:hover, .manage-sayur-container:hover{
+    cursor: pointer;
+    border: 3px solid #2ecc71;
+}
+
+.user-home-container{
+    text-align: center;
+}
+
+.sayur-home-img, .user-home-img{
+    width: 100%;
+    height: 200px;
+    background-size: 100% 100%; 
+}
+
+.manage-sayur-header-search{
+    margin-top: 10px;
+}
+
+.manage-sayur-header-search .form-control{
+    box-shadow: none;
+}
+
+.manage-sayur-header-search .input-lg{
+    color: black;
+    border-color: #5faf50;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: none;
+}
+
+.manage-sayur-header-search button{
+    padding: 0px 2px 3px 0px;
+    background-color: white;
+    border-left: none;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.manage-sayur-header-search button:hover{
+    background-color: white;
+}
+
+.manage-sayur-header-search button:focus{
+    background-color: white;
+    box-shadow: none;
+}
+
+.manage-sayur-header-search img{
+    background-size: 100% 100%;
+    width: 30px;
+}
+
+
