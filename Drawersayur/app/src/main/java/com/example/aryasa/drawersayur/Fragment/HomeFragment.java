@@ -1,4 +1,4 @@
-package com.example.aryasa.drawersayur;
+package com.example.aryasa.drawersayur.Fragment;
 
 
 import android.content.Context;
@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.aryasa.drawersayur.Adpater.SayurAdapter;
+import com.example.aryasa.drawersayur.R;
+import com.example.aryasa.drawersayur.Sayur;
 
 import java.util.ArrayList;
 import java.util.List;

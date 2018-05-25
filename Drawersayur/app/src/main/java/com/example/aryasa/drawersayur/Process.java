@@ -2,7 +2,7 @@ package com.example.aryasa.drawersayur;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+
 public class Process extends AppCompatActivity {
 
     @Override

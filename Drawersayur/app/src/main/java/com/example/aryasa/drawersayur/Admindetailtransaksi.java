@@ -5,11 +5,11 @@ import android.os.Bundle;
 
 
 
-public class Adminubahsayur extends AppCompatActivity {
+public class Admindetailtransaksi extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.adminubahsayur);
+        setContentView(R.layout.admindetailtransaksi);
     }
 }

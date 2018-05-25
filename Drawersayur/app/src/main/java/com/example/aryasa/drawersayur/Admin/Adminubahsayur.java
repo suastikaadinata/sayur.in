@@ -1,9 +1,9 @@
-package com.example.aryasa.drawersayur;
+package com.example.aryasa.drawersayur.Admin;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-
+import com.example.aryasa.drawersayur.R;
 
 public class Adminubahsayur extends AppCompatActivity {
 

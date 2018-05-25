@@ -7,25 +7,26 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.example.aryasa.drawersayur.Adpater.PageAdapter;
+import com.example.aryasa.drawersayur.Adpater.PageAdapterAdmin;
 
 
-public class History extends AppCompatActivity {
+public class Adminhistory extends AppCompatActivity {
 
     Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.history);
+        setContentView(R.layout.adminhistory);
 
 
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout_history);
+        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout_history_admin);
         tabLayout.addTab(tabLayout.newTab().setText("IN PROGRESS"));
         tabLayout.addTab(tabLayout.newTab().setText("Completed"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
-        final PageAdapter adapter = new PageAdapter
+        final ViewPager viewPager = (ViewPager) findViewById(R.id.pageradmin);
+        final PageAdapterAdmin adapter = new PageAdapterAdmin
                 (getSupportFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -50,7 +51,7 @@ public class History extends AppCompatActivity {
     }
     @Override
     public void onBackPressed() {
-        intent = new Intent(History.this, Drawer.class);
+        intent = new Intent(Adminhistory.this, Drawer.class);
         finish();
         startActivity(intent);
     }
