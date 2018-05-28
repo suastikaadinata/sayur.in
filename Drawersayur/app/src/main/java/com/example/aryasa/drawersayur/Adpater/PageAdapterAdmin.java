@@ -6,8 +6,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.example.aryasa.drawersayur.Fragment.FragmentAdminHistoryCompleted;
 import com.example.aryasa.drawersayur.Fragment.FragmentAdminHistoryInprogress;
-import com.example.aryasa.drawersayur.Fragment.TabFragmentCompleted;
-import com.example.aryasa.drawersayur.Fragment.TabFragmentInprogress;
+
 
 public class PageAdapterAdmin extends FragmentStatePagerAdapter {
     int mNumOfTabs;

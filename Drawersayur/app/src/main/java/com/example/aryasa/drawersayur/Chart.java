@@ -21,7 +21,7 @@ public class Chart extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
-                // TODO Auto-generated method stub
+
                 intent = new Intent(Chart.this, Process.class);
                 finish();
                 startActivity(intent);

@@ -39,7 +39,7 @@
         <activity android:name=".Adminviewuser" />
         <activity android:name=".Admindetailtransaksi" />
         <activity android:name=".Adminhistory" />
-
+        <activity android:name=".Adminhomeuser"></activity>
     </application>
 
 </manifest>

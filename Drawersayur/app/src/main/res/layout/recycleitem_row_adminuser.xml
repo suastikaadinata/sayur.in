@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cradview"
+        android:id="@+id/carddviewuser"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -22,13 +22,13 @@
             >
 
             <ImageView
-                android:id="@+id/gambar_sayur"
+                android:id="@+id/gambaruser"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_launcher" />
 
             <TextView
-                android:id="@+id/nama_sayur"
+                android:id="@+id/txt_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="nama"
@@ -38,36 +38,37 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/txt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="10sp"
-                android:text="kuantitas barang"
+                android:text="email"
                 android:textAlignment="center"
                 android:textColor="#808080"
                 />
 
             <TextView
-                android:id="@+id/harga_sayur"
+                android:id="@+id/txt_notelp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="harga"
+                android:text="no handphone"
                 android:textAlignment="center"
                 android:textColor="@color/colorAccent"
-                 />
-
-            <Button
-                android:elevation="5dp"
-                android:layout_gravity="center"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/selector_xml_btn_green"
-                android:text="Add"
-                android:paddingLeft="10dp"
-                android:drawableLeft="@drawable/ic_shopping_basket"
-                android:textColor="#ffffff"
-                android:layout_marginTop="15dp"
-                android:onClick="ShowPopup"
                 />
+
+                <Button
+                    android:elevation="5dp"
+                    android:layout_gravity="center"
+                    android:layout_width="70dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/selector_xml_btn_green"
+                    android:text="Hapus"
+                    android:textColor="#ffffff"
+                    android:layout_marginTop="10dp"
+                    android:id="@+id/btn_delete"
+                    />
+
+
         </LinearLayout>
     </android.support.v7.widget.CardView>
 

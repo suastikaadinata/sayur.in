@@ -100,7 +100,7 @@
                 android:elevation="5dp"
                 android:layout_width="wrap_content"
                 android:layout_height="35dp"
-                android:background="@color/colorPrimaryDark"
+                android:background="@drawable/selector_xml_btn_green"
                 android:text="Add"
                 android:paddingLeft="10dp"
                 android:layout_marginRight="4dp"
