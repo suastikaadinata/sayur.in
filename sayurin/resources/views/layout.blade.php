@@ -21,6 +21,7 @@
                     <a href="/manage-sayur"><h5>Manage Sayur</h5></a>
                     <a href="/manage-user"><h5>Manage User</h5></a>
                     <a href=""><h5>Manage Transaksi</h5></a>
+                    <a href="/logout"><h5>Logout</h5></a>
                 </div>
             </div>
             <div class="col-lg-10">
@@ -36,5 +37,5 @@
 </body>
 <script src="{{ asset('/js/jquery.min.js') }}"></script>
 <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('/js/select2.min.js') }}"></script>
+<script src="{{ asset('/js/manage-sayur.js') }}"></script>
 </html>

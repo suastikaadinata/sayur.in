@@ -10,8 +10,22 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Auth::routes();
+Route::get('/logout', 'Auth\LoginController@logout');
+
 Route::get('/', 'HomeController@home');
+
+Route::group(['prefix' => 'manage-sayur'], function(){
+    Route::get('/', 'SayurController@manageSayur');
+    Route::get('/tambah-sayur', 'SayurController@tambahSayur');
+    Route::post('/tambah-sayur/tambah', 'SayurController@save');
+    Route::get('/search', 'SayurController@searchSayur');
+});
 
 Route::get('/manage-sayur', 'SayurController@manageSayur');
 
 Route::get('/manage-user', 'UserController@manageUser');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

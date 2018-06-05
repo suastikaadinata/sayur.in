@@ -10,4 +10,9 @@ class Sayur extends Model
     protected $fillable = [
         'nama', 'jumlah', 'berat', 'harga', 'foto',
     ];
+
+    public function foto()
+    {
+        return '/img/' . $this->foto;
+    }
 }

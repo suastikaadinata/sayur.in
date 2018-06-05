@@ -19,9 +19,9 @@
                                         <img src="{{ asset('img/search.png') }}">
                                     </button>
                                 </span>                     
-                            </div> 
-                        </form> 
-                    </div>  
+                            </div>  
+                        </form>
+                    </div>
                 <div class="col-lg-2">
                     <h3>Sayuran</h3>
                 </div>
@@ -36,8 +36,11 @@
     </div>
     <div class="section-content">
         <div class="container">
+        @if($search->isEmpty())
+            <h3>Tidak ditemukan hasil untuk '{{ $keyword }}'</h3>
+        @else
             <div class="row">
-                @foreach($sayur as $s)
+                @foreach($search as $s)
                 <div class="col-lg-3">
                     <div class="manage-sayur-container">
                         <h4 style="text-align: center;">{{ $s->nama }}</h4>
@@ -49,6 +52,7 @@
                 </div>
                 @endforeach
             </div>
+        @endif
         </div>
     </div>  
 @endsection

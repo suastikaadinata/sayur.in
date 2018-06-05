@@ -7,13 +7,13 @@ body{
     background-color: #f5f5f5;
 }
 
-.btn{
+.btn-modif{
     background-color: #5faf50;
     color: white;   
     border-color: #5faf50;
 }
 
-.btn:hover, .btn:focus{
+.btn-modif:hover, .btn-modif:focus{
     background-color: #2ecc71;
     border-color: #2ecc71;
     color: white;
@@ -65,6 +65,10 @@ footer{
     width: 100%;
     border-bottom: 5px solid #5faf50;
     padding: 10px;
+}
+
+.section-content{
+    padding: 20px;
 }
 
 .status-pesanan-container{
@@ -141,4 +145,35 @@ footer{
     width: 30px;
 }
 
+.image-upload-btn{
+    width: 100%;
+}
 
+.input-image{
+    width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+
+.image-place-upload{
+    text-align: center;
+    width: 100%;
+    height: 200px;
+    border: 1px solid #bdc3c7;
+    margin-bottom: 5px;
+    background-color: white;
+}
+
+.image-place-upload img{
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+}
+
+.btn-tambah-sayur{
+    width: 100%;
+    margin-top: 120px;
+}
