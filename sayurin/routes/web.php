@@ -21,11 +21,9 @@ Route::group(['prefix' => 'manage-sayur'], function(){
     Route::get('/tambah-sayur', 'SayurController@tambahSayur');
     Route::post('/tambah-sayur/tambah', 'SayurController@save');
     Route::get('/search', 'SayurController@searchSayur');
+    Route::get('/json', 'SayurController@sayurJson');
 });
 
-Route::get('/manage-sayur', 'SayurController@manageSayur');
-
 Route::get('/manage-user', 'UserController@manageUser');
-Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+

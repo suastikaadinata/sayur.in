@@ -67,4 +67,10 @@ class SayurController extends Controller
             'search'    => $search
         ]);
     }
+
+    public function sayurJson()
+    {
+        $sayur = Sayur::all();
+        return response()->json($sayur,200);
+    }
 }
