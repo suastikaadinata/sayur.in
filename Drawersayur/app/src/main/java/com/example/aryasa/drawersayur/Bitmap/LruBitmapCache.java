@@ -15,10 +15,12 @@ public class LruBitmapCache extends LruCache<String, Bitmap> implements
     }
 
     public LruBitmapCache() {
+
         this(getDefaultLruCacheSize());
     }
 
     public LruBitmapCache(int sizeInKiloBytes) {
+
         super(sizeInKiloBytes);
     }
 
@@ -29,11 +31,13 @@ public class LruBitmapCache extends LruCache<String, Bitmap> implements
 
     @Override
     public Bitmap getBitmap(String url) {
+
         return get(url);
     }
 
     @Override
     public void putBitmap(String url, Bitmap bitmap) {
+
         put(url, bitmap);
     }
 }
