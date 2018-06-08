@@ -29,6 +29,7 @@ public class Drawer extends AppCompatActivity implements NavigationView.OnNaviga
     public static final String TAG_ID = "id";
     public static final String TAG_USERNAME = "username";
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
