@@ -10,6 +10,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.example.aryasa.drawersayur.Model.Sayur;
+
 import java.util.ArrayList;
 
 public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHolder> {

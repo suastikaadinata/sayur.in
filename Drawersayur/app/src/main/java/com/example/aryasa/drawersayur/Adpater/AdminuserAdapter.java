@@ -9,7 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.aryasa.drawersayur.R;
-import com.example.aryasa.drawersayur.Userdata;
+import com.example.aryasa.drawersayur.Model.Userdata;
 
 import java.util.List;
 

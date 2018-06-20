@@ -1,4 +1,4 @@
-package com.example.aryasa.drawersayur;
+package com.example.aryasa.drawersayur.Model;
 
 public class Userdata {
     private String txt_username;

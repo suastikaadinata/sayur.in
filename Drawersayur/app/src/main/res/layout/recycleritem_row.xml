@@ -25,13 +25,14 @@
                 android:id="@+id/gambar_sayur"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@mipmap/ic_launcher"
+                android:contentDescription="@string/todo" />
 
             <TextView
                 android:id="@+id/nama_sayur"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="nama"
+                android:text="@string/nama"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
                 android:textAlignment="center"
@@ -40,8 +41,8 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="10sp"
-                android:text="kuantitas barang"
+                android:textSize="12sp"
+                android:text="@string/kuantitas_barang"
                 android:textAlignment="center"
                 android:textColor="#808080"
                 />
@@ -50,7 +51,7 @@
                 android:id="@+id/harga_sayur"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="harga"
+                android:text="@string/harga"
                 android:textAlignment="center"
                 android:textColor="@color/colorAccent"
                  />
@@ -61,13 +62,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_xml_btn_green"
-                android:text="Add"
-                android:paddingLeft="10dp"
-                android:drawableLeft="@drawable/ic_shopping_basket"
+                android:text="@string/add"
+                android:paddingStart="10dp"
+                android:drawableStart="@drawable/ic_shopping_basket"
                 android:textColor="#ffffff"
                 android:layout_marginTop="15dp"
                 android:onClick="ShowPopup"
-                />
+                tools:targetApi="lollipop" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 

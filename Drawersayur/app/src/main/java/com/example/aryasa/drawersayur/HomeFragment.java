@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.aryasa.drawersayur.Adpater.SayurAdapter;
+import com.example.aryasa.drawersayur.Model.Sayur;
 
 import java.util.ArrayList;
 import java.util.List;

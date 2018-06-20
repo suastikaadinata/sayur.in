@@ -1,4 +1,4 @@
-package com.example.aryasa.drawersayur;
+package com.example.aryasa.drawersayur.Admin;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +7,8 @@ import android.support.v7.widget.RecyclerView;
 
 
 import com.example.aryasa.drawersayur.Adpater.AdminuserAdapter;
+import com.example.aryasa.drawersayur.R;
+import com.example.aryasa.drawersayur.Model.Userdata;
 
 import java.util.ArrayList;
 import java.util.List;

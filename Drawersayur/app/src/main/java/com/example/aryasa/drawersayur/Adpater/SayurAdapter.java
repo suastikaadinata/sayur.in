@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.example.aryasa.drawersayur.R;
-import com.example.aryasa.drawersayur.Sayur;
+import com.example.aryasa.drawersayur.Model.Sayur;
 
 import java.util.ArrayList;
 
