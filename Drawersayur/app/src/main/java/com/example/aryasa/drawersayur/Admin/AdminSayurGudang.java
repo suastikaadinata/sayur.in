@@ -1,12 +1,19 @@
 package com.example.aryasa.drawersayur.Admin;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.PersistableBundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,35 +37,34 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AdminSayurGudang extends AppCompatActivity {
-    private String API_URL = "http://192.168.43.245/api/sayur";
-    TextView gudangtext;
-    String namaSayur = "";
+public class AdminSayurGudang extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+    private String API_URL = "http://192.168.88.214/api/sayur";
+    ArrayList<SayurGudangModel> sayurGudangList = new ArrayList<SayurGudangModel>();
+    SwipeRefreshLayout swipeRefreshLayout;
+    SayurGudangAdapter sayurGudangAdapter = new SayurGudangAdapter(AdminSayurGudang.this, sayurGudangList);
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sayur_gudang);
         setTitle("Stok Sayur Di Gudang");
-        gudangtext = (TextView)findViewById(R.id.gudang_textview);
-
-        ArrayList<SayurGudangModel> sayurGudangList = new ArrayList<SayurGudangModel>();
-
-        sayurGudangList.add(new SayurGudangModel("bayam 1", "10000"));
-        sayurGudangList.add(new SayurGudangModel("bayam 2", "10000"));
-        sayurGudangList.add(new SayurGudangModel("bayam 3", "10000"));
-        sayurGudangList.add(new SayurGudangModel("bayam 4", "10000"));
-        sayurGudangList.add(new SayurGudangModel("bayam 5", "10000"));
+        swipeRefreshLayout = findViewById(R.id.swipecontainer);
 
         getSayurApi(API_URL);
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerviewsayurgudang);
-        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
-        recyclerView.setLayoutManager(gridLayoutManager);
-        SayurGudangAdapter sayurGudangAdapter = new SayurGudangAdapter(AdminSayurGudang.this, sayurGudangList);
-        recyclerView.setAdapter(sayurGudangAdapter);
-
-
+        swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        swipeRefreshLayout.setRefreshing(false);
+                        sayurGudangAdapter.clear();
+                        getSayurApi(API_URL);
+                    }
+                }, 1000);
+            }
+        });
     }
 
     public void getSayurApi(String url){
@@ -68,19 +74,20 @@ public class AdminSayurGudang extends AppCompatActivity {
                try{
                    for (int i = 0; i < response.length(); i++){
                        JSONObject jsonObject = response.getJSONObject(i);
-                       namaSayur += jsonObject.getString("nama") + " ";
-                       gudangtext.setText(namaSayur);
+                       sayurGudangList.add(new SayurGudangModel(API_URL+"/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
+                       RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerviewsayurgudang);
+                       GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
+                       recyclerView.setLayoutManager(gridLayoutManager);
+                       recyclerView.setAdapter(sayurGudangAdapter);
                    }
                }catch (JSONException e){
                     e.printStackTrace();
-                    gudangtext.setText("Kurang tepat");
                }
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
-                gudangtext.setText("Tidak Mau");
             }
         }){
             @Override
@@ -91,7 +98,23 @@ public class AdminSayurGudang extends AppCompatActivity {
                 return headers;
             }
         };
-
         Singleton.getInstance(this).addToRequestQueue(jsonArrayRequest);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.admin_action_bar, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.search){
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

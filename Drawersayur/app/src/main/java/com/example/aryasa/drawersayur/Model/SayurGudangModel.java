@@ -17,12 +17,13 @@ public class SayurGudangModel {
     private String nama;
     private int jumlah;
     private int berat;
-    private String harga;
+    private int harga;
     private String foto;
     private String created_at;
     private String updated_at;
 
-    public SayurGudangModel(String nama, String harga){
+    public SayurGudangModel(String foto, String nama, int harga){
+        this.foto = foto;
         this.nama = nama;
         this.harga = harga;
     }
@@ -59,11 +60,11 @@ public class SayurGudangModel {
         this.berat = berat;
     }
 
-    public String getHarga() {
+    public int getHarga() {
         return harga;
     }
 
-    public void setHarga(String harga) {
+    public void setHarga(int harga) {
         this.harga = harga;
     }
 
