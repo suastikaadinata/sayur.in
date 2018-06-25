@@ -5,9 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -20,22 +24,26 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.aryasa.drawersayur.Fragment.FragmentChat;
 import com.example.aryasa.drawersayur.Fragment.HomeFragment;
 
-public class Drawer extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class Drawer extends AppCompatActivity  {
     Dialog myDialog;
     String id, username;
     SharedPreferences sharedpreferences;
     public static final String TAG_ID = "id";
     public static final String TAG_USERNAME = "username";
 
+    private BottomNavigationView bottomNavigation;
+    private Fragment fragment;
+    private FragmentManager fragmentManager;
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_drawer);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        setContentView(R.layout.app_bar_drawer);
+
         myDialog = new Dialog(this);
 
        sharedpreferences = getSharedPreferences(Login.my_shared_preferences, Context.MODE_PRIVATE);
@@ -43,52 +51,43 @@ public class Drawer extends AppCompatActivity implements NavigationView.OnNaviga
         id = getIntent().getStringExtra(TAG_ID);
         username = getIntent().getStringExtra(TAG_USERNAME);
 
-        View header =((NavigationView)findViewById(R.id.nav_view)).getHeaderView(0);
-       ((TextView)header.findViewById(R.id.nama_user)).setText(id);
-       ((TextView)header.findViewById(R.id.email_user)).setText(username);
+        bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+        bottomNavigation.inflateMenu(R.menu.activity_drawer_drawer);
+        fragmentManager = getSupportFragmentManager();
 
-        ((ImageView)header.findViewById(R.id.image_user)).setOnClickListener(new View.OnClickListener() {
+        //Untuk inisialisasi fragment pertama kali
+        fragmentManager.beginTransaction().replace(R.id.frameLayoutDrawer, new HomeFragment()).commit();
+        bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Drawer.this, Login.class);
-                startActivity(intent);
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                int id = item.getItemId();
+                switch (id){
+                    case R.id.nav_home:
+                        fragment = new HomeFragment();
+                        break;
+                    case R.id.nav_history:
+                  //      intent = new Intent(Drawer.this, History.class);
+                    //    finish();
+                    //    startActivity(intent);
+                        break;
+                    case R.id.nav_login:
+                   //     intent = new Intent(Drawer.this, Login.class);
+                   //     finish();
+                    //    startActivity(intent);
+                        break;
+                    case R.id.nav_message:
+                        fragment = new FragmentChat();
+                        break;
+                }
+
+                final FragmentTransaction transaction = fragmentManager.beginTransaction();
+                transaction.replace(R.id.frameLayoutDrawer, fragment).commit();
+                return true;
             }
         });
-
-
-        HomeFragment fragment = new HomeFragment();
-        FragmentTransaction fragmentTransaction= getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, fragment);
-        fragmentTransaction.commit();
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);
     }
 
-    @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
+
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -117,37 +116,6 @@ public class Drawer extends AppCompatActivity implements NavigationView.OnNaviga
 
         return super.onOptionsItemSelected(item);
     }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_history) {
-            Intent intent = new Intent(Drawer.this, History.class);
-            finish();
-            startActivity(intent);
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_logout) {
-            SharedPreferences.Editor editor = sharedpreferences.edit();
-            editor.putBoolean(Login.session_status, false);
-            editor.putString(TAG_ID, null);
-            editor.putString(TAG_USERNAME, null);
-            editor.commit();
-
-            Intent intent = new Intent(Drawer.this, Drawer.class);
-            finish();
-            startActivity(intent);
-        }
-
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
 
 
     public void ShowPopup(View v) {

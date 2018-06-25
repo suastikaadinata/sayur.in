@@ -8,11 +8,10 @@ import android.view.ViewGroup;
 
 import com.example.aryasa.drawersayur.R;
 
-public class TabFragmentInprogress extends Fragment {
+public class FragmentChat extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.tab_fragment_inprogress, container, false);
-
+        return inflater.inflate(R.layout.chat, container, false);
     }
 }

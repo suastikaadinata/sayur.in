@@ -3,32 +3,25 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:showIn="navigation_view">
 
-    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_home_white_24dp"
+            android:title="Home" />
         <item
             android:id="@+id/nav_history"
             android:icon="@drawable/ic_history_black_24dp"
             android:title="History" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Setting" />
-    </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_Help"
-                android:icon="@drawable/ic_help_black_24dp"
-                android:title="Help" />
-            <item
-                android:id="@+id/nav_version"
-                android:icon="@drawable/ic_smartphone_version"
-                android:title="Version" />
-            <item
-                android:id="@+id/nav_logout"
-                android:icon="@drawable/ic_keyboard_return_black_24dp"
-                android:title="Logout" />
-        </menu>
-    </item>
+           <item
+                android:id="@+id/nav_login"
+                android:icon="@drawable/ic_login_white_24dp"
+                android:title="Login" />
+    <item
+        android:id="@+id/nav_message"
+        android:icon="@drawable/ic_message_white_24dp"
+        android:title="Message" />
 
 </menu>
+
+
+
