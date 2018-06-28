@@ -169,13 +169,13 @@
                     android:layout_height="34dp"
                     android:layout_alignParentBottom="true"
                     android:layout_marginBottom="0dp"
-                    android:layout_toStartOf="@+id/button"
+                    android:layout_toLeftOf="@+id/buttonpick"
                     android:text="Ubah"
                     android:textColor="#a3a3a3"
                     android:textSize="14sp" />
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/buttonpick"
                     android:layout_width="25dp"
                     android:layout_height="match_parent"
                     android:layout_alignParentBottom="true"
@@ -216,7 +216,7 @@
                     android:layout_alignTop="@+id/imageView2"
                     android:layout_toEndOf="@+id/imageView2"
                     android:padding="1dp"
-                    android:text="Jl. Soekarno Hatta No.12 Gang Kuda, Lowokwaru, Malang"
+                    android:text="Silahkan ubah alamt"
                     android:textColor="@color/colorTextGreen"
                     android:textSize="13sp" />
 

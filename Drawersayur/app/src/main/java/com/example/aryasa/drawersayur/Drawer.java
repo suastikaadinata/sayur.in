@@ -66,22 +66,21 @@ public class Drawer extends AppCompatActivity  {
                         fragment = new HomeFragment();
                         break;
                     case R.id.nav_history:
-                  //      intent = new Intent(Drawer.this, History.class);
-                    //    finish();
-                    //    startActivity(intent);
+                        intent = new Intent(Drawer.this, History.class);
+                        finish();
+                        startActivity(intent);
                         break;
                     case R.id.nav_login:
-                   //     intent = new Intent(Drawer.this, Login.class);
-                   //     finish();
-                    //    startActivity(intent);
+                      intent = new Intent(Drawer.this, Login.class);
+                      finish();
+                      startActivity(intent);
                         break;
-                    case R.id.nav_message:
-                        fragment = new FragmentChat();
-                        break;
+                //    case R.id.nav_message:
+                //        fragment = new FragmentChat();
+                 //       break;
                 }
-
-                final FragmentTransaction transaction = fragmentManager.beginTransaction();
-                transaction.replace(R.id.frameLayoutDrawer, fragment).commit();
+//                final FragmentTransaction transaction = fragmentManager.beginTransaction();
+//                transaction.replace(R.id.main_container, fragment).commit();
                 return true;
             }
         });

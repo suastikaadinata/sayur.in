@@ -13,6 +13,7 @@
     <string name="add_note">add note...</string>
     <string name="_8">8</string>
     <string name="todo">TODO</string>
+    <string name="google_maps_key">AIzaSyAwsui-1z8KL046mGdee_2jo5EmbVOd884</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
