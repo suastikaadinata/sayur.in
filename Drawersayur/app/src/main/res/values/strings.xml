@@ -26,4 +26,9 @@
         <item>Ikat</item>
         <item>Bungkus</item>
     </string-array>
+
+    <string-array name="jam">
+        <item>06.00 WIB</item>
+        <item>07.00 WIB</item>
+    </string-array>
 </resources>
