@@ -23,8 +23,9 @@
             <ImageView
                 android:id="@+id/gambar_sayurgudang"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:src="@drawable/sayur" />
+                android:layout_height="140dp"
+                android:src="@drawable/sayur"
+                />
 
             <TextView
                 android:id="@+id/nama_sayurgudang"
@@ -40,7 +41,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"
-                android:text="kuantitas barang"
+                android:text="stok / kuantitas barang"
                 android:textAlignment="center"
                 android:textColor="#808080"
                 />

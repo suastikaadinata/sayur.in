@@ -38,7 +38,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AdminSayurGudang extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    private String API_URL = "http://192.168.88.214/api/sayur";
+    private String API_URL = "http://10.0.2.2/api/sayur";
     ArrayList<SayurGudangModel> sayurGudangList = new ArrayList<SayurGudangModel>();
     SwipeRefreshLayout swipeRefreshLayout;
     SayurGudangAdapter sayurGudangAdapter = new SayurGudangAdapter(AdminSayurGudang.this, sayurGudangList);
@@ -74,7 +74,7 @@ public class AdminSayurGudang extends AppCompatActivity implements NavigationVie
                try{
                    for (int i = 0; i < response.length(); i++){
                        JSONObject jsonObject = response.getJSONObject(i);
-                       sayurGudangList.add(new SayurGudangModel(API_URL+"/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
+                       sayurGudangList.add(new SayurGudangModel("http://10.0.2.2/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
                        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerviewsayurgudang);
                        GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
                        recyclerView.setLayoutManager(gridLayoutManager);
@@ -94,7 +94,20 @@ public class AdminSayurGudang extends AppCompatActivity implements NavigationVie
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put("Accept", "application/json");
-                headers.put("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjJkOGVhOGYxODEzODZmMjUwMGM5N2U2NDk0ZWUxNzQyZDA3OTIxNjJkZWRiYWYzYWQwMDRkZjRiMDZiNDI1NDQyZTJiMjU5N2M1ZTc3MWRhIn0.eyJhdWQiOiIzIiwianRpIjoiMmQ4ZWE4ZjE4MTM4NmYyNTAwYzk3ZTY0OTRlZTE3NDJkMDc5MjE2MmRlZGJhZjNhZDAwNGRmNGIwNmI0MjU0NDJlMmIyNTk3YzVlNzcxZGEiLCJpYXQiOjE1Mjg0NDEzOTAsIm5iZiI6MTUyODQ0MTM5MCwiZXhwIjoxNTU5OTc3MzkwLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.R5CZQjpgMNSP-mfuGV-MEDa4xBxvjg8dAIg0gz3F9blBuedU5sdBs57j8hU_niXcPC2hEbQX0ZTjn_sX1kqQHVefwZA2l5P1at87TvW8IRngk8jx8MYx_iUxw5RR0zuoPiVRXMvZz3uL8dpA688Nyuqw_54jMHq-WibLKmNVErgf0896FVjTlDDJ7SonHVK1GBOUn1kdtu2oiw3Fl6puXWtaLZsVau9xFKVbBX3j0GxHNzQ6fcInlW59pqhDBM6y-nBq0zJ8QSEwzKqCxxE-egHiXzuTG-LO_qPJx0TjUf8Ly1IrFAskHLeob2z5_e4HEk5H4Z-UIcL3UpzwB_wIRkrCn3FEkKimtRk4DNkNIA39h1JTRKl3tKyHyx5r03VofokiFZe_p6X3CxSFWogqUheHLo2ppY3U5T5vwnoMbRzR_EHa2s8GTjJAdf-k_Bgvbb0HjNLIEJtS1l1Va091fqhBek2tsbFGWfpt5zfG0Mn3kVNPcSIUtW3Go6V6vbvbIRh3gDQndCA4KdRygz5rGNuSNM7abCqewIirWDzzwmfvWR_3YOcZta_l7uGoHF0fyoevmEzBkCAC7n1KXyFeWSL8uCMTmdsdQ2b98BW-0-RIkWcih4sLdUiBBa35fdsHl6eol6Gw-Go-QzdpuXigbpBppeP-g3MoofGdMwR9x-U");
+                headers.put("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aS" +
+                        "I6ImMwOGE3M2NiZWU0Y2I3MTY3ZGM5ZGE1ZTg0ZDZhODMyMWFjZmIxZmMyZDhhZDlmMTI5MmV" +
+                        "jNmRkYmQ2NTBkMWEyNTYyNWMyN2ZhNjM2YjNkIn0.eyJhdWQiOiIzIiwianRpIjoiYzA4YTczY2J" +
+                        "lZTRjYjcxNjdkYzlkYTVlODRkNmE4MzIxYWNmYjFmYzJkOGFkOWYxMjkyZWM2ZGRiZDY1MGQxYTI1Nj" +
+                        "I1YzI3ZmE2MzZiM2QiLCJpYXQiOjE1MzAyMzc1NDgsIm5iZiI6MTUzMDIzNzU0OCwiZXhwIjoxNTYxNzc" +
+                        "zNTQ4LCJzdWIiOiIzIiwic2NvcGVzIjpbXX0.Ej8YAs6EgUUX-H4vZhVWibByvycquRffZV1GBca3EL7QTZ" +
+                        "RG4WLBEKct6WUYhSsCkng7hg5MN3KqluLLghSBr6zEZl61aeGbiGiB2aRtmIECvSAU7_xPmJXgO2NuCUhz" +
+                        "s-ZnTcZEe9wnnQ4_Z6IV3_ioQlVij2Z7ASJ6bgGH4V1R_-NMJ60HQGJ6p2B9bcoD-5KjAjSpAzMSTu38CM" +
+                        "iDNZkAS_DT-eH9JM4WQyg3-jmQGUdDArctqsmsyYsQapFPifeo5qUtx5X4aM3hhVKOQqLexSy4yqoq6FYu" +
+                        "YTahzjFbgfaszJsslgeMf5grotIDAreYPuSYr_pJnJNNXQnBnSxJDNs5CbZU80LfEgzaUGtFgzUletVUu8" +
+                        "xpgCuG9XIpCHXA2JJ56R4VsOwXypqfRhbJ6TQJTfuxM9RzivmjN5fOkYuGDs-jTjDRWb5vW5boOUk0Pp3N" +
+                        "oOmB9fTfpQhARZNHOFRghpqN04IIvIHUfuMqG_MOgAg4T2oGse-_gcqOvs0r45nlTIldavEcYz6LBeftjN" +
+                        "o1Z7ARCeSQiqMtEChbxjquuiIDUt2QKVyWgsQle2kU7" +
+                        "SJcMrH_4G1SaXCbB926Ii8Y12zAM9viJOZ6DDP1moDRI7iFqq49RlM4jC4qoReBb2DLiw0znf7nr8Y0TFcIQG_B6gfbRxYFAX9OgMY");
                 return headers;
             }
         };
