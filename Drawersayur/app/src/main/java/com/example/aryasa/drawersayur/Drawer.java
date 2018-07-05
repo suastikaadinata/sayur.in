@@ -9,11 +9,14 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.aryasa.drawersayur.Fragment.FragmentHelp;
+import com.example.aryasa.drawersayur.Fragment.FragmentNotifikasi;
 import com.example.aryasa.drawersayur.Fragment.HomeFragment;
 
 public class Drawer extends AppCompatActivity  {
@@ -55,22 +58,25 @@ public class Drawer extends AppCompatActivity  {
                         fragment = new HomeFragment();
                         break;
                     case R.id.nav_history:
-                        intent = new Intent(Drawer.this, History.class);
-                        finish();
-                        startActivity(intent);
+                    //    intent = new Intent(Drawer.this, History.class);
+                     //   finish();
+                     //   startActivity(intent);
+                        break;
+                    case R.id.nav_help:
+                        fragment = new FragmentHelp();
+                        break;
+                    case R.id.nav_notifkasi:
+                        fragment = new FragmentNotifikasi();
                         break;
                     case R.id.nav_login:
-                        intent = new Intent(Drawer.this, Login.class);
-                        finish();
-                        startActivity(intent);
+                    //    intent = new Intent(Drawer.this, Login.class);
+                        // finish();
+                        //startActivity(intent);
                         break;
-                   case R.id.nav_message:
-                        intent = new Intent(Drawer.this, Chatting.class);
-                        finish();
-                        startActivity(intent);
+
                 }
-           //  final FragmentTransaction transaction = fragmentManager.beginTransaction();
-             //  transaction.replace(R.id.frameLayoutDrawer, fragment).commit();
+            final FragmentTransaction transaction = fragmentManager.beginTransaction();
+               transaction.replace(R.id.frameLayoutDrawer, fragment).commit();
                 return true;
             }
         });

@@ -220,5 +220,11 @@ public class Login extends AppCompatActivity{
             pDialog.dismiss();
     }
 
+    @Override
+    public void onBackPressed() {
+        intent = new Intent(Login.this, Drawer.class);
+        finish();
+        startActivity(intent);
+    }
 
 }

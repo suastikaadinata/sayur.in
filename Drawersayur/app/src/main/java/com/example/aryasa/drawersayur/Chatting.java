@@ -1,6 +1,7 @@
 package com.example.aryasa.drawersayur;
 
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -19,7 +20,7 @@ import com.scaledrone.lib.Scaledrone;
 import java.util.Random;
 
 public class Chatting extends AppCompatActivity implements RoomListener {
-
+    Intent intent;
     // replace this with a real channelID from Scaledrone dashboard
     private String channelID = "Kaqx2h0O0yr3XXrS";
     private String roomName = "observable-room";
@@ -121,7 +122,16 @@ public class Chatting extends AppCompatActivity implements RoomListener {
         }
         return sb.toString().substring(0, 7);
     }
+    @Override
+    public void onBackPressed() {
+        intent = new Intent(Chatting.this, Drawer.class);
+        finish();
+        startActivity(intent);
+    }
 }
+
+
+
 
 class MemberData {
     private String name;
