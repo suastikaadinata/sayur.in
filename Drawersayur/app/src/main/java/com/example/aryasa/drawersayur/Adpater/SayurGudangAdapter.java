@@ -25,7 +25,7 @@ import java.util.ArrayList;
 public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.SayurGudangViewHolder> {
     private Context context;
     private ArrayList<SayurGudangModel> sayurGudangList;
-    private String API_URL = "http://10.0.2.2/api/sayur";
+    private String API_URL = "http://10.0.3.2/api/sayur";
 
     public SayurGudangAdapter(Context context, ArrayList<SayurGudangModel> sayurGudangList){
         this.context = context;
