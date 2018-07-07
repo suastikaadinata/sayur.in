@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/cradview"
+        android:id="@+id/cardviewadminlist"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -22,14 +22,14 @@
             >
 
             <ImageView
-                android:id="@+id/gambar_sayur"
+                android:id="@+id/gambar_sayur_admin_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:src="@mipmap/ic_launcher"
                 android:contentDescription="@string/todo" />
 
             <TextView
-                android:id="@+id/nama_sayur"
+                android:id="@+id/nama_sayur_admin_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/nama"
@@ -48,27 +48,27 @@
                 />
 
             <TextView
-                android:id="@+id/harga_sayur"
+                android:id="@+id/harga_sayur_admin_list"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/harga"
                 android:textAlignment="center"
                 android:textColor="@color/colorAccent"
-                 />
+                />
 
             <Button
+                android:id="@+id/btn_edit_sayur_admin_list"
                 android:elevation="5dp"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@drawable/selector_xml_btn_green"
-                android:text="@string/add"
+                android:text="Edit"
                 android:paddingLeft="10dp"
-                android:drawableLeft="@drawable/ic_shopping_basket"
+                android:drawableLeft="@drawable/ic_edit_black_24dp"
                 android:textColor="#ffffff"
                 android:layout_marginTop="15dp"
-                android:onClick="ShowPopup"
-                tools:targetApi="lollipop" />
+                />
         </LinearLayout>
     </android.support.v7.widget.CardView>
 

@@ -1,14 +1,21 @@
 package com.example.aryasa.drawersayur.Admin;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.Button;
 
 
 import com.example.aryasa.drawersayur.Adpater.AdminuserAdapter;
+import com.example.aryasa.drawersayur.Chart;
 import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.Model.Userdata;
+import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
+import com.google.android.gms.common.GooglePlayServicesRepairableException;
+import com.google.android.gms.location.places.ui.PlacePicker;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,9 +23,11 @@ import java.util.List;
 public class Adminhomeuser extends AppCompatActivity {
 
 
+    Button btnlihatuser;
     RecyclerView mRecyclerView;
     List<Userdata> mUserList;
     Userdata mUserData;
+
 
 
     @Override
@@ -26,6 +35,9 @@ public class Adminhomeuser extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.adminhomeuser);
 
+
+
+        btnlihatuser = (Button) findViewById(R.id.btn_lihat_sayur);
         mRecyclerView = findViewById(R.id.recyclerviewadminhomeuser);
         GridLayoutManager mGridLayoutManager = new GridLayoutManager(Adminhomeuser.this, 2);
         mRecyclerView.setLayoutManager(mGridLayoutManager);
@@ -42,6 +54,17 @@ public class Adminhomeuser extends AppCompatActivity {
 
         AdminuserAdapter adminuserAdapter = new AdminuserAdapter(Adminhomeuser.this, mUserList);
         mRecyclerView.setAdapter(adminuserAdapter);
+
+//        btnlihatuser.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//
+//                Intent intent = new Intent(Adminhomeuser.this, Adminviewuser.class);
+//                finish();
+//                startActivity(intent);
+//
+//            }
+//        });
 
     }
 }

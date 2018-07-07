@@ -50,11 +50,7 @@ public class Adminhistory extends AppCompatActivity {
             }
         });
     }
-    @Override
-    public void onBackPressed() {
-        intent = new Intent(Adminhistory.this, Drawer.class);
-        finish();
-        startActivity(intent);
-    }
+
+
 }
 
