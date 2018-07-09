@@ -66,22 +66,19 @@ public class AdminHome extends AppCompatActivity {
                         break;
                     case R.id.nav_pengguna_admin:
                       intent = new Intent(AdminHome.this, Adminhomeuser.class);
-                        finish();
+                       // finish();
                        startActivity(intent);
                         break;
                     case R.id.nav_gudang_admin:
                         intent = new Intent(AdminHome.this, AdminSayurGudang.class);
-                        finish();
+                      //  finish();
                         startActivity(intent);
                         break;
                     case R.id.nav_transaksi_admin:
                         intent = new Intent(AdminHome.this, Adminhistory.class);
-                        finish();
+                     //   finish();
                         startActivity(intent);
                         break;
-
-
-
                 }
 
                 return true;

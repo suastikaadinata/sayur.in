@@ -2,6 +2,7 @@ package com.example.aryasa.drawersayur.Adpater;
 
 import android.content.ClipData;
 import android.content.Context;
+import android.content.Intent;
 import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
@@ -11,11 +12,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.example.aryasa.drawersayur.Admin.Admintambahsayur;
+import com.example.aryasa.drawersayur.Admin.Adminubahsayur;
 import com.example.aryasa.drawersayur.Model.SayurGudangModel;
 import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
@@ -56,6 +60,13 @@ public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.
                 error.printStackTrace();
             }
         });
+        holder.btn_add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mIntent = new Intent(context, Admintambahsayur.class);
+                context.startActivity(mIntent);
+            }
+        });
     }
 
     @Override
@@ -68,6 +79,9 @@ public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.
         TextView mNama;
         CardView mCardView;
         ImageView mFoto;
+        Button btn_add;
+
+
 
         public SayurGudangViewHolder(View view){
             super(view);
@@ -75,6 +89,8 @@ public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.
             mNama = view.findViewById(R.id.nama_sayurgudang);
             mHarga = view.findViewById(R.id.harga_sayurgudang);
             mCardView = view.findViewById(R.id.cradview_sayurgudang);
+            btn_add = view.findViewById(R.id.btn_add_sayur_admin);
+
         }
     }
 
