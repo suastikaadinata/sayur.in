@@ -42,21 +42,24 @@ public class Login extends AppCompatActivity{
     ConnectivityManager conMgr;
 
     private String url = Server.URL + "login.php";
-    private String API_URL = "http://192.168.1.7/api/login";
+    private String API_URL = "http://10.0.3.2/api/login";
 
     private static final String TAG = Login.class.getSimpleName();
 
     private static final String TAG_SUCCESS = "success";
     private static final String TAG_MESSAGE = "message";
 
-    public final static String TAG_USERNAME = "username";
-    public final static String TAG_ID = "id";
+    public final static String TAG_NAME = "name";
+    public final static String TAG_EMAIL = "email";
+    public static final String TAG_NOMOR_TELEPON = "nomor_telepon";
 
     String tag_json_obj = "json_obj_req";
 
     SharedPreferences sharedpreferences;
     Boolean session = false;
-    String id;
+    String name;
+    String email;
+    String nomor_telepon;
     public static final String my_shared_preferences = "my_shared_preferences";
     public static final String session_status = "session_status";
 
@@ -81,19 +84,21 @@ public class Login extends AppCompatActivity{
         txt_email = (EditText) findViewById(R.id.txt_email);
         txt_password = (EditText) findViewById(R.id.txt_password);
 
-//        // Cek session login jika TRUE maka langsung buka MainActivity
-//        sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
-//        session = sharedpreferences.getBoolean(session_status, false);
-//        id = sharedpreferences.getString(TAG_ID, null);
-//        username = sharedpreferences.getString(TAG_USERNAME, null);
-//
-//        if (session) {
-//            Intent intent = new Intent(Login.this, Drawer.class);
-//            intent.putExtra(TAG_ID, id);
-//            intent.putExtra(TAG_USERNAME, username);
-//            finish();
-//            startActivity(intent);
-//        }
+          //Cek session login jika TRUE maka langsung buka MainActivity
+        sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
+        session = sharedpreferences.getBoolean(session_status, false);
+        name = sharedpreferences.getString(TAG_NAME, null);
+        email = sharedpreferences.getString(TAG_EMAIL, null);
+        nomor_telepon = sharedpreferences.getString(TAG_NOMOR_TELEPON, null);
+
+        if (session) {
+            Intent intent = new Intent(Login.this, Profile.class);
+            intent.putExtra(TAG_NAME, name);
+            intent.putExtra(TAG_EMAIL, email);
+            intent.putExtra(TAG_NOMOR_TELEPON, nomor_telepon);
+            finish();
+            startActivity(intent);
+        }
 
 
         btn_login.setOnClickListener(new View.OnClickListener() {
@@ -150,6 +155,7 @@ public class Login extends AppCompatActivity{
                 String json = response.toString();
                 try{
                     JSONObject jsonObject = new JSONObject(json);
+
                     if(jsonObject.getString("status").equals("failed")){
                         Toast.makeText(getApplicationContext(),"Email atau password salah", Toast.LENGTH_SHORT).show();
                     }else{
@@ -158,8 +164,22 @@ public class Login extends AppCompatActivity{
                             finish();
                         }
                         if(jsonObject.getString("tipe").equals("user")) {
-                            startActivity(new Intent(getApplicationContext(), Drawer.class));
+                            String name = jsonObject.getString("name");
+                            String tlp = jsonObject.getString("nomor_telepon");
+                            SharedPreferences.Editor editor = sharedpreferences.edit();
+                            editor.putBoolean(session_status, true);
+                            editor.putString(TAG_NAME,name );
+                            editor.putString(TAG_EMAIL,email );
+                            editor.putString(TAG_NOMOR_TELEPON,tlp );
+                            editor.commit();
+                            Intent intent = new Intent(getApplicationContext(), Profile.class);
+                            intent.putExtra(TAG_NAME,name);
+                            intent.putExtra(TAG_EMAIL,email);
+                            intent.putExtra(TAG_NOMOR_TELEPON,tlp);
+                            startActivity(intent);
                             finish();
+
+
                         }
                     }
                 }

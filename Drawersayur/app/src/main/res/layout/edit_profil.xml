@@ -31,7 +31,7 @@
 
 
             <EditText
-                android:id="@+id/editText"
+                android:id="@+id/editTextnama"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="93dp"
@@ -44,7 +44,7 @@
                 android:textStyle="italic" />
 
             <EditText
-                android:id="@+id/editText2"
+                android:id="@+id/editTextemail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="93dp"
@@ -57,7 +57,7 @@
                 android:textStyle="italic" />
 
             <EditText
-                android:id="@+id/editText3"
+                android:id="@+id/editTextNomorTelepon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="93dp"
@@ -96,7 +96,28 @@
                 android:textSize="14sp" />
         </RelativeLayout>
 
+        <RelativeLayout
+            android:id="@+id/frameLayout5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginRight="55dp"
+            android:layout_marginLeft="55dp"
+            >
 
+            <Button
+                android:id="@+id/button_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentTop="true"
+                android:layout_centerHorizontal="true"
+                android:background="@drawable/button_custom"
+                android:text="Logout"
+                android:textColor="#ffffff"
+                android:textSize="20dp"
+                />
+        </RelativeLayout>
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
