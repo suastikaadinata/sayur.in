@@ -15,4 +15,8 @@ class UserController extends Controller
     {
         return view('manage-user');
     }
+    public function chatUser()
+    {
+        return view('chat');
+    }
 }

@@ -25,7 +25,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".Admin.AdminHome"
+            android:name=".Drawer"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -52,8 +52,7 @@
         <activity android:name=".Admin.Admindetailtransaksi" />
         <activity android:name=".Admin.Adminhistory" />
         <activity android:name=".Admin.Adminhomeuser" />
-        <activity android:name=".Drawer" />
-        <activity android:name=".Fragment.AdminListSayur"></activity>
+        <activity android:name=".Admin.AdminHome" />
     </application>
 
 </manifest>

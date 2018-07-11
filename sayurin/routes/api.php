@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 |
 */
 Route::post('register', 'API\RegisterController@register');
-
+Route::post('login', 'API\LoginController@login');
 
 Route::middleware('auth:api')->group( function() {
     Route::get('sayur', 'API\APISayurController@show');

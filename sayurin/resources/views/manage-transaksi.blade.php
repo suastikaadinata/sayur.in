@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div style="margin-bottom: 20px;"class="col-lg-6">
-                    <h1>Manage Sayur</h1>
+                    <h1>Manage Transaksi</h1>
                 </div>
                 <div class="col-lg-2"></div>
                     <div class="col-lg-4 manage-sayur-header-search">
@@ -22,13 +22,8 @@
                             </div> 
                         </form> 
                     </div>  
-                <div class="col-lg-2">
-                    <h3>Sayuran</h3>
-                </div>
                 <div class="col-lg-3">
-                    <a href="/manage-sayur/tambah-sayur"><button class="btn btn-default btn-lg btn-modif">
-                        Tambah Sayuran
-                    </button></a>
+                    <h3>Manage transaksi</h3>
                 </div>
                 <div class="col-lg-7"></div>
             </div>
@@ -37,22 +32,32 @@
     <div class="section-content">
         <div class="container">
             <div class="row">
-                @foreach($sayur as $s)
-                <div class="col-lg-3">
+            @for($i = 0; $i < 6; $i++)
+                <div class="col-lg-12">
                     <div class="manage-sayur-container">
-                        <a href="/manage-sayur/detail-sayur" style="text-decoration: none;" >
-                        <h4 style="text-align: center; color: #e67e22"">{{ $s->nama }}</h4>
-                        <div class="sayur-home-img" style="background-image: url({{ $s->foto() }})"></div>
-                        <h5 style="margin-top: 15px; color: #e67e22">Stok: {{ $s->jumlah }}</h5>
-                        <h6 style="margin-top: 15px; color: #e67e22" >Kuantitas: {{ $s->berat }}</h6>
-                        <h6 style="margin-top: 15px; color: #e67e22" >Harga: Rp. {{ $s->harga }}</h6>
-                        
-
+                        <a href="/manage-transaksi/detail-transaksi" style="text-decoration: none;" >
+                        <div class="row">
+                        <div class="col-lg-2">
+                        <span style="margin-top: 15px; color: #e67e22; font-weight: bold;">nama</span>
+                        <br>
+                         <span style="margin-top: 15px; color: #e67e22">083111</span>
+                         <br>
+                         <span style="margin-top: 15px; color: #e67e22">@gmail.com</span>
+                        </div>
+                        <div class="col-lg-8"></div>
+                        <div class="col-lg-2 text-right">
+                        <span style="margin-top: 15px; color: #e67e22; font-weight: bold; ">Total transaksi</span> 
+                        <br>
+                        <span style="margin-top: 15px; color: #e67e22 ">30000</span>
+                        <br>
+                        <span style="margin-top: 15px; color: #e67e22 ">Pengiriman</span>
+                    </div>
+                    </div>
                         </a>
                         
                     </div>
                 </div>
-                @endforeach
+               @endfor
             </div>
         </div>
     </div>  

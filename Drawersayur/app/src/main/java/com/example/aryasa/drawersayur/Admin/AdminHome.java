@@ -46,9 +46,6 @@ public class AdminHome extends AppCompatActivity {
 
         myDialog = new Dialog(this);
 
-
-
-
         bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation_admin);
         bottomNavigation.inflateMenu(R.menu.bot_menu_admin);
         fragmentManager = getSupportFragmentManager();

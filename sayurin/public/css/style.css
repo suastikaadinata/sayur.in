@@ -177,3 +177,35 @@ footer{
     width: 100%;
     margin-top: 120px;
 }
+
+.navbar-home .navbar-inner .logo-navbar img {
+    width: 1px;
+    height : 1px;
+}
+.navbar-home .navbar-inner .nav ul li {
+    display: inline;
+    line-height: 50px;
+    padding-left: 10px;
+}
+
+.btn-modif-hapus{
+    background-color:#e67e22;
+    color: white;   
+    border-color: #e67e22;
+    width: 100%;
+    margin-top: 50px;
+}
+.btn-modif-hapus:hover, .btn-modif-hapus:focus{
+    background-color: #ff983d;
+    border-color: #ff983d;
+    color: white;
+}
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+  transform: translate(-50%, -50%);
+
+}
+  
+

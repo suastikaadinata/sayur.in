@@ -35,7 +35,7 @@ public class Register extends AppCompatActivity {
     ConnectivityManager conMgr;
 
     private String url = Server.URL + "register.php";
-
+    private String API_URL = "http://192.168.1.7/api/register";
     private static final String TAG = Register.class.getSimpleName();
 
     private static final String TAG_SUCCESS = "success";
@@ -97,47 +97,42 @@ public class Register extends AppCompatActivity {
         pDialog.setMessage("Register ...");
         showDialog();
 
-        StringRequest strReq = new StringRequest(Request.Method.POST, url, new Response.Listener<String>() {
+        StringRequest strReq = new StringRequest(Request.Method.POST, API_URL, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
-                Log.e(TAG, "Register Response: " + response.toString());
-                hideDialog();
-
-                try {
-                    JSONObject jObj = new JSONObject(response);
-                    success = jObj.getInt(TAG_SUCCESS);
-
-                    // Check for error node in json
-                    if (success == 1) {
-
-                        Log.e("Successfully Register!", jObj.toString());
-
-                        Toast.makeText(getApplicationContext(),
-                                jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-
-                        txt_username.setText("");
-                        txt_notelp.setText("");
-                        txt_email.setText("");
-                        txt_password.setText("");
-                        txt_confirm_password.setText("");
-
-                    } else {
-                        Toast.makeText(getApplicationContext(),
-                                jObj.getString(TAG_MESSAGE), Toast.LENGTH_LONG).show();
-
+                String json = response.toString();
+                try{
+                    JSONObject jsonObject = new JSONObject(json);
+                    if(jsonObject.getString("status").equals("failed")){
+                        hideDialog();
+                        if(jsonObject.getString("field").equals("email")){
+                            Toast.makeText(getApplicationContext(), "Email yang dimasukkan tidak sesuai format atau telah digunakan oleh user yang lain (contoh: abc@abc.com)",
+                                    Toast.LENGTH_SHORT).show();
+                        }else if(jsonObject.getString("field").equals("password")){
+                            Toast.makeText(getApplicationContext(), "Konfirmasi password tidak sesuai dengan password yang telah dimasukkan sebelumnya",
+                                    Toast.LENGTH_SHORT).show();
+                        }else{
+                            Toast.makeText(getApplicationContext(), "Email yang dimasukkan tidak sesuai format atau telah digunakan oleh user yang lain (contoh: abc@abc.com)",
+                                    Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Konfirmasi password tidak sesuai dengan password yang telah dimasukkan sebelumnya",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                    }else{
+                        hideDialog();
+                        startActivity(new Intent(getApplicationContext(), Drawer.class));
+                        finish();
                     }
-                } catch (JSONException e) {
-                    // JSON error
+                }catch (Exception e){
                     e.printStackTrace();
                 }
-
+                Log.e(TAG, "Register Response: " + response.toString());
             }
         }, new Response.ErrorListener() {
 
             @Override
             public void onErrorResponse(VolleyError error) {
-                Log.e(TAG, "Login Error: " + error.getMessage());
+                Log.e(TAG, "Register Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_LONG).show();
 
@@ -150,11 +145,12 @@ public class Register extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 // Posting parameters to login url
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("username", username);
-                params.put("notelp", notelp);
+                params.put("name", username);
                 params.put("email", email);
+                params.put("nomor_telepon", notelp);
                 params.put("password", password);
-                params.put("confirm_password", confirm_password);
+                params.put("password_confirmation", confirm_password);
+                params.put("tipe", "user");
 
                 return params;
             }

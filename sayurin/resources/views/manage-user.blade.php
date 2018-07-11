@@ -35,6 +35,7 @@
                             <th scope="col">Nama</th>
                             <th scope="col">Email</th>
                             <th scope="col">No Telp</th>
+                            <th scope="col">Hapus</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -43,10 +44,31 @@
                             <td>Suastika Adinata</td>
                             <td>suastika@gmail.com</td>
                             <td>081333111</td>
+                            <td><button class="btn btn-default" data-toggle="modal" data-target="#myModal" style="background-color: #e67e22; color: white;">Hapus</button></td>
                         </tr>
                     @endfor
                     </tbody>
                 </table>
+                <div class="modal fade" id="myModal" role="dialog" style="position: fixed; top: 50%;left: 50%;
+  transform: translate(-50%, -50%);
+">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title"></h4>
+        </div>
+        <div class="modal-body">
+          <p>anda yakin ingin menghapus "user"</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Yakin</button>
+          <button type="button" class="btn btn-default btn-warning" data-dismiss="modal">Batal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
             </div>
         </div>
     </div>      

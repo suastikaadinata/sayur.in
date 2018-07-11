@@ -73,4 +73,12 @@ class SayurController extends Controller
         $sayur = Sayur::all();
         return response()->json($sayur,200);
     }
+    public function detilSayur()
+    {
+        return view('detail-sayur');
+    }
+    public function editSayur()
+    {
+        return view('edit-sayur');
+    }
 }
