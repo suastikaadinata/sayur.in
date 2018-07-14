@@ -38,7 +38,7 @@ public class Drawer extends AppCompatActivity  {
 
         myDialog = new Dialog(this);
 
-       sharedpreferences = getSharedPreferences(Login.my_shared_preferences, Context.MODE_PRIVATE);
+        sharedpreferences = getSharedPreferences(Login.my_shared_preferences, Context.MODE_PRIVATE);
 
         id = getIntent().getStringExtra(TAG_ID);
         username = getIntent().getStringExtra(TAG_USERNAME);
@@ -59,9 +59,8 @@ public class Drawer extends AppCompatActivity  {
                         loadFragment(fragment);
                         break;
                     case R.id.nav_history:
-                      intent = new Intent(Drawer.this, History.class);
-                        finish();
-                        startActivity(intent);
+                        fragment = new History();
+                        loadFragment(fragment);
                         break;
                     case R.id.nav_help:
                         fragment = new FragmentHelp();
@@ -73,7 +72,7 @@ public class Drawer extends AppCompatActivity  {
                         break;
                     case R.id.nav_login:
                      intent = new Intent(Drawer.this, Login.class);
-                        finish();
+                       // finish();
                         startActivity(intent);
                         break;
 
@@ -123,6 +122,7 @@ public class Drawer extends AppCompatActivity  {
     public void ShowPopup(View v) {
         myDialog.setContentView(R.layout.popupbtnadd);
         myDialog.show();
+
     }
 }
 

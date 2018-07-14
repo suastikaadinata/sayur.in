@@ -29,10 +29,7 @@ import android.view.View;
 
 public class AdminHome extends AppCompatActivity {
     Dialog myDialog;
-    String id, username;
-    SharedPreferences sharedpreferences;
-    public static final String TAG_ID = "id";
-    public static final String TAG_USERNAME = "username";
+
     private Fragment fragment;
     private BottomNavigationView bottomNavigation;
 
@@ -57,7 +54,7 @@ public class AdminHome extends AppCompatActivity {
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
                 switch (id){
-                    case R.id.nav_home:
+                    case R.id.nav_home_admin:
                         fragment = new AdminListSayur();
                         loadFragment(fragment);
                         break;
@@ -72,12 +69,15 @@ public class AdminHome extends AppCompatActivity {
                         startActivity(intent);
                         break;
                     case R.id.nav_transaksi_admin:
-                        intent = new Intent(AdminHome.this, Adminhistory.class);
-                     //   finish();
+                        fragment = new Adminhistory();
+                        loadFragment(fragment);
+                        break;
+                    case R.id.nav_profile_admin:
+                        intent = new Intent(AdminHome.this, Login.class);
+                        //   finish();
                         startActivity(intent);
                         break;
                 }
-
                 return true;
             }
         });
@@ -85,7 +85,7 @@ public class AdminHome extends AppCompatActivity {
     private void loadFragment(Fragment fragment) {
         // load fragment
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.frameLayoutDrawer, fragment);
+        transaction.replace(R.id.container_admin, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
     }

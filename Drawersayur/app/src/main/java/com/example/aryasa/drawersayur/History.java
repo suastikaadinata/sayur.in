@@ -3,30 +3,33 @@ package com.example.aryasa.drawersayur;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.aryasa.drawersayur.Adpater.PageAdapter;
 
 
-public class History extends AppCompatActivity {
+public class History extends Fragment {
 
-    Intent intent;
+
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.history);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.history, container, false);
 
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout_history);
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tab_layout_history);
         tabLayout.addTab(tabLayout.newTab().setText("IN PROGRESS"));
         tabLayout.addTab(tabLayout.newTab().setText("Completed"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pager);
+        final ViewPager viewPager = (ViewPager) view.findViewById(R.id.pager);
         final PageAdapter adapter = new PageAdapter
-                (getSupportFragmentManager(), tabLayout.getTabCount());
+                (getFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
@@ -47,12 +50,8 @@ public class History extends AppCompatActivity {
 
             }
         });
+        return view;
     }
-    @Override
-    public void onBackPressed() {
-        intent = new Intent(History.this, Drawer.class);
-        finish();
-        startActivity(intent);
-    }
+
 }
 

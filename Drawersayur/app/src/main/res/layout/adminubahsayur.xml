@@ -6,7 +6,7 @@
    >
 
     <ImageView
-        android:id="@+id/gambar_sayur"
+        android:id="@+id/gambar_sayur_edit"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
@@ -14,7 +14,7 @@
         />
 
     <Button
-        android:id="@+id/btn_ubahgambarsayur"
+        android:id="@+id/btn_ubahgambarsayuredit"
         android:layout_width="wrap_content"
         android:layout_height="40dp"
         android:layout_gravity="center"

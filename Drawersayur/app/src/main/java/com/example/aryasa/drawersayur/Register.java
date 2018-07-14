@@ -18,8 +18,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.aryasa.drawersayur.Controller.AppController;
+import com.example.aryasa.drawersayur.ServerAPI.Server;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -31,15 +31,14 @@ public class Register extends AppCompatActivity {
     EditText txt_username, txt_email, txt_notelp, txt_password, txt_confirm_password;
     Intent intent;
 
-    int success;
     ConnectivityManager conMgr;
 
-    private String url = Server.URL + "register.php";
-    private String API_URL = "http://10.0.3.2/api/register";
+    private String API_URL = Server.URL + "register";
     private static final String TAG = Register.class.getSimpleName();
 
-    private static final String TAG_SUCCESS = "success";
-    private static final String TAG_MESSAGE = "message";
+//    private static final String TAG_SUCCESS = "success";
+//    private static final String TAG_MESSAGE = "message";
+//    int success;
 
     String tag_json_obj = "json_obj_req";
 

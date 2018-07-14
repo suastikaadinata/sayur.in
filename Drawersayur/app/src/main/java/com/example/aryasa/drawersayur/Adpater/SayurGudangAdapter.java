@@ -2,9 +2,11 @@ package com.example.aryasa.drawersayur.Adpater;
 
 import android.content.ClipData;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.nfc.Tag;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -18,10 +20,13 @@ import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.example.aryasa.drawersayur.Admin.AdminHome;
 import com.example.aryasa.drawersayur.Admin.Admintambahsayur;
 import com.example.aryasa.drawersayur.Admin.Adminubahsayur;
+import com.example.aryasa.drawersayur.Admin.Adminviewuser;
 import com.example.aryasa.drawersayur.Model.SayurGudangModel;
 import com.example.aryasa.drawersayur.R;
+import com.example.aryasa.drawersayur.ServerAPI.Server;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
 
 import java.util.ArrayList;
@@ -29,7 +34,7 @@ import java.util.ArrayList;
 public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.SayurGudangViewHolder> {
     private Context context;
     private ArrayList<SayurGudangModel> sayurGudangList;
-    private String API_URL = "http://10.0.3.2/api/sayur";
+    private String API_URL = Server.URL + "sayur";;
 
     public SayurGudangAdapter(Context context, ArrayList<SayurGudangModel> sayurGudangList){
         this.context = context;
@@ -63,11 +68,42 @@ public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.
         holder.btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent mIntent = new Intent(context, Admintambahsayur.class);
-                context.startActivity(mIntent);
+                showDialog(context, "halo");
             }
         });
+
     }
+    private void showDialog(final Context context, String halo){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+
+        // set title dialog
+        alertDialogBuilder.setTitle("Tambah ");
+
+        // set pesan dari dialog
+        alertDialogBuilder
+                .setMessage("Klik Ya untuk Tambah!")
+                .setCancelable(false)
+                .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        Intent mIntent = new Intent(context, AdminHome.class);
+                        context.startActivity(mIntent);
+
+                    }
+                })
+                .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        dialog.cancel();
+                    }
+                });
+
+        // membuat alert dialog dari builder
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // menampilkan alert dialog
+        alertDialog.show();
+    }
+
 
     @Override
     public int getItemCount() {

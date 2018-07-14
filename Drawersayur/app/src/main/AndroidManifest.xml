@@ -45,7 +45,7 @@
         <activity android:name=".Process" />
         <activity android:name=".History" />
         <activity android:name=".Chatting" />
-        <activity android:name=".Profile"/>
+        <activity android:name=".Profile" />
         <activity android:name=".Admin.Admintambahsayur" />
         <activity android:name=".Admin.Adminubahsayur" />
         <activity android:name=".Admin.AdminSayurGudang" />
@@ -54,6 +54,7 @@
         <activity android:name=".Admin.Adminhistory" />
         <activity android:name=".Admin.Adminhomeuser" />
         <activity android:name=".Admin.AdminHome" />
+        <activity android:name=".Admin.AdminProfile"></activity>
     </application>
 
 </manifest>

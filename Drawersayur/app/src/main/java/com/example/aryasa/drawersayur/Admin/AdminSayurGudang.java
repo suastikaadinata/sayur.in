@@ -27,6 +27,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.aryasa.drawersayur.Adpater.SayurGudangAdapter;
 import com.example.aryasa.drawersayur.Model.SayurGudangModel;
 import com.example.aryasa.drawersayur.R;
+import com.example.aryasa.drawersayur.ServerAPI.Server;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
 
 import org.json.JSONArray;
@@ -38,7 +39,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AdminSayurGudang extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
-    private String API_URL = "http://10.0.3.2/api/sayur";
+    private String API_URL = Server.URL + "sayur";;
     ArrayList<SayurGudangModel> sayurGudangList = new ArrayList<SayurGudangModel>();
     SwipeRefreshLayout swipeRefreshLayout;
     SayurGudangAdapter sayurGudangAdapter = new SayurGudangAdapter(AdminSayurGudang.this, sayurGudangList);

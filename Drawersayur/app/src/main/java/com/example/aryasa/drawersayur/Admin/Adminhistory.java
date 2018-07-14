@@ -3,32 +3,33 @@ package com.example.aryasa.drawersayur.Admin;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.example.aryasa.drawersayur.Adpater.PageAdapterAdmin;
 import com.example.aryasa.drawersayur.Drawer;
 import com.example.aryasa.drawersayur.R;
 
 
-public class Adminhistory extends AppCompatActivity {
-
-    Intent intent;
+public class Adminhistory extends Fragment {
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.adminhistory);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.adminhistory, container, false);
 
-
-        TabLayout tabLayout = (TabLayout) findViewById(R.id.tab_layout_history_admin);
+        TabLayout tabLayout = (TabLayout) view.findViewById(R.id.tab_layout_history_admin);
         tabLayout.addTab(tabLayout.newTab().setText("IN PROGRESS"));
         tabLayout.addTab(tabLayout.newTab().setText("Completed"));
         tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
 
-        final ViewPager viewPager = (ViewPager) findViewById(R.id.pageradmin);
+        final ViewPager viewPager = (ViewPager) view.findViewById(R.id.pageradmin);
         final PageAdapterAdmin adapter = new PageAdapterAdmin
-                (getSupportFragmentManager(), tabLayout.getTabCount());
+                (getFragmentManager(), tabLayout.getTabCount());
         viewPager.setAdapter(adapter);
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
 
@@ -49,6 +50,7 @@ public class Adminhistory extends AppCompatActivity {
 
             }
         });
+        return view;
     }
 
 

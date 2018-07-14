@@ -1,6 +1,8 @@
 package com.example.aryasa.drawersayur.Admin;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -13,50 +15,76 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.aryasa.drawersayur.Drawer;
+import com.example.aryasa.drawersayur.Login;
+import com.example.aryasa.drawersayur.Profile;
 import com.example.aryasa.drawersayur.R;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
+public class AdminProfile extends AppCompatActivity {
+    TextView txt_email, txt_name, txt_nomor_telepon;
+    Button btn_logout,btn_editgambar;
+    String name, email, tlp;
+    SharedPreferences sharedpreferencesAdmnin;
+    ImageView gamnbar_admin;
 
-public class Adminubahsayur extends AppCompatActivity {
+    public static final String TAG_NAME_ADMIN = "name";
+    public static final String TAG_EMAIL_ADMIN = "email";
+    public static final String TAG_NOMOR_TELEPON_ADMIN = "nomor_telepon";
 
-    ImageView gambar_sayur;
-    TextView txt_nama;
-    TextView txt_harga;
-    Button btn_edit;
     Bitmap bitmap, decoded;
     int PICK_IMAGE_REQUEST = 1;
     int bitmap_size = 60; // range 1 - 100
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.adminubahsayur);
+        setContentView(R.layout.activity_admin_profile);
 
+        txt_name = (TextView) findViewById(R.id.editTextnamaprofileadmin);
+        txt_email = (TextView) findViewById(R.id.editTextemailprofileadmin);
+        txt_nomor_telepon = (TextView) findViewById(R.id.editTextNomorTeleponprofileadmin);
+        btn_logout =(Button) findViewById(R.id.button_logoutprofileadmin);
+        sharedpreferencesAdmnin = getSharedPreferences(Login.my_shared_preferences2, Context.MODE_PRIVATE);
+        btn_editgambar =(Button) findViewById(R.id.button_ubah_gambar);
+        gamnbar_admin =(ImageView) findViewById(R.id.imageView);
 
-        txt_nama = findViewById(R.id.txt_namasayur);
-        txt_harga = findViewById(R.id.txt_hargasayur);
-        btn_edit = (Button) findViewById(R.id.btn_ubahgambarsayuredit);
-        gambar_sayur = (ImageView) findViewById(R.id.gambar_sayur_edit);
+        name = getIntent().getStringExtra(TAG_NAME_ADMIN);
+        email = getIntent().getStringExtra(TAG_EMAIL_ADMIN);
+        tlp = getIntent().getStringExtra(TAG_NOMOR_TELEPON_ADMIN);
 
-        btn_edit.setOnClickListener(new View.OnClickListener() {
+        txt_name.setText(name);
+        txt_email.setText(email);
+        txt_nomor_telepon.setText(tlp);
+
+        btn_logout.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View v) {
+                // TODO Auto-generated method stub
+                // update login session ke FALSE dan mengosongkan nilai id dan username
+                SharedPreferences.Editor editor = sharedpreferencesAdmnin.edit();
+                editor.putBoolean(Login.session_status2, false);
+                editor.putString(TAG_NAME_ADMIN, null);
+                editor.putString(TAG_EMAIL_ADMIN, null);
+                editor.putString(TAG_NOMOR_TELEPON_ADMIN, null);
+                editor.commit();
 
+                Intent intent = new Intent(AdminProfile.this, Drawer.class);
+                finish();
+                startActivity(intent);
+            }
+        });
+        btn_editgambar.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
                 showFileChooser();
             }
         });
-
-
-
-        Bundle mBundle = getIntent().getExtras();
-        if (mBundle != null) {
-            txt_nama.setText(mBundle.getString("nama"));
-            gambar_sayur.setImageResource(mBundle.getInt("gambar"));
-            txt_harga.setText(mBundle.getString("harga"));
-        }
-
     }
 
     public String getStringImage(Bitmap bmp) {
@@ -95,7 +123,7 @@ public class Adminubahsayur extends AppCompatActivity {
         decoded = BitmapFactory.decodeStream(new ByteArrayInputStream(bytes.toByteArray()));
 
         //menampilkan gambar yang dipilih dari camera/gallery ke ImageView
-        gambar_sayur.setImageBitmap(decoded);
+        gamnbar_admin.setImageBitmap(decoded);
     }
     // fungsi resize image
     public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
@@ -112,6 +140,8 @@ public class Adminubahsayur extends AppCompatActivity {
         }
         return Bitmap.createScaledBitmap(image, width, height, true);
     }
-
-
 }
+
+
+
+

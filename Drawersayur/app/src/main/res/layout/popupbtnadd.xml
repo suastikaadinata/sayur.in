@@ -108,6 +108,7 @@
                 android:drawableLeft="@drawable/ic_shopping_basket"
                 android:textColor="#ffffff"
                 android:layout_marginTop="40dp"
+                android:id="@+id/tes"
                 />
 
 
