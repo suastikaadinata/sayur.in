@@ -1,29 +1,23 @@
 package com.example.aryasa.drawersayur.Admin;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.PersistableBundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
+import android.support.v4.app.Fragment;
 import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.TextView;
-import android.widget.Toast;
+import android.view.View;
+import android.view.ViewGroup;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.VolleyLog;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.aryasa.drawersayur.Adpater.SayurGudangAdapter;
 import com.example.aryasa.drawersayur.Model.SayurGudangModel;
 import com.example.aryasa.drawersayur.R;
@@ -38,20 +32,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class AdminSayurGudang extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class AdminSayurGudang extends Fragment {
     private String API_URL = Server.URL + "sayur";;
     ArrayList<SayurGudangModel> sayurGudangList = new ArrayList<SayurGudangModel>();
     SwipeRefreshLayout swipeRefreshLayout;
-    SayurGudangAdapter sayurGudangAdapter = new SayurGudangAdapter(AdminSayurGudang.this, sayurGudangList);
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_sayur_gudang);
-        setTitle("Stok Sayur Di Gudang");
-        swipeRefreshLayout = findViewById(R.id.swipecontainer);
 
-        getSayurApi(API_URL);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
+        final View view = inflater.inflate(R.layout.activity_sayur_gudang, container, false);
+        swipeRefreshLayout = view.findViewById(R.id.swipecontainer);
+        final SayurGudangAdapter sayurGudangAdapter = new SayurGudangAdapter(view.getContext(), sayurGudangList);
+        getSayurApi(API_URL, view, sayurGudangAdapter);
 
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -61,14 +54,15 @@ public class AdminSayurGudang extends AppCompatActivity implements NavigationVie
                     public void run() {
                         swipeRefreshLayout.setRefreshing(false);
                         sayurGudangAdapter.clear();
-                        getSayurApi(API_URL);
+                        getSayurApi(API_URL, view, sayurGudangAdapter);
                     }
                 }, 1000);
             }
         });
+        return view;
     }
 
-    public void getSayurApi(String url){
+    public void getSayurApi(String url, final View view, final SayurGudangAdapter sayur){
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -76,10 +70,10 @@ public class AdminSayurGudang extends AppCompatActivity implements NavigationVie
                    for (int i = 0; i < response.length(); i++){
                        JSONObject jsonObject = response.getJSONObject(i);
                        sayurGudangList.add(new SayurGudangModel("http://10.0.3.2/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
-                       RecyclerView recyclerView = (RecyclerView) findViewById(R.id.recyclerviewsayurgudang);
-                       GridLayoutManager gridLayoutManager = new GridLayoutManager(getApplicationContext(), 2);
+                       RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewsayurgudang);
+                       GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                        recyclerView.setLayoutManager(gridLayoutManager);
-                       recyclerView.setAdapter(sayurGudangAdapter);
+                       recyclerView.setAdapter(sayur);
                    }
                }catch (JSONException e){
                     e.printStackTrace();
@@ -99,17 +93,16 @@ public class AdminSayurGudang extends AppCompatActivity implements NavigationVie
                 return headers;
             }
         };
-        Singleton.getInstance(this).addToRequestQueue(jsonArrayRequest);
+        Singleton.getInstance(this.getContext()).addToRequestQueue(jsonArrayRequest);
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.admin_action_bar, menu);
-        return true;
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.admin_action_bar_gudang, menu);
+        super.onCreateOptionsMenu(menu,inflater);
     }
-
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
         if (id == R.id.search){

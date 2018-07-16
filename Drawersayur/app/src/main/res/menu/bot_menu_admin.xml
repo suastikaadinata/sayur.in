@@ -7,19 +7,19 @@
     <item
         android:id="@+id/nav_home_admin"
         android:icon="@drawable/ic_home_white_24dp"
-        android:title="Home" />
+        android:title="Beranda" />
     <item
         android:id="@+id/nav_pengguna_admin"
         android:icon="@drawable/ic_assignment_ind_white_24dp"
-        android:title="List User" />
+        android:title="Daftar User" />
 
     <item
         android:id="@+id/nav_gudang_admin"
-        android:icon="@drawable/ic_assignment_white_24dp"
+        android:icon="@drawable/ic_fresh_carrot"
         android:title="Gudang" />
     <item
         android:id="@+id/nav_transaksi_admin"
-        android:icon="@drawable/ic_history_black_24dp"
+        android:icon="@drawable/ic_money_bag_with_dollar_symbol"
         android:title="Transaksi" />
 
     <item

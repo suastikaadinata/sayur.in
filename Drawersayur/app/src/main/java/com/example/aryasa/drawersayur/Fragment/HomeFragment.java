@@ -2,15 +2,20 @@ package com.example.aryasa.drawersayur.Fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.aryasa.drawersayur.Adpater.SayurAdapter;
+import com.example.aryasa.drawersayur.Chart;
 import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.Model.Sayur;
 
@@ -35,6 +40,7 @@ public class HomeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         View view = inflater.inflate(R.layout.fragment_home2, container, false);
         ArrayList<Sayur> listSayur = new ArrayList<Sayur>();
         listSayur.add(new Sayur("Bayam", "500.000",R.drawable.sayur));
@@ -52,6 +58,24 @@ public class HomeFragment extends Fragment {
         mRecyclerView.setAdapter(sayurAdapter);
         return view;
 
+    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.drawer, menu);
+        super.onCreateOptionsMenu(menu,inflater);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.search){
+            return true;
+        }
+        if (id == R.id.cart) {
+            Intent cart = new Intent(getActivity(), Chart.class);
+            startActivity(cart);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

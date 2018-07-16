@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -31,6 +34,7 @@ public class AdminListSayur extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         View view = inflater.inflate(R.layout.activity_admin_list_sayur, container, false);
         ArrayList<SayurListModel> listSayur = new ArrayList<>();
         listSayur.add(new SayurListModel("Bayam", "500.000", R.drawable.sayur));
@@ -46,5 +50,21 @@ public class AdminListSayur extends Fragment {
 
         return view;
 
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.admin_action_bar_sayur, menu);
+        super.onCreateOptionsMenu(menu,inflater);
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.search){
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }

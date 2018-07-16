@@ -1,5 +1,6 @@
 package com.example.aryasa.drawersayur.Admin;
 
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
@@ -32,7 +33,7 @@ public class AdminHome extends AppCompatActivity {
 
     private Fragment fragment;
     private BottomNavigationView bottomNavigation;
-
+    private ActionBar toolbar;
     private FragmentManager fragmentManager;
     Intent intent;
 
@@ -42,10 +43,11 @@ public class AdminHome extends AppCompatActivity {
         setContentView(R.layout.activity_admin_home);
 
         myDialog = new Dialog(this);
-
+        toolbar = getSupportActionBar();
         bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation_admin);
         bottomNavigation.inflateMenu(R.menu.bot_menu_admin);
         fragmentManager = getSupportFragmentManager();
+        toolbar.setTitle("Daftar Sayur");
 
         //Untuk inisialisasi fragment pertama kali
         fragmentManager.beginTransaction().replace(R.id.container_admin, new AdminListSayur()).commit();
@@ -55,20 +57,22 @@ public class AdminHome extends AppCompatActivity {
                 int id = item.getItemId();
                 switch (id){
                     case R.id.nav_home_admin:
+                        toolbar.setTitle("Daftar Sayur");
                         fragment = new AdminListSayur();
                         loadFragment(fragment);
                         break;
                     case R.id.nav_pengguna_admin:
-                      intent = new Intent(AdminHome.this, Adminhomeuser.class);
-                       // finish();
-                       startActivity(intent);
+                        toolbar.setTitle("Daftar User");
+                        fragment = new Adminhomeuser();
+                        loadFragment(fragment);
                         break;
                     case R.id.nav_gudang_admin:
-                        intent = new Intent(AdminHome.this, AdminSayurGudang.class);
-                      //  finish();
-                        startActivity(intent);
+                        toolbar.setTitle("Gudang");
+                        fragment = new AdminSayurGudang();
+                        loadFragment(fragment);
                         break;
                     case R.id.nav_transaksi_admin:
+                        toolbar.setTitle("Transaksi");
                         fragment = new Adminhistory();
                         loadFragment(fragment);
                         break;
@@ -90,25 +94,25 @@ public class AdminHome extends AppCompatActivity {
         transaction.commit();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        //// Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.draweradmin, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.search_admin) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
+//    @Override
+//    public boolean onCreateOptionsMenu(Menu menu) {
+//        //// Inflate the menu; this adds items to the action bar if it is present.
+//        getMenuInflater().inflate(R.menu.draweradmin, menu);
+//        return true;
+//    }
+//
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        // Handle action bar item clicks here. The action bar will
+//        // automatically handle clicks on the Home/Up button, so long
+//        // as you specify a parent activity in AndroidManifest.xml.
+//        int id = item.getItemId();
+//
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.search_admin) {
+//            return true;
+//        }
+//
+//        return super.onOptionsItemSelected(item);
+//    }
 }
