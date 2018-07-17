@@ -182,7 +182,7 @@
                     android:layout_height="match_parent"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/ic_edit_black_24dp" />
+                    android:background="@drawable/ic_edit_gray_24dp" />
             </RelativeLayout>
 
 
@@ -275,7 +275,7 @@
                     android:layout_height="match_parent"
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentRight="true"
-                    android:background="@drawable/ic_edit_black_24dp" />
+                    android:background="@drawable/ic_edit_gray_24dp" />
             </RelativeLayout>
 
 

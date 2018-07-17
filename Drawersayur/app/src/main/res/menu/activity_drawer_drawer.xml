@@ -10,7 +10,7 @@
             android:title="Beranda" />
         <item
             android:id="@+id/nav_history"
-            android:icon="@drawable/ic_history_black_24dp"
+            android:icon="@drawable/ic_money_bag_with_dollar_symbol"
             android:title="Transaksi" />
 
     <item

@@ -119,7 +119,7 @@ public class Register extends AppCompatActivity {
                         }
                     }else{
                         hideDialog();
-                        startActivity(new Intent(getApplicationContext(), Drawer.class));
+                        startActivity(new Intent(getApplicationContext(), Login.class));
                         finish();
                     }
                 }catch (Exception e){

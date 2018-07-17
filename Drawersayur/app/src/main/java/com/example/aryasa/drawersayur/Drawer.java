@@ -55,7 +55,6 @@ public class Drawer extends AppCompatActivity  {
         email = sharedpreferences.getString(TAG_EMAIL, null);
         nomor_telepon = sharedpreferences.getString(TAG_NOMOR_TELEPON, null);
         id = getIntent().getStringExtra(TAG_ID);
-
         username = getIntent().getStringExtra(TAG_USERNAME);
         nameIntent = getIntent().getStringExtra(TAG_NAME);
         emailIntent = getIntent().getStringExtra(TAG_EMAIL);

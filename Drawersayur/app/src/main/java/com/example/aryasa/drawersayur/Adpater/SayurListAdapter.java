@@ -66,7 +66,7 @@ public class SayurListAdapter extends RecyclerView.Adapter<SayurListAdapter.Sayu
             public void onClick(View view) {
                 Intent mIntent = new Intent(mContext, Adminubahsayur.class);
                 mIntent.putExtra("nama", mSayurlist.get(holder.getAdapterPosition()).getNama());
-                mIntent.putExtra("harga", mSayurlist.get(holder.getAdapterPosition()).getHarga());
+                mIntent.putExtra("harga", (String.valueOf(mSayurlist.get(holder.getAdapterPosition()).getHarga())));
                 mIntent.putExtra("gambar", mSayurlist.get(holder.getAdapterPosition()).getFoto());
                 mContext.startActivity(mIntent);
             }

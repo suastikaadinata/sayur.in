@@ -59,5 +59,14 @@
             android:drawablePadding="5dp"
             android:textColorHint="#fff"/>
     </android.support.design.widget.TextInputLayout>
-
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Hapus"
+        android:id="@+id/btn_hapus"
+        android:textColor="#fff"
+        android:background="@drawable/selector_xml_btn_green"
+        android:layout_gravity="center_horizontal"
+        />
 </LinearLayout>

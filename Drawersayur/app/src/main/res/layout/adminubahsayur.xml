@@ -66,14 +66,35 @@
         android:entries="@array/kuantitas"
         />
 
-    <Button
+    <RelativeLayout
+        android:id="@+id/frameLayout5"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:text="Ubah"
-        android:id="@+id/btn_ubahsayur"
-        android:textColor="#fff"
-        android:background="@drawable/selector_xml_btn_green"
-        android:layout_gravity="center_horizontal"
-       />
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        >
+
+        <Button
+            android:id="@+id/button_ubah"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentLeft="true"
+            android:background="@drawable/selector_xml_btn_green"
+            android:text="Ubah"
+            android:textColor="#ffffff"
+            />
+        <Button
+            android:id="@+id/button_delete"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/selector_xml_btn_yellow"
+            android:text="Hapus"
+            android:textColor="#ffffff"
+            />
+    </RelativeLayout>
 </LinearLayout>
