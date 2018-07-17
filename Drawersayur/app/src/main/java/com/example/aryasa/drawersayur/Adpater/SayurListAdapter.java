@@ -12,10 +12,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.example.aryasa.drawersayur.Admin.Adminubahsayur;
 import com.example.aryasa.drawersayur.Model.SayurListModel;
 import com.example.aryasa.drawersayur.R;
-
+import com.example.aryasa.drawersayur.Singleton.Singleton;
 
 
 import java.util.ArrayList;
@@ -43,16 +45,29 @@ public class SayurListAdapter extends RecyclerView.Adapter<SayurListAdapter.Sayu
 
     @Override
     public void onBindViewHolder(final SayurlistViewHolder holder, int position) {
-        holder.mImage.setImageResource(mSayurlist.get(position).getGambar_sayur_admin_list());
-        holder.mTitle.setText(mSayurlist.get(position).getNama_sayur_admin_list());
-        holder.mHarga.setText(mSayurlist.get(position).getHarga_sayur_admin_list());
+        ImageLoader imageLoader = Singleton.getInstance(mContext).getImageLoader();
+        imageLoader.get(mSayurlist.get(position).getFoto(), new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                holder.mImage.setImageBitmap(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        holder.mTitle.setText(mSayurlist.get(position).getNama());
+        holder.mHarga.setText(String.valueOf(mSayurlist.get(position).getHarga()));
+
         holder.Edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent mIntent = new Intent(mContext, Adminubahsayur.class);
-                mIntent.putExtra("nama", mSayurlist.get(holder.getAdapterPosition()).getNama_sayur_admin_list());
-                mIntent.putExtra("harga", mSayurlist.get(holder.getAdapterPosition()).getHarga_sayur_admin_list());
-                mIntent.putExtra("gambar", mSayurlist.get(holder.getAdapterPosition()).getGambar_sayur_admin_list());
+                mIntent.putExtra("nama", mSayurlist.get(holder.getAdapterPosition()).getNama());
+                mIntent.putExtra("harga", mSayurlist.get(holder.getAdapterPosition()).getHarga());
+                mIntent.putExtra("gambar", mSayurlist.get(holder.getAdapterPosition()).getFoto());
                 mContext.startActivity(mIntent);
             }
         });

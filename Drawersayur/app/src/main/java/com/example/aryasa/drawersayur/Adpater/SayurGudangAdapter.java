@@ -20,8 +20,12 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
+import com.android.volley.toolbox.StringRequest;
 import com.example.aryasa.drawersayur.Admin.AdminHome;
 import com.example.aryasa.drawersayur.Admin.AdminSayurGudang;
 import com.example.aryasa.drawersayur.Admin.Admintambahsayur;
@@ -33,6 +37,8 @@ import com.example.aryasa.drawersayur.ServerAPI.Server;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.SayurGudangViewHolder> {
     private Context context;
@@ -52,7 +58,7 @@ public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.
     }
 
     @Override
-    public void onBindViewHolder(final SayurGudangViewHolder holder, int position) {
+    public void onBindViewHolder(final SayurGudangViewHolder holder, final int position) {
         holder.mNama.setText(sayurGudangList.get(position).getNama());
         holder.mHarga.setText(String.valueOf(sayurGudangList.get(position).getHarga()));
 
@@ -71,12 +77,12 @@ public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.
         holder.btn_add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog(context, "halo");
+                showDialog(context, String.valueOf((sayurGudangList.get(position).getId())));
             }
         });
 
     }
-    private void showDialog(final Context context, String halo){
+    private void showDialog(final Context context, final String idSayur){
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
 
         // set title dialog
@@ -88,14 +94,39 @@ public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.
                 .setCancelable(false)
                 .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog,int id) {
-                        Intent mIntent = new Intent(context, AdminHome.class);
-                        context.startActivity(mIntent);
+                        StringRequest stringRequest = new StringRequest(Request.Method.POST, API_URL + "/tambah-sayur", new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                Intent mIntent = new Intent(context, AdminHome.class);
+                                context.startActivity(mIntent);
+                            }
+                        }, new Response.ErrorListener() {
+                            @Override
+                            public void onErrorResponse(VolleyError error) {
+                                error.printStackTrace();
+                            }
+                        }){
+                            @Override
+                            public Map<String, String> getHeaders() throws AuthFailureError {
+                                HashMap<String, String> headers = new HashMap<>();
+                                headers.put("Accept", "application/json");
+                                headers.put("Authorization", Server.TOKEN);
+                                return headers;
+                            }
 
+                            @Override
+                            protected Map<String, String> getParams() throws AuthFailureError {
+                                HashMap<String, String> params = new HashMap<>();
+                                params.put("id", idSayur);
+                                return params;
+                            }
+                        };
+
+                        Singleton.getInstance(context).addToRequestQueue(stringRequest);
                     }
                 })
                 .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-
                         dialog.cancel();
                     }
                 });
@@ -119,8 +150,6 @@ public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.
         CardView mCardView;
         ImageView mFoto;
         Button btn_add;
-
-
 
         public SayurGudangViewHolder(View view){
             super(view);

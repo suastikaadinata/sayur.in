@@ -56,12 +56,10 @@ public class Login extends AppCompatActivity{
     String email;
     String nomor_telepon;
 
-
     public static final String my_shared_preferences = "my_shared_preferences";
     public static final String my_shared_preferences2 = "my_shared_preferences2";
     public static final String session_status = "session_status";
     public static final String session_status2 = "session_status2";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,15 +88,15 @@ public class Login extends AppCompatActivity{
         name = sharedpreferences.getString(TAG_NAME, null);
         email = sharedpreferences.getString(TAG_EMAIL, null);
         nomor_telepon = sharedpreferences.getString(TAG_NOMOR_TELEPON, null);
-
-        if (session) {
-            Intent intent = new Intent(Login.this, Profile.class);
-            intent.putExtra(TAG_NAME, name);
-            intent.putExtra(TAG_EMAIL, email);
-            intent.putExtra(TAG_NOMOR_TELEPON, nomor_telepon);
-            finish();
-            startActivity(intent);
-        }
+//
+//        if (session) {
+//            Intent intent = new Intent(Login.this, Profile.class);
+//            intent.putExtra(TAG_NAME, name);
+//            intent.putExtra(TAG_EMAIL, email);
+//            intent.putExtra(TAG_NOMOR_TELEPON, nomor_telepon);
+//            finish();
+//            startActivity(intent);
+//        }
           //Cek session login USER jika TRUE maka langsung buka Profile Admin
         sharedpreferencesAdmnin = getSharedPreferences(my_shared_preferences2, Context.MODE_PRIVATE);
         sessionAdmin = sharedpreferencesAdmnin.getBoolean(session_status2, false);
@@ -113,9 +111,6 @@ public class Login extends AppCompatActivity{
             finish();
             startActivity(intent);
         }
-
-
-
 
         btn_login.setOnClickListener(new View.OnClickListener() {
 
@@ -206,8 +201,6 @@ public class Login extends AppCompatActivity{
                             intent.putExtra(TAG_NOMOR_TELEPON,tlp);
                             startActivity(intent);
                             finish();
-
-
                         }
                     }
                 }

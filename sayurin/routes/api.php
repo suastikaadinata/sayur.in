@@ -14,7 +14,9 @@ use Illuminate\Http\Request;
 */
 Route::post('register', 'API\RegisterController@register');
 Route::post('login', 'API\LoginController@login');
+Route::get('sayur/dijual', 'API\JualSayurController@sayurmobile');
 
 Route::middleware('auth:api')->group( function() {
     Route::get('sayur', 'API\APISayurController@show');
+    Route::post('sayur/tambah-sayur', 'API\APISayurController@adminTambahSayur');
 });

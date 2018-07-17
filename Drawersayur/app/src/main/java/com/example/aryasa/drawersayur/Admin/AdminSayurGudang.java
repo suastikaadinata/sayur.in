@@ -37,7 +37,6 @@ public class AdminSayurGudang extends Fragment {
     ArrayList<SayurGudangModel> sayurGudangList = new ArrayList<SayurGudangModel>();
     SwipeRefreshLayout swipeRefreshLayout;
 
-
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
@@ -69,7 +68,7 @@ public class AdminSayurGudang extends Fragment {
                try{
                    for (int i = 0; i < response.length(); i++){
                        JSONObject jsonObject = response.getJSONObject(i);
-                       sayurGudangList.add(new SayurGudangModel("http://10.0.3.2/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
+                       sayurGudangList.add(new SayurGudangModel(jsonObject.getInt("id") ,"http://192.168.1.6/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
                        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewsayurgudang);
                        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                        recyclerView.setLayoutManager(gridLayoutManager);
@@ -89,7 +88,7 @@ public class AdminSayurGudang extends Fragment {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put("Accept", "application/json");
-                headers.put("Authorization", "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjVhNjRkZTRlZDM5MDllMTkwYzc4NjA2MDg5M2M2ZGVkMDljNTAyZDJjZmUwYTE4NzU1NTI1ZGQxZjI0MjAyNzNlM2FjNzY5MzQ4NWIzNmFhIn0.eyJhdWQiOiIzIiwianRpIjoiNWE2NGRlNGVkMzkwOWUxOTBjNzg2MDYwODkzYzZkZWQwOWM1MDJkMmNmZTBhMTg3NTU1MjVkZDFmMjQyMDI3M2UzYWM3NjkzNDg1YjM2YWEiLCJpYXQiOjE1MzEyODk3NTksIm5iZiI6MTUzMTI4OTc1OSwiZXhwIjoxNTYyODI1NzU5LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.frCouwNpBltMnVw8VaDPcrlKBKEswtuWDKFqQXWIpqX7-Cj9W5JmUolqYSCoN3zLl9keRusLVozL8aKRhCnG1c-6OICtZNkMOYLSQ8yLyyUgaYe-GInXgnYu232RqExuuYzpEBu_5D44UUkHagnJqGl4pH8PDCxrDSebaWnkUR6UfNiDdS2lol3Nysl7J_9t4d96_yAVQjkeljQXn1FkPsmRHukI4akF5SGdUaKeo15Ez9GFsEJUFeXRBEqeumwjNLAC2nobSAgE7_ib7zzrvMP5K0kihif4_o4oGbAQmQI_V41rZUB67W1ss8U6YsxZL38a_9WDz8FpSRMdIConBsTtn07rlgZbA9-e53HwLhAf5sXZzd7mTzCYsXE9LpC11r2dti66oMZaOFYnlsfVIMlhm_oNBARbgq1_6Bb8CTY6xZGwe1CeuwfUyMI-nOxtZsjRHztaJqV4WflOmYmYTvDQzEi4jOmRnmbVl1XpYSFXDBXKH_b5PWvY39GVqNeBtvu7AAJ5Qw3Lu6gxCL1Fek4mycZRNJ247N2BOiSgQnEp1KTwkg71EzTtL7rMdm3AqzIzMjXO3pH6ztQx6athKc47fCBxXfPOFVVOaKItjJ2UV9hDaYJsW9ejkhM69TfH9i3gfJtSuAeaBaci05HoSj6AYSVamh0eoB_SgrLJdPg");
+                headers.put("Authorization", Server.TOKEN);
                 return headers;
             }
         };

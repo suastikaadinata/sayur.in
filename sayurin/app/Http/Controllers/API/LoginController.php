@@ -22,7 +22,7 @@ class LoginController extends BaseController
             $response['nomor_telepon'] = $user->nomor_telepon;
             $response['foto'] = $user->foto;
             $response['tipe'] = $user->tipe;
-            $response['token'] = $user->createToken('sayurin')->accessToken;  
+            $response['token'] = $user->createToken('sayurin')->accessToken; 
 
             return $this->sendResponse($response);
         }else{

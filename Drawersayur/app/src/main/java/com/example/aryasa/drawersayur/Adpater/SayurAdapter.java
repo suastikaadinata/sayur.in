@@ -10,8 +10,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.Model.Sayur;
+import com.example.aryasa.drawersayur.Singleton.Singleton;
 
 import java.util.ArrayList;
 
@@ -37,11 +40,22 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
     }
 
     @Override
-    public void onBindViewHolder(SayurViewHolder holder, int position) {
-        holder.mImage.setImageResource(mSayurlist.get(position).getGambar_sayur());
-        holder.mTitle.setText(mSayurlist.get(position).getNama_sayur());
-        holder.mHarga.setText(mSayurlist.get(position).getHarga_sayur());
-        //holder.mCardView.
+    public void onBindViewHolder(final SayurViewHolder holder, int position) {
+        ImageLoader imageLoader = Singleton.getInstance(mContext).getImageLoader();
+        imageLoader.get(mSayurlist.get(position).getFoto(), new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                holder.mImage.setImageBitmap(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
+        holder.mTitle.setText(mSayurlist.get(position).getNama());
+        holder.mHarga.setText(String.valueOf(mSayurlist.get(position).getHarga()));
 
     }
 

@@ -30,6 +30,15 @@ public class Drawer extends AppCompatActivity  {
     private BottomNavigationView bottomNavigation;
     private Fragment fragment;
     private FragmentManager fragmentManager;
+    public final static String TAG_NAME = "name";
+    public final static String TAG_EMAIL = "email";
+    public static final String TAG_NOMOR_TELEPON = "nomor_telepon";
+    public static final String my_shared_preferences = "my_shared_preferences";
+    public static final String session_status = "session_status";
+    Boolean session = false;
+    String name, nameIntent;
+    String email, emailIntent;
+    String nomor_telepon, nomor_teleponIntent;
     Intent intent;
 
     @Override
@@ -40,47 +49,93 @@ public class Drawer extends AppCompatActivity  {
         myDialog = new Dialog(this);
 
         sharedpreferences = getSharedPreferences(Login.my_shared_preferences, Context.MODE_PRIVATE);
-
+        sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
+        session = sharedpreferences.getBoolean(session_status, false);
+        name = sharedpreferences.getString(TAG_NAME, null);
+        email = sharedpreferences.getString(TAG_EMAIL, null);
+        nomor_telepon = sharedpreferences.getString(TAG_NOMOR_TELEPON, null);
         id = getIntent().getStringExtra(TAG_ID);
+
         username = getIntent().getStringExtra(TAG_USERNAME);
+        nameIntent = getIntent().getStringExtra(TAG_NAME);
+        emailIntent = getIntent().getStringExtra(TAG_EMAIL);
+        nomor_teleponIntent = getIntent().getStringExtra(TAG_NOMOR_TELEPON);
 
         bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
-        bottomNavigation.inflateMenu(R.menu.activity_drawer_drawer);
+
+        //Untuk mengganti icon login ke akun jika user sudah login
+        if(!session){
+            bottomNavigation.inflateMenu(R.menu.activity_drawer_drawer);
+        }else{
+            bottomNavigation.inflateMenu(R.menu.user_login_action_bar);
+        }
+
         fragmentManager = getSupportFragmentManager();
         toolbar.setTitle("Beranda");
         //Untuk inisialisasi fragment pertama kali
         fragmentManager.beginTransaction().replace(R.id.frameLayoutDrawer, new HomeFragment()).commit();
+
         bottomNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 int id = item.getItemId();
-                switch (id){
-                    case R.id.nav_home:
-                        toolbar.setTitle("Beranda");
-                        fragment = new HomeFragment();
-                        loadFragment(fragment);
-                        break;
-                    case R.id.nav_history:
-                        toolbar.setTitle("Transaksi");
-                        fragment = new History();
-                        loadFragment(fragment);
-                        break;
-                    case R.id.nav_help:
-                        toolbar.setTitle("Bantuan");
-                        fragment = new FragmentHelp();
-                        loadFragment(fragment);
-                        break;
-                    case R.id.nav_notifkasi:
-                        toolbar.setTitle("Notifikasi");
-                        fragment = new FragmentNotifikasi();
-                        loadFragment(fragment);
-                        break;
-                    case R.id.nav_login:
-                     intent = new Intent(Drawer.this, Login.class);
-                       // finish();
-                        startActivity(intent);
-                        break;
-
+                if(!session){
+                    switch (id){
+                        case R.id.nav_home:
+                            toolbar.setTitle("Beranda");
+                            fragment = new HomeFragment();
+                            loadFragment(fragment);
+                            break;
+                        case R.id.nav_history:
+                            toolbar.setTitle("Transaksi");
+                            fragment = new History();
+                            loadFragment(fragment);
+                            break;
+                        case R.id.nav_help:
+                            toolbar.setTitle("Bantuan");
+                            fragment = new FragmentHelp();
+                            loadFragment(fragment);
+                            break;
+                        case R.id.nav_notifkasi:
+                            toolbar.setTitle("Notifikasi");
+                            fragment = new FragmentNotifikasi();
+                            loadFragment(fragment);
+                            break;
+                        case R.id.nav_login:
+                            intent = new Intent(Drawer.this, Login.class);
+                            startActivity(intent);
+                            break;
+                    }
+                }else{
+                    switch (id){
+                        case R.id.nav_home:
+                            toolbar.setTitle("Beranda");
+                            fragment = new HomeFragment();
+                            loadFragment(fragment);
+                            break;
+                        case R.id.nav_history:
+                            toolbar.setTitle("Transaksi");
+                            fragment = new History();
+                            loadFragment(fragment);
+                            break;
+                        case R.id.nav_help:
+                            toolbar.setTitle("Bantuan");
+                            fragment = new FragmentHelp();
+                            loadFragment(fragment);
+                            break;
+                        case R.id.nav_notifkasi:
+                            toolbar.setTitle("Notifikasi");
+                            fragment = new FragmentNotifikasi();
+                            loadFragment(fragment);
+                            break;
+                        case R.id.nav_profile_admin:
+                            Intent intent = new Intent(Drawer.this, Profile.class);
+                            intent.putExtra(TAG_NAME,nameIntent);
+                            intent.putExtra(TAG_EMAIL,emailIntent);
+                            intent.putExtra(TAG_NOMOR_TELEPON,nomor_teleponIntent);
+                            startActivity(intent);
+                            break;
+                    }
                 }
 
                 return true;
@@ -127,7 +182,6 @@ public class Drawer extends AppCompatActivity  {
     public void ShowPopup(View v) {
         myDialog.setContentView(R.layout.popupbtnadd);
         myDialog.show();
-
     }
 }
 

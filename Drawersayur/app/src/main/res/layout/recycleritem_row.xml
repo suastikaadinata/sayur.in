@@ -24,7 +24,7 @@
             <ImageView
                 android:id="@+id/gambar_sayur"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="140dp"
                 android:src="@mipmap/ic_launcher"
                 android:contentDescription="@string/todo" />
 

@@ -14,10 +14,22 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.aryasa.drawersayur.Adpater.SayurAdapter;
+import com.example.aryasa.drawersayur.Adpater.SayurListAdapter;
 import com.example.aryasa.drawersayur.Chart;
+import com.example.aryasa.drawersayur.Model.SayurListModel;
 import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.Model.Sayur;
+import com.example.aryasa.drawersayur.ServerAPI.Server;
+import com.example.aryasa.drawersayur.Singleton.Singleton;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,38 +39,49 @@ import java.util.List;
  * A simple {@link Fragment} subclass.
  */
 public class HomeFragment extends Fragment {
-    List<Sayur> msayurlist;
-    Sayur mSayurData;
-    Context context;
-
+    private String API_URL = Server.URL + "sayur/dijual";
+    ArrayList<Sayur> listSayur = new ArrayList<Sayur>();
 
     public HomeFragment() {
         // Required empty public constructor
     }
 
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        View view = inflater.inflate(R.layout.fragment_home2, container, false);
-        ArrayList<Sayur> listSayur = new ArrayList<Sayur>();
-        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.sayur));
-        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.sayur1));
-        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.sayur));
-        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.sayur1));
-        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.sayur));
-        listSayur.add(new Sayur("Bayam", "500.000",R.drawable.sayur1));
-
-
-        RecyclerView mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerview1);
-        GridLayoutManager mGridLayoutManager = new GridLayoutManager(this.getContext(), 2);
-        mRecyclerView.setLayoutManager(mGridLayoutManager);
-        SayurAdapter sayurAdapter = new SayurAdapter(this.getContext() ,listSayur);
-        mRecyclerView.setAdapter(sayurAdapter);
+        final View view = inflater.inflate(R.layout.fragment_home2, container, false);
+        final SayurAdapter sayurAdapter = new SayurAdapter(view.getContext(), listSayur);
+        getSayurApi(API_URL, view, sayurAdapter);
         return view;
-
     }
+
+    public void getSayurApi(String url, final View view, final SayurAdapter sayur){
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try{
+                    for (int i = 0; i < response.length(); i++){
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        listSayur.add(new Sayur("http://192.168.1.6/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
+                        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview1);
+                        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+                        recyclerView.setLayoutManager(gridLayoutManager);
+                        recyclerView.setAdapter(sayur);
+                    }
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        Singleton.getInstance(this.getContext()).addToRequestQueue(jsonArrayRequest);
+    }
+
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.drawer, menu);

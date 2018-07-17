@@ -11,21 +11,37 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.aryasa.drawersayur.Adpater.SayurGudangAdapter;
 import com.example.aryasa.drawersayur.Adpater.SayurListAdapter;
 import com.example.aryasa.drawersayur.Model.Sayur;
+import com.example.aryasa.drawersayur.Model.SayurGudangModel;
 import com.example.aryasa.drawersayur.Model.SayurListModel;
 import com.example.aryasa.drawersayur.R;
+import com.example.aryasa.drawersayur.ServerAPI.Server;
+import com.example.aryasa.drawersayur.Singleton.Singleton;
+
 import android.content.Context;
 import android.os.Bundle;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class AdminListSayur extends Fragment {
-
-    List<Sayur> msayurlist;
-    Sayur mSayurData;
-    Context context;
+    private String API_URL = Server.URL + "sayur/dijual";
+    ArrayList<SayurListModel> listSayur = new ArrayList<SayurListModel>();
 
     public AdminListSayur() {
         // Required empty public constructor
@@ -35,21 +51,36 @@ public class AdminListSayur extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        View view = inflater.inflate(R.layout.activity_admin_list_sayur, container, false);
-        ArrayList<SayurListModel> listSayur = new ArrayList<>();
-        listSayur.add(new SayurListModel("Bayam", "500.000", R.drawable.sayur));
-        listSayur.add(new SayurListModel("Bayam", "500.000", R.drawable.sayur1));
-        listSayur.add(new SayurListModel("Bayam", "500.000", R.drawable.sayur));
-        listSayur.add(new SayurListModel("Bayam", "500.000", R.drawable.sayur1));
-
-        RecyclerView mRecyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewadminlistsayur);
-        GridLayoutManager mGridLayoutManager = new GridLayoutManager(this.getContext(), 2);
-        mRecyclerView.setLayoutManager(mGridLayoutManager);
-        SayurListAdapter sayurListAdapter = new SayurListAdapter(this.getContext(), listSayur);
-        mRecyclerView.setAdapter(sayurListAdapter);
-
+        final View view = inflater.inflate(R.layout.activity_admin_list_sayur, container, false);
+        final SayurListAdapter sayurListAdapter = new SayurListAdapter(view.getContext(), listSayur);
+        getSayurApi(API_URL, view, sayurListAdapter);
         return view;
+    }
 
+    public void getSayurApi(String url, final View view, final SayurListAdapter sayur){
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                try{
+                    for (int i = 0; i < response.length(); i++){
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        listSayur.add(new SayurListModel("http://192.168.1.6/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
+                        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewadminlistsayur);
+                        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
+                        recyclerView.setLayoutManager(gridLayoutManager);
+                        recyclerView.setAdapter(sayur);
+                    }
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        Singleton.getInstance(this.getContext()).addToRequestQueue(jsonArrayRequest);
     }
 
     @Override
