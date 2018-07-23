@@ -4,26 +4,23 @@ public class Server {
     //untuk emu genymotion menggunakan ip = http://10.0.3.2/
     //untuk emu avd android menggunakan ip = http://10.0.2.2/
     //untuk langsung coba dihandphone menggunakan jaringan yang sama dan liat ipnya contoh http://192.168.1.14/
-   public static final String URL = "http://192.168.42.41/api/";
-   public static final String TOKEN = "Bearer eyJ0eXAiOiJKV1QiLCJh" +
-           "bGciOiJSUzI1NiIsImp0aSI6IjZiZmZiNmVjZGFlYzhhNjlhYzE" +
-           "xYTVmZjJmMTRhNGE2OTMyOWVmNmRiNDQ4NGE4N2VjOWY1Yzk2MGR" +
-           "iZjhhNzRiYjBmZTU3NmU2Y2EyZjViIn0.eyJhdWQiOiI1IiwianR" +
-           "pIjoiNmJmZmI2ZWNkYWVjOGE2OWFjMTFhNWZmMmYxNGE0YTY5MzI5Z" +
-           "WY2ZGI0NDg0YTg3ZWM5ZjVjOTYwZGJmOGE3NGJiMGZlNTc2ZTZjYTJm" +
-           "NWIiLCJpYXQiOjE1MzE4MDY4MTUsIm5iZiI6MTUzMTgwNjgxNSwiZXh" +
-           "wIjoxNTYzMzQyODE1LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.XCBNbd" +
-           "6GMbCH8IkhLL3jdca_00xI3J_V3cmmjDCAtAmdLqSy0q_vgDKEwzYlh" +
-           "fXuvTYM8er7CPHipzB-R2nzGGO6vha0eREZl_l_qyGxDmiycWYx4cFTB" +
-           "8M2_IkfldE1cYVDRca6oNOV35aytGK1n_eYtcvstG6wDESIxZ5_KeTWdD" +
-           "W7CcYvcST1eUdMhShMfoTiwIHXsXi3_IMUQsFrQnVPzj4KoFutzRPXzgt" +
-           "3lC1pQcA5q0ioT3Mew8XV_cBCIID_pB-Yl__IFphjt9K3dUN7dOlcUPDx" +
-           "LMVmI5UMw9tDDAImR_fCu5Z-birPGT05fXMvvVcwq0E0Bhf9Lr4kkfZSw" +
-           "zRrfnN2-MEjKJdh6LvYgmbgYNioICIqMxa7GRdJzUGf42T8GXCgOZJRUU" +
-           "IqF2ZDSgJs_IWzoQo13W0MKxfsMpeU6-ppjwcA90hd1dR-tdYWqDJwEV" +
-           "9vSWN-rTlCLoJrtWRWZ7u1V0mKwmkyUuYP5rUvCkCdFC9AmPoAYutQdts" +
-           "_RQ_aGJ_4CWcB0lBmTwi1ZZYKP8dEZ87YJz0_qFlutzY78HVqdEFBqih-" +
-           "VRM3OR0ih5x6YUZ7CJrUmTyqXPwRkKEsbI9fTDKK-3osVhgtnm7HPykty" +
-           "4770-FMsnIoCtl1QVRdg4SUKop9uVobcFbleBaCOvi6gYsbMFd7Nck";
+   public static final String URL = "http://10.0.2.2/api/";
+   public static final String TOKEN = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSU" +
+           "zI1NiIsImp0aSI6IjYxZjg3ZWEyM2RlODdkOGU3NDQ4ODcxMTIxMzUyZjRkNGNhY" +
+           "jkwNDYxMGRlM2YxYzdmMmFkZTRkM2MyY2Y2NWQ0ZjkzMGI1NTE4YjIxYTRmIn0.eyJhd" +
+           "WQiOiI3IiwianRpIjoiNjFmODdlYTIzZGU4N2Q4ZTc0NDg4NzExMjEzNTJmNGQ0Y2Fi" +
+           "OTA0NjEwZGUzZjFjN2YyYWRlNGQzYzJjZjY1ZDRmOTMwYjU1MThiMjFhNGYiLCJpYXQi" +
+           "OjE1MzE5ODQwNTksIm5iZiI6MTUzMTk4NDA1OSwiZXhwIjoxNTYzNTIwMDU5LCJzdWIi" +
+           "OiIxIiwic2NvcGVzIjpbXX0.eS5T4AdZn7SuPU67whrEsleudEjPTZJSHEf8doSMLWkh" +
+           "WmLjrJ_AQ9fBt2gwPcbe9xXIftn66WQzQ1aLHg_O8SvBcM_uNLgMuzl6kuRBruolR0SqW" +
+           "YdtjOLkPIfGYCAWOG2CkN2yWYPIOiHiKxcBNWKZhPPKY3PrFZH-AnbsHgjLlyXalk55l" +
+           "vEZf21nPbsmEf_-z2YezNu3Rmg4gtoYhhIQeYg7unV8P79f4518bANEeCnJYkteQvb22" +
+           "K0aMGwPZlP_um4Hei6D4WZxGVsv2d9FzuTZXMOfLK_wyk0PY2bGwsle7XUaqBLZXhljW" +
+           "r0dtlW2B2AiDEozTbnt2V6X9CUAe8pWE9-1P89yYB_RJtIPuQz5kQXugo_7M2R2CMsSi" +
+           "rI0_SKAUBRp1a23cCxu9ou0T05GmL0utD51jhDAb4pePgtvRoa2WlgCymZaU2UIZEWPF" +
+           "M98bSEyvgJP3b5XToj2Tw5jukQo8h4gup2Xk3PlTDR8xSgo_XPnq1AulHSy4mYdXhg82" +
+           "ImvG1dQIQdkVfTz11XBtBtuPnHPmrd1R2p63UsGm95oJfB5HPQU6pf57FWSJ6wdQa6KE" +
+           "dZ7BoPeMR_DXt5A1GK6Tb3MzITbzxRUkl0y1nyqYHGBoXNp90KoHsB95Ej8eq4DbXXACQ" +
+           "funLYOdUpEWPpqV51w7xeNZ1c";
 }
 

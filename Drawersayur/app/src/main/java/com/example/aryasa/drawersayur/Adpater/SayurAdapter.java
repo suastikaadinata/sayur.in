@@ -6,24 +6,33 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.ToggleButton;
 
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
-import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.Model.Sayur;
+import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
 
 import java.util.ArrayList;
 
 public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHolder> {
+
     private Context mContext;
     private ArrayList<Sayur> mSayurlist;
-    View mView;
+    private Callbacks callbacks;
 
-    public SayurAdapter(Context mContext, ArrayList<Sayur> mSayurlist) {
+
+    public interface Callbacks {
+
+        void updateCart(Sayur sayur);
+    }
+
+
+    public SayurAdapter(Context mContext, ArrayList<Sayur> mSayurlist , Callbacks callbacks) {
+        this.callbacks = callbacks;
         this.mContext = mContext;
         this.mSayurlist = mSayurlist;
     }
@@ -40,7 +49,7 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
     }
 
     @Override
-    public void onBindViewHolder(final SayurViewHolder holder, int position) {
+    public void onBindViewHolder(final SayurViewHolder holder, final int position) {
         ImageLoader imageLoader = Singleton.getInstance(mContext).getImageLoader();
         imageLoader.get(mSayurlist.get(position).getFoto(), new ImageLoader.ImageListener() {
             @Override
@@ -56,6 +65,12 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
 
         holder.mTitle.setText(mSayurlist.get(position).getNama());
         holder.mHarga.setText(String.valueOf(mSayurlist.get(position).getHarga()));
+        holder.mButtonAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                callbacks.updateCart(mSayurlist.get(position));
+            }
+        });
 
     }
 
@@ -64,10 +79,11 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
         TextView mHarga;
         TextView mTitle;
         CardView mCardView;
-        ToggleButton mToggle;
+        Button mButtonAdd;
 
         public SayurViewHolder(View itemView) {
             super(itemView);
+            mButtonAdd = itemView.findViewById(R.id.button_tambah_sayur);
             mImage = itemView.findViewById(R.id.gambar_sayur);
             mTitle = itemView.findViewById(R.id.nama_sayur);
             mHarga = itemView.findViewById(R.id.harga_sayur);

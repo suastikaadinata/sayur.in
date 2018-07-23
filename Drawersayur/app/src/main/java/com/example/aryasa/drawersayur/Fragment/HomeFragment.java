@@ -4,8 +4,13 @@ package com.example.aryasa.drawersayur.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.BottomSheetDialog;
+import android.support.design.widget.BottomSheetDialogFragment;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,17 +18,17 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.aryasa.drawersayur.Adpater.CartAdapter;
 import com.example.aryasa.drawersayur.Adpater.SayurAdapter;
-import com.example.aryasa.drawersayur.Adpater.SayurListAdapter;
 import com.example.aryasa.drawersayur.Chart;
-import com.example.aryasa.drawersayur.Model.SayurListModel;
-import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.Model.Sayur;
+import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.ServerAPI.Server;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
 
@@ -32,15 +37,24 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BottomSheetDialogFragment implements SayurAdapter.Callbacks {
+    Context mContext;
+    BottomSheetDialog dialog;
     private String API_URL = Server.URL + "sayur/dijual";
     ArrayList<Sayur> listSayur = new ArrayList<Sayur>();
+    private ArrayList<Sayur> cartList;
+    private RecyclerView bottomSheetRecyclerview;
+    private CoordinatorLayout coordinatorLayout;
+    private BottomSheetBehavior behavior;
+    private View persistentbottomSheet;
+    private TextView cart;
+    private CartAdapter CartAdapter;
+    private SayurAdapter.Callbacks callbacks;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -51,10 +65,26 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         final View view = inflater.inflate(R.layout.fragment_home2, container, false);
-        final SayurAdapter sayurAdapter = new SayurAdapter(view.getContext(), listSayur);
+        mContext = view.getContext();
+        final SayurAdapter sayurAdapter = new SayurAdapter(mContext, listSayur, this);
         getSayurApi(API_URL, view, sayurAdapter);
+
+        //bottomsheet
+        cartList = new ArrayList<>();
+        coordinatorLayout = (CoordinatorLayout)view.findViewById(R.id.coordinator);
+        persistentbottomSheet = coordinatorLayout.findViewById(R.id.bottomsheet_sayur);
+        bottomSheetRecyclerview = coordinatorLayout.findViewById(R.id.recyclerview_bottom_sheet);
+        cart = (TextView)coordinatorLayout.findViewById(R.id.cart);
+        bottomSheetRecyclerview.setLayoutManager(new LinearLayoutManager(mContext));
+        CartAdapter = new CartAdapter(mContext,cartList);
+        bottomSheetRecyclerview.setAdapter(CartAdapter);
+        BottomSheetBehavior behavior = BottomSheetBehavior.from(persistentbottomSheet);
+
         return view;
     }
+
+
+
 
     public void getSayurApi(String url, final View view, final SayurAdapter sayur){
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
@@ -63,7 +93,7 @@ public class HomeFragment extends Fragment {
                 try{
                     for (int i = 0; i < response.length(); i++){
                         JSONObject jsonObject = response.getJSONObject(i);
-                        listSayur.add(new Sayur("http://192.168.42.41/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
+                        listSayur.add(new Sayur("http://10.0.2.2/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
                         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview1);
                         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                         recyclerView.setLayoutManager(gridLayoutManager);
@@ -81,6 +111,14 @@ public class HomeFragment extends Fragment {
         });
         Singleton.getInstance(this.getContext()).addToRequestQueue(jsonArrayRequest);
     }
+//    public void init_modal_bottomsheet() {
+//        View modalbottomsheet = getLayoutInflater().inflate(R.layout.bottomsheet_layout, null);
+//
+//        dialog = new BottomSheetDialog(mContext);
+//        dialog.setContentView(modalbottomsheet);
+//        dialog.setCanceledOnTouchOutside(false);
+//        dialog.setCancelable(false);
+//    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -100,5 +138,11 @@ public class HomeFragment extends Fragment {
         }
         return super.onOptionsItemSelected(item);
     }
+    public void updateCart(Sayur cartlist) {
+        cartList.add(cartlist);
+        cart.setText("CART ("+cartList.size()+")");
+        CartAdapter.addCartItems((ArrayList<Sayur>) cartList);
+    }
+
 
 }

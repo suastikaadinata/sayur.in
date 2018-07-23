@@ -1,7 +1,7 @@
 package com.example.aryasa.drawersayur.Fragment;
 
-import android.support.v4.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -10,33 +10,22 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.aryasa.drawersayur.Adpater.SayurGudangAdapter;
 import com.example.aryasa.drawersayur.Adpater.SayurListAdapter;
-import com.example.aryasa.drawersayur.Model.Sayur;
-import com.example.aryasa.drawersayur.Model.SayurGudangModel;
 import com.example.aryasa.drawersayur.Model.SayurListModel;
 import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.ServerAPI.Server;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
-
-import android.content.Context;
-import android.os.Bundle;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 
 
 public class AdminListSayur extends Fragment {
@@ -64,7 +53,7 @@ public class AdminListSayur extends Fragment {
                 try{
                     for (int i = 0; i < response.length(); i++){
                         JSONObject jsonObject = response.getJSONObject(i);
-                        listSayur.add(new SayurListModel("http://192.168.42.41/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
+                        listSayur.add(new SayurListModel("http://10.0.2.2/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
                         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewadminlistsayur);
                         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                         recyclerView.setLayoutManager(gridLayoutManager);

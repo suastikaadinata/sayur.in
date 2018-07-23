@@ -12,15 +12,17 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.aryasa.drawersayur.Fragment.FragmentHelp;
 import com.example.aryasa.drawersayur.Fragment.FragmentNotifikasi;
 import com.example.aryasa.drawersayur.Fragment.HomeFragment;
 
+import butterknife.ButterKnife;
+
 public class Drawer extends AppCompatActivity  {
+
+
     Dialog myDialog;
     String id, username;
     SharedPreferences sharedpreferences;
@@ -35,17 +37,20 @@ public class Drawer extends AppCompatActivity  {
     public static final String TAG_NOMOR_TELEPON = "nomor_telepon";
     public static final String my_shared_preferences = "my_shared_preferences";
     public static final String session_status = "session_status";
+
     Boolean session = false;
     String name, nameIntent;
     String email, emailIntent;
     String nomor_telepon, nomor_teleponIntent;
     Intent intent;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_bar_drawer);
         toolbar = getSupportActionBar();
+        ButterKnife.bind(this);
         myDialog = new Dialog(this);
 
         sharedpreferences = getSharedPreferences(Login.my_shared_preferences, Context.MODE_PRIVATE);
@@ -60,7 +65,9 @@ public class Drawer extends AppCompatActivity  {
         emailIntent = getIntent().getStringExtra(TAG_EMAIL);
         nomor_teleponIntent = getIntent().getStringExtra(TAG_NOMOR_TELEPON);
 
+
         bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
+
 
         //Untuk mengganti icon login ke akun jika user sudah login
         if(!session){
@@ -140,6 +147,9 @@ public class Drawer extends AppCompatActivity  {
                 return true;
             }
         });
+
+
+
     }
 
     private void loadFragment(Fragment fragment) {
@@ -148,6 +158,7 @@ public class Drawer extends AppCompatActivity  {
         transaction.replace(R.id.frameLayoutDrawer, fragment);
         transaction.addToBackStack(null);
         transaction.commit();
+    }
     }
 
 
@@ -178,9 +189,8 @@ public class Drawer extends AppCompatActivity  {
 //    }
 
 
-    public void ShowPopup(View v) {
-        myDialog.setContentView(R.layout.popupbtnadd);
-        myDialog.show();
-    }
-}
+//    public void ShowPopup(View v) {
+//        myDialog.setContentView(R.layout.popupbtnadd);
+//        myDialog.show();
+//    }
 

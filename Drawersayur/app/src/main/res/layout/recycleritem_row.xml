@@ -58,6 +58,7 @@
 
             <Button
                 android:elevation="5dp"
+                android:id="@+id/button_tambah_sayur"
                 android:layout_gravity="center"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -67,7 +68,6 @@
                 android:drawableLeft="@drawable/ic_shopping_basket"
                 android:textColor="#ffffff"
                 android:layout_marginTop="15dp"
-                android:onClick="ShowPopup"
                 tools:targetApi="lollipop" />
         </LinearLayout>
     </android.support.v7.widget.CardView>
