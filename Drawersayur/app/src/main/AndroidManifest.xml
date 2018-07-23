@@ -25,7 +25,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name=".Drawer"
+            android:name=".Admin.AdminHome"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -43,18 +43,14 @@
         <activity android:name=".Login" />
         <activity android:name=".Register" />
         <activity android:name=".Process" />
-        <activity android:name=".History" />
         <activity android:name=".Chatting" />
         <activity android:name=".Profile" />
         <activity android:name=".Admin.Admintambahsayur" />
         <activity android:name=".Admin.Adminubahsayur" />
-        <activity android:name=".Admin.AdminSayurGudang" />
         <activity android:name=".Admin.Adminviewuser" />
         <activity android:name=".Admin.Admindetailtransaksi" />
-        <activity android:name=".Admin.Adminhistory" />
-        <activity android:name=".Admin.Adminhomeuser" />
-        <activity android:name=".Admin.AdminHome" />
-        <activity android:name=".Admin.AdminProfile"></activity>
+        <activity android:name=".Drawer" />
+        <activity android:name=".Admin.AdminProfile" />
+        <activity android:name=".MapsDirection"></activity>
     </application>
-
 </manifest>

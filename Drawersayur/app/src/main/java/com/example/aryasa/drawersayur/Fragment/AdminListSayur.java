@@ -64,7 +64,7 @@ public class AdminListSayur extends Fragment {
                 try{
                     for (int i = 0; i < response.length(); i++){
                         JSONObject jsonObject = response.getJSONObject(i);
-                        listSayur.add(new SayurListModel("http://192.168.1.18/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
+                        listSayur.add(new SayurListModel("http://192.168.42.41/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
                         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewadminlistsayur);
                         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                         recyclerView.setLayoutManager(gridLayoutManager);

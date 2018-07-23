@@ -33,7 +33,13 @@
                     android:textColor="#ff8200"
                     android:textSize="20sp" />
             </FrameLayout>
-
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="97dp"
@@ -115,11 +121,11 @@
 
 
             </RelativeLayout>
-
-            <FrameLayout
+            </android.support.v7.widget.CardView>
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:background="#ffffff"
                 android:padding="10dp">
 
@@ -134,8 +140,36 @@
                     android:textSize="20sp" />
 
 
-            </FrameLayout>
+                <TextView
+                    android:id="@+id/TextView_ubah_alamat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginBottom="0dp"
+                    android:layout_toLeftOf="@+id/buttonmap"
+                    android:text="Lihat"
+                    android:textColor="#a3a3a3"
+                    android:textSize="14sp" />
 
+                <Button
+                    android:id="@+id/buttonmap"
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/ic_location_on_gray_24dp" />
+
+
+            </RelativeLayout>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="77dp"
@@ -178,11 +212,13 @@
                     android:textStyle="italic" />
             </RelativeLayout>
 
+            </android.support.v7.widget.CardView>
+
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:background="#ffffff"
                 android:padding="10dp">
 
@@ -197,7 +233,13 @@
                     android:textSize="20sp" />
 
             </FrameLayout>
-
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
@@ -231,10 +273,11 @@
                     android:textStyle="bold" />
             </RelativeLayout>
 
+            </android.support.v7.widget.CardView>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:background="#ffffff"
                 android:padding="10dp">
 
@@ -248,7 +291,13 @@
                     android:textColor="#ff8200"
                     android:textSize="20sp" />
             </FrameLayout>
-
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="80dp"
@@ -295,11 +344,11 @@
 
             </RelativeLayout>
 
-
+            </android.support.v7.widget.CardView>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:background="#ffffff"
                 android:padding="10dp">
 
@@ -313,7 +362,13 @@
                     android:textColor="#ff8200"
                     android:textSize="20sp" />
             </FrameLayout>
-
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="90dp"
@@ -395,12 +450,12 @@
                     android:textStyle="bold" />
 
             </RelativeLayout>
-
+            </android.support.v7.widget.CardView>
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:background="#ffffff"
                 android:padding="10dp">
 
@@ -414,7 +469,13 @@
                     android:textColor="#ff8200"
                     android:textSize="20sp" />
             </FrameLayout>
-
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
@@ -467,25 +528,7 @@
                     android:textSize="12sp" />
             </RelativeLayout>
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="55dp"
-                android:layout_marginRight="55dp"
-                android:layout_marginTop="20dp">
-
-                <Button
-                    android:id="@+id/button_simpan"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/button_custom"
-                    android:text="SIMPAN"
-                    android:textColor="#ffffff"
-                    android:textSize="20dp" />
-            </RelativeLayout>
+            </android.support.v7.widget.CardView>
         </LinearLayout>
 
     </ScrollView>

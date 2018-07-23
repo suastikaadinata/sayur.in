@@ -174,8 +174,8 @@
                         android:id="@+id/textView_Lokasi"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="2dp"
-                        android:layout_toRightOf="@id/LocationView"
+                        android:layout_alignParentTop="true"
+                        android:layout_toRightOf="@+id/LocationView"
                         android:text="Jl. Soekarno Hatta No .12 , Gang kuda , Lowokwaru , Malang"
                         android:textColor="#5faf50"
                         android:textSize="16sp" />

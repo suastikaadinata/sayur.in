@@ -4,7 +4,7 @@ public class Server {
     //untuk emu genymotion menggunakan ip = http://10.0.3.2/
     //untuk emu avd android menggunakan ip = http://10.0.2.2/
     //untuk langsung coba dihandphone menggunakan jaringan yang sama dan liat ipnya contoh http://192.168.1.14/
-   public static final String URL = "http://192.168.1.18/api/";
+   public static final String URL = "http://192.168.42.41/api/";
    public static final String TOKEN = "Bearer eyJ0eXAiOiJKV1QiLCJh" +
            "bGciOiJSUzI1NiIsImp0aSI6IjZiZmZiNmVjZGFlYzhhNjlhYzE" +
            "xYTVmZjJmMTRhNGE2OTMyOWVmNmRiNDQ4NGE4N2VjOWY1Yzk2MGR" +

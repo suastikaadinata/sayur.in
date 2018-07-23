@@ -18,7 +18,7 @@
                                 <PersistentState>
                                   <option name="values">
                                     <map>
-                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/image/ic_edit_black_24dp.xml" />
+                                      <entry key="url" value="jar:file:/C:/Program%20Files/Android/Android%20Studio/plugins/android/lib/android.jar!/images/material_design_icons/communication/ic_location_on_black_24dp.xml" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -29,8 +29,8 @@
                         <option name="values">
                           <map>
                             <entry key="color" value="a3a3a3" />
-                            <entry key="outputName" value="ic_edit_gray_24dp" />
-                            <entry key="sourceFile" value="D:\AndroidStudio\Projects\fresh-carrot.svg" />
+                            <entry key="outputName" value="ic_location_on_gray_24dp" />
+                            <entry key="sourceFile" value="C:\Users\NIGEL" />
                           </map>
                         </option>
                       </PersistentState>

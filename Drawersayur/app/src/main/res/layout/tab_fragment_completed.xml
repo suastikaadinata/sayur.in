@@ -3,39 +3,28 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".Fragment.TabFragmentCompleted">
 
-
+    <android.support.v7.widget.CardView
+        android:id="@+id/carddviewuser"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="9dp">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#eae7e7"
         android:orientation="vertical">
-
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="45dp"
-            android:background="#ffffff"
-            android:padding="10dp">
-
-            <TextView
-                android:id="@+id/textView1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="10dp"
-                android:layout_marginStart="10dp"
-                android:text="History"
-                android:textColor="#ff8200"
-                android:textSize="20sp" />
-        </FrameLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="110dp"
+            android:layout_height="90dp"
             android:layout_marginTop="2dp"
-            android:background="#ffffff"
-            android:padding="10dp">
+            android:background="#ffffff">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -84,18 +73,18 @@
                 android:textColor="#5faf50"
                 android:textSize="14sp"
                 />
+
             <TextView
-                android:id="@+id/textViewnote1"
+                android:id="@+id/textView_barang3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@id/imageView"
-                android:layout_marginLeft="5dp"
                 android:layout_below="@id/textView_barang2"
-                android:text="Kangkung (5)"
+                android:layout_marginLeft="5dp"
                 android:layout_marginTop="2dp"
+                android:layout_toRightOf="@id/imageView"
+                android:text="Kangkung (5)"
                 android:textColor="#5faf50"
-                android:textSize="14sp"
-                />
+                android:textSize="14sp" />
 
             <TextView
                 android:id="@+id/textView_kirim"
@@ -145,5 +134,5 @@
 
         </RelativeLayout>
     </LinearLayout>
-
+    </android.support.v7.widget.CardView>
 </android.support.constraint.ConstraintLayout>
