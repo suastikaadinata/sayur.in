@@ -6,6 +6,7 @@
     android:layout_height="300dp"
     android:layout_alignParentBottom="true"
     android:orientation="vertical"
+    android:background="#ffffff"
     app:behavior_hideable="false"
     app:behavior_peekHeight="50dp"
     app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
@@ -13,35 +14,51 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:orientation="horizontal"
-        android:background="@color/colorPrimary"
-        >
+        android:background="@drawable/custom_layout_bottom_sheet2"
+        android:orientation="horizontal">
 
-        <TextView
+        <ImageView
             android:id="@+id/cart"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:onClick="ExpandBottomSheet"
-            android:text="CART"
-            android:padding="5dp"
             android:gravity="center"
-            android:textStyle="bold"
-            android:textColor="@android:color/white" />
+            android:onClick="ExpandBottomSheet"
+            android:padding="5dp"
+            android:src="@drawable/ic_shopping_basket_green_24dp" />
+
+        <TextView
+            android:id="@+id/jumlah_cart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="0"
+            android:layout_toRightOf="@+id/cart"
+            android:textColor="@color/colorTextGreen"/>
+
+        <TextView
+            android:id="@+id/Jumlah_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="75dp"
+            android:text="Rp 27.000"
+            android:textColor="@color/colorTextGreen"/>
 
         <TextView
             android:id="@+id/pay"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="PAY"
-            android:padding="5dp"
-            android:textStyle="bold"
-            android:onClick="pay"
-            android:textColor="@android:color/white"
+            android:layout_alignParentRight="true"
             android:gravity="center_vertical"
-            android:layout_alignParentRight="true" />
+            android:onClick="pay"
+            android:padding="5dp"
+            android:text="Checkout"
+            android:textColor="#5FAF50"
+            android:textStyle="bold" />
 
     </RelativeLayout>
 
@@ -53,6 +70,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview_bottom_sheet"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
     </LinearLayout>
 </LinearLayout>

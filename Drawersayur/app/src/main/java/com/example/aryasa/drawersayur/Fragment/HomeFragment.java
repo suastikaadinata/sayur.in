@@ -18,6 +18,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -35,6 +36,7 @@ import com.example.aryasa.drawersayur.Singleton.Singleton;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -74,7 +76,7 @@ public class HomeFragment extends BottomSheetDialogFragment implements SayurAdap
         coordinatorLayout = (CoordinatorLayout)view.findViewById(R.id.coordinator);
         persistentbottomSheet = coordinatorLayout.findViewById(R.id.bottomsheet_sayur);
         bottomSheetRecyclerview = coordinatorLayout.findViewById(R.id.recyclerview_bottom_sheet);
-        cart = (TextView)coordinatorLayout.findViewById(R.id.cart);
+        cart = (TextView) coordinatorLayout.findViewById(R.id.jumlah_cart);
         bottomSheetRecyclerview.setLayoutManager(new LinearLayoutManager(mContext));
         CartAdapter = new CartAdapter(mContext,cartList);
         bottomSheetRecyclerview.setAdapter(CartAdapter);
@@ -93,7 +95,7 @@ public class HomeFragment extends BottomSheetDialogFragment implements SayurAdap
                 try{
                     for (int i = 0; i < response.length(); i++){
                         JSONObject jsonObject = response.getJSONObject(i);
-                        listSayur.add(new Sayur("http://10.0.2.2/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
+                        listSayur.add(new Sayur("http://192.168.42.41/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
                         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview1);
                         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                         recyclerView.setLayoutManager(gridLayoutManager);
@@ -140,7 +142,7 @@ public class HomeFragment extends BottomSheetDialogFragment implements SayurAdap
     }
     public void updateCart(Sayur cartlist) {
         cartList.add(cartlist);
-        cart.setText("CART ("+cartList.size()+")");
+        cart.setText(String.valueOf(cartList.size()));
         CartAdapter.addCartItems((ArrayList<Sayur>) cartList);
     }
 

@@ -33,93 +33,99 @@
                     android:textColor="#ff8200"
                     android:textSize="20sp" />
             </FrameLayout>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="97dp"
+                    android:layout_marginTop="2dp"
+                    android:background="#ffffff"
+                    android:padding="10dp">
 
+                    <ImageView
+                        android:id="@+id/imageView"
+                        android:layout_width="77dp"
+                        android:layout_height="77dp"
+                        android:layout_marginLeft="10dp"
+                        android:contentDescription="profile image"
+                        android:src="@mipmap/ic_launcher" />
+
+                    <TextView
+                        android:id="@+id/textView_namaSayur"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@id/imageView"
+                        android:text="Bayam"
+                        android:textColor="#5faf50"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView_namaSayur"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toRightOf="@id/imageView"
+                        android:text="harga / ikat"
+                        android:textColor="#afafaf"
+                        android:textSize="12sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/textView_hargaSayur"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView3"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toRightOf="@id/imageView"
+                        android:text="Rp. 12.000"
+                        android:textColor="#ff8200"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/textViewnote1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textView_hargaSayur"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toRightOf="@id/imageView"
+                        android:text="note : Yang segar."
+                        android:textColor="#afafaf"
+                        android:textSize="12sp"
+                        android:textStyle="italic" />
+
+                    <TextView
+                        android:id="@+id/textView_jumlahSayur"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_weight="1"
+                        android:text="Jumlah : 1"
+                        android:textAlignment="center"
+                        android:textColor="#5faf50"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="97dp"
-                android:layout_marginTop="2dp"
-                android:background="#ffffff"
-                android:padding="10dp">
-
-                <ImageView
-                    android:id="@+id/imageView"
-                    android:layout_width="77dp"
-                    android:layout_height="77dp"
-                    android:layout_marginLeft="10dp"
-                    android:contentDescription="profile image"
-                    android:src="@mipmap/ic_launcher" />
-
-                <TextView
-                    android:id="@+id/textView_namaSayur"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_toRightOf="@id/imageView"
-                    android:text="Bayam"
-                    android:textColor="#5faf50"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/textView_namaSayur"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_toRightOf="@id/imageView"
-                    android:text="harga / ikat"
-                    android:textColor="#afafaf"
-                    android:textSize="12sp"
-                    android:textStyle="italic" />
-
-                <TextView
-                    android:id="@+id/textView_hargaSayur"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/textView3"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_toRightOf="@id/imageView"
-                    android:text="Rp. 12.000"
-                    android:textColor="#ff8200"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/textViewnote1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/textView_hargaSayur"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="2dp"
-                    android:layout_toRightOf="@id/imageView"
-                    android:text="note : Yang segar."
-                    android:textColor="#afafaf"
-                    android:textSize="12sp"
-                    android:textStyle="italic" />
-
-                <TextView
-                    android:id="@+id/textView_jumlahSayur"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_weight="1"
-                    android:text="Jumlah : 1"
-                    android:textAlignment="center"
-                    android:textColor="#5faf50"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-
-
-            </RelativeLayout>
-
-            <FrameLayout
-                android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:background="#ffffff"
                 android:padding="10dp">
 
@@ -134,55 +140,85 @@
                     android:textSize="20sp" />
 
 
-            </FrameLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="77dp"
-                android:layout_marginTop="2dp"
-                android:background="#ffffff"
-                android:padding="10dp">
-
-                <ImageView
-                    android:id="@+id/LocationView"
-                    android:layout_width="40dp"
-                    android:layout_height="30dp"
-                    android:layout_marginLeft="10dp"
-                    android:contentDescription="profile image"
-                    android:src="@drawable/ic_location_on_black_24dp" />
-
-
                 <TextView
-                    android:id="@+id/textView_Lokasi"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dp"
-                    android:layout_toRightOf="@id/LocationView"
-                    android:text="Jl. Soekarno Hatta No .12 , Gang kuda , Lowokwaru , Malang"
-                    android:textColor="#5faf50"
-                    android:textSize="16sp" />
-
-
-                <TextView
-                    android:id="@+id/textViewnote2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/TextView_ubah_alamat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="34dp"
                     android:layout_alignParentBottom="true"
-                    android:layout_alignParentLeft="true"
-                    android:layout_below="@id/LocationView"
-                    android:layout_marginLeft="15dp"
-                    android:layout_marginTop="13dp"
-                    android:text="note : Tanyakan Tetangga"
-                    android:textColor="#afafaf"
-                    android:textSize="12sp"
-                    android:textStyle="italic" />
+                    android:layout_marginBottom="0dp"
+                    android:layout_toLeftOf="@+id/buttonmap"
+                    android:text="Lihat"
+                    android:textColor="#a3a3a3"
+                    android:textSize="14sp" />
+
+                <Button
+                    android:id="@+id/buttonmap"
+                    android:layout_width="25dp"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/ic_location_on_gray_24dp" />
+
+
             </RelativeLayout>
+
+
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="77dp"
+                    android:layout_marginTop="2dp"
+                    android:background="#ffffff"
+                    android:padding="10dp">
+
+                    <ImageView
+                        android:id="@+id/LocationView"
+                        android:layout_width="40dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="10dp"
+                        android:contentDescription="profile image"
+                        android:src="@drawable/ic_location_on_black_24dp" />
+
+
+                    <TextView
+                        android:id="@+id/textView_Lokasi"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="2dp"
+                        android:layout_toRightOf="@id/LocationView"
+                        android:text="Jl. Soekarno Hatta No .12 , Gang kuda , Lowokwaru , Malang"
+                        android:textColor="#5faf50"
+                        android:textSize="16sp" />
+
+
+                    <TextView
+                        android:id="@+id/textViewnote2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_below="@id/LocationView"
+                        android:layout_marginLeft="15dp"
+                        android:layout_marginTop="13dp"
+                        android:text="note : Tanyakan Tetangga"
+                        android:textColor="#afafaf"
+                        android:textSize="12sp"
+                        android:textStyle="italic" />
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
 
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:background="#ffffff"
                 android:padding="10dp">
 
@@ -197,44 +233,51 @@
                     android:textSize="20sp" />
 
             </FrameLayout>
-
-            <RelativeLayout
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="2dp"
-                android:background="#ffffff"
-                android:padding="10dp">
-
-
-                <TextView
-                    android:id="@+id/textViewTanggal"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginStart="10dp"
-                    android:layout_toLeftOf="@id/textViewjam"
-                    android:text="Rabu , 18 April 2018"
-                    android:textColor="#5faf50"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:layout_height="45dp"
+                    android:layout_marginTop="2dp"
+                    android:background="#ffffff"
+                    android:padding="10dp">
 
 
-                <TextView
-                    android:id="@+id/textViewjam"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"
-                    android:text="08.00 WIB"
-                    android:textColor="#5faf50"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
-            </RelativeLayout>
+                    <TextView
+                        android:id="@+id/textViewTanggal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_toLeftOf="@id/textViewjam"
+                        android:text="Rabu , 18 April 2018"
+                        android:textColor="#5faf50"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
+
+                    <TextView
+                        android:id="@+id/textViewjam"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:text="08.00 WIB"
+                        android:textColor="#5faf50"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:background="#ffffff"
                 android:padding="10dp">
 
@@ -248,58 +291,64 @@
                     android:textColor="#ff8200"
                     android:textSize="20sp" />
             </FrameLayout>
-
-            <RelativeLayout
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:layout_marginTop="2dp"
-                android:background="#ffffff"
-                android:padding="10dp">
-
-
-                <TextView
-                    android:id="@+id/textViewCOD"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="31dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toLeftOf="@id/checkbox1"
-                    android:text="Cash ON Delivery (COD)"
-                    android:textColor="#5faf50"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/textViewTransfer"
-                    android:layout_width="match_parent"
-                    android:layout_height="31dp"
-                    android:layout_below="@+id/textViewCOD"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toLeftOf="@id/checkbox2"
-                    android:text="Transfer"
-                    android:textColor="#5faf50"
-                    android:textSize="16sp" />
-
-                <CheckBox
-                    android:id="@+id/checkbox1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp" />
-
-                <CheckBox
-                    android:id="@+id/checkbox2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@+id/checkbox1"
-                    android:layout_marginRight="10dp" />
-
-            </RelativeLayout>
+                    android:layout_height="80dp"
+                    android:layout_marginTop="2dp"
+                    android:background="#ffffff"
+                    android:padding="10dp">
 
 
+                    <TextView
+                        android:id="@+id/textViewCOD"
+                        android:layout_width="match_parent"
+                        android:layout_height="31dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toLeftOf="@id/checkbox1"
+                        android:text="Cash ON Delivery (COD)"
+                        android:textColor="#5faf50"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/textViewTransfer"
+                        android:layout_width="match_parent"
+                        android:layout_height="31dp"
+                        android:layout_below="@+id/textViewCOD"
+                        android:layout_marginLeft="10dp"
+                        android:layout_toLeftOf="@id/checkbox2"
+                        android:text="Transfer"
+                        android:textColor="#5faf50"
+                        android:textSize="16sp" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp" />
+
+                    <CheckBox
+                        android:id="@+id/checkbox2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@+id/checkbox1"
+                        android:layout_marginRight="10dp" />
+
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:background="#ffffff"
                 android:padding="10dp">
 
@@ -313,94 +362,100 @@
                     android:textColor="#ff8200"
                     android:textSize="20sp" />
             </FrameLayout>
-
-            <RelativeLayout
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
-                android:layout_height="90dp"
-                android:layout_marginTop="2dp"
-                android:background="#ffffff"
-                android:padding="10dp">
-
-
-                <TextView
-                    android:id="@+id/textViewhargabarang"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
+                    android:layout_height="90dp"
                     android:layout_marginTop="2dp"
-                    android:layout_toLeftOf="@id/textViewhargabarang2"
-                    android:text="Harga Barang"
-                    android:textColor="#5faf50"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/textViewbiayapengiriman"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/textViewhargabarang"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="3dp"
-                    android:layout_toLeftOf="@id/textViewbiayapengiriman2"
-                    android:text="Biaya Pengiriman"
-                    android:textColor="#5faf50"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/textViewTotal"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/textViewbiayapengiriman"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="3dp"
-                    android:text="Total"
-                    android:textColor="#5faf50"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:background="#ffffff"
+                    android:padding="10dp">
 
 
-                <TextView
-                    android:id="@+id/textViewhargabarang2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="2dp"
-                    android:text="Rp. 12.000,-"
-                    android:textColor="#ff8200"
-                    android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/textViewhargabarang"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="2dp"
+                        android:layout_toLeftOf="@id/textViewhargabarang2"
+                        android:text="Harga Barang"
+                        android:textColor="#5faf50"
+                        android:textSize="14sp" />
 
-                <TextView
-                    android:id="@+id/textViewbiayapengiriman2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@id/textViewhargabarang2"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="3dp"
-                    android:text="Rp. 3.000,-"
-                    android:textColor="#ff8200"
-                    android:textSize="14sp" />
+                    <TextView
+                        android:id="@+id/textViewbiayapengiriman"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textViewhargabarang"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="3dp"
+                        android:layout_toLeftOf="@id/textViewbiayapengiriman2"
+                        android:text="Biaya Pengiriman"
+                        android:textColor="#5faf50"
+                        android:textSize="14sp" />
 
-                <TextView
-                    android:id="@+id/textViewTotal2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_below="@id/textViewbiayapengiriman2"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginTop="3dp"
-                    android:text="Rp. 15.000,-"
-                    android:textColor="#ff8200"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/textViewTotal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/textViewbiayapengiriman"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="3dp"
+                        android:text="Total"
+                        android:textColor="#5faf50"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
-            </RelativeLayout>
 
+                    <TextView
+                        android:id="@+id/textViewhargabarang2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="2dp"
+                        android:text="Rp. 12.000,-"
+                        android:textColor="#ff8200"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/textViewbiayapengiriman2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/textViewhargabarang2"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="3dp"
+                        android:text="Rp. 3.000,-"
+                        android:textColor="#ff8200"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/textViewTotal2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_below="@id/textViewbiayapengiriman2"
+                        android:layout_marginRight="10dp"
+                        android:layout_marginTop="3dp"
+                        android:text="Rp. 15.000,-"
+                        android:textColor="#ff8200"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+            </android.support.v7.widget.CardView>
 
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="10dp"
                 android:background="#ffffff"
                 android:padding="10dp">
 
@@ -414,78 +469,66 @@
                     android:textColor="#ff8200"
                     android:textSize="20sp" />
             </FrameLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="100dp"
-                android:layout_marginTop="2dp"
-                android:background="#ffffff"
-                android:padding="10dp">
-                <Button
-                    android:id="@+id/buttonDikonfirmasi"
-                    android:layout_width="100dp"
-                    android:layout_height="28dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/button_custom_gray"
-                    android:text="Dikonfirmasi"
-                    android:textColor="#5faf50"
-                    android:textSize="12sp" />
-                <Button
-                    android:id="@+id/buttonMenungguPembayaran"
-                    android:layout_width="170dp"
-                    android:layout_height="28dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:layout_toRightOf="@id/buttonDikonfirmasi"
-                    android:layout_toLeftOf="@id/buttonDikirim"
-                    android:background="@drawable/button_custom_gray"
-                    android:text="Menunggu Pembayaran"
-                    android:textColor="#5faf50"
-                    android:textSize="12sp" />
-                <Button
-                    android:id="@+id/buttonDikirim"
-                    android:layout_width="70dp"
-                    android:layout_height="28dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@drawable/button_custom_gray"
-                    android:text="Dikirm"
-                    android:layout_alignParentRight="true"
-                    android:textColor="#5faf50"
-                    android:textSize="12sp" />
-                <Button
-                    android:id="@+id/buttonSelesai"
-                    android:layout_width="70dp"
-                    android:layout_height="28dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginTop="10dp"
-                    android:background="@drawable/button_custom_gray"
-                    android:text="Selesai"
-                    android:layout_below="@+id/buttonDikonfirmasi"
-                    android:textColor="#5faf50"
-                    android:textSize="12sp" />
-            </RelativeLayout>
-
-            <RelativeLayout
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:layout_marginLeft="55dp"
-                android:layout_marginRight="55dp"
-                android:layout_marginTop="20dp">
-
-                <Button
-                    android:id="@+id/button_simpan"
+                android:layout_gravity="center"
+                android:layout_margin="4dp"
+                app:cardElevation="3dp"
+                app:cardUseCompatPadding="true">
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentTop="true"
-                    android:layout_centerHorizontal="true"
-                    android:background="@drawable/button_custom"
-                    android:text="SIMPAN"
-                    android:textColor="#ffffff"
-                    android:textSize="20dp" />
-            </RelativeLayout>
+                    android:layout_height="100dp"
+                    android:layout_marginTop="2dp"
+                    android:background="#ffffff"
+                    android:padding="10dp">
+                    <Button
+                        android:id="@+id/buttonDikonfirmasi"
+                        android:layout_width="100dp"
+                        android:layout_height="28dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_custom_gray"
+                        android:text="Dikonfirmasi"
+                        android:textColor="#5faf50"
+                        android:textSize="12sp" />
+                    <Button
+                        android:id="@+id/buttonMenungguPembayaran"
+                        android:layout_width="170dp"
+                        android:layout_height="28dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_toRightOf="@id/buttonDikonfirmasi"
+                        android:layout_toLeftOf="@id/buttonDikirim"
+                        android:background="@drawable/button_custom_gray"
+                        android:text="Menunggu Pembayaran"
+                        android:textColor="#5faf50"
+                        android:textSize="12sp" />
+                    <Button
+                        android:id="@+id/buttonDikirim"
+                        android:layout_width="70dp"
+                        android:layout_height="28dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@drawable/button_custom_gray"
+                        android:text="Dikirm"
+                        android:layout_alignParentRight="true"
+                        android:textColor="#5faf50"
+                        android:textSize="12sp" />
+                    <Button
+                        android:id="@+id/buttonSelesai"
+                        android:layout_width="70dp"
+                        android:layout_height="28dp"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/button_custom_gray"
+                        android:text="Selesai"
+                        android:layout_below="@+id/buttonDikonfirmasi"
+                        android:textColor="#5faf50"
+                        android:textSize="12sp" />
+                </RelativeLayout>
+
+            </android.support.v7.widget.CardView>
         </LinearLayout>
 
     </ScrollView>

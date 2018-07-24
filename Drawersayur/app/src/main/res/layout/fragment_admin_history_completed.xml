@@ -1,15 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    tools:context=".Fragment.FragmentAdminHistoryCompleted">
 
-    <TextView
-        android:id="@+id/textViewCompleted"
-        android:layout_width="wrap_content"
+    <android.support.v7.widget.CardView
+        android:id="@+id/carddviewuser"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:text="Tab Completed"
-        android:textAppearance="?android:attr/textAppearanceLarge"/>
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        app:cardElevation="5dp"
+        app:cardUseCompatPadding="true"
+        app:contentPadding="9dp">
 
-</RelativeLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="148dp"
+                android:layout_marginTop="2dp"
+                android:background="#ffffff"
+                >
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="77dp"
+                    android:layout_height="77dp"
+                    android:layout_marginLeft="10dp"
+                    android:contentDescription="profile image"
+                    android:src="@mipmap/ic_launcher_round" />
+
+                <TextView
+                    android:id="@+id/textView_barang"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageView"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toLeftOf="@id/textView_kirim"
+                    android:text="Barang :"
+                    android:layout_marginTop="5dp"
+                    android:textColor="#5faf50"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_barang1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageView"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="2dp"
+                    android:layout_toLeftOf="@id/textView_tanggal"
+                    android:layout_below="@id/textView_barang"
+                    android:text="Bayam (2)"
+                    android:textColor="#5faf50"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/textView_barang2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageView"
+                    android:layout_marginLeft="5dp"
+                    android:layout_toLeftOf="@id/textView_jam"
+                    android:layout_below="@id/textView_barang1"
+                    android:layout_marginTop="2dp"
+                    android:text="Bawang (1)"
+                    android:textColor="#5faf50"
+                    android:textSize="14sp"
+                    />
+                <TextView
+                    android:id="@+id/textView_barang3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageView"
+                    android:layout_marginLeft="5dp"
+                    android:layout_below="@id/textView_barang2"
+                    android:text="Kangkung (5)"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#5faf50"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/textViewKodeTransaksi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageView"
+                    android:layout_marginLeft="5dp"
+                    android:layout_below="@id/textView_barang3"
+                    android:text="Kode Transaksi : XXX123"
+                    android:layout_marginTop="10dp"
+                    android:textColor="#ff8200"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:id="@+id/textViewStatus"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageView"
+                    android:layout_marginLeft="5dp"
+                    android:layout_below="@id/textViewKodeTransaksi"
+                    android:text="Status : Belum Dibayar"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#ff8200"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    />
+
+
+
+                <TextView
+                    android:id="@+id/textView_kirim"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="1"
+                    android:layout_marginRight="10dp"
+                    android:text="Dikirim :"
+                    android:textAlignment="center"
+                    android:textColor="#ff8200"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/textView_tanggal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_weight="1"
+                    android:layout_below="@id/textView_kirim"
+                    android:text="18 04 2018"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="2dp"
+                    android:textAlignment="center"
+                    android:textColor="#ff8200"
+                    android:textSize="14sp"
+                    />
+
+                <TextView
+                    android:id="@+id/textView_jam"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_weight="1"
+                    android:layout_below="@id/textView_tanggal"
+                    android:text="08.00 WIB"
+                    android:layout_marginTop="2dp"
+                    android:textAlignment="center"
+                    android:textColor="#ff8200"
+                    android:layout_marginRight="10dp"
+                    android:textSize="14sp"
+                    />
+
+
+
+            </RelativeLayout>
+        </LinearLayout>
+    </android.support.v7.widget.CardView>
+</android.support.constraint.ConstraintLayout>
