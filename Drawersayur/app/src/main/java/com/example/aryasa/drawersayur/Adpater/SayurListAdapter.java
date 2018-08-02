@@ -44,7 +44,7 @@ public class SayurListAdapter extends RecyclerView.Adapter<SayurListAdapter.Sayu
     }
 
     @Override
-    public void onBindViewHolder(final SayurlistViewHolder holder, int position) {
+    public void onBindViewHolder(final SayurlistViewHolder holder, final int position) {
         ImageLoader imageLoader = Singleton.getInstance(mContext).getImageLoader();
         imageLoader.get(mSayurlist.get(position).getFoto(), new ImageLoader.ImageListener() {
             @Override
@@ -65,13 +65,10 @@ public class SayurListAdapter extends RecyclerView.Adapter<SayurListAdapter.Sayu
             @Override
             public void onClick(View view) {
                 Intent mIntent = new Intent(mContext, Adminubahsayur.class);
-                mIntent.putExtra("nama", mSayurlist.get(holder.getAdapterPosition()).getNama());
-                mIntent.putExtra("harga", (String.valueOf(mSayurlist.get(holder.getAdapterPosition()).getHarga())));
-                mIntent.putExtra("gambar", mSayurlist.get(holder.getAdapterPosition()).getFoto());
+                mIntent.putExtra("id", mSayurlist.get(position).getId());
                 mContext.startActivity(mIntent);
             }
         });
-
     }
 
     class SayurlistViewHolder extends RecyclerView.ViewHolder{

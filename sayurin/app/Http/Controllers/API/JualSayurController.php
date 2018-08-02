@@ -13,4 +13,17 @@ class JualSayurController extends BaseController
         $sayurmobile = SayurMobile::all();
         return $this->sendResponse($sayurmobile);
     }
+
+    public function delete(Request $request)
+    {
+    	$data = SayurMobile::findOrFail($request->id);
+    	$data->delete();
+    	return "sukses";
+    }
+
+    public function spesificSayur(Request $request)
+    {
+    	$data = SayurMobile::findOrFail($request->id);
+    	return $this->sendResponse($data);
+    }
 }

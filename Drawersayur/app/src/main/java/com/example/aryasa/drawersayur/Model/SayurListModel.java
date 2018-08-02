@@ -21,7 +21,8 @@ public class SayurListModel {
     private String created_at;
     private String updated_at;
 
-    public SayurListModel(String foto, String nama, int harga){
+    public SayurListModel(int id,String foto, String nama, int harga){
+        this.id = id;
         this.foto = foto;
         this.nama = nama;
         this.harga = harga;

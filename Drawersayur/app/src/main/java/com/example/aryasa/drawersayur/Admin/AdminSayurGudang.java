@@ -68,7 +68,7 @@ public class AdminSayurGudang extends Fragment {
                try{
                    for (int i = 0; i < response.length(); i++){
                        JSONObject jsonObject = response.getJSONObject(i);
-                       sayurGudangList.add(new SayurGudangModel(jsonObject.getInt("id") ,"http://192.168.42.41/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
+                       sayurGudangList.add(new SayurGudangModel(jsonObject.getInt("id") ,"http://10.0.2.2/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
                        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewsayurgudang);
                        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                        recyclerView.setLayoutManager(gridLayoutManager);
@@ -91,6 +91,8 @@ public class AdminSayurGudang extends Fragment {
                 headers.put("Authorization", Server.TOKEN);
                 return headers;
             }
+
+
         };
         Singleton.getInstance(this.getContext()).addToRequestQueue(jsonArrayRequest);
     }

@@ -17,6 +17,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.aryasa.drawersayur.Admin.Adminviewuser;
 import com.example.aryasa.drawersayur.Controller.AppController;
 import com.example.aryasa.drawersayur.ServerAPI.Server;
 
@@ -30,7 +31,6 @@ public class Register extends AppCompatActivity {
     Button btn_register, btn_login;
     EditText txt_username, txt_email, txt_notelp, txt_password, txt_confirm_password;
     Intent intent;
-
     ConnectivityManager conMgr;
 
     private String API_URL = Server.URL + "register";
@@ -65,6 +65,8 @@ public class Register extends AppCompatActivity {
         txt_email = (EditText) findViewById(R.id.txt_email);
         txt_password = (EditText) findViewById(R.id.txt_password);
         txt_confirm_password = (EditText) findViewById(R.id.txt_confirm_password);
+        pDialog = new ProgressDialog(Register.this);
+
 
 
         btn_register.setOnClickListener(new View.OnClickListener() {
@@ -91,11 +93,9 @@ public class Register extends AppCompatActivity {
     }
 
     private void checkRegister(final String username, final String notelp, final String email, final String password, final String confirm_password) {
-        pDialog = new ProgressDialog(this);
+        pDialog.setMessage("Register");
         pDialog.setCancelable(false);
-        pDialog.setMessage("Register ...");
-        showDialog();
-
+        pDialog.show();
         StringRequest strReq = new StringRequest(Request.Method.POST, API_URL, new Response.Listener<String>() {
 
             @Override
@@ -103,8 +103,8 @@ public class Register extends AppCompatActivity {
                 String json = response.toString();
                 try{
                     JSONObject jsonObject = new JSONObject(json);
+                    pDialog.cancel();
                     if(jsonObject.getString("status").equals("failed")){
-                        hideDialog();
                         if(jsonObject.getString("field").equals("email")){
                             Toast.makeText(getApplicationContext(), "Email yang dimasukkan tidak sesuai format atau telah digunakan oleh user yang lain (contoh: abc@abc.com)",
                                     Toast.LENGTH_SHORT).show();
@@ -117,8 +117,10 @@ public class Register extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Konfirmasi password tidak sesuai dengan password yang telah dimasukkan sebelumnya",
                                     Toast.LENGTH_SHORT).show();
                         }
+
                     }else{
-                        hideDialog();
+                        Toast.makeText(getApplicationContext(), "Register Berhasil Silahkan Login",
+                                Toast.LENGTH_SHORT).show();
                         startActivity(new Intent(getApplicationContext(), Login.class));
                         finish();
                     }
@@ -131,11 +133,12 @@ public class Register extends AppCompatActivity {
 
             @Override
             public void onErrorResponse(VolleyError error) {
+                pDialog.cancel();
                 Log.e(TAG, "Register Error: " + error.getMessage());
                 Toast.makeText(getApplicationContext(),
                         error.getMessage(), Toast.LENGTH_LONG).show();
 
-                hideDialog();
+
 
             }
         }) {
@@ -158,16 +161,6 @@ public class Register extends AppCompatActivity {
 
         // Adding request to request queue
         AppController.getInstance().addToRequestQueue(strReq, tag_json_obj);
-    }
-
-    private void showDialog() {
-        if (!pDialog.isShowing())
-            pDialog.show();
-    }
-
-    private void hideDialog() {
-        if (pDialog.isShowing())
-            pDialog.dismiss();
     }
 
     @Override

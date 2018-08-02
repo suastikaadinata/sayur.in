@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -43,7 +44,7 @@ public class Login extends AppCompatActivity{
 //    private static final String TAG_SUCCESS = "success";
 //    private static final String TAG_MESSAGE = "message";
 //    String tag_json_obj = "json_obj_req";
-
+    public final static String TAG_ID = "id";
     public final static String TAG_NAME = "name";
     public final static String TAG_EMAIL = "email";
     public static final String TAG_NOMOR_TELEPON = "nomor_telepon";
@@ -52,6 +53,7 @@ public class Login extends AppCompatActivity{
     SharedPreferences sharedpreferencesAdmnin;
     Boolean session = false;
     Boolean sessionAdmin = false;
+    int id;
     String name;
     String email;
     String nomor_telepon;
@@ -82,22 +84,24 @@ public class Login extends AppCompatActivity{
         txt_email = (EditText) findViewById(R.id.txt_email);
         txt_password = (EditText) findViewById(R.id.txt_password);
 
-          //Cek session login USER jika TRUE maka langsung buka Profile
+       //   Cek session login USER jika TRUE maka langsung buka Profile
         sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
         session = sharedpreferences.getBoolean(session_status, false);
+        id = sharedpreferences.getInt(TAG_ID, 0);
         name = sharedpreferences.getString(TAG_NAME, null);
         email = sharedpreferences.getString(TAG_EMAIL, null);
         nomor_telepon = sharedpreferences.getString(TAG_NOMOR_TELEPON, null);
-//
-//        if (session) {
-//            Intent intent = new Intent(Login.this, Profile.class);
-//            intent.putExtra(TAG_NAME, name);
-//            intent.putExtra(TAG_EMAIL, email);
-//            intent.putExtra(TAG_NOMOR_TELEPON, nomor_telepon);
-//            finish();
-//            startActivity(intent);
-//        }
-          //Cek session login USER jika TRUE maka langsung buka Profile Admin
+
+        if (session) {
+            Intent intent = new Intent(Login.this, Profile.class);
+            intent.putExtra(TAG_ID,id);
+            intent.putExtra(TAG_NAME, name);
+            intent.putExtra(TAG_EMAIL, email);
+            intent.putExtra(TAG_NOMOR_TELEPON, nomor_telepon);
+            finish();
+            startActivity(intent);
+        }
+          //Cek session login ADMin jika TRUE maka langsung buka Profile Admin
         sharedpreferencesAdmnin = getSharedPreferences(my_shared_preferences2, Context.MODE_PRIVATE);
         sessionAdmin = sharedpreferencesAdmnin.getBoolean(session_status2, false);
         name = sharedpreferencesAdmnin.getString(TAG_NAME, null);
@@ -159,7 +163,6 @@ public class Login extends AppCompatActivity{
         showDialog();
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, API_URL, new Response.Listener<String>() {
-
             @Override
             public void onResponse(String response) {
                 hideDialog();
@@ -171,6 +174,7 @@ public class Login extends AppCompatActivity{
                         Toast.makeText(getApplicationContext(),"Email atau password salah", Toast.LENGTH_SHORT).show();
                     }else{
                         if(jsonObject.getString("tipe").equals("admin")) {
+                            int id = jsonObject.getInt("id");
                             String name = jsonObject.getString("name");
                             String tlp = jsonObject.getString("nomor_telepon");
                             SharedPreferences.Editor editor = sharedpreferencesAdmnin.edit();
@@ -180,6 +184,7 @@ public class Login extends AppCompatActivity{
                             editor.putString(TAG_NOMOR_TELEPON,tlp );
                             editor.commit();
                             Intent intent = new Intent(getApplicationContext(), AdminHome.class);
+                            intent.putExtra(TAG_ID,id);
                             intent.putExtra(TAG_NAME,name);
                             intent.putExtra(TAG_EMAIL,email);
                             intent.putExtra(TAG_NOMOR_TELEPON,tlp);
@@ -187,18 +192,21 @@ public class Login extends AppCompatActivity{
                             finish();
                         }
                         if(jsonObject.getString("tipe").equals("user")) {
+                            int id = jsonObject.getInt("id");
                             String name = jsonObject.getString("name");
                             String tlp = jsonObject.getString("nomor_telepon");
                             SharedPreferences.Editor editor = sharedpreferences.edit();
                             editor.putBoolean(session_status, true);
+                            editor.putInt(TAG_ID,id);
                             editor.putString(TAG_NAME,name );
                             editor.putString(TAG_EMAIL,email );
                             editor.putString(TAG_NOMOR_TELEPON,tlp );
                             editor.commit();
                             Intent intent = new Intent(getApplicationContext(), Drawer.class);
-                            intent.putExtra(TAG_NAME,name);
-                            intent.putExtra(TAG_EMAIL,email);
-                            intent.putExtra(TAG_NOMOR_TELEPON,tlp);
+//                            intent.putExtra(TAG_ID,id);
+//                            intent.putExtra(TAG_NAME,name);
+//                            intent.putExtra(TAG_EMAIL,email);
+//                            intent.putExtra(TAG_NOMOR_TELEPON,tlp);
                             startActivity(intent);
                             finish();
                         }

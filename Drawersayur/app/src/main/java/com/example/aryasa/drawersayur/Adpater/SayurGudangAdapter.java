@@ -43,7 +43,7 @@ import java.util.Map;
 public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.SayurGudangViewHolder> {
     private Context context;
     private ArrayList<SayurGudangModel> sayurGudangList;
-    private String API_URL = Server.URL + "sayur";;
+    private String API_URL = Server.URL + "sayur";
 
     public SayurGudangAdapter(Context context, ArrayList<SayurGudangModel> sayurGudangList){
         this.context = context;

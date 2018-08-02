@@ -18,6 +18,7 @@ class LoginController extends BaseController
         {
             $user = Auth::user();
             $response['status'] = "success";
+            $response['id'] = $user->id;
             $response['name'] = $user->name;
             $response['nomor_telepon'] = $user->nomor_telepon;
             $response['foto'] = $user->foto;

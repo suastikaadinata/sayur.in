@@ -34,19 +34,15 @@ public class AdminuserAdapter extends RecyclerView.Adapter<AdminuserAdapter.User
     }
 
     @Override
-    public void onBindViewHolder(final UserViewHolder holder, int position) {
-        holder.mNama.setText(mUserList.get(position).getTxt_username());
-        holder.mEmail.setText(mUserList.get(position).getTxt_email());
-        holder.mNotelp.setText(mUserList.get(position).getTxt_notelp());
-        holder.mGambar.setImageResource(mUserList.get(position).getGambaruser());
+    public void onBindViewHolder(final UserViewHolder holder, final int position) {
+        holder.mNama.setText(mUserList.get(position).getName());
+        holder.mEmail.setText(mUserList.get(position).getEmail());
+        holder.mNotelp.setText(mUserList.get(position).getNomor_telepon());
         holder.btn_lihat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent mIntent = new Intent(mContext, Adminviewuser.class);
-                mIntent.putExtra("nama", mUserList.get(holder.getAdapterPosition()).getTxt_username());
-                mIntent.putExtra("email", mUserList.get(holder.getAdapterPosition()).getTxt_email());
-                mIntent.putExtra("notelp", mUserList.get(holder.getAdapterPosition()).getTxt_notelp());
-                mIntent.putExtra("gambar", mUserList.get(holder.getAdapterPosition()).getGambaruser());
+                mIntent.putExtra("id", mUserList.get(position).getId());
                 mContext.startActivity(mIntent);
             }
         });

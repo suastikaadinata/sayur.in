@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.aryasa.drawersayur.Drawer;
 import com.example.aryasa.drawersayur.Login;
@@ -111,6 +112,8 @@ public class AdminProfile extends AppCompatActivity {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 // 512 adalah resolusi tertinggi setelah image di resize, bisa di ganti.
                 setToImageView(getResizedBitmap(bitmap, 512));
+                Toast.makeText(getApplicationContext(), "tes"+ getStringImage(decoded),
+                        Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
                 e.printStackTrace();
             }

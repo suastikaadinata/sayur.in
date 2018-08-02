@@ -24,7 +24,8 @@ public class Drawer extends AppCompatActivity  {
 
 
     Dialog myDialog;
-    String id, username;
+    int idIntent;
+    String username;
     SharedPreferences sharedpreferences;
     public static final String TAG_ID = "id";
     public static final String TAG_USERNAME = "username";
@@ -39,6 +40,7 @@ public class Drawer extends AppCompatActivity  {
     public static final String session_status = "session_status";
 
     Boolean session = false;
+    int id;
     String name, nameIntent;
     String email, emailIntent;
     String nomor_telepon, nomor_teleponIntent;
@@ -56,19 +58,23 @@ public class Drawer extends AppCompatActivity  {
         sharedpreferences = getSharedPreferences(Login.my_shared_preferences, Context.MODE_PRIVATE);
         sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
         session = sharedpreferences.getBoolean(session_status, false);
+        id = sharedpreferences.getInt(TAG_ID, 0);
         name = sharedpreferences.getString(TAG_NAME, null);
         email = sharedpreferences.getString(TAG_EMAIL, null);
         nomor_telepon = sharedpreferences.getString(TAG_NOMOR_TELEPON, null);
-        id = getIntent().getStringExtra(TAG_ID);
-        username = getIntent().getStringExtra(TAG_USERNAME);
-        nameIntent = getIntent().getStringExtra(TAG_NAME);
-        emailIntent = getIntent().getStringExtra(TAG_EMAIL);
-        nomor_teleponIntent = getIntent().getStringExtra(TAG_NOMOR_TELEPON);
-
-
+//        idIntent = getIntent().getIntExtra(TAG_ID,0);
+//        username = getIntent().getStringExtra(TAG_USERNAME);
+//        nameIntent = getIntent().getStringExtra(TAG_NAME);
+//        emailIntent = getIntent().getStringExtra(TAG_EMAIL);
+//        nomor_teleponIntent = getIntent().getStringExtra(TAG_NOMOR_TELEPON);
         bottomNavigation = (BottomNavigationView) findViewById(R.id.bottom_navigation);
 
-
+//        if (session) {
+//            idIntent = id;
+//            nameIntent = email;
+//            emailIntent = nomor_telepon;
+//            nomor_teleponIntent = nomor_telepon;
+//        }
         //Untuk mengganti icon login ke akun jika user sudah login
         if(!session){
             bottomNavigation.inflateMenu(R.menu.activity_drawer_drawer);
@@ -97,14 +103,14 @@ public class Drawer extends AppCompatActivity  {
                             fragment = new History();
                             loadFragment(fragment);
                             break;
-                        case R.id.nav_help:
-                            toolbar.setTitle("Bantuan");
-                            fragment = new FragmentHelp();
-                            loadFragment(fragment);
-                            break;
                         case R.id.nav_notifkasi:
                             toolbar.setTitle("Notifikasi");
                             fragment = new FragmentNotifikasi();
+                            loadFragment(fragment);
+                            break;
+                        case R.id.nav_help:
+                            toolbar.setTitle("Bantuan");
+                            fragment = new FragmentHelp();
                             loadFragment(fragment);
                             break;
                         case R.id.nav_login:
@@ -124,21 +130,22 @@ public class Drawer extends AppCompatActivity  {
                             fragment = new History();
                             loadFragment(fragment);
                             break;
-                        case R.id.nav_help:
-                            toolbar.setTitle("Bantuan");
-                            fragment = new FragmentHelp();
-                            loadFragment(fragment);
-                            break;
                         case R.id.nav_notifkasi:
                             toolbar.setTitle("Notifikasi");
                             fragment = new FragmentNotifikasi();
                             loadFragment(fragment);
                             break;
+                        case R.id.nav_help:
+                            toolbar.setTitle("Bantuan");
+                            fragment = new FragmentHelp();
+                            loadFragment(fragment);
+                            break;
                         case R.id.nav_profile_admin:
                             Intent intent = new Intent(Drawer.this, Profile.class);
-                            intent.putExtra(TAG_NAME,nameIntent);
-                            intent.putExtra(TAG_EMAIL,emailIntent);
-                            intent.putExtra(TAG_NOMOR_TELEPON,nomor_teleponIntent);
+//                            intent.putExtra("id", idIntent);
+//                            intent.putExtra(TAG_NAME, nameIntent);
+//                            intent.putExtra(TAG_EMAIL, emailIntent);
+//                            intent.putExtra(TAG_NOMOR_TELEPON, nomor_teleponIntent);
                             startActivity(intent);
                             break;
                     }
