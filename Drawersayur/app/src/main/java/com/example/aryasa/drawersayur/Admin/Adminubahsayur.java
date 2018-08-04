@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
@@ -27,7 +28,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
+import com.example.aryasa.drawersayur.Drawer;
 import com.example.aryasa.drawersayur.Model.SayurListModel;
+import com.example.aryasa.drawersayur.Profile;
 import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.ServerAPI.Server;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
@@ -52,17 +55,19 @@ public class Adminubahsayur extends AppCompatActivity {
     Bitmap bitmap, decoded;
     private String API_URL = Server.URL + "sayur/delete";
     private String API_URL_detailsayur = Server.URL + "sayur/detail";
+    private String API_URL_ubahsayur = Server.URL + "sayur/edit";
     int PICK_IMAGE_REQUEST = 1;
     int bitmap_size = 60; // range 1 - 100
     Button btn_delete;
     ProgressDialog pd;
+    Button btn_ubah;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.adminubahsayur);
 
-
+        btn_ubah = (Button) findViewById(R.id.button_ubah);
         txt_nama = findViewById(R.id.txt_namasayur);
         txt_harga = findViewById(R.id.txt_hargasayur);
         btn_edit = (Button) findViewById(R.id.btn_ubahgambarsayuredit);
@@ -90,9 +95,81 @@ public class Adminubahsayur extends AppCompatActivity {
         btn_delete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDialog(String.valueOf(mBundle.getInt("id")), context);
+                deletesayur(String.valueOf(mBundle.getInt("id")), context);
             }
         });
+
+        btn_ubah.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ubahsayur(String.valueOf(mBundle.getInt("id")), context);
+            }
+        });
+    }
+
+    public void ubahsayur (final String ID,final Context context){
+        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+        // set title dialog
+        alertDialogBuilder.setTitle("Yakin untuk Mengubah data sayur?" );
+
+        // set pesan dari dialog
+        alertDialogBuilder
+                .setMessage("Klik Ya untuk mengubah data sayur!")
+                .setCancelable(false)
+                .setPositiveButton("Ya",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog,int id) {
+                        StringRequest updateReq = new StringRequest(Request.Method.POST, API_URL_ubahsayur,
+                                new Response.Listener<String>() {
+                                    @Override
+                                    public void onResponse(String response) {
+
+                                        Toast.makeText(getApplicationContext(), "Edit Sayur Berhasil", Toast.LENGTH_SHORT).show();
+                                        startActivity( new Intent(Adminubahsayur.this,AdminHome.class));
+                                    }
+                                },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        Toast.makeText(Adminubahsayur.this, "pesan : Gagal Edit sayur", Toast.LENGTH_SHORT).show();
+                                    }
+                                }){
+                            @Override
+                            public Map<String, String> getHeaders() throws AuthFailureError {
+                                HashMap<String, String> headers = new HashMap<>();
+                                headers.put("Accept", "application/json");
+                                headers.put("Authorization", Server.TOKEN);
+                                return headers;
+                            }
+                            @Override
+                            protected Map<String, String> getParams() throws AuthFailureError {
+                                Map<String,String> map = new HashMap<>();
+                                map.put("id",ID);
+                                map.put("nama",txt_nama.getText().toString());
+                                map.put("harga",txt_harga.getText().toString());
+                                map.put("foto", getStringImage(decoded));
+
+                                return map;
+                            }
+                        };
+
+                        Singleton.getInstance(context).addToRequestQueue(updateReq);
+
+                    }
+                })
+                .setNegativeButton("Tidak",new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        // jika tombol ini diklik, akan menutup dialog
+                        // dan tidak terjadi apa2
+                        dialog.cancel();
+                    }
+                });
+
+        // membuat alert dialog dari builder
+        AlertDialog alertDialog = alertDialogBuilder.create();
+
+        // menampilkan alert dialog
+        alertDialog.show();
     }
 
 
@@ -151,7 +228,7 @@ public class Adminubahsayur extends AppCompatActivity {
         });
     }
 
-    private void showDialog(final String ID, final Context context){
+    private void deletesayur(final String ID, final Context context){
         pd.setMessage("Menghapus Sayur");
         pd.setCancelable(false);
         pd.show();

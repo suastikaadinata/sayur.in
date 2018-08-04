@@ -16,13 +16,14 @@ public class Userdata {
     private String name;
     private String email;
     private String nomor_telepon;
-    private Object foto;
+    private String foto;
     private String tipe;
     private String created_at;
     private String updated_at;
 
-    public Userdata(int id ,String name, String email, String nomor_telepon){
+    public Userdata(int id ,String foto,String name, String email, String nomor_telepon){
         this.id = id;
+        this.foto = foto;
         this.name = name;
         this.email = email;
         this.nomor_telepon = nomor_telepon;
@@ -61,11 +62,11 @@ public class Userdata {
         this.nomor_telepon = nomor_telepon;
     }
 
-    public Object getFoto() {
+    public String getFoto() {
         return foto;
     }
 
-    public void setFoto(Object foto) {
+    public void setFoto(String  foto) {
         this.foto = foto;
     }
 

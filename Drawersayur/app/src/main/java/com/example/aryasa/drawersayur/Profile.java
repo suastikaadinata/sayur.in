@@ -22,6 +22,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.example.aryasa.drawersayur.Admin.AdminHome;
 import com.example.aryasa.drawersayur.Admin.Adminubahsayur;
@@ -48,6 +49,7 @@ public class Profile extends AppCompatActivity {
     SharedPreferences sharedpreferences;
     Button btn_edit_user;
     ImageView gambar_user;
+    private String API_URL_detailuser = Server.URL + "user/detail";
     private String API_URL = Server.URL + "user/edit";
     public static final String my_shared_preferences = "my_shared_preferences";
 
@@ -55,6 +57,7 @@ public class Profile extends AppCompatActivity {
     public static final String TAG_NAME = "name";
     public static final String TAG_EMAIL = "email";
     public static final String TAG_NOMOR_TELEPON = "nomor_telepon";
+
 
     Bitmap bitmap, decoded;
     int PICK_IMAGE_REQUEST = 1;
@@ -82,7 +85,7 @@ public class Profile extends AppCompatActivity {
             name = sharedpreferences.getString(TAG_NAME, null);
             email = sharedpreferences.getString(TAG_EMAIL, null);
             nomor_telepon = sharedpreferences.getString(TAG_NOMOR_TELEPON, null);
-
+            gambar(String.valueOf(id) ,context);
             //if (mBundle != null) {
                 txt_name.setText(name);
                 txt_email.setText(email);
@@ -124,6 +127,62 @@ public class Profile extends AppCompatActivity {
 
         }
 
+
+    private void gambar(final String ID, final Context context) {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, API_URL_detailuser , new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String json = response.toString();
+                try {
+                    JSONObject jsonObject = new JSONObject(json);
+                    showImage("http://10.0.2.2/img/"+jsonObject.getString("foto"));
+                }catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+                Toast.makeText(context,"Error Bro",Toast.LENGTH_LONG ).show();
+            }
+        }){
+            @Override
+            public Map<String, String> getHeaders() throws AuthFailureError {
+                HashMap<String, String> headers = new HashMap<>();
+                headers.put("Accept", "application/json");
+                headers.put("Authorization", Server.TOKEN);
+                return headers;
+            }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                HashMap<String, String> params = new HashMap<>();
+                params.put("id", ID);
+                return params;
+            }
+        };
+
+        Singleton.getInstance(context).addToRequestQueue(stringRequest);
+    }
+
+
+    public void showImage(String linkImage){
+        ImageLoader imageLoader = Singleton.getInstance(this.getApplicationContext()).getImageLoader();
+        imageLoader.get(linkImage, new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                gambar_user.setImageBitmap(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+    }
+
+
        public void ubahprofile (final Context context, final String ID){
        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
 
@@ -145,6 +204,7 @@ public class Profile extends AppCompatActivity {
                                        editor.putString(TAG_EMAIL,txt_email.getText().toString() );
                                        editor.putString(TAG_NOMOR_TELEPON,txt_nomor_telepon.getText().toString() );
                                        editor.commit();
+                                       Toast.makeText(getApplicationContext(), "Edit Profile Berhasil", Toast.LENGTH_SHORT).show();
                                        startActivity( new Intent(Profile.this,Drawer.class));
                                    }
                                },

@@ -184,10 +184,10 @@ public class Login extends AppCompatActivity{
                             editor.putString(TAG_NOMOR_TELEPON,tlp );
                             editor.commit();
                             Intent intent = new Intent(getApplicationContext(), AdminHome.class);
-                            intent.putExtra(TAG_ID,id);
-                            intent.putExtra(TAG_NAME,name);
-                            intent.putExtra(TAG_EMAIL,email);
-                            intent.putExtra(TAG_NOMOR_TELEPON,tlp);
+//                            intent.putExtra(TAG_ID,id);
+//                            intent.putExtra(TAG_NAME,name);
+//                            intent.putExtra(TAG_EMAIL,email);
+//                            intent.putExtra(TAG_NOMOR_TELEPON,tlp);
                             startActivity(intent);
                             finish();
                         }

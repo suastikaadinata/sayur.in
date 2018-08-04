@@ -77,7 +77,7 @@ public class AdminHome extends AppCompatActivity {
                         loadFragment(fragment);
                         break;
                     case R.id.nav_profile_admin:
-                        intent = new Intent(AdminHome.this, Login.class);
+                        intent = new Intent(AdminHome.this, AdminProfile.class);
                         //   finish();
                         startActivity(intent);
                         break;

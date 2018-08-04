@@ -9,7 +9,7 @@
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="center"
-        android:background="@drawable/ic_person_pin_green_24dp"
+        android:src="@drawable/ic_person_pin_green_24dp"
         />
 
     <android.support.design.widget.TextInputLayout

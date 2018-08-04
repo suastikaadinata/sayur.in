@@ -17,6 +17,7 @@ import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.example.aryasa.drawersayur.Login;
 import com.example.aryasa.drawersayur.R;
@@ -80,6 +81,7 @@ public class Adminviewuser extends AppCompatActivity {
                     txt_nama.setText(jsonObject.getString("name"));
                     txt_email.setText(jsonObject.getString("email"));
                     txt_no.setText(jsonObject.getString("nomor_telepon"));
+                    showImage("http://10.0.2.2/img/"+jsonObject.getString("foto"));
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -109,6 +111,24 @@ public class Adminviewuser extends AppCompatActivity {
 
         Singleton.getInstance(context).addToRequestQueue(stringRequest);
     }
+
+
+
+    public void showImage(String linkImage){
+        ImageLoader imageLoader = Singleton.getInstance(this.getApplicationContext()).getImageLoader();
+        imageLoader.get(linkImage, new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                imguser.setImageBitmap(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+    }
+
 
 
     private void showDialog(final String ID, final Context context){

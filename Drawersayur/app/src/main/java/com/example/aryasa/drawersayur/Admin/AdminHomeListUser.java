@@ -29,8 +29,8 @@ import android.view.MenuItem;
 import android.view.View;
 
 public class AdminHomeListUser extends AppCompatActivity {
-    Dialog myDialog;
 
+    Dialog myDialog;
     private Fragment fragment;
     private BottomNavigationView bottomNavigation;
     private ActionBar toolbar;

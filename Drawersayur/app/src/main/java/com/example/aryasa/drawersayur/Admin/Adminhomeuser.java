@@ -43,12 +43,9 @@ import java.util.Map;
 
 public class Adminhomeuser extends Fragment {
 //modelnya Userdata
-    //adapternya adminuseradapater
-
+//adapternya adminuseradapater
     private String API_URL = Server.URL + "user";
     ArrayList<Userdata> userdata = new ArrayList<>();
-
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -56,12 +53,12 @@ public class Adminhomeuser extends Fragment {
         setHasOptionsMenu(true);
         final View view = inflater.inflate(R.layout.adminhomeuser, container, false);
         final AdminuserAdapter adminuserAdapter = new AdminuserAdapter(view.getContext(),userdata);
-        getSayurApi(API_URL, view, adminuserAdapter);
+        getUserApi(API_URL, view, adminuserAdapter);
         return view;
     }
 
 
-    public void getSayurApi(String url, final View view, final AdminuserAdapter sayur){
+    public void getUserApi(String url, final View view, final AdminuserAdapter sayur){
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -69,7 +66,7 @@ public class Adminhomeuser extends Fragment {
                     for (int i = 0; i < response.length(); i++){
                         JSONObject jsonObject = response.getJSONObject(i);
                         if(jsonObject.getString("tipe").equals("user")){
-                            userdata.add(new Userdata(jsonObject.getInt("id"), jsonObject.getString("name") ,jsonObject.getString("email"), jsonObject.getString("nomor_telepon")));
+                            userdata.add(new Userdata(jsonObject.getInt("id"),"http://10.0.2.2/img/"+jsonObject.getString("foto"), jsonObject.getString("name") ,jsonObject.getString("email"), jsonObject.getString("nomor_telepon")));
                             RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewadminhomeuser);
                             GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                             recyclerView.setLayoutManager(gridLayoutManager);

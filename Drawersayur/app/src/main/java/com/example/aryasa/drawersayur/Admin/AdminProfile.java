@@ -26,12 +26,13 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
 public class AdminProfile extends AppCompatActivity {
-    TextView txt_email, txt_name, txt_nomor_telepon;
+    TextView txt_email, txt_name, txt_nomor_telepon,txt_simpan;
     Button btn_logout,btn_editgambar;
-    String name, email, tlp;
+    String name, email, nomor_telepon;
     SharedPreferences sharedpreferencesAdmnin;
     ImageView gamnbar_admin;
-
+    int id;
+    public static final String TAG_ID_ADMIN = "id";
     public static final String TAG_NAME_ADMIN = "name";
     public static final String TAG_EMAIL_ADMIN = "email";
     public static final String TAG_NOMOR_TELEPON_ADMIN = "nomor_telepon";
@@ -45,6 +46,8 @@ public class AdminProfile extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_profile);
 
+
+        txt_simpan = (TextView) findViewById(R.id.textView_simpan);
         txt_name = (TextView) findViewById(R.id.editTextnamaprofileadmin);
         txt_email = (TextView) findViewById(R.id.editTextemailprofileadmin);
         txt_nomor_telepon = (TextView) findViewById(R.id.editTextNomorTeleponprofileadmin);
@@ -53,13 +56,15 @@ public class AdminProfile extends AppCompatActivity {
         btn_editgambar =(Button) findViewById(R.id.button_ubah_gambar);
         gamnbar_admin =(ImageView) findViewById(R.id.imageView);
 
-        name = getIntent().getStringExtra(TAG_NAME_ADMIN);
-        email = getIntent().getStringExtra(TAG_EMAIL_ADMIN);
-        tlp = getIntent().getStringExtra(TAG_NOMOR_TELEPON_ADMIN);
+        id = sharedpreferencesAdmnin.getInt(TAG_ID_ADMIN, 0);
+        name = sharedpreferencesAdmnin.getString(TAG_NAME_ADMIN, null);
+        email = sharedpreferencesAdmnin.getString(TAG_EMAIL_ADMIN, null);
+        nomor_telepon = sharedpreferencesAdmnin.getString(TAG_NOMOR_TELEPON_ADMIN, null);
+
 
         txt_name.setText(name);
         txt_email.setText(email);
-        txt_nomor_telepon.setText(tlp);
+        txt_nomor_telepon.setText(nomor_telepon);
 
         btn_logout.setOnClickListener(new View.OnClickListener() {
 
@@ -69,6 +74,7 @@ public class AdminProfile extends AppCompatActivity {
                 // update login session ke FALSE dan mengosongkan nilai id dan username
                 SharedPreferences.Editor editor = sharedpreferencesAdmnin.edit();
                 editor.putBoolean(Login.session_status2, false);
+                editor.putInt(TAG_ID_ADMIN,0);
                 editor.putString(TAG_NAME_ADMIN, null);
                 editor.putString(TAG_EMAIL_ADMIN, null);
                 editor.putString(TAG_NOMOR_TELEPON_ADMIN, null);
@@ -84,6 +90,13 @@ public class AdminProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 showFileChooser();
+            }
+        });
+
+        txt_simpan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
             }
         });
     }
@@ -112,8 +125,6 @@ public class AdminProfile extends AppCompatActivity {
                 bitmap = MediaStore.Images.Media.getBitmap(getContentResolver(), filePath);
                 // 512 adalah resolusi tertinggi setelah image di resize, bisa di ganti.
                 setToImageView(getResizedBitmap(bitmap, 512));
-                Toast.makeText(getApplicationContext(), "tes"+ getStringImage(decoded),
-                        Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
                 e.printStackTrace();
             }

@@ -11,10 +11,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.ImageLoader;
 import com.example.aryasa.drawersayur.Admin.Adminubahsayur;
 import com.example.aryasa.drawersayur.Admin.Adminviewuser;
 import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.Model.Userdata;
+import com.example.aryasa.drawersayur.Singleton.Singleton;
 
 import java.util.List;
 
@@ -35,9 +38,23 @@ public class AdminuserAdapter extends RecyclerView.Adapter<AdminuserAdapter.User
 
     @Override
     public void onBindViewHolder(final UserViewHolder holder, final int position) {
+        ImageLoader imageLoader = Singleton.getInstance(mContext).getImageLoader();
+        imageLoader.get(mUserList.get(position).getFoto(), new ImageLoader.ImageListener() {
+            @Override
+            public void onResponse(ImageLoader.ImageContainer response, boolean isImmediate) {
+                holder.mGambar.setImageBitmap(response.getBitmap());
+            }
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+
         holder.mNama.setText(mUserList.get(position).getName());
         holder.mEmail.setText(mUserList.get(position).getEmail());
         holder.mNotelp.setText(mUserList.get(position).getNomor_telepon());
+
         holder.btn_lihat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
