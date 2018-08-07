@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="4dp"
+        app:cardUseCompatPadding="true">
+
+        <RelativeLayout
+            android:id="@+id/RelativeLayout1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="fill"
+            android:layout_marginTop="2dp"
+            android:background="@color/colorFrameBackground"
+            android:padding="10dp">
+
+            <ImageView
+                android:id="@+id/imageView"
+                android:layout_width="98dp"
+                android:layout_height="87dp"
+                android:contentDescription="@string/todo"
+                android:src="@mipmap/ic_launcher_round" />
+
+            <TextView
+                android:id="@+id/cart_namaSayur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/imageView"
+                android:layout_marginTop="0dp"
+                android:layout_toRightOf="@+id/imageView"
+                android:text="@string/bayam"
+                android:textColor="@color/colorTextGreen"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/cart_kuantitas"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cart_namaSayur"
+                android:layout_toEndOf="@+id/imageView"
+                android:text="@string/harga_ikat"
+                android:textColor="#afafaf"
+                android:textSize="13sp"
+                android:textStyle="italic"
+                android:layout_toRightOf="@+id/imageView" />
+
+            <TextView
+                android:id="@+id/cart_hargaSayur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/cart_kuantitas"
+                android:layout_toEndOf="@+id/imageView"
+                android:text="@string/rp_8_000"
+                android:textColor="@color/colorTextOrange"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:layout_toRightOf="@+id/imageView" />
+
+            <EditText
+                android:id="@+id/editText_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/imageView"
+                android:layout_toRightOf="@+id/imageView"
+                android:background="@color/colorBackground"
+                android:hint="@string/add_note"
+                android:inputType="textPersonName"
+                android:padding="3dp"
+                android:textSize="12sp"
+                android:textStyle="italic" />
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="91dp"
+                android:layout_height="30dp"
+                android:layout_alignTop="@+id/imageView"
+                android:layout_marginRight="-3dp"
+                android:layout_toLeftOf="@+id/button_delete"
+                android:background="@drawable/custom_layout">
+
+                <Button
+                    android:id="@+id/buttonMinus"
+                    android:layout_width="25dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="30"
+                    android:background="@drawable/minus_btn" />
+
+                <TextView
+                    android:id="@+id/textView_jumlahSayur"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="30"
+                    android:text="20"
+                    android:textAlignment="center"
+                    android:textColor="@color/colorTextGreen"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/buttonPlus"
+                    android:layout_width="25dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="30"
+                    android:background="@drawable/btn_add" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/button_delete"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:layout_alignRight="@+id/editText_note"
+                android:layout_alignTop="@+id/imageView"
+                android:background="@drawable/delete_btn" />
+
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+
+</android.support.constraint.ConstraintLayout>
