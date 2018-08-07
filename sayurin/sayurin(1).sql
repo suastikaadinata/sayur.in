@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
+-- version 4.8.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 07, 2018 at 03:11 AM
--- Server version: 10.1.21-MariaDB
--- PHP Version: 7.2.1
+-- Generation Time: Aug 06, 2018 at 07:12 PM
+-- Server version: 10.1.33-MariaDB
+-- PHP Version: 7.2.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -80,7 +80,114 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (4, '2018_05_12_031825_create_keranjang_table', 1),
 (5, '2018_05_12_032202_create_pembayaran_table', 1),
 (6, '2018_05_12_032618_create_pengiriman_table', 1),
-(7, '2018_05_12_034504_create_chatting_table', 1);
+(7, '2018_05_12_034504_create_chatting_table', 1),
+(8, '2016_06_01_000001_create_oauth_auth_codes_table', 2),
+(9, '2016_06_01_000002_create_oauth_access_tokens_table', 2),
+(10, '2016_06_01_000003_create_oauth_refresh_tokens_table', 2),
+(11, '2016_06_01_000004_create_oauth_clients_table', 2),
+(12, '2016_06_01_000005_create_oauth_personal_access_clients_table', 2),
+(13, '2018_07_17_015017_create_sayurmobile_table', 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_access_tokens`
+--
+
+CREATE TABLE `oauth_access_tokens` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `client_id` int(11) NOT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `scopes` text COLLATE utf8mb4_unicode_ci,
+  `revoked` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `expires_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_access_tokens`
+--
+
+INSERT INTO `oauth_access_tokens` (`id`, `user_id`, `client_id`, `name`, `scopes`, `revoked`, `created_at`, `updated_at`, `expires_at`) VALUES
+('26a998a392b0d20e433e54339b2122a4ffaa2b417399160662d18570c139459eedc1bb448b1b4ac1', 1, 1, 'sayurin', '[]', 0, '2018-08-06 10:01:30', '2018-08-06 10:01:30', '2019-08-06 17:01:30'),
+('a566edc9192dffbb547dc53e19618d942d46d8b463ec8be454c27516670b8863725eaf2d45e77b9d', 1, 1, 'sayurin', '[]', 0, '2018-08-06 10:12:24', '2018-08-06 10:12:24', '2019-08-06 17:12:24');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_auth_codes`
+--
+
+CREATE TABLE `oauth_auth_codes` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `scopes` text COLLATE utf8mb4_unicode_ci,
+  `revoked` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_clients`
+--
+
+CREATE TABLE `oauth_clients` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  `name` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `secret` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `redirect` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `personal_access_client` tinyint(1) NOT NULL,
+  `password_client` tinyint(1) NOT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_clients`
+--
+
+INSERT INTO `oauth_clients` (`id`, `user_id`, `name`, `secret`, `redirect`, `personal_access_client`, `password_client`, `revoked`, `created_at`, `updated_at`) VALUES
+(1, NULL, 'Sayurin Personal Access Client', 'BDL82nOfOuXqnIQW0sPaNdk3FWNZCJk3D6bl7GKw', 'http://localhost', 1, 0, 0, '2018-08-06 08:22:05', '2018-08-06 08:22:05'),
+(2, NULL, 'Sayurin Password Grant Client', 'mriRFJfahTjCURE0KYt6I5YMQPZqysjGGn8LDWHJ', 'http://localhost', 0, 1, 0, '2018-08-06 08:22:06', '2018-08-06 08:22:06');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_personal_access_clients`
+--
+
+CREATE TABLE `oauth_personal_access_clients` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `client_id` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `oauth_personal_access_clients`
+--
+
+INSERT INTO `oauth_personal_access_clients` (`id`, `client_id`, `created_at`, `updated_at`) VALUES
+(1, 1, '2018-08-06 08:22:06', '2018-08-06 08:22:06');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `oauth_refresh_tokens`
+--
+
+CREATE TABLE `oauth_refresh_tokens` (
+  `id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `access_token_id` varchar(100) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `revoked` tinyint(1) NOT NULL,
+  `expires_at` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -152,10 +259,26 @@ CREATE TABLE `sayur` (
 --
 
 INSERT INTO `sayur` (`id`, `nama`, `jumlah`, `berat`, `harga`, `foto`, `created_at`, `updated_at`) VALUES
-(1, 'bayam', 12, 2, 12000, 'sayur/Zzij579LCrP0SFSnhmRRQGqGpQCvLj8mZCpHQXQf.png', '2018-05-31 11:42:24', '2018-05-31 11:42:24'),
-(2, 'bayam2', 2, 1, 10000, 'sayur/iWKr09imSLP164TtcKora1oJ5HciHplmtn4s2n6I.png', '2018-05-31 11:47:15', '2018-05-31 11:47:15'),
-(3, 'bayam3', 15, 3, 14000, 'sayur/nyzxifeUEoWYis6B3jS0bsibhZI4RDSjweESX6wu.png', '2018-05-31 11:50:32', '2018-05-31 11:50:32'),
-(4, 'wortel', 5, 1, 8000, 'sayur/tT5s5xj3p3OdbvPaPY475N46SGBo0F0Yg33L2JBy.jpeg', '2018-05-31 12:07:13', '2018-05-31 12:07:13');
+(5, 'Bayam', 10, 1, 4000, 'sayur/owl59swNnER0rr8vudb5w1tPYiZaUsUHQxwXCT3i.png', '2018-08-06 10:00:06', '2018-08-06 10:00:06'),
+(6, 'Wortel', 2, 2, 3000, 'sayur/QNYWNzeTVi7asnVsYapboVI2TItdnQl6cWZehUt2.jpeg', '2018-08-06 10:00:19', '2018-08-06 10:00:19'),
+(7, 'Bayam 2', 3, 4, 3000, 'sayur/NWPD8pqfUKRdG1IIkpUuxS28GDDM2hpP6v58Oo0l.png', '2018-08-06 10:10:56', '2018-08-06 10:10:56');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sayurmobile`
+--
+
+CREATE TABLE `sayurmobile` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `nama` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `jumlah` int(11) NOT NULL,
+  `berat` int(11) NOT NULL,
+  `harga` int(11) NOT NULL,
+  `foto` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -181,8 +304,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `nomor_telepon`, `password`, `foto`, `tipe`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'suastikadinata', 'suastikaadinata@gmail.com', '0851112222', '$2y$10$TYVQWdegvScWVekFzVCq5ubGyOuOJSM59pmEZMwqWEOnJLOQTa8cy', NULL, 'admin', 'KCbfbnWQ4M8E0CZlUGGXuXVL7O2HTyXewUpoj8Y2DQHdOIWG6nWXUE7SkMlm', '2018-06-02 04:15:41', '2018-06-02 04:15:41'),
-(2, 'adinata', 'adinata@gmail.com', '0851112222', '$2y$10$ndjO8uPbBQ8LS5EAPe6xXe2ZPJlEfOj3QH4W.UXojk6b5YX6AYAc2', NULL, 'user', 'm6O5XUL5osVNAqym5X42NuRx9kyeLNYfpVKP4El5PLZ7GatvX7NiaPVJE1hz', '2018-06-02 05:49:31', '2018-06-02 05:49:31');
+(1, 'suastikadinata', 'suastikaadinata@gmail.com', '0851112222', '$2y$10$TYVQWdegvScWVekFzVCq5ubGyOuOJSM59pmEZMwqWEOnJLOQTa8cy', NULL, 'admin', 'NenQ4FSwkTdLGNVgeG3wtQxUT1F4ld0oyWFLNlaTiMGnhMc8JmaC2s2x7ttH', '2018-06-02 04:15:41', '2018-06-02 04:15:41'),
+(2, 'adinata baru 2', 'adinata@gmail.com', '1234', '$2y$10$ndjO8uPbBQ8LS5EAPe6xXe2ZPJlEfOj3QH4W.UXojk6b5YX6AYAc2', 'user/w7q31xggkdgiwurevg1z.png', 'user', 'm6O5XUL5osVNAqym5X42NuRx9kyeLNYfpVKP4El5PLZ7GatvX7NiaPVJE1hz', '2018-06-02 05:49:31', '2018-08-06 10:12:04'),
+(3, 'nigel2', 'nigelilu@gmail.com', '123456788', '$2y$10$O.K9.Um3UsVcqLvKE06.m.hLV6Zeh93IRqM.AV571EEO1//KtJESC', NULL, 'user', NULL, '2018-08-06 10:01:49', '2018-08-06 10:01:49');
 
 --
 -- Indexes for dumped tables
@@ -209,6 +333,40 @@ ALTER TABLE `keranjang`
 --
 ALTER TABLE `migrations`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `oauth_access_tokens`
+--
+ALTER TABLE `oauth_access_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_access_tokens_user_id_index` (`user_id`);
+
+--
+-- Indexes for table `oauth_auth_codes`
+--
+ALTER TABLE `oauth_auth_codes`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `oauth_clients`
+--
+ALTER TABLE `oauth_clients`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_clients_user_id_index` (`user_id`);
+
+--
+-- Indexes for table `oauth_personal_access_clients`
+--
+ALTER TABLE `oauth_personal_access_clients`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_personal_access_clients_client_id_index` (`client_id`);
+
+--
+-- Indexes for table `oauth_refresh_tokens`
+--
+ALTER TABLE `oauth_refresh_tokens`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `oauth_refresh_tokens_access_token_id_index` (`access_token_id`);
 
 --
 -- Indexes for table `password_resets`
@@ -238,6 +396,12 @@ ALTER TABLE `sayur`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `sayurmobile`
+--
+ALTER TABLE `sayurmobile`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -264,7 +428,19 @@ ALTER TABLE `keranjang`
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `oauth_clients`
+--
+ALTER TABLE `oauth_clients`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `oauth_personal_access_clients`
+--
+ALTER TABLE `oauth_personal_access_clients`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pembayaran`
@@ -282,13 +458,19 @@ ALTER TABLE `pengiriman`
 -- AUTO_INCREMENT for table `sayur`
 --
 ALTER TABLE `sayur`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `sayurmobile`
+--
+ALTER TABLE `sayurmobile`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

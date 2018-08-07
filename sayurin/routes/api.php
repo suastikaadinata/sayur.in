@@ -16,6 +16,8 @@ Route::post('register', 'API\RegisterController@register');
 Route::post('login', 'API\LoginController@login');
 Route::get('sayur/dijual', 'API\JualSayurController@sayurmobile');
 Route::post('user/edit','API\APIUserController@editUser');
+Route::post('cart','API\KeranjangController@cart');
+Route::post('cart/list','API\KeranjangController@getCart');
 
 Route::middleware('auth:api')->group( function() {
     Route::get('sayur', 'API\APISayurController@show');

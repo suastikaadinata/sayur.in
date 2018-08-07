@@ -8,7 +8,7 @@ class Keranjang extends Model
 {
     protected $table = 'keranjang';
     protected $fillable = [
-        'user_id', 'sayur_id', 'jumlah', 'total_harga', 'order', 'status', 'isDeliver', 'kode_belanja',
+        'user_id', 'sayur_id', 'jumlah', 'total_harga',
     ];
 
     public function user()
@@ -19,23 +19,5 @@ class Keranjang extends Model
     public function sayur()
     {
         return $this->belongsTo(Sayur::class);
-    }
-
-    public function order()
-    {
-        $this->order = 1;
-        $this->save();
-    }
-
-    public function status()
-    {
-        $this->status = 1;
-        $this->save();
-    }
-
-    public function isDeliver()
-    {
-        $this->isDeliver = 1;
-        $this->save();
     }
 }
