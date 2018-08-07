@@ -1,6 +1,7 @@
 package com.example.aryasa.drawersayur.Adpater;
 
 import android.content.Context;
+import android.support.design.widget.CoordinatorLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,19 +15,31 @@ import com.example.aryasa.drawersayur.R;
 import java.util.ArrayList;
 
 public class CartAdapter extends RecyclerView.Adapter<CartAdapter.MyViewHolder> {
-    private ArrayList<Sayur> sayurList;
-    private SayurAdapter.Callbacks callbacks;
     private int counter = 1;
+    private int jumlah1=1;
+
+    private CoordinatorLayout coordinatorLayout;
+    private TextView cart;
 
     private ArrayList<Sayur> cartList;
     public CartAdapter(Context context, ArrayList<Sayur> cartList){
         this.cartList = cartList;
     }
 
-public void addCartItems(ArrayList<Sayur> cartList){
+    public void addCartItems(ArrayList<Sayur> cartList){
         this.cartList = cartList;
         notifyDataSetChanged();
         }
+    public void removeAt(int position) {
+        cartList.remove(position);
+        notifyItemRemoved(position);
+    }
+    public  void isiJumlah(int jumlah){
+        this.jumlah1=jumlah;
+
+    }
+
+
 
 @Override
 public CartAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -36,43 +49,30 @@ public CartAdapter.MyViewHolder onCreateViewHolder(ViewGroup parent, int viewTyp
         }
 
 @Override
-public void onBindViewHolder(final CartAdapter.MyViewHolder holder, int position) {
+public void onBindViewHolder(final CartAdapter.MyViewHolder holder, final int position) {
         holder.itemTitle.setText(cartList.get(position).getNama());
         holder.itemPrice.setText("Rp "+cartList.get(position).getHarga());
-        holder.btn_plus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-               counter++;
-               holder.tvjumlah.setText(String.valueOf(counter));
-            }
-        });
-    holder.btn_minus.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View view) {
-            counter--;
-            holder.tvjumlah.setText(String.valueOf(counter));
+        holder.tvjumlah.setText(String.valueOf(jumlah1));
         }
-    });
-        }
+
 
 @Override
 public int getItemCount() {
         return cartList.size();
         }
 
-public class MyViewHolder extends RecyclerView.ViewHolder {
-    private TextView itemTitle,itemPrice;
+    public class MyViewHolder extends RecyclerView.ViewHolder {
+    private TextView itemTitle,itemPrice, itemKuan;
     Button btn_minus;
-    Button btn_plus;
+    Button btn_plus , btn_del;
     TextView tvjumlah;
     public MyViewHolder(View itemView) {
         super(itemView);
         itemTitle = (TextView)itemView.findViewById(R.id.itemTitle);
         itemPrice = (TextView)itemView.findViewById(R.id.itemPrice);
-        btn_minus = (Button)itemView.findViewById(R.id.buttonMinus);
-        btn_plus = (Button)itemView.findViewById(R.id.buttonPlus);
+        itemKuan = (TextView)itemView.findViewById(R.id.cart_kuantitas);
         tvjumlah = (TextView) itemView.findViewById(R.id.textView_jumlahSayur);
-
     }
 }
+
 }

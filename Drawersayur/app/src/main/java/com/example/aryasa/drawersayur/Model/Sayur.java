@@ -21,8 +21,9 @@ public class Sayur {
     private String created_at;
     private String updated_at;
 
-    public Sayur(String foto, String nama, int harga){
+    public Sayur(String foto, int id, String nama, int harga){
         this.foto = foto;
+        this.id = id;
         this.nama = nama;
         this.harga = harga;
     }

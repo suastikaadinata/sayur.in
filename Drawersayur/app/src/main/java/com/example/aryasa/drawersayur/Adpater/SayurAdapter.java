@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
@@ -23,15 +24,19 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
     private Context mContext;
     private ArrayList<Sayur> mSayurlist;
     private Callbacks callbacks;
+    int jumlah, updatebottom;
 
+    int harga, total=0;
 
-    public interface Callbacks {
-
-        void updateCart(Sayur sayur);
+    public void total(int harga){
+        total = total+harga;
+    }
+    public void kurangtotal(int harga){
+        total = total-harga;
     }
 
 
-    public SayurAdapter(Context mContext, ArrayList<Sayur> mSayurlist , Callbacks callbacks) {
+    public SayurAdapter(Context mContext, ArrayList<Sayur> mSayurlist, Callbacks callbacks) {
         this.callbacks = callbacks;
         this.mContext = mContext;
         this.mSayurlist = mSayurlist;
@@ -50,6 +55,7 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
 
     @Override
     public void onBindViewHolder(final SayurViewHolder holder, final int position) {
+
         ImageLoader imageLoader = Singleton.getInstance(mContext).getImageLoader();
         imageLoader.get(mSayurlist.get(position).getFoto(), new ImageLoader.ImageListener() {
             @Override
@@ -64,22 +70,59 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
         });
 
         holder.mTitle.setText(mSayurlist.get(position).getNama());
-        holder.mHarga.setText(String.valueOf(mSayurlist.get(position).getHarga()));
+        holder.mHarga.setText(String.valueOf(mSayurlist.get(position).getId()));
         holder.mButtonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                total(mSayurlist.get(position).getHarga());
+                callbacks.updateharga(total);
                 callbacks.updateCart(mSayurlist.get(position));
+                holder.mButtonAdd.setVisibility(View.INVISIBLE);
+                holder.mLayoutKuantitas.setVisibility(View.VISIBLE);
+
             }
         });
+        holder.mTambahQ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                total(mSayurlist.get(position).getHarga());
+                callbacks.updateharga(total);
+                jumlah = Integer.parseInt(holder.mTextQ.getText().toString());
+                holder.mTextQ.setText(String.valueOf(jumlah+1));
+                callbacks.updateJumlah(Integer.parseInt(holder.mTextQ.getText().toString()));
+            }
+        });
+        holder.mKurangQ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                jumlah = Integer.parseInt(holder.mTextQ.getText().toString());
+                if(jumlah<=1){
+                    jumlah=0;
+                    holder.mLayoutKuantitas.setVisibility(View.INVISIBLE);
+                    holder.mButtonAdd.setVisibility(View.VISIBLE);
+                    kurangtotal(mSayurlist.get(position).getHarga());
+                    callbacks.updateharga(total);
+
+                }else {
+                    kurangtotal(mSayurlist.get(position).getHarga());
+                    callbacks.updateharga(total);
+                    jumlah = Integer.parseInt(holder.mTextQ.getText().toString());
+                    holder.mTextQ.setText(String.valueOf(--jumlah));
+
+                }
+            }
+        });
+
 
     }
 
     class SayurViewHolder extends RecyclerView.ViewHolder{
         ImageView mImage;
-        TextView mHarga;
+        TextView mHarga, mTextQ;
         TextView mTitle;
         CardView mCardView;
-        Button mButtonAdd;
+        Button mButtonAdd, mTambahQ, mKurangQ;
+        LinearLayout mLayoutKuantitas;
 
         public SayurViewHolder(View itemView) {
             super(itemView);
@@ -88,7 +131,15 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
             mTitle = itemView.findViewById(R.id.nama_sayur);
             mHarga = itemView.findViewById(R.id.harga_sayur);
             mCardView = itemView.findViewById(R.id.cradview);
-            //mToggle = itemView.findViewById(R.id.toggle);
+            mTextQ = itemView.findViewById(R.id.tV_jumlahSayur);
+            mTambahQ = itemView.findViewById(R.id.buttonPlus);
+            mKurangQ = itemView.findViewById(R.id.buttonMinus);
+            mLayoutKuantitas = itemView.findViewById(R.id.LayoutQ);
+            mLayoutKuantitas.setVisibility(View.INVISIBLE);
+            if(mTextQ.getText().equals("0")){
+                mLayoutKuantitas.setVisibility(View.INVISIBLE);
+            }
+
         }
     }
 }

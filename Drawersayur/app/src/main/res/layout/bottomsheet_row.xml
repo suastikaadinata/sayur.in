@@ -72,19 +72,13 @@
 
         <LinearLayout
             android:id="@+id/linearLayout"
-            android:layout_width="91dp"
+            android:layout_width="60dp"
             android:layout_height="30dp"
             android:layout_alignTop="@+id/imageView"
             android:layout_marginRight="-3dp"
             android:layout_toLeftOf="@+id/button_delete"
             android:background="@drawable/custom_layout">
 
-            <Button
-                android:id="@+id/buttonMinus"
-                android:layout_width="25dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="30"
-                android:background="@drawable/minus_btn" />
 
             <TextView
                 android:id="@+id/textView_jumlahSayur"
@@ -97,12 +91,6 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <Button
-                android:id="@+id/buttonPlus"
-                android:layout_width="25dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="30"
-                android:background="@drawable/btn_add" />
         </LinearLayout>
 
         <Button
