@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.ToggleButton;
@@ -21,15 +23,18 @@ import com.example.aryasa.drawersayur.Singleton.Singleton;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class SayurListAdapter extends RecyclerView.Adapter<SayurListAdapter.SayurlistViewHolder> {
     private Context mContext;
-    private ArrayList<SayurListModel> mSayurlist;
+    private List<SayurListModel> mSayurlist;
     View mView;
+
 
     public SayurListAdapter(Context mContext, ArrayList<SayurListModel> mSayurlist) {
         this.mContext = mContext;
         this.mSayurlist = mSayurlist;
+
     }
     @Override
     public SayurlistViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -71,6 +76,8 @@ public class SayurListAdapter extends RecyclerView.Adapter<SayurListAdapter.Sayu
         });
     }
 
+
+
     class SayurlistViewHolder extends RecyclerView.ViewHolder{
         ImageView mImage;
         TextView mHarga;
@@ -88,4 +95,6 @@ public class SayurListAdapter extends RecyclerView.Adapter<SayurListAdapter.Sayu
             //mToggle = itemView.findViewById(R.id.toggle);
         }
     }
+
+
 }
