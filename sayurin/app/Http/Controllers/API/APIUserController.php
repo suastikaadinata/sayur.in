@@ -44,11 +44,6 @@ class APIUserController extends BaseController
             $user->name = $data['name'];
             $user->email = $data['email'];
             $user->nomor_telepon = $data['nomor_telepon'];
-            $img[0] = imagecreatefromstring($file);
-            $pathDatabase = 'user/'.$pathFile;
-            $path = public_path() . '/img/'.$pathDatabase;
-            imagepng($img[0], $path);
-            $user->foto = $pathDatabase;
             if($user->foto != $data['foto']){
                 $img[0] = imagecreatefromstring($file);
                 $pathDatabase = 'user/'.$pathFile;
