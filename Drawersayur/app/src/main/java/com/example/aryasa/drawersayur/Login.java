@@ -48,7 +48,6 @@ public class Login extends AppCompatActivity{
     public final static String TAG_NAME = "name";
     public final static String TAG_EMAIL = "email";
     public static final String TAG_NOMOR_TELEPON = "nomor_telepon";
-
     SharedPreferences sharedpreferences;
     SharedPreferences sharedpreferencesAdmnin;
     Boolean session = false;
@@ -109,6 +108,7 @@ public class Login extends AppCompatActivity{
         nomor_telepon = sharedpreferencesAdmnin.getString(TAG_NOMOR_TELEPON, null);
         if (sessionAdmin) {
             Intent intent = new Intent(Login.this, AdminProfile.class);
+            intent.putExtra(TAG_ID,id);
             intent.putExtra(TAG_NAME, name);
             intent.putExtra(TAG_EMAIL, email);
             intent.putExtra(TAG_NOMOR_TELEPON, nomor_telepon);
@@ -179,6 +179,7 @@ public class Login extends AppCompatActivity{
                             String tlp = jsonObject.getString("nomor_telepon");
                             SharedPreferences.Editor editor = sharedpreferencesAdmnin.edit();
                             editor.putBoolean(session_status2, true);
+                            editor.putInt(TAG_ID,id);
                             editor.putString(TAG_NAME,name );
                             editor.putString(TAG_EMAIL,email );
                             editor.putString(TAG_NOMOR_TELEPON,tlp );

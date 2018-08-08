@@ -5,6 +5,7 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\SayurMobile;
+use Validator;
 
 class JualSayurController extends BaseController
 {
@@ -25,5 +26,12 @@ class JualSayurController extends BaseController
     {
     	$data = SayurMobile::findOrFail($request->id);
     	return $this->sendResponse($data);
+    }
+
+    public function searchSayur(Request $request)
+    {
+        $keyword = $request->keyword;
+        $search = SayurMobile::where('nama',"LIKE","%$keyword%")->paginate(20);
+        return $this->sendResponse($search);
     }
 }

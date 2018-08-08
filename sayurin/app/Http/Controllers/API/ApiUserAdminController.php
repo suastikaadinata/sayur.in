@@ -35,4 +35,11 @@ class ApiUserAdminController extends BaseController
     	return $this->sendResponse($user);
     }
 
+    public function searchUser(Request $request)
+    {
+        $keyword = $request->keyword;
+        $search = User::where('tipe', 'user')->where('name',"LIKE","%$keyword%")->paginate(20);
+        return $this->sendResponse($search);
+    }
+
 }
