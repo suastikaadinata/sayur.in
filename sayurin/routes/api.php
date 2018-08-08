@@ -16,12 +16,9 @@ Route::post('register', 'API\RegisterController@register');
 Route::post('login', 'API\LoginController@login');
 Route::get('sayur/dijual', 'API\JualSayurController@sayurmobile');
 Route::post('user/edit','API\APIUserController@editUser');
-<<<<<<< HEAD
 Route::post('cart','API\KeranjangController@cart');
 Route::post('cart/list','API\KeranjangController@getCart');
-=======
 Route::post('sayur/search', 'API\JualSayurController@searchSayur');
->>>>>>> 961d40a77d172808bb6fc9e6777f4064a35df7bd
 
 Route::middleware('auth:api')->group( function() {
     Route::get('sayur', 'API\APISayurController@show');

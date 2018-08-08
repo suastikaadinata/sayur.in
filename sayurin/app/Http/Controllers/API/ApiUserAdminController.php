@@ -34,7 +34,7 @@ class ApiUserAdminController extends BaseController
     	$user = User::findOrFail($request->id);
     	return $this->sendResponse($user);
     }
-
+    
     public function searchUser(Request $request)
     {
         $keyword = $request->keyword;

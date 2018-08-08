@@ -31,8 +31,6 @@ Route::group(['prefix' => 'manage-transaksi'], function(){
 Route::get('/detail-transaksi', 'TransaksiController@detilTransaksi');
 });
 
-
-
 Route::get('/manage-user', 'UserController@manageUser');
 Route::get('/chat', 'UserController@chatUser');
 
