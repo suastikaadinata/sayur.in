@@ -128,7 +128,7 @@ public class AdminListSayur extends Fragment {
 
                             for(int i = 0; i < jsonArray.length(); i++){
                                 JSONObject jsonObjectArray = jsonArray.getJSONObject(i);
-                                listSayur.add(new SayurListModel(jsonObjectArray.getInt("id"),"http://10.0.2.2/img/"+jsonObjectArray.getString("foto") ,jsonObjectArray.getString("nama"), jsonObjectArray.getInt("harga")));
+                                listSayur.add(new SayurListModel(jsonObjectArray.getInt("id"),Server.URLIMAGE+jsonObjectArray.getString("foto") ,jsonObjectArray.getString("nama"), jsonObjectArray.getInt("harga")));
                                 sayurListAdapter.notifyDataSetChanged();
                             }
                         }catch (Exception e){

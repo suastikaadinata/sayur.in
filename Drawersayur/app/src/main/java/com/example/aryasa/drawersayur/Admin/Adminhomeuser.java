@@ -66,7 +66,7 @@ public class Adminhomeuser extends Fragment {
                     for (int i = 0; i < response.length(); i++){
                         JSONObject jsonObject = response.getJSONObject(i);
                         if(jsonObject.getString("tipe").equals("user")){
-                            userdata.add(new Userdata(jsonObject.getInt("id"),"http://10.0.2.2/img/"+jsonObject.getString("foto"), jsonObject.getString("name") ,jsonObject.getString("email"), jsonObject.getString("nomor_telepon")));
+                            userdata.add(new Userdata(jsonObject.getInt("id"),Server.URLIMAGE+jsonObject.getString("foto"), jsonObject.getString("name") ,jsonObject.getString("email"), jsonObject.getString("nomor_telepon")));
                             RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewadminhomeuser);
                             GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                             recyclerView.setLayoutManager(gridLayoutManager);

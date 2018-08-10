@@ -128,7 +128,7 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
                 try{
                     for (int i = 0; i < response.length(); i++){
                         JSONObject jsonObject = response.getJSONObject(i);
-                        listSayur.add(new Sayur("http://10.0.2.2/img/"+ jsonObject.getString("foto") ,jsonObject.getInt("id"),jsonObject.getString("nama"), jsonObject.getInt("harga")));
+                        listSayur.add(new Sayur(Server.URLIMAGE+ jsonObject.getString("foto") ,jsonObject.getInt("id"),jsonObject.getString("nama"), jsonObject.getInt("harga")));
                         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview1);
                         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                         recyclerView.setLayoutManager(gridLayoutManager);
@@ -174,13 +174,18 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
             frameLayout.setLayoutParams(layoutParams);
         }
     }
-    public void updateCart(Sayur cartlist ) {
-        cartList.add(cartlist);
+
+    @Override
+    public void updateCart(Sayur sayur, int jumlah, int status) {
+        //1 -> pertama kali di tambahkan
+        //2 -> sudah pernah ditambahkan
+        if(status == 1){
+            cartList.add(sayur);
+        }
         persistentbottomSheet.setVisibility(View.VISIBLE);
         cart.setText(String.valueOf(cartList.size()));
-        CartAdapter.addCartItems((ArrayList<Sayur>) cartList);
-        addkeranjang(cartlist.getId());
-
+        CartAdapter.addCartItems(sayur.getId(), jumlah);
+        addkeranjang(sayur.getId());
     }
 
     @Override

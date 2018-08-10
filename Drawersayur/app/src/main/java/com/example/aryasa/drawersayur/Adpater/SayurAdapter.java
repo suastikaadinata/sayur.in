@@ -76,7 +76,7 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
             public void onClick(View view) {
                 total(mSayurlist.get(position).getHarga());
                 callbacks.updateharga(total);
-                callbacks.updateCart(mSayurlist.get(position));
+                callbacks.updateCart(mSayurlist.get(position), 1, 1);
                 holder.mButtonAdd.setVisibility(View.INVISIBLE);
                 holder.mLayoutKuantitas.setVisibility(View.VISIBLE);
 
@@ -89,6 +89,7 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
                 callbacks.updateharga(total);
                 jumlah = Integer.parseInt(holder.mTextQ.getText().toString());
                 holder.mTextQ.setText(String.valueOf(jumlah+1));
+                callbacks.updateCart(mSayurlist.get(position), jumlah+1, 2);
                 callbacks.updateJumlah(Integer.parseInt(holder.mTextQ.getText().toString()));
             }
         });
@@ -102,12 +103,14 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
                     holder.mButtonAdd.setVisibility(View.VISIBLE);
                     kurangtotal(mSayurlist.get(position).getHarga());
                     callbacks.updateharga(total);
+                    callbacks.updateCart(mSayurlist.get(position), jumlah, 2);
 
                 }else {
                     kurangtotal(mSayurlist.get(position).getHarga());
                     callbacks.updateharga(total);
                     jumlah = Integer.parseInt(holder.mTextQ.getText().toString());
                     holder.mTextQ.setText(String.valueOf(--jumlah));
+                    callbacks.updateCart(mSayurlist.get(position), jumlah, 2);
 
                 }
             }

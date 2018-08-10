@@ -52,6 +52,7 @@ public class Sayur {
         this.jumlah = jumlah;
     }
 
+
     public int getBerat() {
         return berat;
     }
