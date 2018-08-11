@@ -1,0 +1,298 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:2:1-59:12
+INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:2:1-59:12
+INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:2:1-59:12
+INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:2:1-59:12
+MERGED from [com.android.support:design:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\f112ff1ab2c26fca6ef116d2f648b18f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\b149b4a9fd6a8a0caaabc75c3d60fce3\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\2ca58a0c2ac742dfce06ca45de747ffd\AndroidManifest.xml:2:1-11:12
+MERGED from [com.google.android.gms:play-services-places:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.1.aar\299a0770417ed3ab897e5459a0a9d970\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\a7505498149b0c43b9a3c1b20a5f736f\AndroidManifest.xml:17:1-32:12
+MERGED from [com.google.android.gms:play-services-location:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-location-15.0.1.aar\ad66e3f15c764faaf0b375f9419032cb\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\9e689a1eee918f0b84c2b9536d067d95\AndroidManifest.xml:17:1-29:12
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.1.aar\97ceb3a3a6eef2dd32a92f04ee485ec3\AndroidManifest.xml:17:1-24:12
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.1.aar\2f8b7a8da22bbbf6c9269ac54619205b\AndroidManifest.xml:2:1-9:12
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\9227fc146e33c6db760b8f73c96c8237\AndroidManifest.xml:17:1-28:12
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\cef6a66292b4f395dd0c55ea200bd204\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\3b7386038ad5099a0daceaf99b12be3d\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\8aa2c19b135c5c4222461a2a3e50b77c\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.volley:volley:1.1.0] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\volley-1.1.0.aar\bb1378dd4a0e2c424fa3b4dc22e72797\AndroidManifest.xml:2:1-11:12
+MERGED from [com.jakewharton:butterknife:8.8.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\butterknife-8.8.1.aar\47edc9128d747f526bffd7872092b04e\AndroidManifest.xml:2:1-7:12
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\f8909c1fb5e016b64243404d6d383bb7\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\e9137d5831b4721da93132f4952b012c\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\f65d305e81941e68cec78fe8cd01853f\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\a2add22fb84b24ac08b938a49a0afa22\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\fc60bd8849526e80a3398b3f50aaeb89\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:transition:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\c6b4ce862333ebffedb675af4e623227\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\c6c47bfbb61b262f62503c42d479e854\AndroidManifest.xml:17:1-22:12
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\6fc1cab7a2c6532e61087aabfabf05cb\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\b644181bf03bc9209e5d883d4f3d0cad\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\93216c7bd73248db5e87933784f37d08\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\2d69364d3f879002f068c1da4c74ddd1\AndroidManifest.xml:17:1-22:12
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\8baf0b2551032aec815cbcffad2493d6\AndroidManifest.xml:17:1-22:12
+INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:2:1-59:12
+INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:2:1-59:12
+INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:2:1-59:12
+	package
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:3:5-45
+		INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml
+	android:versionName
+		INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:2:1-59:12
+		INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml
+	android:versionCode
+		INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:2:1-59:12
+		INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml
+	xmlns:android
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:2:11-69
+uses-permission#android.permission.INTERNET
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:5:5-67
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\a7505498149b0c43b9a3c1b20a5f736f\AndroidManifest.xml:24:5-67
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\a7505498149b0c43b9a3c1b20a5f736f\AndroidManifest.xml:24:5-67
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:5:22-64
+uses-permission#android.permission.ACCESS_NETWORK_STATE
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:6:5-79
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\a7505498149b0c43b9a3c1b20a5f736f\AndroidManifest.xml:23:5-79
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\a7505498149b0c43b9a3c1b20a5f736f\AndroidManifest.xml:23:5-79
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:6:22-76
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:7:5-81
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:7:22-78
+uses-permission#com.google.android.providers.gsf.permission.READ_GSERVICES
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:8:5-98
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:8:22-95
+uses-permission#android.permission.ACCESS_COARSE_LOCATION
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:9:5-81
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:9:22-78
+uses-permission#android.permission.ACCESS_FINE_LOCATION
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:10:5-79
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:10:22-76
+uses-permission#android.permission.READ_EXTERNAL_STORAGE
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:11:5-80
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:11:22-77
+application
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:13:5-57:19
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\2ca58a0c2ac742dfce06ca45de747ffd\AndroidManifest.xml:9:5-20
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\2ca58a0c2ac742dfce06ca45de747ffd\AndroidManifest.xml:9:5-20
+MERGED from [com.google.android.gms:play-services-places:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.1.aar\299a0770417ed3ab897e5459a0a9d970\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.1.aar\299a0770417ed3ab897e5459a0a9d970\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\a7505498149b0c43b9a3c1b20a5f736f\AndroidManifest.xml:30:5-20
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\a7505498149b0c43b9a3c1b20a5f736f\AndroidManifest.xml:30:5-20
+MERGED from [com.google.android.gms:play-services-location:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-location-15.0.1.aar\ad66e3f15c764faaf0b375f9419032cb\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-location:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-location-15.0.1.aar\ad66e3f15c764faaf0b375f9419032cb\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\9e689a1eee918f0b84c2b9536d067d95\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\9e689a1eee918f0b84c2b9536d067d95\AndroidManifest.xml:22:5-27:19
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.1.aar\97ceb3a3a6eef2dd32a92f04ee485ec3\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.1.aar\97ceb3a3a6eef2dd32a92f04ee485ec3\AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.1.aar\2f8b7a8da22bbbf6c9269ac54619205b\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.1.aar\2f8b7a8da22bbbf6c9269ac54619205b\AndroidManifest.xml:7:5-20
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\9227fc146e33c6db760b8f73c96c8237\AndroidManifest.xml:22:5-26:19
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\9227fc146e33c6db760b8f73c96c8237\AndroidManifest.xml:22:5-26:19
+MERGED from [com.android.volley:volley:1.1.0] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\volley-1.1.0.aar\bb1378dd4a0e2c424fa3b4dc22e72797\AndroidManifest.xml:9:5-20
+MERGED from [com.android.volley:volley:1.1.0] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\volley-1.1.0.aar\bb1378dd4a0e2c424fa3b4dc22e72797\AndroidManifest.xml:9:5-20
+	android:supportsRtl
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:19:9-35
+	android:label
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:17:9-41
+	android:roundIcon
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:18:9-54
+	android:icon
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:16:9-41
+	android:allowBackup
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:15:9-35
+	android:theme
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:20:9-40
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:14:9-49
+meta-data#com.google.android.gms.version
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\9227fc146e33c6db760b8f73c96c8237\AndroidManifest.xml:23:9-25:69
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\9227fc146e33c6db760b8f73c96c8237\AndroidManifest.xml:23:9-25:69
+	android:value
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:23:13-66
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:22:13-58
+meta-data#com.google.android.geo.API_KEY
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:24:9-26:55
+	android:value
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:26:13-52
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:25:13-58
+activity#com.example.aryasa.drawersayur.Drawer
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:28:9-42:20
+	android:label
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:30:13-45
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:29:13-35
+intent-filter#action:name:android.intent.action.MAIN+action:name:android.intent.action.SEARCH+category:name:android.intent.category.DEFAULT+category:name:android.intent.category.LAUNCHER
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:31:13-37:29
+action#android.intent.action.MAIN
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:32:17-69
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:32:25-66
+action#android.intent.action.SEARCH
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:33:17-71
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:33:25-68
+category#android.intent.category.DEFAULT
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:35:17-76
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:35:27-73
+category#android.intent.category.LAUNCHER
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:36:17-77
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:36:27-74
+meta-data#android.app.searchable
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:39:13-41:54
+	android:resource
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:41:17-51
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:40:17-54
+activity#com.example.aryasa.drawersayur.Chart
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:43:9-43
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:43:19-40
+activity#com.example.aryasa.drawersayur.Login
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:44:9-43
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:44:19-40
+activity#com.example.aryasa.drawersayur.Register
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:45:9-46
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:45:19-43
+activity#com.example.aryasa.drawersayur.Process
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:46:9-45
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:46:19-42
+activity#com.example.aryasa.drawersayur.Chatting
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:47:9-46
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:47:19-43
+activity#com.example.aryasa.drawersayur.Profile
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:48:9-45
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:48:19-42
+activity#com.example.aryasa.drawersayur.Admin.Admintambahsayur
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:49:9-60
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:49:19-57
+activity#com.example.aryasa.drawersayur.Admin.Adminubahsayur
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:50:9-58
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:50:19-55
+activity#com.example.aryasa.drawersayur.Admin.Adminviewuser
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:51:9-57
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:51:19-54
+activity#com.example.aryasa.drawersayur.Admin.Admindetailtransaksi
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:52:9-64
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:52:19-61
+activity#com.example.aryasa.drawersayur.Admin.AdminHomeListUser
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:53:9-61
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:53:19-58
+activity#com.example.aryasa.drawersayur.Admin.AdminHome
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:54:9-53
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:54:19-50
+activity#com.example.aryasa.drawersayur.Admin.AdminProfile
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:55:9-56
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:55:19-53
+activity#com.example.aryasa.drawersayur.MapsDirection
+ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:56:9-51
+	android:name
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml:56:19-48
+uses-sdk
+INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
+INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml
+INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml
+MERGED from [com.android.support:design:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\f112ff1ab2c26fca6ef116d2f648b18f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\design-27.1.1.aar\f112ff1ab2c26fca6ef116d2f648b18f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\b149b4a9fd6a8a0caaabc75c3d60fce3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:appcompat-v7:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\appcompat-v7-27.1.1.aar\b149b4a9fd6a8a0caaabc75c3d60fce3\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\2ca58a0c2ac742dfce06ca45de747ffd\AndroidManifest.xml:5:5-7:41
+MERGED from [com.android.support.constraint:constraint-layout:1.1.2] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\constraint-layout-1.1.2.aar\2ca58a0c2ac742dfce06ca45de747ffd\AndroidManifest.xml:5:5-7:41
+MERGED from [com.google.android.gms:play-services-places:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.1.aar\299a0770417ed3ab897e5459a0a9d970\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-places-15.0.1.aar\299a0770417ed3ab897e5459a0a9d970\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\a7505498149b0c43b9a3c1b20a5f736f\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\a7505498149b0c43b9a3c1b20a5f736f\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-location:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-location-15.0.1.aar\ad66e3f15c764faaf0b375f9419032cb\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-location:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-location-15.0.1.aar\ad66e3f15c764faaf0b375f9419032cb\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\9e689a1eee918f0b84c2b9536d067d95\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\9e689a1eee918f0b84c2b9536d067d95\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.1.aar\97ceb3a3a6eef2dd32a92f04ee485ec3\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-places-placereport:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-places-placereport-15.0.1.aar\97ceb3a3a6eef2dd32a92f04ee485ec3\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.1.aar\2f8b7a8da22bbbf6c9269ac54619205b\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-tasks:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-tasks-15.0.1.aar\2f8b7a8da22bbbf6c9269ac54619205b\AndroidManifest.xml:5:5-44
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\9227fc146e33c6db760b8f73c96c8237\AndroidManifest.xml:20:5-44
+MERGED from [com.google.android.gms:play-services-basement:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-basement-15.0.1.aar\9227fc146e33c6db760b8f73c96c8237\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\cef6a66292b4f395dd0c55ea200bd204\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-v4:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-v4-27.1.1.aar\cef6a66292b4f395dd0c55ea200bd204\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\3b7386038ad5099a0daceaf99b12be3d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:recyclerview-v7:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\recyclerview-v7-27.1.1.aar\3b7386038ad5099a0daceaf99b12be3d\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\8aa2c19b135c5c4222461a2a3e50b77c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:cardview-v7:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\cardview-v7-27.1.1.aar\8aa2c19b135c5c4222461a2a3e50b77c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.volley:volley:1.1.0] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\volley-1.1.0.aar\bb1378dd4a0e2c424fa3b4dc22e72797\AndroidManifest.xml:7:5-43
+MERGED from [com.android.volley:volley:1.1.0] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\volley-1.1.0.aar\bb1378dd4a0e2c424fa3b4dc22e72797\AndroidManifest.xml:7:5-43
+MERGED from [com.jakewharton:butterknife:8.8.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\butterknife-8.8.1.aar\47edc9128d747f526bffd7872092b04e\AndroidManifest.xml:5:5-43
+MERGED from [com.jakewharton:butterknife:8.8.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\butterknife-8.8.1.aar\47edc9128d747f526bffd7872092b04e\AndroidManifest.xml:5:5-43
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\f8909c1fb5e016b64243404d6d383bb7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-fragment:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-fragment-27.1.1.aar\f8909c1fb5e016b64243404d6d383bb7\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\e9137d5831b4721da93132f4952b012c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:animated-vector-drawable:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\animated-vector-drawable-27.1.1.aar\e9137d5831b4721da93132f4952b012c\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\f65d305e81941e68cec78fe8cd01853f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-ui:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-core-ui-27.1.1.aar\f65d305e81941e68cec78fe8cd01853f\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\a2add22fb84b24ac08b938a49a0afa22\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-core-utils:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-core-utils-27.1.1.aar\a2add22fb84b24ac08b938a49a0afa22\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\fc60bd8849526e80a3398b3f50aaeb89\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-vector-drawable-27.1.1.aar\fc60bd8849526e80a3398b3f50aaeb89\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\c6b4ce862333ebffedb675af4e623227\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:transition:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\transition-27.1.1.aar\c6b4ce862333ebffedb675af4e623227\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\c6c47bfbb61b262f62503c42d479e854\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-media-compat:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-media-compat-27.1.1.aar\c6c47bfbb61b262f62503c42d479e854\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\6fc1cab7a2c6532e61087aabfabf05cb\AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-compat:27.1.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\support-compat-27.1.1.aar\6fc1cab7a2c6532e61087aabfabf05cb\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\b644181bf03bc9209e5d883d4f3d0cad\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:livedata-core:1.1.0] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\livedata-core-1.1.0.aar\b644181bf03bc9209e5d883d4f3d0cad\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\93216c7bd73248db5e87933784f37d08\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:viewmodel:1.1.0] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\viewmodel-1.1.0.aar\93216c7bd73248db5e87933784f37d08\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\2d69364d3f879002f068c1da4c74ddd1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.lifecycle:runtime:1.1.0] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\2d69364d3f879002f068c1da4c74ddd1\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\8baf0b2551032aec815cbcffad2493d6\AndroidManifest.xml:20:5-44
+MERGED from [android.arch.core:runtime:1.1.0] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\runtime-1.1.0.aar\8baf0b2551032aec815cbcffad2493d6\AndroidManifest.xml:20:5-44
+INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml
+INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml
+	android:targetSdkVersion
+		INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml
+	android:minSdkVersion
+		INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml
+		ADDED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml
+		INJECTED from D:\AndroidStudio\Projects\sayur.in\punya dwi\Drawersayur\app\src\main\AndroidManifest.xml
+uses-feature#0x00020000
+ADDED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\a7505498149b0c43b9a3c1b20a5f736f\AndroidManifest.xml:26:5-28:35
+	android:glEsVersion
+		ADDED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\a7505498149b0c43b9a3c1b20a5f736f\AndroidManifest.xml:27:9-41
+	android:required
+		ADDED from [com.google.android.gms:play-services-maps:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-maps-15.0.1.aar\a7505498149b0c43b9a3c1b20a5f736f\AndroidManifest.xml:28:9-32
+activity#com.google.android.gms.common.api.GoogleApiActivity
+ADDED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\9e689a1eee918f0b84c2b9536d067d95\AndroidManifest.xml:23:9-26:75
+	android:exported
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\9e689a1eee918f0b84c2b9536d067d95\AndroidManifest.xml:25:13-37
+	android:theme
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\9e689a1eee918f0b84c2b9536d067d95\AndroidManifest.xml:26:13-72
+	android:name
+		ADDED from [com.google.android.gms:play-services-base:15.0.1] C:\Users\NIGEL\.gradle\caches\transforms-1\files-1.1\play-services-base-15.0.1.aar\9e689a1eee918f0b84c2b9536d067d95\AndroidManifest.xml:24:13-79

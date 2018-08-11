@@ -1,17 +1,21 @@
 package com.example.aryasa.drawersayur.Admin;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.SearchView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 
 
@@ -20,6 +24,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.android.volley.toolbox.StringRequest;
 import com.example.aryasa.drawersayur.Adpater.AdminuserAdapter;
 import com.example.aryasa.drawersayur.Adpater.SayurListAdapter;
 import com.example.aryasa.drawersayur.Chart;
@@ -45,23 +50,28 @@ public class Adminhomeuser extends Fragment {
 //modelnya Userdata
 //adapternya adminuseradapater
     private String API_URL = Server.URL + "user";
+    private String API_URL_Search = Server.URL + "user/search";
     ArrayList<Userdata> userdata = new ArrayList<>();
+    final Context context = this.getContext();
+    private AdminuserAdapter adminuserAdapter;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         final View view = inflater.inflate(R.layout.adminhomeuser, container, false);
-        final AdminuserAdapter adminuserAdapter = new AdminuserAdapter(view.getContext(),userdata);
-        getUserApi(API_URL, view, adminuserAdapter);
+        adminuserAdapter = new AdminuserAdapter(view.getContext(),userdata);
+        getUserApi(API_URL, view);
         return view;
     }
 
 
-    public void getUserApi(String url, final View view, final AdminuserAdapter sayur){
+    public void getUserApi(String url, final View view){
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
+                userdata.clear();
+                adminuserAdapter.notifyDataSetChanged();
                 try{
                     for (int i = 0; i < response.length(); i++){
                         JSONObject jsonObject = response.getJSONObject(i);
@@ -70,7 +80,7 @@ public class Adminhomeuser extends Fragment {
                             RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewadminhomeuser);
                             GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                             recyclerView.setLayoutManager(gridLayoutManager);
-                            recyclerView.setAdapter(sayur);
+                            recyclerView.setAdapter(adminuserAdapter);
                         }
                     }
                 }catch (JSONException e){
@@ -99,16 +109,78 @@ public class Adminhomeuser extends Fragment {
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.admin_action_bar_user, menu);
+        MenuItem searchItem = menu.findItem(R.id.action_search);
+        SearchView searchView = (SearchView) searchItem.getActionView();
+        searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
+        searchView.setIconified(true);
         super.onCreateOptionsMenu(menu,inflater);
+
+
+        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                cariUser(newText,context);
+                return false;
+            }
+        });
     }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id = item.getItemId();
 
-        if (id == R.id.search){
-            return true;
-        }
 
-        return super.onOptionsItemSelected(item);
+    private void cariUser(final String keyword, final Context context ) {
+
+        StringRequest SearchReq = new StringRequest(Request.Method.POST, API_URL_Search,
+                new Response.Listener<String>() {
+                    @Override
+                    public void onResponse(String response){
+                        String json = response.toString();
+                        Log.e("Response: ", response.toString());
+                        try {
+                            JSONObject jsonObject = new JSONObject(json);
+                            JSONArray jsonArray = jsonObject.getJSONArray("data");
+                            userdata.clear();
+                            adminuserAdapter.notifyDataSetChanged();
+
+                            for(int i = 0; i < jsonArray.length(); i++){
+                                JSONObject jsonObjectArray = jsonArray.getJSONObject(i);
+                                userdata.add(new Userdata(jsonObjectArray.getInt("id"),Server.URLIMAGE+jsonObjectArray.getString("foto"), jsonObjectArray.getString("name") ,jsonObjectArray.getString("email"), jsonObjectArray.getString("nomor_telepon")));
+                                adminuserAdapter.notifyDataSetChanged();
+                            }
+                        }catch (Exception e){
+                            e.printStackTrace();
+                        }
+                    }
+                },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        error.printStackTrace();
+                    }
+                }){
+
+                    @Override
+                    public Map<String, String> getHeaders() throws AuthFailureError {
+                    HashMap<String, String> headers = new HashMap<>();
+                    headers.put("Accept", "application/json");
+                    headers.put("Authorization", Server.TOKEN);
+                    return headers;
+                }
+
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                Map<String,String> map = new HashMap<>();
+                map.put("keyword",keyword);
+                return map;
+            }
+        };
+
+        Singleton.getInstance(context).addToRequestQueue(SearchReq);
+
     }
 }
+
