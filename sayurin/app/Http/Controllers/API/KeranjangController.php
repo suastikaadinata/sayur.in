@@ -11,9 +11,16 @@ class KeranjangController extends BaseController
 {
     public function cart(Request $request)
     {
+        $data_cart = Keranjang::all();
         $user_id = $request->user_id;
         $sayur_cart = $request->sayur_id;
         $jumlah = $request->jumlah;
+
+        for($i = 0; $i < count($data_cart); $i++){
+            if($data_cart[$i]->user_id == $user_id){
+                $data_cart[$i]->delete();
+            }
+        }
 
         for($i = 0; $i < count($sayur_cart); $i++){
             $sayur = SayurMobile::findOrFail($sayur_cart[$i]);

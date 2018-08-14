@@ -22,43 +22,32 @@
                             </div> 
                         </form> 
                     </div>  
-                <div class="col-lg-3">
-                    <h3>Manage transaksi</h3>
-                </div>
                 <div class="col-lg-7"></div>
             </div>
         </div>
     </div>
     <div class="section-content">
         <div class="container">
-            <div class="row">
-            @for($i = 0; $i < 6; $i++)
-                <div class="col-lg-12">
-                    <div class="manage-sayur-container">
-                        <a href="/manage-transaksi/detail-transaksi" style="text-decoration: none;" >
-                        <div class="row">
-                        <div class="col-lg-2">
-                        <span style="margin-top: 15px; color: #e67e22; font-weight: bold;">nama</span>
-                        <br>
-                         <span style="margin-top: 15px; color: #e67e22">083111</span>
-                         <br>
-                         <span style="margin-top: 15px; color: #e67e22">@gmail.com</span>
-                        </div>
-                        <div class="col-lg-8"></div>
-                        <div class="col-lg-2 text-right">
-                        <span style="margin-top: 15px; color: #e67e22; font-weight: bold; ">Total transaksi</span> 
-                        <br>
-                        <span style="margin-top: 15px; color: #e67e22 ">30000</span>
-                        <br>
-                        <span style="margin-top: 15px; color: #e67e22 ">Pengiriman</span>
-                    </div>
-                    </div>
-                        </a>
-                        
-                    </div>
-                </div>
-               @endfor
-            </div>
+            <table style="text-align: center;" class="table table-bordered table-hover table-light table-striped" >
+                    <thead>
+                        <tr class="table-success">
+                            <th scope="col">Nama</th>
+                            <th scope="col">Jumlah</th>
+                            <th scope="col">Total belanja</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @for($i = 0; $i < 6; $i++)
+                        <tr>
+                            <td><a href="/manage-transaksi/detail-transaksi" style="text-decoration:none; color: black;">Suastika Adinata</a> </td>
+                            <td><a href="/manage-transaksi/detail-transaksi" style="text-decoration: none; color: black;">3</a></td>
+                            <td><a href="/manage-transaksi/detail-transaksi" style="text-decoration:none; color: black;">15000</a></td>
+                        </tr>
+                    @endfor
+                    </a>
+                    </tbody>
+                </table>
         </div>
-    </div>  
+    </div> 
+    
 @endsection

@@ -4,18 +4,18 @@ html{
 }
 
 body{
-    background-color: #5faf50;
+    background-color:  #53B666;
 }
 
 .btn-modif{
-    background-color: #5faf50;
+    background-color: #ffb347;
     color: white;   
-    border-color: #5faf50;
+    border-color: #ffb347;
 }
 
 .btn-modif:hover, .btn-modif:focus{
-    background-color: #2ecc71;
-    border-color: #2ecc71;
+    background-color: #ff9d15;
+    border-color: #ff9d15;
     color: white;
 }
 
@@ -28,7 +28,7 @@ body{
     border-radius: 4px;
     margin-top: 50px;
     border-bottom: 3px solid #ccc;
-    box-shadow: 0px 1px 1px rgba(0,0,0,1);
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
 }
 

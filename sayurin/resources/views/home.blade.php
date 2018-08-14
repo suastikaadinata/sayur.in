@@ -5,7 +5,7 @@
 @section('content')
     <div class="all-header">
         <div class="container">
-            <h1 style="margin-left: 20px;">Home</h1>
+            <h2 style="margin-left: 20px; padding-top: 20px;">Halaman utama</h2>
         </div>
     </div>
     <div class="section-content">
@@ -13,17 +13,18 @@
             <div class="row">
                 <div class="col-lg-4">
                     <div class="status-pesanan-container">
-                        <h4>10 Pesanan menunggu pembayaran</h4>
+                        <img src="{{ asset('img/transaksi-wait.png') }}" style="width: 60px; float: left; margin: 0px 5px 10px 5px;">
+                        <h4>10 Pesanan 
+                            <br>
+                        belum dibayar</h4>
                     </div>
                 </div>
                 <div class="col-lg-4">
                     <div class="status-pesanan-container">
-                        <h4>9 Menunggu kiriman</h4>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="status-pesanan-container">
-                        <h4>10 Pemesanan Selesai</h4>
+                        <img src="{{ asset('img/success-ok.png') }}" style="width: 60px; float: left; margin: 0px 5px 10px 5px;">
+                        <h4>9 
+                            <br>
+                        Transaksi sukses</h4>
                     </div>
                 </div>
             </div>
@@ -34,9 +35,26 @@
                     <div class="sayur-home-container">
                         <h4 style="text-align: center;">{{ $s->nama }}</h4>
                         <div class="sayur-home-img" style="background-image: url({{ $s->foto() }})"></div>
-                        <h5 style="margin-top: 15px; color: #e67e22">Stok: {{ $s->jumlah }}</h5>
-                        <h6>Kuantitas: {{ $s->berat }}</h6>
-                        <h6>Harga: Rp. {{ $s->harga }}</h6>
+                        <table class="table table-borderless" style="text-align: center; color: #e67e22" >
+                            <thead>
+                                <tr>
+                                    <th scope="col">Stok</th>
+                                    <th scope="col">Satuan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <td>{{ $s->jumlah }}</td>
+                                    <td>{{ $s->berat }}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">Rp. {{ $s->harga }} ,-</td>
+                                </tr>
+                            </tfoot>
+
+                        </table>
                     </div>
                 </div>
                 @endforeach

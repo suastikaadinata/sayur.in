@@ -16,16 +16,13 @@ class CreateTransaksiTable extends Migration
         Schema::create('transaksi', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->integer('sayur_id')->unsigned();
-            $table->integer('jumlah');
-            $table->integer('total_harga');
             $table->string('alamat');
-            $table->string('status_transaksi');
+            $table->string('status_transaksi')->default(0);
             $table->string('metode_transaksi');
+            $table->string('waktu_pengiriman');
             $table->timestamps();
-
+            
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('sayur_id')->references('id')->on('sayur')->onDelete('cascade');
         });
     }
 

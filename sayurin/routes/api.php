@@ -19,6 +19,7 @@ Route::post('user/edit','API\APIUserController@editUser');
 Route::post('cart','API\KeranjangController@cart');
 Route::post('cart/list','API\KeranjangController@getCart');
 Route::post('sayur/search', 'API\JualSayurController@searchSayur');
+Route::post('transaksi', 'API\APITransaksiController@transaksi');
 
 Route::middleware('auth:api')->group( function() {
     Route::get('sayur', 'API\APISayurController@show');

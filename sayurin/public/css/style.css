@@ -8,14 +8,24 @@ body{
 }
 
 .btn-modif{
-    background-color: #5faf50;
+    background-color: #53B666;
     color: white;   
-    border-color: #5faf50;
+    border-color: #53B666;
 }
 
 .btn-modif:hover, .btn-modif:focus{
-    background-color: #2ecc71;
-    border-color: #2ecc71;
+    background-color: #59A14C;
+    border-color: #59A14C;
+    color: white;
+}
+.btn-logout{
+    background-color: #fa9200;
+    border-color: #fa9200;
+    color: white;
+}
+.btn-logout:hover{
+    background-color: #e18300;
+    border-color: #e18300;
     color: white;
 }
 
@@ -31,7 +41,10 @@ body{
 header{
     width: 100%;
     height: 80px;
-    background-color: #5faf50;
+    background-color:  #53B666;
+}
+.icon a:hover{
+    opacity: .5%;
 }
 
 .section-left-side{
@@ -40,31 +53,31 @@ header{
 }
 
 .section-left-side a{
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
 .section-left-side a:hover{
-    color: #5faf50;
+    color: #ffc87b;
+}
+.active, .menu:hover {
+    color: black;
 }
 
 .section-core{
     width: 100%;
-    border-left: 5px solid #5faf50;
     padding-bottom: 300px;
 }
 
 footer{
-    padding: 50px;
+    padding: 10px;
     width: 100%;
-    background-color: #ecf0f1;
-    border-top: 5px solid #5faf50;
+    background-color:#419650;
+
 }
 
 .all-header{
     width: 100%;
-    border-bottom: 5px solid #5faf50;
-    padding: 10px;
 }
 
 .section-content{
@@ -72,17 +85,23 @@ footer{
 }
 
 .status-pesanan-container{
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     background-color: white;
-    border: 3px solid #bdc3c7;
     width: 100%;
-    border-radius: 5px;
     margin-top: 20px;
     padding: 10px;
-    text-align: center;
+
+}
+.status-pesanan-container:hover{
+
+    background-color: #F0F0ED;
+
 }
 
 .sayur-home-container, .user-home-container, .manage-sayur-container{
     width: 100%;
+    color: #e67e22;
+    text-align: center;
     background-color: white;
     padding: 15px;
     border: 3px solid #bdc3c7;
@@ -92,7 +111,7 @@ footer{
 
 .sayur-home-container:hover, .user-home-container:hover, .manage-sayur-container:hover{
     cursor: pointer;
-    border: 3px solid #2ecc71;
+    border: 3px solid #53B666;
 }
 
 .user-home-container{
@@ -201,7 +220,7 @@ footer{
     color: white;
 }
 .modal {
-    position: fixed;
+    position:F fixed;
     top: 50%;
     left: 50%;
   transform: translate(-50%, -50%);

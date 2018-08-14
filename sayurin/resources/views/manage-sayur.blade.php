@@ -7,7 +7,7 @@
         <div class="container">
             <div class="row">
                 <div style="margin-bottom: 20px;"class="col-lg-6">
-                    <h1>Manage Sayur</h1>
+                    <h2 style=" padding-top: 20px;">Manage sayur</h2>
                 </div>
                 <div class="col-lg-2"></div>
                     <div class="col-lg-4 manage-sayur-header-search">
@@ -43,11 +43,26 @@
                         <a href="/manage-sayur/detail-sayur" style="text-decoration: none;" >
                         <h4 style="text-align: center; color: #e67e22"">{{ $s->nama }}</h4>
                         <div class="sayur-home-img" style="background-image: url({{ $s->foto() }})"></div>
-                        <h5 style="margin-top: 15px; color: #e67e22">Stok: {{ $s->jumlah }}</h5>
-                        <h6 style="margin-top: 15px; color: #e67e22" >Kuantitas: {{ $s->berat }}</h6>
-                        <h6 style="margin-top: 15px; color: #e67e22" >Harga: Rp. {{ $s->harga }}</h6>
-                        
+                        <table class="table" style="text-align: center; color: #e67e22" >
+                            <thead >
+                                <tr>
+                                    <th>Stok</th>
+                                    <th>Satuan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>{{ $s->jumlah }}</td>
+                                    <td>{{ $s->berat }}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">Rp. {{ $s->harga }} ,-</td>
+                                </tr>
+                            </tfoot>
 
+                        </table>
                         </a>
                         
                     </div>

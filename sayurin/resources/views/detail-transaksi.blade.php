@@ -10,13 +10,26 @@
     </div>
     <div class="section-content">
         <div class="container">
-                    <div class="col-lg-3">
-                        <span>dwi</span>
-                        <br>
-                        <span>083111</span>
-                        <br>
-                        <span>dwiemail@gmail.com</span>
-                    </div>
+                    <table class="table " style="text-align: left; color: #53B666; border: none!important;" >
+                            <thead class="table-success">
+                                <tr>
+                                    <th scope="col">Nama user</th>
+                                    <th scope="col">Tanggal transaksi</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="font-weight: bold;">nomor handphone</td>
+                                    <td style="font-weight: bold">alamatemail@email</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <td colspan="2">alamat pengiriman</td>
+                                </tr>
+                            </tfoot>
+
+                        </table>
                     <div class="col-lg-3">
                         <h3>Pesanan</h3>
                     </div>
@@ -44,24 +57,27 @@
                         </tr>
                     </tfoot>
                 </table>
-                <div class="col-lg-3">
-                        <h4>Metode pembayaran :</h4>
+                <div class="row">
+                    <div class="col-lg-5">
+                        <span style="font-weight: bold;">Metode pembayaran :</span>
                         <span>On the spot</span>
                     </div>
-                    <div class="row">
-                        <div class="col-lg-5">
-                        <h4>Status Transaksi :</h4>
-                     <select class="col-lg-6 custom-select">
-  <option value="1">Pengiriman</option>
-  <option value="2">Menunggu Pembayaran</option>
+                    <div class="col-lg-7">
+                    <span>Status Transaksi :</span>
+                     <select class="col-lg-4 custom-select">
+                    <option value="1">Pengiriman</option>
+                    <option value="2">Menunggu Pembayaran</option>
   <option value="3">Terkonfirmasi</option>
 </select>
-<button class="col-lg-4 btn-success " style="text-align: center;">
+<button class="btn btn-default btn-lg btn-modif" style="text-align: center;">
     simpan
 </button>
-                   </div>
-                   
+
                     </div>
+                </div>
+                
+                    
+                    
                     
                
         </div>

@@ -62,9 +62,8 @@ class SayurController extends Controller
         $keyword = Input::get('search');
         $search = Sayur::where('nama',"LIKE","%$keyword%")->paginate(20);
 
-        return view('search-sayur',[
-            'keyword'   => $keyword,
-            'search'    => $search
+        return view('manage-sayur',[
+            'sayur' => $search
         ]);
     }
 
@@ -73,10 +72,12 @@ class SayurController extends Controller
         $sayur = Sayur::all();
         return response()->json($sayur,200);
     }
+
     public function detilSayur()
     {
         return view('detail-sayur');
     }
+
     public function editSayur()
     {
         return view('edit-sayur');

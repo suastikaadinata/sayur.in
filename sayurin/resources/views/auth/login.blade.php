@@ -14,13 +14,13 @@
     <div class="row">
         <div class="col-lg-4 col-md-4 col-sm-2"></div>
         <div class="col-lg-4 col-md-4 col-sm-8">
-            <div class="box">
+            <div class="box" style="background-color: #F0F0ED;">
                 <div class="web-logo">
-                    <a href="/"><img src="{{ asset('img/logo.png') }}"></a>
+                    <a href="/"><img src="{{ asset('img/grey-login.png') }}" style="width: 50%;"></a>
                 </div>
                 <hr>
                 <div class="content">
-                    <h1>Login</h1>
+                    <h1>LOGIN</h1>
                         <form rule="form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
@@ -48,7 +48,7 @@
                         
                             <div class="form-group">
                                 <button type="submit" class="btn btn-default btn-lg btn-modif">
-                                    Login
+                                    LOGIN
                                 </button>
                             </div>
                         </form>
