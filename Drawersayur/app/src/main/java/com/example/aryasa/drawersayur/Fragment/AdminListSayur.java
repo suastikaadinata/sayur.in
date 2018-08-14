@@ -43,7 +43,7 @@ import java.util.Map;
 
 public class AdminListSayur extends Fragment {
     private String API_URL = Server.URL + "sayur/dijual";
-    private String API_URL_Search = Server.URL + "sayur/search";;
+    private String API_URL_Search = Server.URL + "sayur/search";
     ArrayList<SayurListModel> listSayur = new ArrayList<SayurListModel>();
     private SayurListAdapter sayurListAdapter;
     final Context context = this.getContext();
@@ -56,7 +56,6 @@ public class AdminListSayur extends Fragment {
                              Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         final View view = inflater.inflate(R.layout.activity_admin_list_sayur, container, false);
-
         sayurListAdapter = new SayurListAdapter(view.getContext(), listSayur);
         getSayurApi(API_URL, view);
         return view;
@@ -67,6 +66,8 @@ public class AdminListSayur extends Fragment {
             @Override
             public void onResponse(JSONArray response) {
                 try{
+                    listSayur.clear();
+                    sayurListAdapter.notifyDataSetChanged();
                     for (int i = 0; i < response.length(); i++){
                         JSONObject jsonObject = response.getJSONObject(i);
                         listSayur.add(new SayurListModel(jsonObject.getInt("id"),"http://10.0.2.2/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
