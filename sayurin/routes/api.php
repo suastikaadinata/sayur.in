@@ -14,12 +14,23 @@ use Illuminate\Http\Request;
 */
 Route::post('register', 'API\RegisterController@register');
 Route::post('login', 'API\LoginController@login');
-Route::get('sayur/dijual', 'API\JualSayurController@sayurmobile');
 Route::post('user/edit','API\APIUserController@editUser');
-Route::post('cart','API\KeranjangController@cart');
-Route::post('cart/list','API\KeranjangController@getCart');
-Route::post('sayur/search', 'API\JualSayurController@searchSayur');
-Route::post('transaksi', 'API\APITransaksiController@transaksi');
+
+Route::group(['prefix' => 'sayur'], function(){
+    Route::get('/dijual', 'API\JualSayurController@sayurmobile');
+    Route::post('/search', 'API\JualSayurController@searchSayur');
+});
+
+Route::group(['prefix' => 'cart'], function(){
+    Route::post('/','API\KeranjangController@cart');
+    Route::post('/list','API\KeranjangController@getCart');
+});
+
+Route::group(['prefix' => 'transaksi'], function(){    
+    Route::post('/', 'API\APITransaksiController@transaksi');
+    Route::get('/list', 'API\APITransaksiController@getAllTransaksi');
+    Route::post('/list/detail', 'API\APITransaksiController@getDetailTransaksi');
+});
 
 Route::middleware('auth:api')->group( function() {
     Route::get('sayur', 'API\APISayurController@show');

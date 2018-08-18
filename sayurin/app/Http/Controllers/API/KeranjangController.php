@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
 use App\Keranjang;
 use App\SayurMobile;
+use DB;
 
 class KeranjangController extends BaseController
 {
@@ -39,7 +40,10 @@ class KeranjangController extends BaseController
 
     public function getCart(Request $request)
     {
-        $sayur = Keranjang::where('user_id', $request->id)->get();
+        $sayur = DB::table('keranjang')
+                ->where('user_id', $request->id)
+                ->leftJoin('sayurmobile','keranjang.sayur_id','=','sayurmobile.id')
+                ->get();
         return $this->sendResponse($sayur);
     }
 }

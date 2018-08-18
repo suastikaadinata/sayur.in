@@ -7,6 +7,7 @@ use App\Http\Controllers\API\BaseController as BaseController;
 use App\Transaksi;
 use App\Keranjang;
 use App\CartTransaksi;
+use DB;
 
 class APITransaksiController extends BaseController
 {
@@ -36,5 +37,18 @@ class APITransaksiController extends BaseController
         }
 
         return 'success';
+    }
+
+    public function getDetailTransaksi(Request $request){
+        $transaksi = DB::table('transaksi')
+                    ->where('user_id', $request->id)
+                    ->leftJoin('cart_transaksi','transaksi.id','=','cart_transaksi.transaksi_id')
+                    ->get();
+        return $this->sendResponse($transaksi);
+    }
+
+    public function getAllTransaksi(){
+        $transaksi = Transaksi::all();
+        return $this->sendResponse($transaksi);
     }
 }
