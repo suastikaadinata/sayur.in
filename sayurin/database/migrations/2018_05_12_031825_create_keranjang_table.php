@@ -17,7 +17,7 @@ class CreateKeranjangTable extends Migration
             $table->increments('id');
             $table->integer('user_id')->unsigned();
             $table->integer('sayur_id')->unsigned();
-            $table->integer('jumlah');
+            $table->integer('jumlah_sayur')->default(0);
             $table->integer('total_harga');
             $table->timestamps();
 

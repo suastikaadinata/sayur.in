@@ -28,10 +28,10 @@ class KeranjangController extends BaseController
             $total_harga[$i] = $jumlah[$i] * $sayur->harga;
 
             Keranjang::create([
-                'user_id'       => $user_id,
-                'sayur_id'      => $sayur->id,
-                'jumlah'        => $jumlah[$i],
-                'total_harga'   => $total_harga[$i],
+                'user_id'           => $user_id,
+                'sayur_id'          => $sayur->id,
+                'jumlah_sayur'      => $jumlah[$i],
+                'total_harga'       => $total_harga[$i],
             ]);
         }
 
@@ -42,7 +42,7 @@ class KeranjangController extends BaseController
     {
         $sayur = DB::table('keranjang')
                 ->where('user_id', $request->id)
-                ->leftJoin('sayurmobile','keranjang.sayur_id','=','sayurmobile.id')
+                ->leftJoin('sayurmobile','sayurmobile.id','=','keranjang.sayur_id')
                 ->get();
         return $this->sendResponse($sayur);
     }

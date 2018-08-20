@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 14, 2018 at 06:14 AM
+-- Generation Time: Aug 20, 2018 at 03:15 PM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -44,7 +44,9 @@ CREATE TABLE `cart_transaksi` (
 
 INSERT INTO `cart_transaksi` (`id`, `transaksi_id`, `sayur_id`, `jumlah`, `total_harga`, `created_at`, `updated_at`) VALUES
 (1, 1, 1, 4, 16000, '2018-08-13 20:29:11', '2018-08-13 20:29:11'),
-(2, 1, 2, 1, 3000, '2018-08-13 20:29:11', '2018-08-13 20:29:11');
+(2, 1, 2, 1, 3000, '2018-08-13 20:29:11', '2018-08-13 20:29:11'),
+(3, 2, 1, 4, 16000, '2018-08-17 20:24:48', '2018-08-17 20:24:48'),
+(4, 2, 2, 1, 3000, '2018-08-17 20:24:48', '2018-08-17 20:24:48');
 
 -- --------------------------------------------------------
 
@@ -71,11 +73,18 @@ CREATE TABLE `keranjang` (
   `id` int(10) UNSIGNED NOT NULL,
   `user_id` int(10) UNSIGNED NOT NULL,
   `sayur_id` int(10) UNSIGNED NOT NULL,
-  `jumlah` int(11) NOT NULL,
+  `jumlah_sayur` int(11) NOT NULL DEFAULT '0',
   `total_harga` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `keranjang`
+--
+
+INSERT INTO `keranjang` (`id`, `user_id`, `sayur_id`, `jumlah_sayur`, `total_harga`, `created_at`, `updated_at`) VALUES
+(7, 3, 1, 4, 16000, '2018-08-20 05:51:36', '2018-08-20 05:51:36');
 
 -- --------------------------------------------------------
 
@@ -106,9 +115,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (11, '2016_06_01_000004_create_oauth_clients_table', 2),
 (12, '2016_06_01_000005_create_oauth_personal_access_clients_table', 2),
 (13, '2018_07_17_015017_create_sayurmobile_table', 2),
-(16, '2018_05_12_031825_create_keranjang_table', 4),
 (23, '2018_08_07_060953_create_transaksi_table', 5),
-(24, '2018_08_14_015419_create_cart_transaksi_table', 5);
+(24, '2018_08_14_015419_create_cart_transaksi_table', 5),
+(25, '2018_05_12_031825_create_keranjang_table', 6);
 
 -- --------------------------------------------------------
 
@@ -334,7 +343,8 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id`, `user_id`, `alamat`, `status_transaksi`, `metode_transaksi`, `waktu_pengiriman`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Jalan veteran malang', '0', 'COD', '8 agustus 2018 jam 7-9', '2018-08-13 20:29:11', '2018-08-13 20:29:11');
+(1, 2, 'Jalan veteran malang', '0', 'COD', '8 agustus 2018 jam 7-9', '2018-08-13 20:29:11', '2018-08-13 20:29:11'),
+(2, 3, 'Jalan sawojajar', '0', 'COD', '8 agustus 2018 jam 7-9', '2018-08-17 20:24:47', '2018-08-17 20:24:47');
 
 -- --------------------------------------------------------
 
@@ -487,7 +497,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart_transaksi`
 --
 ALTER TABLE `cart_transaksi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `chatting`
@@ -499,13 +509,13 @@ ALTER TABLE `chatting`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `oauth_clients`
@@ -547,13 +557,13 @@ ALTER TABLE `sayurmobile`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- Constraints for dumped tables

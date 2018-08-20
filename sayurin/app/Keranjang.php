@@ -8,7 +8,7 @@ class Keranjang extends Model
 {
     protected $table = 'keranjang';
     protected $fillable = [
-        'user_id', 'sayur_id', 'jumlah', 'total_harga',
+        'user_id', 'sayur_id', 'jumlah_sayur', 'total_harga',
     ];
 
     public function user()
