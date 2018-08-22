@@ -39,46 +39,37 @@
             android:id="@+id/textView_kuantitas"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/itemTitle"
-            android:layout_toRightOf="@+id/imageView"
+            android:layout_alignBottom="@+id/imageView"
+            android:layout_toEndOf="@+id/imageView"
             android:text="@string/harga_ikat"
             android:textColor="#afafaf"
             android:textSize="13sp"
-            android:textStyle="italic" />
+            android:textStyle="italic"
+            android:layout_toRightOf="@+id/imageView" />
 
         <TextView
             android:id="@+id/itemPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_above="@+id/editText_note"
-            android:layout_alignLeft="@+id/itemTitle"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/imageView"
             android:text="@string/rp_8_000"
             android:textColor="@color/colorTextOrange"
             android:textSize="13sp"
-            android:textStyle="bold" />
-
-        <EditText
-            android:id="@+id/editText_note"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/imageView"
-            android:layout_toRightOf="@+id/imageView"
-            android:background="@color/colorBackground"
-            android:hint="@string/add_note"
-            android:inputType="textPersonName"
-            android:padding="3dp"
-            android:textSize="12sp"
-            android:textStyle="italic" />
+            android:textStyle="bold"
+            android:layout_toRightOf="@+id/imageView" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="60dp"
             android:layout_height="30dp"
-            android:layout_alignTop="@+id/imageView"
-            android:layout_marginRight="-3dp"
-            android:layout_toLeftOf="@+id/button_delete"
-            android:background="@drawable/custom_layout">
-
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginEnd="12dp"
+            android:layout_marginTop="19dp"
+            android:background="@drawable/custom_layout"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="12dp">
 
             <TextView
                 android:id="@+id/textView_jumlahSayur"
@@ -90,16 +81,7 @@
                 android:textColor="@color/colorTextGreen"
                 android:textSize="16sp"
                 android:textStyle="bold" />
-
         </LinearLayout>
-
-        <Button
-            android:id="@+id/button_delete"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
-            android:layout_alignRight="@+id/editText_note"
-            android:layout_alignTop="@+id/imageView"
-            android:background="@drawable/delete_btn" />
 
     </RelativeLayout>
 </LinearLayout>

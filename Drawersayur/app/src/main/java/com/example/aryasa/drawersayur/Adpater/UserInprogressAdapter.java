@@ -1,30 +1,23 @@
 package com.example.aryasa.drawersayur.Adpater;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.aryasa.drawersayur.Admin.Adminubahsayur;
-import com.example.aryasa.drawersayur.Admin.Adminviewuser;
-import com.example.aryasa.drawersayur.Model.UserCompleted;
 import com.example.aryasa.drawersayur.Model.UserInprogress;
 import com.example.aryasa.drawersayur.R;
-import com.example.aryasa.drawersayur.Model.Userdata;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class UserInprogressAdapter extends RecyclerView.Adapter<UserInprogressAdapter.UserInprogressViewHolder> {
     private Context mContext;
-    private List<UserInprogress> mUserInprogress;
+    private ArrayList<UserInprogress> mUserInprogress;
 
-    public UserInprogressAdapter(Context mContext, List<UserInprogress> mUserInprogressList) {
+    public UserInprogressAdapter(Context mContext, ArrayList<UserInprogress> mUserInprogressList) {
         this.mContext = mContext;
         this.mUserInprogress= mUserInprogressList;
     }
@@ -37,12 +30,10 @@ public class UserInprogressAdapter extends RecyclerView.Adapter<UserInprogressAd
 
     @Override
     public void onBindViewHolder(final UserInprogressViewHolder holder, int position) {
-        holder.mBarang1.setText(mUserInprogress.get(position).getTextView_barang1());
-        holder.mBarang2.setText(mUserInprogress.get(position).getTextView_barang2());
-        holder.mBarang3.setText(mUserInprogress.get(position).getTextView_barang3());
-        holder.mTanggal.setText(mUserInprogress.get(position).getTextView_tanggal());
-        holder.mJam.setText(mUserInprogress.get(position).getTextView_jam());
-        holder.mGambar.setImageResource(mUserInprogress.get(position).getImageView());
+        holder.mTanggal.setText(mUserInprogress.get(position).getMetode());
+        holder.mJam.setText(mUserInprogress.get(position).getStatus());
+        holder.mBarang1.setText(mUserInprogress.get(position).getAlamat());
+        holder.mBarang2.setText(mUserInprogress.get(position).getTextView_tanggal());
 
     }
     @Override

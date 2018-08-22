@@ -36,7 +36,6 @@ import com.example.aryasa.drawersayur.Adpater.CartAdapter;
 import com.example.aryasa.drawersayur.Adpater.SayurAdapter;
 import com.example.aryasa.drawersayur.Chart;
 import com.example.aryasa.drawersayur.Model.Sayur;
-import com.example.aryasa.drawersayur.Model.SayurListModel;
 import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.ServerAPI.Server;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
@@ -59,6 +58,7 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
     BottomSheetDialog dialog;
     private String API_URL = Server.URL + "sayur/dijual";
     private String API_URL_Search = Server.URL + "sayur/search";
+    private String API_URL_cart = Server.URL + "cart";
     ArrayList<Sayur> listSayur = new ArrayList<Sayur>();
     ArrayList<Sayur> cartList;
     ArrayList<Integer> keranjang;
@@ -75,8 +75,13 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
     SharedPreferences prefcart;
     int id;
     public static final String MyPREFERENCES = "myprefs";
-    final Context context = this.getContext();
+    int id_user;
+    public final static String TAG_ID = "id";
+    SharedPreferences sharedpreferences;
+    public static final String my_shared_preferences = "my_shared_preferences";
+    ;
     private SayurAdapter sayurAdapter;
+    final Context context = this.getContext();
 
 
     public HomeFragment() {
@@ -90,9 +95,8 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
 
         final View view = inflater.inflate(R.layout.fragment_home2, container, false);
         mContext = view.getContext();
-        SharedPreferences prefCart = mContext.getSharedPreferences("cart",mContext.MODE_PRIVATE);
         sayurAdapter = new SayurAdapter(mContext, listSayur, this);
-        getSayurApi(API_URL, view);
+        getSayurApi(API_URL, view, sayurAdapter);
 
         //bottomsheet
         keranjang = new ArrayList<>();
@@ -103,37 +107,33 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
         frameLayout = coordinatorLayout.findViewById(R.id.framehome);
         bottomSheetRecyclerview = coordinatorLayout.findViewById(R.id.recyclerview_bottom_sheet);
         bottomSheetRecyclerview.setLayoutManager(new LinearLayoutManager(mContext));
-        CartAdapter = new CartAdapter(mContext,cartList);
+        CartAdapter = new CartAdapter(mContext,cartList, this);
         bottomSheetRecyclerview.setAdapter(CartAdapter);
         BottomSheetBehavior behavior = BottomSheetBehavior.from(persistentbottomSheet);
-
+        behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
         persistentbottomSheet.setVisibility(View.INVISIBLE);
 
 
         cart = (TextView) coordinatorLayout.findViewById(R.id.jumlah_cart);
+
         totalHarga=(TextView) coordinatorLayout.findViewById(R.id.Jumlah_total);
         opencart= (TextView)coordinatorLayout.findViewById(R.id.pay);
+        sharedpreferences = this.getActivity().getSharedPreferences(my_shared_preferences,Context.MODE_PRIVATE);
+        id_user = sharedpreferences.getInt(TAG_ID, 0);
 
 
         //open cart
         opencart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getActivity(), Chart.class);
-                intent.putExtra("cc","200");
-                intent.putExtra("harga",totalHarga.getText().toString());
-                intent.putExtra("idsayur",keranjang);
-                intent.putExtra("jumlah",jumlasayur);
-                startActivity(intent);
+                postKeranjang(API_URL_cart);
             }
         });
 
         return view;
     }
-    public void addkeranjang(int id){
-        keranjang.add(id);
-    }
-    public void getSayurApi(String url, final View view){
+
+    public void getSayurApi(String url, final View view, final SayurAdapter sayur){
         JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
@@ -142,11 +142,11 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
                 try{
                     for (int i = 0; i < response.length(); i++){
                         JSONObject jsonObject = response.getJSONObject(i);
-                        listSayur.add(new Sayur(Server.URLIMAGE+ jsonObject.getString("foto") ,jsonObject.getInt("id"),jsonObject.getString("nama"), jsonObject.getInt("harga")));
+                        listSayur.add(new Sayur("http://10.0.2.2/img/"+ jsonObject.getString("foto") ,jsonObject.getInt("id"),jsonObject.getString("nama"), jsonObject.getInt("harga")));
                         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview1);
                         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                         recyclerView.setLayoutManager(gridLayoutManager);
-                        recyclerView.setAdapter(sayurAdapter);
+                        recyclerView.setAdapter(sayur);
                     }
                 }catch (JSONException e){
                     e.printStackTrace();
@@ -160,7 +160,44 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
         });
         Singleton.getInstance(this.getContext()).addToRequestQueue(jsonArrayRequest);
     }
+    public void postKeranjang(String url){
 
+        StringRequest stringRequest=new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                String json = response.toString();
+                try {
+                    startActivity(new Intent(getActivity(), Chart.class));
+
+                } catch (Exception e){
+                    e.printStackTrace();
+                }
+            }
+
+        },new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                error.printStackTrace();
+            }
+        }){
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting parameters to login url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("user_id", String.valueOf(id_user));
+                for(int i = 0; i < cartList.size(); i++) {
+                    params.put("sayur_id["+i+"]",String.valueOf(cartList.get(i).getId()));
+                    params.put("jumlah["+i+"]",String.valueOf(cartList.get(i).getJumlah()));
+                }
+                return params;
+            }
+
+        };
+
+        Singleton.getInstance(mContext).addToRequestQueue(stringRequest);
+    }
 
     @Override
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
@@ -227,6 +264,19 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
         Singleton.getInstance(context).addToRequestQueue(SearchReq);
 
     }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+
+        if (id == R.id.search){
+            return true;
+        }
+        if (id == R.id.cart) {
+            Intent cart = new Intent(getActivity(), Chart.class);
+            startActivity(cart);
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     public void setMargin(){
         if (behavior.getState()==BottomSheetBehavior.STATE_COLLAPSED){
@@ -235,18 +285,16 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
             frameLayout.setLayoutParams(layoutParams);
         }
     }
-
-    @Override
-    public void updateCart(Sayur sayur, int jumlah, int status) {
-        //1 -> pertama kali di tambahkan
-        //2 -> sudah pernah ditambahkan
+    public void updateCart(Sayur cartlist,int status,int jumlah ) {
         if(status == 1){
-            cartList.add(sayur);
+            cartList.add(cartlist);
         }
+        CartAdapter.addCartItems(cartlist.getId(), jumlah);
+        cart.setText(String.valueOf(CartAdapter.getItemCount()));
         persistentbottomSheet.setVisibility(View.VISIBLE);
-        cart.setText(String.valueOf(cartList.size()));
-        CartAdapter.addCartItems(sayur.getId(), jumlah);
-        addkeranjang(sayur.getId());
+        if (CartAdapter.getItemCount()<1){
+            persistentbottomSheet.setVisibility(View.INVISIBLE);
+        }
     }
 
     @Override
@@ -259,16 +307,19 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
     }
 
     @Override
-    public void updateJumlah(int jumlah) {
-        jumlasayur.add(jumlah);
+    public void updateJumlah(int i, int jumlah) {
+        cart.setText(String.valueOf(i));
+        totalHarga.setText(String.valueOf(jumlah));
     }
-
 
     @Override
     public void updateharga(int harga) {
+        CartAdapter.harga(harga);
+        if(harga==0){
+            persistentbottomSheet.setVisibility(View.INVISIBLE);
+        }
         totalHarga.setText(String.valueOf(harga));
     }
-
 
 
 }

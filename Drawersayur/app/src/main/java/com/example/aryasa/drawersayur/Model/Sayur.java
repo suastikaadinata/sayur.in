@@ -27,6 +27,20 @@ public class Sayur {
         this.nama = nama;
         this.harga = harga;
     }
+    public Sayur(int id, int jumlah){
+        this.id = id;
+        this.jumlah = jumlah;
+    }
+    public Sayur(String foto, int id, String nama, int harga, int jumlah){
+        this.foto = foto;
+        this.id = id;
+        this.nama = nama;
+        this.harga = harga;
+        this.jumlah = jumlah;
+    }
+    public  Sayur(){
+
+    }
 
     public int getId() {
         return id;
@@ -51,7 +65,6 @@ public class Sayur {
     public void setJumlah(int jumlah) {
         this.jumlah = jumlah;
     }
-
 
     public int getBerat() {
         return berat;

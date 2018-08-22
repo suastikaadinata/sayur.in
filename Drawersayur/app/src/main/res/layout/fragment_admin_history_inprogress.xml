@@ -23,7 +23,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="148dp"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:background="#ffffff"
                 >
@@ -58,7 +58,6 @@
                     android:layout_marginTop="2dp"
                     android:layout_toLeftOf="@id/textView_tanggal"
                     android:layout_below="@id/textView_barang"
-                    android:text="Bayam (2)"
                     android:textColor="#5faf50"
                     android:textSize="14sp" />
 
@@ -71,7 +70,6 @@
                     android:layout_toLeftOf="@id/textView_jam"
                     android:layout_below="@id/textView_barang1"
                     android:layout_marginTop="2dp"
-                    android:text="Bawang (1)"
                     android:textColor="#5faf50"
                     android:textSize="14sp"
                     />
@@ -82,38 +80,9 @@
                     android:layout_toRightOf="@id/imageView"
                     android:layout_marginLeft="5dp"
                     android:layout_below="@id/textView_barang2"
-                    android:text="Kangkung (5)"
                     android:layout_marginTop="2dp"
                     android:textColor="#5faf50"
                     android:textSize="14sp"
-                    />
-
-                <TextView
-                    android:id="@+id/textViewKodeTransaksi"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/imageView"
-                    android:layout_marginLeft="5dp"
-                    android:layout_below="@id/textView_barang3"
-                    android:text="Kode Transaksi : XXX123"
-                    android:layout_marginTop="10dp"
-                    android:textColor="#ff8200"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    />
-
-                <TextView
-                    android:id="@+id/textViewStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/imageView"
-                    android:layout_marginLeft="5dp"
-                    android:layout_below="@id/textViewKodeTransaksi"
-                    android:text="Status : Belum Dibayar"
-                    android:layout_marginTop="2dp"
-                    android:textColor="#ff8200"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
                     />
 
 

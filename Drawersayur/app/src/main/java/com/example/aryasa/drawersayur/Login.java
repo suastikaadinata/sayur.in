@@ -196,12 +196,14 @@ public class Login extends AppCompatActivity{
                             int id = jsonObject.getInt("id");
                             String name = jsonObject.getString("name");
                             String tlp = jsonObject.getString("nomor_telepon");
+                            String token = jsonObject.getString("token");
                             SharedPreferences.Editor editor = sharedpreferences.edit();
                             editor.putBoolean(session_status, true);
                             editor.putInt(TAG_ID,id);
                             editor.putString(TAG_NAME,name );
                             editor.putString(TAG_EMAIL,email );
                             editor.putString(TAG_NOMOR_TELEPON,tlp );
+
                             editor.commit();
                             Intent intent = new Intent(getApplicationContext(), Drawer.class);
 //                            intent.putExtra(TAG_ID,id);

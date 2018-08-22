@@ -57,7 +57,6 @@
                     android:layout_marginTop="2dp"
                     android:layout_toLeftOf="@id/textView_tanggal"
                     android:layout_below="@id/textView_barang"
-                    android:text="Bayam (2)"
                     android:textColor="#5faf50"
                     android:textSize="14sp" />
 
@@ -70,7 +69,6 @@
                     android:layout_toLeftOf="@id/textView_jam"
                     android:layout_below="@id/textView_barang1"
                     android:layout_marginTop="2dp"
-                    android:text="Bawang (1)"
                     android:textColor="#5faf50"
                     android:textSize="14sp"
                     />
@@ -81,7 +79,6 @@
                     android:layout_toRightOf="@id/imageView"
                     android:layout_marginLeft="5dp"
                     android:layout_below="@id/textView_barang2"
-                    android:text="Kangkung (5)"
                     android:layout_marginTop="2dp"
                     android:textColor="#5faf50"
                     android:textSize="14sp"

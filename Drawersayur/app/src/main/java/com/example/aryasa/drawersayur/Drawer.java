@@ -18,8 +18,6 @@ import com.example.aryasa.drawersayur.Fragment.FragmentHelp;
 import com.example.aryasa.drawersayur.Fragment.FragmentNotifikasi;
 import com.example.aryasa.drawersayur.Fragment.HomeFragment;
 
-import butterknife.ButterKnife;
-
 public class Drawer extends AppCompatActivity  {
 
 
@@ -52,7 +50,6 @@ public class Drawer extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_bar_drawer);
         toolbar = getSupportActionBar();
-        ButterKnife.bind(this);
         myDialog = new Dialog(this);
 
         sharedpreferences = getSharedPreferences(Login.my_shared_preferences, Context.MODE_PRIVATE);

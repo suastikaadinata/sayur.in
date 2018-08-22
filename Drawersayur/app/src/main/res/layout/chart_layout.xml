@@ -39,7 +39,7 @@
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <android.support.v7.widget.RecyclerView
-                    android:id="@+id/recyclerview_cart"
+                    android:id="@+id/recyclerview_checkout"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
@@ -214,87 +214,84 @@
             </RelativeLayout>
             </android.support.v7.widget.CardView>
 
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="45dp"-->
+                <!--android:layout_marginTop="10dp"-->
+                <!--android:background="@color/colorFrameBackground"-->
+                <!--android:padding="10dp">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/textView9"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:layout_marginStart="10dp"-->
+                    <!--android:text="Metode Pembayaran"-->
+                    <!--android:textColor="@color/colorTextOrange"-->
+                    <!--android:textSize="18sp" />-->
+
+            <!--</RelativeLayout>-->
 
 
+            <!--<android.support.v7.widget.CardView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center"-->
+                <!--android:layout_margin="4dp"-->
+                <!--app:cardElevation="3dp"-->
+                <!--app:cardUseCompatPadding="true">-->
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="10dp"
-                android:background="@color/colorFrameBackground"
-                android:padding="10dp">
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/frameLayout3"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="85dp"-->
+                <!--android:layout_marginTop="2dp"-->
+                <!--android:background="@color/colorFrameBackground"-->
+                <!--android:padding="10dp">-->
 
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginStart="10dp"
-                    android:text="Metode Pembayaran"
-                    android:textColor="@color/colorTextOrange"
-                    android:textSize="18sp" />
+                <!--<TextView-->
+                    <!--android:id="@+id/TextView_COD"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="31dp"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:layout_marginRight="0dp"-->
+                    <!--android:layout_toLeftOf="@id/checkbox1"-->
+                    <!--android:padding="1dp"-->
+                    <!--android:text="Cash On Delivery (COD)"-->
+                    <!--android:textColor="@color/colorTextGreen"-->
+                    <!--android:textSize="13sp" />-->
 
-            </RelativeLayout>
+                <!--<CheckBox-->
+                    <!--android:id="@+id/checkbox1"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_alignParentRight="true"-->
+                    <!--android:layout_alignParentTop="true"-->
+                    <!--android:layout_marginRight="10dp" />-->
 
+                <!--<TextView-->
+                    <!--android:id="@+id/editText_transfer"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="31dp"-->
+                    <!--android:layout_below="@+id/TextView_COD"-->
+                    <!--android:layout_centerHorizontal="true"-->
+                    <!--android:layout_marginLeft="10dp"-->
+                    <!--android:layout_toLeftOf="@id/checkbox2"-->
+                    <!--android:padding="1dp"-->
+                    <!--android:text="Transfer"-->
+                    <!--android:textColor="@color/colorTextGreen"-->
+                    <!--android:textSize="13sp" />-->
 
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="4dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true">
+                <!--<CheckBox-->
+                    <!--android:id="@+id/checkbox2"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_below="@+id/TextView_COD"-->
+                    <!--android:layout_toRightOf="@+id/TextView_COD" />-->
 
-            <RelativeLayout
-                android:id="@+id/frameLayout3"
-                android:layout_width="match_parent"
-                android:layout_height="85dp"
-                android:layout_marginTop="2dp"
-                android:background="@color/colorFrameBackground"
-                android:padding="10dp">
-
-                <TextView
-                    android:id="@+id/TextView_COD"
-                    android:layout_width="match_parent"
-                    android:layout_height="31dp"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginRight="0dp"
-                    android:layout_toLeftOf="@id/checkbox1"
-                    android:padding="1dp"
-                    android:text="Cash On Delivery (COD)"
-                    android:textColor="@color/colorTextGreen"
-                    android:textSize="13sp" />
-
-                <CheckBox
-                    android:id="@+id/checkbox1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true"
-                    android:layout_alignParentTop="true"
-                    android:layout_marginRight="10dp" />
-
-                <TextView
-                    android:id="@+id/editText_transfer"
-                    android:layout_width="match_parent"
-                    android:layout_height="31dp"
-                    android:layout_below="@+id/TextView_COD"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginLeft="10dp"
-                    android:layout_toLeftOf="@id/checkbox2"
-                    android:padding="1dp"
-                    android:text="Transfer"
-                    android:textColor="@color/colorTextGreen"
-                    android:textSize="13sp" />
-
-                <CheckBox
-                    android:id="@+id/checkbox2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/TextView_COD"
-                    android:layout_toRightOf="@+id/TextView_COD" />
-
-            </RelativeLayout>
-            </android.support.v7.widget.CardView>
+            <!--</RelativeLayout>-->
+            <!--</android.support.v7.widget.CardView>-->
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -404,7 +401,8 @@
                     android:text="Rp. 15.000"
                     android:textColor="@color/colorTextOrange"
                     android:textSize="13sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    android:layout_alignRight="@+id/editText_harga_barang" />
 
             </RelativeLayout>
             </android.support.v7.widget.CardView>
@@ -420,7 +418,7 @@
                 >
 
                 <Button
-                    android:id="@+id/button4"
+                    android:id="@+id/button_checkout"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentTop="true"

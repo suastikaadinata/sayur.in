@@ -70,13 +70,13 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
         });
 
         holder.mTitle.setText(mSayurlist.get(position).getNama());
-        holder.mHarga.setText(String.valueOf(mSayurlist.get(position).getId()));
+        holder.mHarga.setText(String.valueOf(mSayurlist.get(position).getHarga()));
         holder.mButtonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 total(mSayurlist.get(position).getHarga());
                 callbacks.updateharga(total);
-                callbacks.updateCart(mSayurlist.get(position), 1, 1);
+                callbacks.updateCart(mSayurlist.get(position),1, 1);
                 holder.mButtonAdd.setVisibility(View.INVISIBLE);
                 holder.mLayoutKuantitas.setVisibility(View.VISIBLE);
 
@@ -89,8 +89,7 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
                 callbacks.updateharga(total);
                 jumlah = Integer.parseInt(holder.mTextQ.getText().toString());
                 holder.mTextQ.setText(String.valueOf(jumlah+1));
-                callbacks.updateCart(mSayurlist.get(position), jumlah+1, 2);
-                callbacks.updateJumlah(Integer.parseInt(holder.mTextQ.getText().toString()));
+                callbacks.updateCart(mSayurlist.get(position),2,jumlah+1);
             }
         });
         holder.mKurangQ.setOnClickListener(new View.OnClickListener() {
@@ -103,15 +102,12 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
                     holder.mButtonAdd.setVisibility(View.VISIBLE);
                     kurangtotal(mSayurlist.get(position).getHarga());
                     callbacks.updateharga(total);
-                    callbacks.updateCart(mSayurlist.get(position), jumlah, 2);
-
+                    callbacks.updateCart(mSayurlist.get(position),2,jumlah);
                 }else {
                     kurangtotal(mSayurlist.get(position).getHarga());
                     callbacks.updateharga(total);
-                    jumlah = Integer.parseInt(holder.mTextQ.getText().toString());
                     holder.mTextQ.setText(String.valueOf(--jumlah));
-                    callbacks.updateCart(mSayurlist.get(position), jumlah, 2);
-
+                    callbacks.updateCart(mSayurlist.get(position),2,jumlah);
                 }
             }
         });

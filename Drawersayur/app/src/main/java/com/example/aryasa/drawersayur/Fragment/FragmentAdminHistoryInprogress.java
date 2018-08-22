@@ -1,39 +1,79 @@
 package com.example.aryasa.drawersayur.Fragment;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.aryasa.drawersayur.Adpater.AdminCompletedAdapter;
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.aryasa.drawersayur.Adpater.AdminInprogressAdapter;
-import com.example.aryasa.drawersayur.Model.AdminCompleted;
 import com.example.aryasa.drawersayur.Model.AdminInprogress;
 import com.example.aryasa.drawersayur.R;
+import com.example.aryasa.drawersayur.ServerAPI.Server;
+import com.example.aryasa.drawersayur.Singleton.Singleton;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 
 public class FragmentAdminHistoryInprogress extends Fragment {
-
+    ArrayList<AdminInprogress> adminInprogress = new ArrayList<>();
+    private String API_URL_T = Server.URL + "transaksi/list";
+    private RecyclerView mList;
+    public final static String TAG_ID = "id";
+    SharedPreferences sharedpreferences;
+    private AdminInprogressAdapter adapter;
+    int id_user;
+    Context mContext;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recycler_admin_history_inprogress, container, false);
-        ArrayList<AdminInprogress> adminInprogress = new ArrayList<>();
+        mContext = view.getContext();
+        adapter = new AdminInprogressAdapter(mContext,adminInprogress);
 
-        adminInprogress.add(new AdminInprogress("bayam","wortel","buncis",  R.drawable.sayur,"19-08-2018","08.00 WIB"));
-        adminInprogress.add(new AdminInprogress("kemangi","selai","daun jeruk",  R.drawable.sayur,"19-08-2018","08.00 WIB"));
-        adminInprogress.add(new AdminInprogress("sayur","mayur","enak",  R.drawable.sayur,"19-08-2018","08.00 WIB"));
-        adminInprogress.add(new AdminInprogress("sayur","mayur","enak",  R.drawable.sayur,"19-08-2018","08.00 WIB"));
-
-        RecyclerView mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_admin_history_inporgress);
-        LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        AdminInprogressAdapter adminInprogressAdapter = new AdminInprogressAdapter(this.getContext(), adminInprogress);
-        mRecyclerView.setAdapter(adminInprogressAdapter);
+        getTransaksi(API_URL_T,view,adapter);
 
         return view;
+    }
+    public void getTransaksi(String url, final View view, final AdminInprogressAdapter keranjang){
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, url, null, new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                String json = response.toString();
+                Log.e("Response:", response.toString());
+                try{
+                    for (int i = 0; i < response.length(); i++){
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        if (jsonObject.getString("status_transaksi").equals("0")){
+                            adminInprogress.add(new AdminInprogress(jsonObject.getString("id"),jsonObject.getString("user_id"),"On progress",
+                                    jsonObject.getString("metode_transaksi"),jsonObject.getString("waktu_pengiriman"),jsonObject.getString("alamat")));
+                            mList = (RecyclerView) view.findViewById(R.id.recycler_admin_history_inporgress);
+                            LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+                            mList.setLayoutManager(mLayoutManager);
+                            mList.setAdapter(keranjang);;
+                        }
+                    }
+                }catch (JSONException e){
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                error.printStackTrace();
+            }
+        });
+        Singleton.getInstance(this.getContext()).addToRequestQueue(jsonArrayRequest);
     }
 }

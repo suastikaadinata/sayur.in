@@ -7,26 +7,20 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.aryasa.drawersayur.Admin.Admindetailtransaksi;
-import com.example.aryasa.drawersayur.Admin.Adminubahsayur;
-import com.example.aryasa.drawersayur.Admin.Adminviewuser;
 import com.example.aryasa.drawersayur.Model.AdminInprogress;
-import com.example.aryasa.drawersayur.Model.UserCompleted;
-import com.example.aryasa.drawersayur.Model.UserInprogress;
 import com.example.aryasa.drawersayur.R;
-import com.example.aryasa.drawersayur.Model.Userdata;
 
-import java.util.List;
+import java.util.ArrayList;
 
 public class AdminInprogressAdapter extends RecyclerView.Adapter<AdminInprogressAdapter.AdminInprogressViewHolder> {
     private Context mContext;
-    private List<AdminInprogress> mAdminInprogress;
+    private ArrayList<AdminInprogress> mAdminInprogress;
 
-    public AdminInprogressAdapter(Context mContext, List<AdminInprogress> mAdminInprogressList) {
+    public AdminInprogressAdapter(Context mContext, ArrayList<AdminInprogress> mAdminInprogressList) {
         this.mContext = mContext;
         this.mAdminInprogress= mAdminInprogressList;
     }
@@ -38,17 +32,18 @@ public class AdminInprogressAdapter extends RecyclerView.Adapter<AdminInprogress
     }
 
     @Override
-    public void onBindViewHolder(final AdminInprogressViewHolder holder, int position) {
-        holder.mBarang1.setText(mAdminInprogress.get(position).getTextView_barang1());
-        holder.mBarang2.setText(mAdminInprogress.get(position).getTextView_barang2());
-        holder.mBarang3.setText(mAdminInprogress.get(position).getTextView_barang3());
-        holder.mTanggal.setText(mAdminInprogress.get(position).getTextView_tanggal());
-        holder.mJam.setText(mAdminInprogress.get(position).getTextView_jam());
-        holder.mGambar.setImageResource(mAdminInprogress.get(position).getImageView());
+    public void onBindViewHolder(final AdminInprogressViewHolder holder, final int position) {
+        holder.mTanggal.setText(mAdminInprogress.get(position).getMetode());
+        holder.mJam.setText(mAdminInprogress.get(position).getStatus());
+        holder.mBarang1.setText(mAdminInprogress.get(position).getAlamat());
+        holder.mBarang2.setText(mAdminInprogress.get(position).getTextView_tanggal());
+        holder.mBarang3.setText("ID USER : "+mAdminInprogress.get(position).getIduser());
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent mIntent = new Intent(mContext, Admindetailtransaksi.class);
+                mIntent.putExtra("idtransaksi",mAdminInprogress.get(position).getIdtransaksi());
+                mIntent.putExtra("iduser",mAdminInprogress.get(position).getIduser());
                 mContext.startActivity(mIntent);
             }
         });
