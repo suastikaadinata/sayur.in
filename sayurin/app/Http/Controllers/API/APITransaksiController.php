@@ -4,17 +4,19 @@ namespace App\Http\Controllers\API;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\API\BaseController as BaseController;
+use App\Http\Controllers\API\KeranjangController as KeranjangController;
 use App\Transaksi;
 use App\Keranjang;
 use App\CartTransaksi;
 use DB;
 
-class APITransaksiController extends BaseController
+class APITransaksiController extends KeranjangController
 {
     public function transaksi(Request $request)
     {
+        $this->cart($request);
         $user_id = $request->user_id;
-        $data_cart = Keranjang::all();
+        $data_cart = Keranjang::where('user_id',$user_id)->get();
 
         $transaksi = Transaksi::create([
             'user_id'           => $user_id,
@@ -24,16 +26,14 @@ class APITransaksiController extends BaseController
         ]);
 
         for($i = 0; $i < count($data_cart); $i++){
-            if($data_cart[$i]->user_id == $user_id){
-                CartTransaksi::create([
-                    'transaksi_id'  => $transaksi->id,
-                    'sayur_id'      => $data_cart[$i]->sayur_id,
-                    'jumlah'        => $data_cart[$i]->jumlah,
-                    'total_harga'   => $data_cart[$i]->total_harga,
-                ]);
+            CartTransaksi::create([
+                'transaksi_id'  => $transaksi->id,
+                'sayur_id'      => $data_cart[$i]->sayur_id,
+                'jumlah'        => $data_cart[$i]->jumlah_sayur,
+                'total_harga'   => $data_cart[$i]->total_harga,
+            ]);
 
-                $data_cart[$i]->delete();
-            }
+            $data_cart[$i]->delete();
         }
 
         return 'success';
