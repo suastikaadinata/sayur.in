@@ -8,6 +8,6 @@ class CartTransaksi extends Model
 {
     protected $table = 'cart_transaksi';
     protected $fillable = [
-        'transaksi_id', 'sayur_id', 'jumlah', 'total_harga'
+        'transaksi_id', 'sayur_id', 'jumlah_sayur', 'total_harga'
     ];
 }

@@ -17,7 +17,7 @@ class CreateCartTransaksiTable extends Migration
             $table->increments('id');
             $table->integer('transaksi_id')->unsigned();
             $table->integer('sayur_id')->unsigned();
-            $table->integer('jumlah');
+            $table->integer('jumlah_sayur');
             $table->integer('total_harga');
             $table->timestamps();
 

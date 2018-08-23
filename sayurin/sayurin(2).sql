@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 20, 2018 at 03:15 PM
+-- Generation Time: Aug 23, 2018 at 09:56 AM
 -- Server version: 10.1.33-MariaDB
 -- PHP Version: 7.2.6
 
@@ -32,7 +32,7 @@ CREATE TABLE `cart_transaksi` (
   `id` int(10) UNSIGNED NOT NULL,
   `transaksi_id` int(10) UNSIGNED NOT NULL,
   `sayur_id` int(10) UNSIGNED NOT NULL,
-  `jumlah` int(11) NOT NULL,
+  `jumlah_sayur` int(11) NOT NULL,
   `total_harga` int(11) NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
@@ -42,11 +42,9 @@ CREATE TABLE `cart_transaksi` (
 -- Dumping data for table `cart_transaksi`
 --
 
-INSERT INTO `cart_transaksi` (`id`, `transaksi_id`, `sayur_id`, `jumlah`, `total_harga`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 4, 16000, '2018-08-13 20:29:11', '2018-08-13 20:29:11'),
-(2, 1, 2, 1, 3000, '2018-08-13 20:29:11', '2018-08-13 20:29:11'),
-(3, 2, 1, 4, 16000, '2018-08-17 20:24:48', '2018-08-17 20:24:48'),
-(4, 2, 2, 1, 3000, '2018-08-17 20:24:48', '2018-08-17 20:24:48');
+INSERT INTO `cart_transaksi` (`id`, `transaksi_id`, `sayur_id`, `jumlah_sayur`, `total_harga`, `created_at`, `updated_at`) VALUES
+(3, 2, 1, 2, 8000, '2018-08-23 00:37:36', '2018-08-23 00:37:36'),
+(4, 2, 2, 2, 6000, '2018-08-23 00:37:36', '2018-08-23 00:37:36');
 
 -- --------------------------------------------------------
 
@@ -79,13 +77,6 @@ CREATE TABLE `keranjang` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `keranjang`
---
-
-INSERT INTO `keranjang` (`id`, `user_id`, `sayur_id`, `jumlah_sayur`, `total_harga`, `created_at`, `updated_at`) VALUES
-(7, 3, 1, 4, 16000, '2018-08-20 05:51:36', '2018-08-20 05:51:36');
-
 -- --------------------------------------------------------
 
 --
@@ -115,9 +106,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (11, '2016_06_01_000004_create_oauth_clients_table', 2),
 (12, '2016_06_01_000005_create_oauth_personal_access_clients_table', 2),
 (13, '2018_07_17_015017_create_sayurmobile_table', 2),
-(23, '2018_08_07_060953_create_transaksi_table', 5),
-(24, '2018_08_14_015419_create_cart_transaksi_table', 5),
-(25, '2018_05_12_031825_create_keranjang_table', 6);
+(25, '2018_05_12_031825_create_keranjang_table', 6),
+(26, '2018_08_07_060953_create_transaksi_table', 7),
+(27, '2018_08_14_015419_create_cart_transaksi_table', 7);
 
 -- --------------------------------------------------------
 
@@ -343,8 +334,7 @@ CREATE TABLE `transaksi` (
 --
 
 INSERT INTO `transaksi` (`id`, `user_id`, `alamat`, `status_transaksi`, `metode_transaksi`, `waktu_pengiriman`, `created_at`, `updated_at`) VALUES
-(1, 2, 'Jalan veteran malang', '0', 'COD', '8 agustus 2018 jam 7-9', '2018-08-13 20:29:11', '2018-08-13 20:29:11'),
-(2, 3, 'Jalan sawojajar', '0', 'COD', '8 agustus 2018 jam 7-9', '2018-08-17 20:24:47', '2018-08-17 20:24:47');
+(2, 2, 'Jalan sawojajar', '2', 'COD', '8 agustus 2018 jam 7-9', '2018-08-23 00:37:36', '2018-08-23 00:41:47');
 
 -- --------------------------------------------------------
 
@@ -371,8 +361,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `nomor_telepon`, `password`, `foto`, `tipe`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'suastikadinata', 'suastikaadinata@gmail.com', '0851112222', '$2y$10$TYVQWdegvScWVekFzVCq5ubGyOuOJSM59pmEZMwqWEOnJLOQTa8cy', NULL, 'admin', 'NenQ4FSwkTdLGNVgeG3wtQxUT1F4ld0oyWFLNlaTiMGnhMc8JmaC2s2x7ttH', '2018-06-02 04:15:41', '2018-06-02 04:15:41'),
-(2, 'adinata baru 2', 'adinata@gmail.com', '1234', '$2y$10$ndjO8uPbBQ8LS5EAPe6xXe2ZPJlEfOj3QH4W.UXojk6b5YX6AYAc2', 'user/w7q31xggkdgiwurevg1z.png', 'user', 'm6O5XUL5osVNAqym5X42NuRx9kyeLNYfpVKP4El5PLZ7GatvX7NiaPVJE1hz', '2018-06-02 05:49:31', '2018-08-06 10:12:04'),
-(3, 'nigel2', 'nigelilu@gmail.com', '123456788', '$2y$10$O.K9.Um3UsVcqLvKE06.m.hLV6Zeh93IRqM.AV571EEO1//KtJESC', NULL, 'user', NULL, '2018-08-06 10:01:49', '2018-08-06 10:01:49');
+(2, 'adinata baru 2', 'adinata@gmail.com', '1234', '$2y$10$ndjO8uPbBQ8LS5EAPe6xXe2ZPJlEfOj3QH4W.UXojk6b5YX6AYAc2', 'user/w7q31xggkdgiwurevg1z.png', 'user', 'm6O5XUL5osVNAqym5X42NuRx9kyeLNYfpVKP4El5PLZ7GatvX7NiaPVJE1hz', '2018-06-02 05:49:31', '2018-08-06 10:12:04');
 
 --
 -- Indexes for dumped tables
@@ -497,7 +486,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `cart_transaksi`
 --
 ALTER TABLE `cart_transaksi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `chatting`
@@ -509,13 +498,13 @@ ALTER TABLE `chatting`
 -- AUTO_INCREMENT for table `keranjang`
 --
 ALTER TABLE `keranjang`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT for table `oauth_clients`
@@ -557,7 +546,7 @@ ALTER TABLE `sayurmobile`
 -- AUTO_INCREMENT for table `transaksi`
 --
 ALTER TABLE `transaksi`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`

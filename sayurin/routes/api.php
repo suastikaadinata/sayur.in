@@ -30,6 +30,8 @@ Route::group(['prefix' => 'transaksi'], function(){
     Route::post('/', 'API\APITransaksiController@transaksi');
     Route::get('/list', 'API\APITransaksiController@getAllTransaksi');
     Route::post('/list/detail', 'API\APITransaksiController@getDetailTransaksi');
+    Route::post('/onDelivery', 'API\APITransaksiController@onDelivery');
+    Route::post('/complete', 'API\APITransaksiController@complete');
 });
 
 Route::middleware('auth:api')->group( function() {
