@@ -10,11 +10,12 @@ use App\Keranjang;
 use App\CartTransaksi;
 use DB;
 
-class APITransaksiController extends KeranjangController
+class APITransaksiController extends BaseController
 {
     public function transaksi(Request $request)
     {
-        $this->cart($request);
+        $keranjang = new KeranjangController();
+        $keranjang->cart($request);
         $user_id = $request->user_id;
         $data_cart = Keranjang::where('user_id',$user_id)->get();
 
@@ -29,7 +30,7 @@ class APITransaksiController extends KeranjangController
             CartTransaksi::create([
                 'transaksi_id'  => $transaksi->id,
                 'sayur_id'      => $data_cart[$i]->sayur_id,
-                'jumlah'        => $data_cart[$i]->jumlah_sayur,
+                'jumlah_sayur'  => $data_cart[$i]->jumlah_sayur,
                 'total_harga'   => $data_cart[$i]->total_harga,
             ]);
 
@@ -39,16 +40,38 @@ class APITransaksiController extends KeranjangController
         return 'success';
     }
 
-    public function getDetailTransaksi(Request $request){
+    public function getDetailTransaksi(Request $request)
+    {
         $transaksi = DB::table('transaksi')
                     ->where('user_id', $request->id)
+                    ->leftJoin('users','transaksi.user_id','=','users.id')
                     ->leftJoin('cart_transaksi','transaksi.id','=','cart_transaksi.transaksi_id')
+                    ->leftJoin('sayurmobile','cart_transaksi.sayur_id','=','sayurmobile.id')
                     ->get();
         return $this->sendResponse($transaksi);
     }
 
-    public function getAllTransaksi(){
-        $transaksi = Transaksi::all();
+    public function getAllTransaksi()
+    {
+        $transaksi = DB::table('transaksi')
+                    ->leftJoin('users','transaksi.user_id','=','users.id')
+                    ->get();
         return $this->sendResponse($transaksi);
+    }
+
+    public function onDelivery(Request $request)
+    {
+        $transaksi = Transaksi::findOrFail($request->transaksi_id);
+        $transaksi->status_transaksi = 1; //sedang dikirim
+        $transaksi->save();
+        return "success";
+    }
+
+    public function complete(Request $request)
+    {
+        $transaksi = Transaksi::findOrFail($request->transaksi_id);
+        $transaksi->status_transaksi = 2; //terkirim
+        $transaksi->save();
+        return "success";
     }
 }
