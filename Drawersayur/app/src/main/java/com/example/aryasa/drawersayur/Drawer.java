@@ -22,8 +22,11 @@ public class Drawer extends AppCompatActivity  {
 
 
     Dialog myDialog;
+    int idIntent;
+    String username;
     SharedPreferences sharedpreferences;
     public static final String TAG_ID = "id";
+    public static final String TAG_USERNAME = "username";
     private ActionBar toolbar;
     private BottomNavigationView bottomNavigation;
     private Fragment fragment;
@@ -36,9 +39,9 @@ public class Drawer extends AppCompatActivity  {
 
     Boolean session = false;
     int id;
-    String name;
-    String email;
-    String nomor_telepon;
+    String name, nameIntent;
+    String email, emailIntent;
+    String nomor_telepon, nomor_teleponIntent;
     Intent intent;
 
 

@@ -33,17 +33,17 @@ public class AdminInprogressAdapter extends RecyclerView.Adapter<AdminInprogress
 
     @Override
     public void onBindViewHolder(final AdminInprogressViewHolder holder, final int position) {
-        holder.mTanggal.setText(mAdminInprogress.get(position).getMetode());
+        holder.mTanggal.setText(mAdminInprogress.get(position).getTextView_tanggal());
+        holder.mGambar.setImageResource(R.drawable.ic_broccoli_vegetable_silhouette);
         holder.mJam.setText(mAdminInprogress.get(position).getStatus());
-        holder.mBarang1.setText(mAdminInprogress.get(position).getAlamat());
-        holder.mBarang2.setText(mAdminInprogress.get(position).getTextView_tanggal());
-        holder.mBarang3.setText("ID USER : "+mAdminInprogress.get(position).getIduser());
+        holder.mBarang1.setText(mAdminInprogress.get(position).getNamauser());
+        holder.mBarang2.setText(mAdminInprogress.get(position).getNomor());
+        holder.mBarang3.setText(mAdminInprogress.get(position).getAlamat());
         holder.mCardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent mIntent = new Intent(mContext, Admindetailtransaksi.class);
                 mIntent.putExtra("idtransaksi",mAdminInprogress.get(position).getIdtransaksi());
-                mIntent.putExtra("iduser",mAdminInprogress.get(position).getIduser());
                 mContext.startActivity(mIntent);
             }
         });

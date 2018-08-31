@@ -22,7 +22,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
-import android.widget.FrameLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -70,7 +70,7 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
     private TextView cart,totalHarga, opencart;
     private com.example.aryasa.drawersayur.Adpater.CartAdapter CartAdapter;
     private Callbacks callbacks;
-    private FrameLayout frameLayout;
+    private ScrollView scroll;
     SharedPreferences shared;
     SharedPreferences prefcart;
     int id;
@@ -104,14 +104,14 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
         cartList = new ArrayList<>();
         coordinatorLayout = (CoordinatorLayout)view.findViewById(R.id.coordinator);
         persistentbottomSheet = coordinatorLayout.findViewById(R.id.bottomsheet_sayur);
-        frameLayout = coordinatorLayout.findViewById(R.id.framehome);
+        scroll = coordinatorLayout.findViewById(R.id.framehome);
         bottomSheetRecyclerview = coordinatorLayout.findViewById(R.id.recyclerview_bottom_sheet);
         bottomSheetRecyclerview.setLayoutManager(new LinearLayoutManager(mContext));
         CartAdapter = new CartAdapter(mContext,cartList, this);
         bottomSheetRecyclerview.setAdapter(CartAdapter);
         BottomSheetBehavior behavior = BottomSheetBehavior.from(persistentbottomSheet);
         behavior.setState(BottomSheetBehavior.STATE_HIDDEN);
-        persistentbottomSheet.setVisibility(View.INVISIBLE);
+        persistentbottomSheet.setVisibility(View.GONE);
 
 
         cart = (TextView) coordinatorLayout.findViewById(R.id.jumlah_cart);
@@ -278,22 +278,29 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
         return super.onOptionsItemSelected(item);
     }
 
-    public void setMargin(){
-        if (behavior.getState()==BottomSheetBehavior.STATE_COLLAPSED){
-            FrameLayout.LayoutParams layoutParams = (FrameLayout.LayoutParams) frameLayout.getLayoutParams();
-            layoutParams.setMargins(0,0,0,70);
-            frameLayout.setLayoutParams(layoutParams);
-        }
+    public void setMarginNaik(){
+            CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) scroll.getLayoutParams();
+            layoutParams.setMargins(0,0,0,80);
+            scroll.setLayoutParams(layoutParams);
+
+    }
+    public void setMarginNol(){
+        CoordinatorLayout.LayoutParams layoutParams = (CoordinatorLayout.LayoutParams) scroll.getLayoutParams();
+        layoutParams.setMargins(0,0,0,0);
+        scroll.setLayoutParams(layoutParams);
+
     }
     public void updateCart(Sayur cartlist,int status,int jumlah ) {
         if(status == 1){
             cartList.add(cartlist);
         }
+        setMarginNaik();
         CartAdapter.addCartItems(cartlist.getId(), jumlah);
         cart.setText(String.valueOf(CartAdapter.getItemCount()));
         persistentbottomSheet.setVisibility(View.VISIBLE);
         if (CartAdapter.getItemCount()<1){
-            persistentbottomSheet.setVisibility(View.INVISIBLE);
+            setMarginNol();
+            persistentbottomSheet.setVisibility(View.GONE);
         }
     }
 
@@ -301,7 +308,7 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
     public void hapuscart(int Position) {
         CartAdapter.removeAt(position);
         if (cartList.size()==0){
-            persistentbottomSheet.setVisibility(View.INVISIBLE);
+            persistentbottomSheet.setVisibility(View.GONE);
         }
         cart.setText(String.valueOf(cartList.size()));
     }
@@ -316,7 +323,7 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
     public void updateharga(int harga) {
         CartAdapter.harga(harga);
         if(harga==0){
-            persistentbottomSheet.setVisibility(View.INVISIBLE);
+            persistentbottomSheet.setVisibility(View.GONE);
         }
         totalHarga.setText(String.valueOf(harga));
     }

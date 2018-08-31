@@ -1,9 +1,7 @@
 package com.example.aryasa.drawersayur.Admin;
 
-import android.content.Intent;
-import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,8 +10,6 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -21,16 +17,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.aryasa.drawersayur.Adpater.AdminuserAdapter;
-import com.example.aryasa.drawersayur.Adpater.SayurListAdapter;
-import com.example.aryasa.drawersayur.Chart;
-import com.example.aryasa.drawersayur.Model.SayurListModel;
-import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.Model.Userdata;
+import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.ServerAPI.Server;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
-import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
-import com.google.android.gms.common.GooglePlayServicesRepairableException;
-import com.google.android.gms.location.places.ui.PlacePicker;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -38,7 +28,6 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class Adminhomeuser extends Fragment {
@@ -46,6 +35,7 @@ public class Adminhomeuser extends Fragment {
 //adapternya adminuseradapater
     private String API_URL = Server.URL + "user";
     ArrayList<Userdata> userdata = new ArrayList<>();
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

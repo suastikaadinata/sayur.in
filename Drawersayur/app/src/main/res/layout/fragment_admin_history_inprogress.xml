@@ -43,7 +43,7 @@
                     android:layout_toRightOf="@id/imageView"
                     android:layout_marginLeft="5dp"
                     android:layout_toLeftOf="@id/textView_kirim"
-                    android:text="Barang :"
+                    android:text="User :"
                     android:layout_marginTop="5dp"
                     android:textColor="#5faf50"
                     android:textSize="14sp"

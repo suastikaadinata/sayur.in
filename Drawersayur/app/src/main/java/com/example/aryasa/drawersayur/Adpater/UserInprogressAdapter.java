@@ -34,7 +34,6 @@ public class UserInprogressAdapter extends RecyclerView.Adapter<UserInprogressAd
         holder.mJam.setText(mUserInprogress.get(position).getStatus());
         holder.mBarang1.setText(mUserInprogress.get(position).getAlamat());
         holder.mBarang2.setText(mUserInprogress.get(position).getTextView_tanggal());
-
     }
     @Override
     public int getItemCount() {
