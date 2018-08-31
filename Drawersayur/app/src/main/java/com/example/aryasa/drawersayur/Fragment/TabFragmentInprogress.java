@@ -35,6 +35,7 @@ public class TabFragmentInprogress extends Fragment {
     SharedPreferences sharedpreferences;
     private UserInprogressAdapter adapter;
     int id_user;
+    String status;
     Context mContext;
     public static final String my_shared_preferences = "my_shared_preferences";
 
@@ -57,14 +58,21 @@ public class TabFragmentInprogress extends Fragment {
                 try{
                     for (int i = 0; i < response.length(); i++){
                         JSONObject jsonObject = response.getJSONObject(i);
-                        if (jsonObject.getString("status_transaksi").equals("0")&& jsonObject.getString("user_id").equals(String.valueOf(id_user))){
-                            userInprogresses.add(new  UserInprogress("On progress",
-                                    jsonObject.getString("metode_transaksi"),jsonObject.getString("waktu_pengiriman"),jsonObject.getString("alamat")));
-                            mList = (RecyclerView) view.findViewById(R.id.recycler_fragment_inprogress);
-                            LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
-                            mList.setLayoutManager(mLayoutManager);
-                            mList.setAdapter(keranjang);;
-                        }
+                        if (jsonObject.getString("status_transaksi").equals("0")|| jsonObject.getString("status_transaksi").equals("1")){
+                            if (jsonObject.getString("status_transaksi").equals("0")){
+                                status="On Progress";
+                            }else {
+                                status="On Delivery";
+                            }
+                            if (jsonObject.getString("user_id").equals(String.valueOf(id_user))){
+                                userInprogresses.add(new  UserInprogress(jsonObject.getInt("id"),status,
+                                        jsonObject.getString("metode_transaksi"),jsonObject.getString("waktu_pengiriman"),jsonObject.getString("alamat")));
+                                mList = (RecyclerView) view.findViewById(R.id.recycler_fragment_inprogress);
+                                LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+                                mList.setLayoutManager(mLayoutManager);
+                                mList.setAdapter(keranjang);;
+                            }
+                            }
                     }
                 }catch (JSONException e){
                     e.printStackTrace();

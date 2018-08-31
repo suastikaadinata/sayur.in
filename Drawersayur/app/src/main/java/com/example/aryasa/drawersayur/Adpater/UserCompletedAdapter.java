@@ -1,21 +1,15 @@
 package com.example.aryasa.drawersayur.Adpater;
 
 import android.content.Context;
-import android.content.Intent;
-import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.aryasa.drawersayur.Admin.Adminubahsayur;
-import com.example.aryasa.drawersayur.Admin.Adminviewuser;
 import com.example.aryasa.drawersayur.Model.UserCompleted;
 import com.example.aryasa.drawersayur.R;
-import com.example.aryasa.drawersayur.Model.Userdata;
 
 import java.util.List;
 
@@ -36,12 +30,10 @@ public class UserCompletedAdapter extends RecyclerView.Adapter<UserCompletedAdap
 
     @Override
     public void onBindViewHolder(final UserCompletedViewHolder holder, int position) {
-        holder.mBarang1.setText(mUserCompleted.get(position).getTextView_barang1());
-        holder.mBarang2.setText(mUserCompleted.get(position).getTextView_barang2());
-        holder.mBarang3.setText(mUserCompleted.get(position).getTextView_barang3());
-        holder.mTanggal.setText(mUserCompleted.get(position).getTextView_tanggal());
-        holder.mJam.setText(mUserCompleted.get(position).getTextView_jam());
-        holder.mGambar.setImageResource(mUserCompleted.get(position).getImageView());
+        holder.mTanggal.setText(mUserCompleted.get(position).getMetode());
+        holder.mJam.setText(mUserCompleted.get(position).getStatus());
+        holder.mBarang1.setText(mUserCompleted.get(position).getAlamat());
+        holder.mBarang2.setText(mUserCompleted.get(position).getTextView_tanggal());
 
     }
     @Override

@@ -35,13 +35,13 @@ public class FragmentAdminHistoryInprogress extends Fragment {
     SharedPreferences sharedpreferences;
     private AdminInprogressAdapter adapter;
     int id_user;
+    String status;
     Context mContext;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recycler_admin_history_inprogress, container, false);
         mContext = view.getContext();
         adapter = new AdminInprogressAdapter(mContext,adminInprogress);
-
         getTransaksi(API_URL_T,view,adapter);
 
         return view;
@@ -55,9 +55,14 @@ public class FragmentAdminHistoryInprogress extends Fragment {
                 try{
                     for (int i = 0; i < response.length(); i++){
                         JSONObject jsonObject = response.getJSONObject(i);
-                        if (jsonObject.getString("status_transaksi").equals("0")){
-                            adminInprogress.add(new AdminInprogress(jsonObject.getString("id"),jsonObject.getString("user_id"),"On progress",
-                                    jsonObject.getString("metode_transaksi"),jsonObject.getString("waktu_pengiriman"),jsonObject.getString("alamat")));
+                        if (jsonObject.getString("status_transaksi").equals("0")|| jsonObject.getString("status_transaksi").equals("1")){
+                            if (jsonObject.getString("status_transaksi").equals("0")){
+                                status="On Progress";
+                            }else {
+                                status="On Delivery";
+                            }
+                            adminInprogress.add(new AdminInprogress(jsonObject.getString("id"),jsonObject.getString("name"),status,
+                                    jsonObject.getString("nomor_telepon"),jsonObject.getString("waktu_pengiriman"),jsonObject.getString("alamat")));
                             mList = (RecyclerView) view.findViewById(R.id.recycler_admin_history_inporgress);
                             LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
                             mList.setLayoutManager(mLayoutManager);

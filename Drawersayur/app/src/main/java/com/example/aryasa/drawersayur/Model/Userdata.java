@@ -28,6 +28,12 @@ public class Userdata {
         this.email = email;
         this.nomor_telepon = nomor_telepon;
     }
+    public Userdata(int id ,String name, String email, String nomor_telepon){
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.nomor_telepon = nomor_telepon;
+    }
 
 
     public int getId() {

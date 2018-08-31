@@ -7,16 +7,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.aryasa.drawersayur.Admin.Adminubahsayur;
-import com.example.aryasa.drawersayur.Admin.Adminviewuser;
+import com.example.aryasa.drawersayur.Admin.Admindetailtransaksi;
 import com.example.aryasa.drawersayur.Model.AdminCompleted;
-import com.example.aryasa.drawersayur.Model.UserCompleted;
 import com.example.aryasa.drawersayur.R;
-import com.example.aryasa.drawersayur.Model.Userdata;
 
 import java.util.List;
 
@@ -36,13 +32,21 @@ public class AdminCompletedAdapter extends RecyclerView.Adapter<AdminCompletedAd
     }
 
     @Override
-    public void onBindViewHolder(final AdminCompletedViewHolder holder, int position) {
-        holder.mBarang1.setText(mAdminCompleted.get(position).getTextView_barang1());
-        holder.mBarang2.setText(mAdminCompleted.get(position).getTextView_barang2());
-        holder.mBarang3.setText(mAdminCompleted.get(position).getTextView_barang3());
+    public void onBindViewHolder(final AdminCompletedViewHolder holder, final int position) {
         holder.mTanggal.setText(mAdminCompleted.get(position).getTextView_tanggal());
-        holder.mJam.setText(mAdminCompleted.get(position).getTextView_jam());
-        holder.mGambar.setImageResource(mAdminCompleted.get(position).getImageView());
+        holder.mGambar.setImageResource(R.drawable.ic_broccoli_vegetable_silhouette);
+        holder.mJam.setText(mAdminCompleted.get(position).getStatus());
+        holder.mBarang1.setText(mAdminCompleted.get(position).getNama());
+        holder.mBarang2.setText(mAdminCompleted.get(position).getNomor());
+        holder.mBarang3.setText(mAdminCompleted.get(position).getAlamat());
+        holder.mCardView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mIntent = new Intent(mContext, Admindetailtransaksi.class);
+                mIntent.putExtra("idtransaksi",mAdminCompleted.get(position).getIdtransaksi());
+                mContext.startActivity(mIntent);
+            }
+        });
 
     }
     @Override
@@ -60,6 +64,7 @@ public class AdminCompletedAdapter extends RecyclerView.Adapter<AdminCompletedAd
         TextView mTanggal;
         TextView mJam;
         ImageView mGambar;
+        CardView mCardView;
 
         AdminCompletedViewHolder(View itemView) {
             super(itemView);
@@ -71,6 +76,7 @@ public class AdminCompletedAdapter extends RecyclerView.Adapter<AdminCompletedAd
             mJam = itemView.findViewById(R.id.textView_jam);
             mTanggal = itemView.findViewById(R.id.textView_tanggal);
             mGambar = itemView.findViewById(R.id.imageView);
+            mCardView = itemView.findViewById(R.id.carddviewuser);
 
         }
 

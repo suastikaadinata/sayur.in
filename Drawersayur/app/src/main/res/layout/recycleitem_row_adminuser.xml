@@ -25,7 +25,7 @@
                 android:id="@+id/gambaruser"
                 android:layout_width="match_parent"
                 android:layout_height="140dp"
-                android:src="@mipmap/ic_launcher" />
+                android:src="@drawable/ic_person_pin_green_150dp" />
 
             <TextView
                 android:id="@+id/txt_username"

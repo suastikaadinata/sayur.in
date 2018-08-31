@@ -8,13 +8,59 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#eae7e7"
             android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:layout_marginTop="20dp"
+                android:background="#ffffff"
+                android:padding="10dp">
+
+                <TextView
+                    android:id="@+id/Textview22"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginStart="10dp"
+                    android:text="Pemesan"
+                    android:textColor="#ff8200"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/TextviewUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/Textview22"
+                    android:layout_alignStart="@+id/Textview22"
+                    android:layout_below="@+id/Textview22"
+                    android:text="Nama :"
+                    android:textColor="#ff8200"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/TextviewTelp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignLeft="@+id/TextviewUser"
+                    android:layout_alignStart="@+id/TextviewUser"
+                    android:layout_below="@+id/TextviewUser"
+                    android:text="Nomor :"
+                    android:textColor="#ff8200"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+            </RelativeLayout>
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -33,6 +79,7 @@
                     android:textColor="#ff8200"
                     android:textSize="20sp" />
             </FrameLayout>
+
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -40,88 +87,15 @@
                 android:layout_margin="4dp"
                 app:cardElevation="3dp"
                 app:cardUseCompatPadding="true">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="97dp"
-                    android:layout_marginTop="2dp"
-                    android:background="#ffffff"
-                    android:padding="10dp">
 
-                    <ImageView
-                        android:id="@+id/imageView"
-                        android:layout_width="77dp"
-                        android:layout_height="77dp"
-                        android:layout_marginLeft="10dp"
-                        android:contentDescription="profile image"
-                        android:src="@mipmap/ic_launcher" />
-
-                    <TextView
-                        android:id="@+id/textView_namaSayur"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_toRightOf="@id/imageView"
-                        android:text="Bayam"
-                        android:textColor="#5faf50"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textView3"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/textView_namaSayur"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_toRightOf="@id/imageView"
-                        android:text="harga / ikat"
-                        android:textColor="#afafaf"
-                        android:textSize="12sp"
-                        android:textStyle="italic" />
-
-                    <TextView
-                        android:id="@+id/textView_hargaSayur"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/textView3"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_toRightOf="@id/imageView"
-                        android:text="Rp. 12.000"
-                        android:textColor="#ff8200"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <TextView
-                        android:id="@+id/textViewnote1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@id/textView_hargaSayur"
-                        android:layout_marginLeft="5dp"
-                        android:layout_marginTop="2dp"
-                        android:layout_toRightOf="@id/imageView"
-                        android:text="note : Yang segar."
-                        android:textColor="#afafaf"
-                        android:textSize="12sp"
-                        android:textStyle="italic" />
-
-                    <TextView
-                        android:id="@+id/textView_jumlahSayur"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="10dp"
-                        android:layout_weight="1"
-                        android:text="Jumlah : 1"
-                        android:textAlignment="center"
-                        android:textColor="#5faf50"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/detailtransaksi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"></android.support.v7.widget.RecyclerView>
 
 
-                </RelativeLayout>
             </android.support.v7.widget.CardView>
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
@@ -170,6 +144,7 @@
                 android:layout_margin="4dp"
                 app:cardElevation="3dp"
                 app:cardUseCompatPadding="true">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="77dp"
@@ -233,6 +208,7 @@
                     android:textSize="20sp" />
 
             </FrameLayout>
+
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -240,6 +216,7 @@
                 android:layout_margin="4dp"
                 app:cardElevation="3dp"
                 app:cardUseCompatPadding="true">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
@@ -259,92 +236,10 @@
                         android:textColor="#5faf50"
                         android:textSize="16sp"
                         android:textStyle="bold" />
-
-
-                    <TextView
-                        android:id="@+id/textViewjam"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="10dp"
-                        android:text="08.00 WIB"
-                        android:textColor="#5faf50"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="45dp"
-                android:layout_marginTop="10dp"
-                android:background="#ffffff"
-                android:padding="10dp">
 
-                <TextView
-                    android:id="@+id/textMetodePembayaran"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="10dp"
-                    android:layout_marginStart="10dp"
-                    android:text="Metode Pembayaran"
-                    android:textColor="#ff8200"
-                    android:textSize="20sp" />
-            </FrameLayout>
-            <android.support.v7.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_margin="4dp"
-                app:cardElevation="3dp"
-                app:cardUseCompatPadding="true">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="80dp"
-                    android:layout_marginTop="2dp"
-                    android:background="#ffffff"
-                    android:padding="10dp">
-
-
-                    <TextView
-                        android:id="@+id/textViewCOD"
-                        android:layout_width="match_parent"
-                        android:layout_height="31dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_toLeftOf="@id/checkbox1"
-                        android:text="Cash ON Delivery (COD)"
-                        android:textColor="#5faf50"
-                        android:textSize="16sp" />
-
-                    <TextView
-                        android:id="@+id/textViewTransfer"
-                        android:layout_width="match_parent"
-                        android:layout_height="31dp"
-                        android:layout_below="@+id/textViewCOD"
-                        android:layout_marginLeft="10dp"
-                        android:layout_toLeftOf="@id/checkbox2"
-                        android:text="Transfer"
-                        android:textColor="#5faf50"
-                        android:textSize="16sp" />
-
-                    <CheckBox
-                        android:id="@+id/checkbox1"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="10dp" />
-
-                    <CheckBox
-                        android:id="@+id/checkbox2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentRight="true"
-                        android:layout_below="@+id/checkbox1"
-                        android:layout_marginRight="10dp" />
-
-                </RelativeLayout>
-
-            </android.support.v7.widget.CardView>
             <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="45dp"
@@ -362,6 +257,7 @@
                     android:textColor="#ff8200"
                     android:textSize="20sp" />
             </FrameLayout>
+
             <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -369,6 +265,7 @@
                 android:layout_margin="4dp"
                 app:cardElevation="3dp"
                 app:cardUseCompatPadding="true">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="90dp"
@@ -469,63 +366,47 @@
                     android:textColor="#ff8200"
                     android:textSize="20sp" />
             </FrameLayout>
+
             <android.support.v7.widget.CardView
+                android:id="@+id/layoutUbah"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_margin="4dp"
                 app:cardElevation="3dp"
                 app:cardUseCompatPadding="true">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="100dp"
+                    android:layout_height="70dp"
                     android:layout_marginTop="2dp"
                     android:background="#ffffff"
+                    android:gravity="center"
                     android:padding="10dp">
+
                     <Button
-                        android:id="@+id/buttonDikonfirmasi"
-                        android:layout_width="100dp"
-                        android:layout_height="28dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
+                        android:id="@+id/buttonDelivery"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
                         android:background="@drawable/button_custom_gray"
-                        android:text="Dikonfirmasi"
+                        android:text="On Delivery"
                         android:textColor="#5faf50"
                         android:textSize="12sp" />
-                    <Button
-                        android:id="@+id/buttonMenungguPembayaran"
-                        android:layout_width="170dp"
-                        android:layout_height="28dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:layout_toRightOf="@id/buttonDikonfirmasi"
-                        android:layout_toLeftOf="@id/buttonDikirim"
-                        android:background="@drawable/button_custom_gray"
-                        android:text="Menunggu Pembayaran"
-                        android:textColor="#5faf50"
-                        android:textSize="12sp" />
-                    <Button
-                        android:id="@+id/buttonDikirim"
-                        android:layout_width="70dp"
-                        android:layout_height="28dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="5dp"
-                        android:background="@drawable/button_custom_gray"
-                        android:text="Dikirm"
-                        android:layout_alignParentRight="true"
-                        android:textColor="#5faf50"
-                        android:textSize="12sp" />
+
                     <Button
                         android:id="@+id/buttonSelesai"
-                        android:layout_width="70dp"
-                        android:layout_height="28dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="30dp"
+                        android:layout_centerVertical="true"
+                        android:layout_toEndOf="@+id/buttonDelivery"
                         android:background="@drawable/button_custom_gray"
-                        android:text="Selesai"
-                        android:layout_below="@+id/buttonDikonfirmasi"
+                        android:text="Complete"
+                        android:layout_marginLeft="50dp"
                         android:textColor="#5faf50"
-                        android:textSize="12sp" />
+                        android:textSize="12sp"
+                        tools:ignore="UnknownId"
+                        android:layout_toRightOf="@+id/buttonDelivery" />
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>

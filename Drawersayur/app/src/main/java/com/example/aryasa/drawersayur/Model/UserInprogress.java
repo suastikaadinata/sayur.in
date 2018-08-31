@@ -5,8 +5,9 @@ public class UserInprogress {
     private String textView_barang2;
     private String textView_barang3;
     private int imageView;
+    private int id;
     private String textView_tanggal;
-    private String textView_jam, status,metode,alamat,iduser;
+    private String textView_jam, status,metode,alamat,nomor,namauser;
 
     public UserInprogress(String textView_barang1, String textView_barang2 ,String textView_barang3, Integer imageView,String textView_tanggal,String textView_jam){
         this.textView_barang1= textView_barang1;
@@ -16,12 +17,20 @@ public class UserInprogress {
         this.textView_tanggal= textView_tanggal;
         this.textView_jam= textView_jam;
     }
-    public UserInprogress(String status, String metode,String waktu,String alamat){
+    public UserInprogress(int id ,String status, String metode,String waktu,String alamat){
         this.status =status;
         this.metode = metode;
         this.textView_tanggal =waktu;
         this.alamat = alamat;
+        this.id = id;
 
+    }
+    public UserInprogress(String namauser,String status, String nomor,String waktu,String alamat){
+        this.status =status;
+        this.nomor = nomor;
+        this.textView_tanggal =waktu;
+        this.alamat = alamat;
+        this.namauser =namauser;
     }
 
     public String getTextView_barang1() { return textView_barang1; }
@@ -54,7 +63,21 @@ public class UserInprogress {
         return alamat;
     }
 
+    public String getNamauser() {
+        return namauser;
+    }
 
+    public String getNomor() {
+        return nomor;
+    }
+
+    public void setNomor(String nomor) {
+        this.nomor = nomor;
+    }
+
+    public void setNamauser(String namauser) {
+        this.namauser = namauser;
+    }
 
     public void setTextView_barang1(String textView_barang1) {
         this.textView_barang1 = textView_barang1;
@@ -84,6 +107,14 @@ public class UserInprogress {
     }
     public  void  setAlamat(String alamat){
         this.alamat = alamat;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setImageView(int imageView) {

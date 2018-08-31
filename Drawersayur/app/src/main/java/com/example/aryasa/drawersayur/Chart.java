@@ -29,6 +29,7 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
+import com.example.aryasa.drawersayur.Adpater.Callbacks;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -41,7 +42,7 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
-public class Chart extends AppCompatActivity {
+public class Chart extends AppCompatActivity implements Callbacks{
 
     private Button btPlacesAPI;
     private TextView tvPlaceAPI, txTotalharga,txOngkir,txTotal;
@@ -67,7 +68,7 @@ public class Chart extends AppCompatActivity {
     private RecyclerView mList;
     private LinearLayoutManager linearLayoutManager;
     private Checkout adapter;
-    String tanggal_kirim, waktu, alamat;
+    String tanggal_kirim, waktu, alamat="malang";
 
 
     @Override
@@ -76,7 +77,9 @@ public class Chart extends AppCompatActivity {
         setContentView(R.layout.chart_layout);
         sharedpreferences = this.getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
         id_user = sharedpreferences.getInt(TAG_ID, 0);
-        adapter = new Checkout(this,listKeranjang);
+        mContext = getApplicationContext();
+
+        adapter = new Checkout(mContext,listKeranjang,this);
         ambilkeranjang(API_KERANJANG,adapter);
         ongkir=3000;
 
@@ -238,7 +241,7 @@ public class Chart extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("user_id", String.valueOf(id_user));
-                params.put("alamat","alamat");
+                params.put("alamat",alamat);
                 params.put("waktu_pengiriman",tanggal_kirim+", "+waktu);
                 for(int i = 0; i < listKeranjang.size(); i++) {
                     params.put("sayur_id["+i+"]",String.valueOf(listKeranjang.get(i).getId()));
@@ -263,8 +266,33 @@ public class Chart extends AppCompatActivity {
                         "%s "
                         , place.getAddress());
                 tvPlaceAPI.setText(toastMsg);
-                waktu=tvPlaceAPI.getText().toString();
+                alamat = place.getAddress().toString();
             }
         }
+    }
+
+    @Override
+    public void updateCart(Sayur listkeranjang, int status, int jumlah) {
+        adapter.addCartItems(listkeranjang.getId(), jumlah);
+
+
+    }
+
+    @Override
+    public void hapuscart(int Position) {
+
+    }
+
+    @Override
+    public void updateJumlah(int i, int jumlah) {
+
+    }
+
+    @Override
+    public void updateharga(int harga) {
+        adapter.harga(harga);
+        totalharga=harga;
+        txTotalharga.setText("Rp. "+String.valueOf(harga));
+        txTotal.setText("Rp. "+String.valueOf(totalharga+ongkir));
     }
 }
