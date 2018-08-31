@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
-import android.nfc.Tag;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -44,6 +43,7 @@ public class Login extends AppCompatActivity{
 //    private static final String TAG_SUCCESS = "success";
 //    private static final String TAG_MESSAGE = "message";
 //    String tag_json_obj = "json_obj_req";
+    public final static String TAG_TOKEN = "token";
     public final static String TAG_ID = "id";
     public final static String TAG_NAME = "name";
     public final static String TAG_EMAIL = "email";
@@ -53,7 +53,7 @@ public class Login extends AppCompatActivity{
     Boolean session = false;
     Boolean sessionAdmin = false;
     int id;
-    String name;
+    String name,token;
     String email;
     String nomor_telepon;
 
@@ -90,6 +90,7 @@ public class Login extends AppCompatActivity{
         name = sharedpreferences.getString(TAG_NAME, null);
         email = sharedpreferences.getString(TAG_EMAIL, null);
         nomor_telepon = sharedpreferences.getString(TAG_NOMOR_TELEPON, null);
+        token = sharedpreferences.getString(TAG_TOKEN, null);
 
         if (session) {
             Intent intent = new Intent(Login.this, Profile.class);
@@ -106,6 +107,7 @@ public class Login extends AppCompatActivity{
         name = sharedpreferencesAdmnin.getString(TAG_NAME, null);
         email = sharedpreferencesAdmnin.getString(TAG_EMAIL, null);
         nomor_telepon = sharedpreferencesAdmnin.getString(TAG_NOMOR_TELEPON, null);
+        token = sharedpreferencesAdmnin.getString(TAG_TOKEN, null);
         if (sessionAdmin) {
             Intent intent = new Intent(Login.this, AdminProfile.class);
             intent.putExtra(TAG_ID,id);
@@ -177,12 +179,14 @@ public class Login extends AppCompatActivity{
                             int id = jsonObject.getInt("id");
                             String name = jsonObject.getString("name");
                             String tlp = jsonObject.getString("nomor_telepon");
+                            String token = jsonObject.getString("token");
                             SharedPreferences.Editor editor = sharedpreferencesAdmnin.edit();
                             editor.putBoolean(session_status2, true);
                             editor.putInt(TAG_ID,id);
                             editor.putString(TAG_NAME,name );
                             editor.putString(TAG_EMAIL,email );
                             editor.putString(TAG_NOMOR_TELEPON,tlp );
+                            editor.putString(TAG_TOKEN,token );
                             editor.commit();
                             Intent intent = new Intent(getApplicationContext(), AdminHome.class);
 //                            intent.putExtra(TAG_ID,id);
@@ -203,7 +207,7 @@ public class Login extends AppCompatActivity{
                             editor.putString(TAG_NAME,name );
                             editor.putString(TAG_EMAIL,email );
                             editor.putString(TAG_NOMOR_TELEPON,tlp );
-
+                            editor.putString(TAG_TOKEN,token );
                             editor.commit();
                             Intent intent = new Intent(getApplicationContext(), Drawer.class);
 //                            intent.putExtra(TAG_ID,id);

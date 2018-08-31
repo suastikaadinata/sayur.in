@@ -65,8 +65,8 @@ public class TabFragmentInprogress extends Fragment {
                                 status="On Delivery";
                             }
                             if (jsonObject.getString("user_id").equals(String.valueOf(id_user))){
-                                userInprogresses.add(new  UserInprogress(jsonObject.getInt("id"),status,
-                                        jsonObject.getString("metode_transaksi"),jsonObject.getString("waktu_pengiriman"),jsonObject.getString("alamat")));
+                                userInprogresses.add(new  UserInprogress(jsonObject.getString("id"),jsonObject.getString("name"),status,
+                                        jsonObject.getString("nomor_telepon"),jsonObject.getString("waktu_pengiriman"),jsonObject.getString("alamat")));
                                 mList = (RecyclerView) view.findViewById(R.id.recycler_fragment_inprogress);
                                 LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
                                 mList.setLayoutManager(mLayoutManager);

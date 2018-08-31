@@ -315,13 +315,10 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
 
     @Override
     public void updateJumlah(int i, int jumlah) {
-        cart.setText(String.valueOf(i));
-        totalHarga.setText(String.valueOf(jumlah));
     }
 
     @Override
-    public void updateharga(int harga) {
-        CartAdapter.harga(harga);
+    public void updateharga(int harga,int status) {
         if(harga==0){
             persistentbottomSheet.setVisibility(View.GONE);
         }

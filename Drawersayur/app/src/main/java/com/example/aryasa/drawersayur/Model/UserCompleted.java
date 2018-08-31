@@ -6,7 +6,7 @@ public class UserCompleted {
     private String textView_barang3;
     private int imageView,id;
     private String textView_tanggal;
-    private String textView_jam, status,metode,alamat;
+    private String textView_jam, status,nomor,alamat,namauser,idtransaksi;
 
     public UserCompleted(String textView_barang1, String textView_barang2 ,String textView_barang3, Integer imageView,String textView_tanggal,String textView_jam){
         this.textView_barang1= textView_barang1;
@@ -17,13 +17,13 @@ public class UserCompleted {
         this.textView_jam= textView_jam;
 
     }
-    public UserCompleted(int id ,String status, String metode,String waktu,String alamat){
+    public UserCompleted(String idtransaksi,String namauser,String status, String nomor,String waktu,String alamat){
         this.status =status;
-        this.metode = metode;
+        this.nomor = nomor;
         this.textView_tanggal =waktu;
         this.alamat = alamat;
-        this.id = id;
-
+        this.namauser =namauser;
+        this.idtransaksi=idtransaksi;
     }
 
 
@@ -50,16 +50,28 @@ public class UserCompleted {
         this.status = status;
     }
 
-    public void setMetode(String metode) {
-        this.metode = metode;
+    public void setNamauser(String namauser) {
+        this.namauser = namauser;
+    }
+
+    public void setNomor(String nomor) {
+        this.nomor = nomor;
     }
 
     public void setAlamat(String alamat) {
         this.alamat = alamat;
     }
 
-    public String getMetode() {
-        return metode;
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getNamauser() {
+        return namauser;
+    }
+
+    public String getNomor() {
+        return nomor;
     }
 
     public String getStatus() {
@@ -72,6 +84,14 @@ public class UserCompleted {
 
     public int getId() {
         return id;
+    }
+
+    public String getIdtransaksi() {
+        return idtransaksi;
+    }
+
+    public void setIdtransaksi(String idtransaksi) {
+        this.idtransaksi = idtransaksi;
     }
 
     public void setTextView_barang1(String textView_barang1) {

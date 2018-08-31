@@ -4,10 +4,9 @@ public class UserInprogress {
     private String textView_barang1;
     private String textView_barang2;
     private String textView_barang3;
-    private int imageView;
-    private int id;
+    private int imageView,id;
     private String textView_tanggal;
-    private String textView_jam, status,metode,alamat,nomor,namauser;
+    private String textView_jam, status,metode,alamat,nomor,namauser,idtransaksi;
 
     public UserInprogress(String textView_barang1, String textView_barang2 ,String textView_barang3, Integer imageView,String textView_tanggal,String textView_jam){
         this.textView_barang1= textView_barang1;
@@ -17,20 +16,20 @@ public class UserInprogress {
         this.textView_tanggal= textView_tanggal;
         this.textView_jam= textView_jam;
     }
-    public UserInprogress(int id ,String status, String metode,String waktu,String alamat){
+    public UserInprogress(String id ,String status, String metode,String waktu,String alamat){
         this.status =status;
         this.metode = metode;
         this.textView_tanggal =waktu;
-        this.alamat = alamat;
-        this.id = id;
+        this.alamat = alamat;;
 
     }
-    public UserInprogress(String namauser,String status, String nomor,String waktu,String alamat){
+    public UserInprogress(String idtransaksi,String namauser,String status, String nomor,String waktu,String alamat){
         this.status =status;
         this.nomor = nomor;
         this.textView_tanggal =waktu;
         this.alamat = alamat;
         this.namauser =namauser;
+        this.idtransaksi=idtransaksi;
     }
 
     public String getTextView_barang1() { return textView_barang1; }
@@ -115,6 +114,14 @@ public class UserInprogress {
 
     public int getId() {
         return id;
+    }
+
+    public void setIdtransaksi(String idtransaksi) {
+        this.idtransaksi = idtransaksi;
+    }
+
+    public String getIdtransaksi() {
+        return idtransaksi;
     }
 
     public void setImageView(int imageView) {

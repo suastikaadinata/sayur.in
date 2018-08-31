@@ -1,6 +1,8 @@
 package com.example.aryasa.drawersayur.Adpater;
 
 import android.content.Context;
+import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.aryasa.drawersayur.Model.UserCompleted;
 import com.example.aryasa.drawersayur.R;
+import com.example.aryasa.drawersayur.Userdetailtransaksi;
 
 import java.util.List;
 
@@ -29,11 +32,21 @@ public class UserCompletedAdapter extends RecyclerView.Adapter<UserCompletedAdap
     }
 
     @Override
-    public void onBindViewHolder(final UserCompletedViewHolder holder, int position) {
-        holder.mTanggal.setText(mUserCompleted.get(position).getMetode());
+    public void onBindViewHolder(final UserCompletedViewHolder holder, final int position) {
+        holder.mTanggal.setText(mUserCompleted.get(position).getTextView_tanggal());
+        holder.mGambar.setImageResource(R.drawable.success_ok);
         holder.mJam.setText(mUserCompleted.get(position).getStatus());
-        holder.mBarang1.setText(mUserCompleted.get(position).getAlamat());
-        holder.mBarang2.setText(mUserCompleted.get(position).getTextView_tanggal());
+        holder.mBarang1.setText(mUserCompleted.get(position).getNamauser());
+        holder.mBarang2.setText(mUserCompleted.get(position).getNomor());
+        holder.mBarang3.setText(mUserCompleted.get(position).getAlamat());
+        holder.cView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent mIntent = new Intent(mContext, Userdetailtransaksi.class);
+                mIntent.putExtra("idtransaksi",mUserCompleted.get(position).getIdtransaksi());
+                mContext.startActivity(mIntent);
+            }
+        });
 
     }
     @Override
@@ -51,6 +64,7 @@ public class UserCompletedAdapter extends RecyclerView.Adapter<UserCompletedAdap
         TextView mTanggal;
         TextView mJam;
         ImageView mGambar;
+        CardView cView;
 
         UserCompletedViewHolder(View itemView) {
             super(itemView);
@@ -62,6 +76,7 @@ public class UserCompletedAdapter extends RecyclerView.Adapter<UserCompletedAdap
             mJam = itemView.findViewById(R.id.textView_jam);
             mTanggal = itemView.findViewById(R.id.textView_tanggal);
             mGambar = itemView.findViewById(R.id.imageView);
+            cView = itemView.findViewById(R.id.carddviewuser);
 
         }
 

@@ -7,5 +7,5 @@ public interface Callbacks {
     void updateCart(Sayur sayur, int status, int jumlah);
     void hapuscart (int Position);
     void updateJumlah (int i,int jumlah);
-    void updateharga (int harga);
+    void updateharga (int harga,int status);
 }

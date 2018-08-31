@@ -19,16 +19,11 @@ import java.util.ArrayList;
 
 public class Checkout extends RecyclerView.Adapter<Checkout .MyViewHolder> {
     private int total=0, harga;
-    private int jumlah;
+    private int jumlah=1;
     Callbacks callbacks;
     Context mContext;
     ArrayList<Sayur>keranjang;
-    public void total(int harga){
-        total = total+harga;
-    }
-    public void kurangtotal(int harga){
-        total = total-harga;
-    }
+
 
     public Checkout (Context context, ArrayList<Sayur> keranjang, Callbacks callbacks){
         this.mContext = context;
@@ -52,6 +47,15 @@ public class Checkout extends RecyclerView.Adapter<Checkout .MyViewHolder> {
         }
         notifyDataSetChanged();
     }
+
+    public void total(int harga){
+        total = total+harga;
+    }
+    public void kurangtotal(int harga){
+        total = total-harga;
+    }
+
+
     public void harga(int harga){
         this.harga=harga;
     }
@@ -67,7 +71,7 @@ public class Checkout extends RecyclerView.Adapter<Checkout .MyViewHolder> {
 
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
-        jumlah=keranjang.get(position).getJumlah();
+        jumlah = Integer.parseInt(holder.itemKuan.getText().toString());
         ImageLoader imageLoader = Singleton.getInstance(mContext).getImageLoader();
         holder.itemTitle.setText(keranjang.get(position).getNama());
         holder.itemKuan.setText(String.valueOf(keranjang.get(position).getJumlah()));
@@ -89,14 +93,14 @@ public class Checkout extends RecyclerView.Adapter<Checkout .MyViewHolder> {
                 jumlah = Integer.parseInt(holder.itemKuan.getText().toString());
                 if(jumlah<=1){
                     jumlah=0;
-                    callbacks.updateCart(keranjang.get(position),2,jumlah);
                     kurangtotal(keranjang.get(position).getHarga());
-                    callbacks.updateharga(total);
+                    callbacks.updateharga(keranjang.get(position).getHarga(),1);
+                    callbacks.updateCart(keranjang.get(position),2,jumlah);
                 }else {
                     kurangtotal(keranjang.get(position).getHarga());
-                    callbacks.updateharga(total);
-                    callbacks.updateCart(keranjang.get(position),2,jumlah);
+                    callbacks.updateharga(keranjang.get(position).getHarga(),1);
                     holder.itemKuan.setText(String.valueOf(--jumlah));
+                    callbacks.updateCart(keranjang.get(position),2,jumlah);
                 }
 
             }
@@ -105,10 +109,9 @@ public class Checkout extends RecyclerView.Adapter<Checkout .MyViewHolder> {
             @Override
             public void onClick(View view) {
                 jumlah = Integer.parseInt(holder.itemKuan.getText().toString());
-                total(keranjang.get(position).getHarga());
-                callbacks.updateharga(total);
-                callbacks.updateCart(keranjang.get(position),2,++jumlah);
-                holder.itemKuan.setText(String.valueOf(keranjang.get(position).getJumlah()));
+                callbacks.updateharga(keranjang.get(position).getHarga(),0);
+                holder.itemKuan.setText(String.valueOf(jumlah+1));
+                callbacks.updateCart(keranjang.get(position),2,jumlah+1);
             }
         });
         holder.btn_del.setOnClickListener(new View.OnClickListener() {
@@ -116,7 +119,7 @@ public class Checkout extends RecyclerView.Adapter<Checkout .MyViewHolder> {
             public void onClick(View view) {
                 keranjang.remove(position);
                 notifyItemRemoved(position);
-                callbacks.updateharga(total);
+                callbacks.updateharga(0,2);
             }
         });
 

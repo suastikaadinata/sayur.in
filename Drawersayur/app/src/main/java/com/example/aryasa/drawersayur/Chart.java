@@ -96,7 +96,6 @@ public class Chart extends AppCompatActivity implements Callbacks{
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
-
         btndatepicker = (Button) findViewById(R.id.buttondatepicker);
         button_checkout = (Button) findViewById(R.id.button_checkout);
         tvPlaceAPI = (TextView) findViewById(R.id.textView_alamat);
@@ -162,8 +161,7 @@ public class Chart extends AppCompatActivity implements Callbacks{
             @Override
             public void onClick(View v) {
                 waktu = Spinnerjam.getSelectedItem().toString();
-                String alamat = tvPlaceAPI.getText().toString();
-                postTransaksi(API_TRANSAKSI,alamat);
+                postTransaksi(API_TRANSAKSI);
             }
         });
 
@@ -211,7 +209,7 @@ public class Chart extends AppCompatActivity implements Callbacks{
         Singleton.getInstance(this).addToRequestQueue(stringRequest);
     }
 
-    public void postTransaksi(String url , final String alamat){
+    public void postTransaksi(String url){
 
         StringRequest stringRequest=new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
             @Override
@@ -268,7 +266,7 @@ public class Chart extends AppCompatActivity implements Callbacks{
                         "%s "
                         , place.getAddress());
                 tvPlaceAPI.setText(toastMsg);
-                alamat = place.getAddress().toString();
+                alamat=tvPlaceAPI.getText().toString();
             }
         }
     }
@@ -276,8 +274,6 @@ public class Chart extends AppCompatActivity implements Callbacks{
     @Override
     public void updateCart(Sayur listkeranjang, int status, int jumlah) {
         adapter.addCartItems(listkeranjang.getId(), jumlah);
-
-
     }
 
     @Override
@@ -291,10 +287,16 @@ public class Chart extends AppCompatActivity implements Callbacks{
     }
 
     @Override
-    public void updateharga(int harga) {
-        adapter.harga(harga);
-        totalharga=harga;
-        txTotalharga.setText("Rp. "+String.valueOf(harga));
-        txTotal.setText("Rp. "+String.valueOf(totalharga+ongkir));
+    public void updateharga(int harga,int status) {
+        if (status==1){
+            totalharga=totalharga-harga;
+            txTotalharga.setText("Rp. "+String.valueOf(totalharga));
+            txTotal.setText("Rp. "+String.valueOf(totalharga+ongkir));
+        }else{
+            totalharga=totalharga+harga;
+            txTotalharga.setText("Rp. "+String.valueOf(totalharga));
+            txTotal.setText("Rp. "+String.valueOf(totalharga+ongkir));
+        }
+
     }
 }

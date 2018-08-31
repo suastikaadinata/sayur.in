@@ -59,8 +59,8 @@ public class TabFragmentCompleted extends Fragment {
                         JSONObject jsonObject = response.getJSONObject(i);
                         if (jsonObject.getString("status_transaksi").equals("2")){
                             if (jsonObject.getString("user_id").equals(String.valueOf(id_user))){
-                                userCompleteds.add(new UserCompleted(jsonObject.getInt("id"),"Completed",
-                                        jsonObject.getString("metode_transaksi"),jsonObject.getString("waktu_pengiriman"),jsonObject.getString("alamat")));
+                                userCompleteds.add(new UserCompleted(jsonObject.getString("id"),jsonObject.getString("name"),"Completed",
+                                        jsonObject.getString("nomor_telepon"),jsonObject.getString("waktu_pengiriman"),jsonObject.getString("alamat")));
                                 mList = (RecyclerView) view.findViewById(R.id.recycler_fragment_completed);
                                 LinearLayoutManager mLayoutManager = new LinearLayoutManager(getContext());
                                 mList.setLayoutManager(mLayoutManager);

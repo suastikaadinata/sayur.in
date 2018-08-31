@@ -41,7 +41,7 @@
                     android:layout_toRightOf="@id/imageView"
                     android:layout_marginLeft="5dp"
                     android:layout_toLeftOf="@id/textView_kirim"
-                    android:text="Barang :"
+                    android:text="Tujuan :"
                     android:layout_marginTop="5dp"
                     android:textColor="#5faf50"
                     android:textSize="14sp"
@@ -70,6 +70,17 @@
                     android:layout_below="@id/textView_barang1"
                     android:layout_marginTop="2dp"
                     android:text="Bawang (1)"
+                    android:textColor="#5faf50"
+                    android:textSize="14sp"
+                    />
+                <TextView
+                    android:id="@+id/textView_barang3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/imageView"
+                    android:layout_marginLeft="5dp"
+                    android:layout_below="@id/textView_barang2"
+                    android:layout_marginTop="2dp"
                     android:textColor="#5faf50"
                     android:textSize="14sp"
                     />

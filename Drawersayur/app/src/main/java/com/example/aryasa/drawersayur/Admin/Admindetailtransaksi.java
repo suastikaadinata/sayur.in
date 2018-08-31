@@ -73,6 +73,7 @@ public class Admindetailtransaksi extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
         adapter = new Adapterdetailtransaksi(this,listKeranjang);
         ambilkeranjang(API_TRANSAKSI,adapter);
 
@@ -89,13 +90,6 @@ public class Admindetailtransaksi extends AppCompatActivity {
             }
         });
 
-    }
-    private void loadFragment(android.support.v4.app.Fragment fragment) {
-        // load fragment
-        android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.add(R.id.frameLayoutDrawer, fragment);
-        transaction.addToBackStack(null);
-        transaction.commit();
     }
 
     private void UbahstatusCom(String url) {

@@ -34,7 +34,7 @@ public class AdminInprogressAdapter extends RecyclerView.Adapter<AdminInprogress
     @Override
     public void onBindViewHolder(final AdminInprogressViewHolder holder, final int position) {
         holder.mTanggal.setText(mAdminInprogress.get(position).getTextView_tanggal());
-        holder.mGambar.setImageResource(R.drawable.ic_broccoli_vegetable_silhouette);
+        holder.mGambar.setImageResource(R.drawable.transaksi_wait);
         holder.mJam.setText(mAdminInprogress.get(position).getStatus());
         holder.mBarang1.setText(mAdminInprogress.get(position).getNamauser());
         holder.mBarang2.setText(mAdminInprogress.get(position).getNomor());

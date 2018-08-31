@@ -34,7 +34,7 @@ public class AdminCompletedAdapter extends RecyclerView.Adapter<AdminCompletedAd
     @Override
     public void onBindViewHolder(final AdminCompletedViewHolder holder, final int position) {
         holder.mTanggal.setText(mAdminCompleted.get(position).getTextView_tanggal());
-        holder.mGambar.setImageResource(R.drawable.ic_broccoli_vegetable_silhouette);
+        holder.mGambar.setImageResource(R.drawable.success_ok);
         holder.mJam.setText(mAdminCompleted.get(position).getStatus());
         holder.mBarang1.setText(mAdminCompleted.get(position).getNama());
         holder.mBarang2.setText(mAdminCompleted.get(position).getNomor());
