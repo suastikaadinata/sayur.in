@@ -29,15 +29,14 @@ $(document).ready(function(){
             <div class="col-lg-2 icon">
                 <a href="/"><img src="{{ asset('img/letter-sayur.png') }}" style="  width: 85%; margin: 0px 20px 20px 0px"></a>
             </div>
-            <div class="col-lg-6"></div>
-            <div class="col-lg-4 icon">
-                <a href="/chat"><img src="{{ asset('img/message-white.png') }}" style="width: 45px; margin: 20px 10px 20px 100px; float: left;" ></a>
-                <a href="/"><img src="{{ asset('img/round-logo.png') }}" style="width: 50px; margin: 10px 20px 10px 5px; float: left; pointer-events: none;cursor: default; "></a> 
+            <div class="col-lg-8"></div>
+            <div class="col-lg-2 icon">
                  <div class="btn-group" style="margin-top: 15px;">
-  <button type="button" class="btn btn-logout dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
-    Hello,{{ Auth::User()->name }}
+  <button  type="button" class="btn btn-logout dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;"><img src="{{ asset('img/round-logo.png') }}" style="width: 30px; height: 30px;">
+    Hello!!
   </button>
   <div class="dropdown-menu">
+    <a class="dropdown-item" href="/">{{ Auth::User()->name }}</a>
     <a class="dropdown-item" href="/logout">Logout</a>
   </div>
 </div>
@@ -54,6 +53,8 @@ $(document).ready(function(){
                     <a class="menu " href="/manage-sayur"><h5>Manage Sayur</h5></a>
                     <a class="menu" href="/manage-transaksi"><h5>Manage Transaksi</h5></a>
                     <a class="menu" href="/manage-user"><h5>Manage User</h5></a>
+                    <a class="menu" href="/logout"><h5>out</h5></a>
+                    
                 </div>
             </div>
             <div class="col-lg-10">

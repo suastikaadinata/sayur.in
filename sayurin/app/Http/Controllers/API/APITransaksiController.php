@@ -43,7 +43,7 @@ class APITransaksiController extends BaseController
     public function getDetailTransaksi(Request $request)
     {
         $transaksi = DB::table('transaksi')
-                    ->where('user_id', $request->id)
+                    ->where('transaksi.id', $request->id)
                     ->leftJoin('users','transaksi.user_id','=','users.id')
                     ->leftJoin('cart_transaksi','transaksi.id','=','cart_transaksi.transaksi_id')
                     ->leftJoin('sayurmobile','cart_transaksi.sayur_id','=','sayurmobile.id')
@@ -53,8 +53,8 @@ class APITransaksiController extends BaseController
 
     public function getAllTransaksi()
     {
-        $transaksi = DB::table('transaksi')
-                    ->leftJoin('users','transaksi.user_id','=','users.id')
+        $transaksi = DB::table('users')
+                    ->rightJoin('transaksi','transaksi.user_id','=','users.id')
                     ->get();
         return $this->sendResponse($transaksi);
     }
