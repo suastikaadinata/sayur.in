@@ -93,6 +93,7 @@ public class Chart extends AppCompatActivity {
 
         dateFormatter = new SimpleDateFormat("dd-MM-yyyy", Locale.US);
 
+
         btndatepicker = (Button) findViewById(R.id.buttondatepicker);
         button_checkout = (Button) findViewById(R.id.button_checkout);
         tvPlaceAPI = (TextView) findViewById(R.id.textView_alamat);
@@ -158,7 +159,8 @@ public class Chart extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 waktu = Spinnerjam.getSelectedItem().toString();
-                postTransaksi(API_TRANSAKSI);
+                String alamat = tvPlaceAPI.getText().toString();
+                postTransaksi(API_TRANSAKSI,alamat);
             }
         });
 
@@ -206,7 +208,7 @@ public class Chart extends AppCompatActivity {
         Singleton.getInstance(this).addToRequestQueue(stringRequest);
     }
 
-    public void postTransaksi(String url){
+    public void postTransaksi(String url , final String alamat){
 
         StringRequest stringRequest=new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
             @Override
@@ -238,7 +240,7 @@ public class Chart extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<String, String>();
                 params.put("user_id", String.valueOf(id_user));
-                params.put("alamat","alamat");
+                params.put("alamat",alamat);
                 params.put("waktu_pengiriman",tanggal_kirim+", "+waktu);
                 for(int i = 0; i < listKeranjang.size(); i++) {
                     params.put("sayur_id["+i+"]",String.valueOf(listKeranjang.get(i).getId()));

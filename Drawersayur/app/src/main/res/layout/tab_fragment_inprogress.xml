@@ -58,6 +58,7 @@
                     android:layout_toLeftOf="@id/textView_tanggal"
                     android:layout_below="@id/textView_barang"
                     android:textColor="#5faf50"
+                    android:maxLength="10"
                     android:textSize="14sp" />
 
                 <TextView
