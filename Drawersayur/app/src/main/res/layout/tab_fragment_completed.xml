@@ -54,6 +54,7 @@
                     android:layout_toRightOf="@id/imageView"
                     android:layout_marginLeft="5dp"
                     android:layout_marginTop="2dp"
+                    android:maxLength="12"
                     android:layout_toLeftOf="@id/textView_tanggal"
                     android:layout_below="@id/textView_barang"
                     android:text="Bayam (2)"

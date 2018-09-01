@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -55,12 +56,15 @@ public class MapsDirection extends FragmentActivity implements OnMapReadyCallbac
     int PROXIMITY_RADIUS = 10000;
     double latitude, longitude;
     double end_latitude, end_longitude;
-
+    EditText txt_lokasi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps_direction);
+
+        txt_lokasi = (EditText) findViewById(R.id.TF_location);
+        txt_lokasi.setText(getIntent().getStringExtra("data1"));
 
         if (android.os.Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
             checkLocationPermission();

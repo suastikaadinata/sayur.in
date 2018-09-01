@@ -44,6 +44,7 @@ public class Admindetailtransaksi extends AppCompatActivity {
     private CardView cView;
     int totalharga,ongkir;
     private Fragment fragment;
+
     ArrayList<Sayur> listKeranjang = new ArrayList<Sayur>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +64,7 @@ public class Admindetailtransaksi extends AppCompatActivity {
         TxUbah =(TextView)findViewById(R.id.textUbahStatus) ;
         cView =(CardView)findViewById(R.id.layoutUbah);
 
+
         cView.setVisibility(View.GONE);
         idtransaksi = getIntent().getExtras().getString("idtransaksi");
         btn_lihat_map = (Button) findViewById(R.id.buttonmap);
@@ -70,6 +72,7 @@ public class Admindetailtransaksi extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Admindetailtransaksi.this, MapsDirection.class);
+                intent.putExtra("data1", Txalamat.getText().toString());
                 startActivity(intent);
             }
         });
@@ -89,6 +92,8 @@ public class Admindetailtransaksi extends AppCompatActivity {
                 UbahstatusDeliv(API_UbahDelivery);
             }
         });
+
+
 
     }
 
