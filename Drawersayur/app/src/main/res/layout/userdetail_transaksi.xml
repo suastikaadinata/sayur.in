@@ -113,27 +113,6 @@
                     android:textColor="#ff8200"
                     android:textSize="20sp" />
 
-
-                <TextView
-                    android:id="@+id/TextView_ubah_alamat"
-                    android:layout_width="wrap_content"
-                    android:layout_height="34dp"
-                    android:layout_alignParentBottom="true"
-                    android:layout_marginBottom="0dp"
-                    android:layout_toLeftOf="@+id/buttonmap"
-                    android:text="Lihat"
-                    android:textColor="#a3a3a3"
-                    android:textSize="14sp" />
-
-                <Button
-                    android:id="@+id/buttonmap"
-                    android:layout_width="25dp"
-                    android:layout_height="match_parent"
-                    android:layout_alignParentBottom="true"
-                    android:layout_alignParentRight="true"
-                    android:background="@drawable/ic_location_on_gray_24dp" />
-
-
             </RelativeLayout>
 
 
@@ -172,19 +151,6 @@
                         android:textSize="16sp" />
 
 
-                    <TextView
-                        android:id="@+id/textViewnote2"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentLeft="true"
-                        android:layout_below="@id/LocationView"
-                        android:layout_marginLeft="15dp"
-                        android:layout_marginTop="13dp"
-                        android:text="note : Tanyakan Tetangga"
-                        android:textColor="#afafaf"
-                        android:textSize="12sp"
-                        android:textStyle="italic" />
                 </RelativeLayout>
 
             </android.support.v7.widget.CardView>

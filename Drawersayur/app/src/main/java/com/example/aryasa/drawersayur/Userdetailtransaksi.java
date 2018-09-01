@@ -32,7 +32,6 @@ public class Userdetailtransaksi extends AppCompatActivity {
     private TextView Txtanggalkirim, Txalamat,txTotalharga,txOngkir,txTotal,TxUser,TxTelp;
     private Adapterusertransaksi adapter;
     private String API_TRANSAKSI = Server.URL + "transaksi/list/detail";
-    Button btn_lihat_map;
     private RecyclerView mList;
     int totalharga,ongkir;
     private Fragment fragment;
@@ -50,16 +49,9 @@ public class Userdetailtransaksi extends AppCompatActivity {
         txOngkir.setText("Rp. "+String.valueOf(ongkir));
         TxUser= (TextView) findViewById(R.id.TextviewUser);
         TxTelp = (TextView)findViewById(R.id.TextviewTelp);
-
         idtransaksi = getIntent().getExtras().getString("idtransaksi");
-        btn_lihat_map = (Button) findViewById(R.id.buttonmap);
-        btn_lihat_map.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(Userdetailtransaksi.this, MapsDirection.class);
-                startActivity(intent);
-            }
-        });
+
+
 
         adapter = new Adapterusertransaksi(this,listKeranjang);
         ambilkeranjang(API_TRANSAKSI,adapter);

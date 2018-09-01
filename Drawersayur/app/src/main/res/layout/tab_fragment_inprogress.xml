@@ -58,10 +58,7 @@
                     android:layout_toLeftOf="@id/textView_tanggal"
                     android:layout_below="@id/textView_barang"
                     android:textColor="#5faf50"
-<<<<<<< Updated upstream
-=======
                     android:maxLength="12"
->>>>>>> Stashed changes
                     android:textSize="14sp" />
 
                 <TextView

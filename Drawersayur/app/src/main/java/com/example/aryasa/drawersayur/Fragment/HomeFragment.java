@@ -35,6 +35,7 @@ import com.example.aryasa.drawersayur.Adpater.Callbacks;
 import com.example.aryasa.drawersayur.Adpater.CartAdapter;
 import com.example.aryasa.drawersayur.Adpater.SayurAdapter;
 import com.example.aryasa.drawersayur.Chart;
+import com.example.aryasa.drawersayur.Login;
 import com.example.aryasa.drawersayur.Model.Sayur;
 import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.ServerAPI.Server;
@@ -82,7 +83,8 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
     ;
     private SayurAdapter sayurAdapter;
     final Context context = this.getContext();
-
+    public static final String session_status = "session_status";
+    Boolean session = false;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -119,6 +121,7 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
         totalHarga=(TextView) coordinatorLayout.findViewById(R.id.Jumlah_total);
         opencart= (TextView)coordinatorLayout.findViewById(R.id.pay);
         sharedpreferences = this.getActivity().getSharedPreferences(my_shared_preferences,Context.MODE_PRIVATE);
+        session = sharedpreferences.getBoolean(session_status, false);
         id_user = sharedpreferences.getInt(TAG_ID, 0);
 
 
@@ -126,7 +129,11 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
         opencart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                postKeranjang(API_URL_cart);
+                if(!session){
+                    startActivity(new Intent(getActivity(), Login.class));
+                }else {
+                    postKeranjang(API_URL_cart);
+                }
             }
         });
 
@@ -160,13 +167,14 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
         });
         Singleton.getInstance(this.getContext()).addToRequestQueue(jsonArrayRequest);
     }
-    public void postKeranjang(String url){
+    public void postKeranjang(final String url){
 
         StringRequest stringRequest=new StringRequest(Request.Method.POST,url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 String json = response.toString();
                 try {
+
                     startActivity(new Intent(getActivity(), Chart.class));
 
                 } catch (Exception e){
