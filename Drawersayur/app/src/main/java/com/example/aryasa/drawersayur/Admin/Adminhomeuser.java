@@ -1,5 +1,7 @@
 package com.example.aryasa.drawersayur.Admin;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -17,7 +19,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.aryasa.drawersayur.Adpater.AdminuserAdapter;
+import com.example.aryasa.drawersayur.Login;
 import com.example.aryasa.drawersayur.Model.Userdata;
+import com.example.aryasa.drawersayur.Profile;
 import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.ServerAPI.Server;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
@@ -35,7 +39,7 @@ public class Adminhomeuser extends Fragment {
 //adapternya adminuseradapater
     private String API_URL = Server.URL + "user";
     ArrayList<Userdata> userdata = new ArrayList<>();
-
+    String token;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -43,6 +47,8 @@ public class Adminhomeuser extends Fragment {
         setHasOptionsMenu(true);
         final View view = inflater.inflate(R.layout.adminhomeuser, container, false);
         final AdminuserAdapter adminuserAdapter = new AdminuserAdapter(view.getContext(),userdata);
+        SharedPreferences sharedpreferencesAdmnin = this.getActivity().getSharedPreferences(Login.my_shared_preferences2, Context.MODE_PRIVATE);
+        token = "Bearer "+sharedpreferencesAdmnin.getString("token", null);
         getUserApi(API_URL, view, adminuserAdapter);
         return view;
     }
@@ -56,7 +62,7 @@ public class Adminhomeuser extends Fragment {
                     for (int i = 0; i < response.length(); i++){
                         JSONObject jsonObject = response.getJSONObject(i);
                         if(jsonObject.getString("tipe").equals("user")){
-                            userdata.add(new Userdata(jsonObject.getInt("id"),"http://10.0.2.2/img/"+jsonObject.getString("foto"), jsonObject.getString("name") ,jsonObject.getString("email"), jsonObject.getString("nomor_telepon")));
+                            userdata.add(new Userdata(jsonObject.getInt("id"),Server.URLIMAGE+jsonObject.getString("foto"), jsonObject.getString("name") ,jsonObject.getString("email"), jsonObject.getString("nomor_telepon")));
                             RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewadminhomeuser);
                             GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                             recyclerView.setLayoutManager(gridLayoutManager);
@@ -77,7 +83,7 @@ public class Adminhomeuser extends Fragment {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put("Accept", "application/json");
-                headers.put("Authorization", Server.TOKEN);
+                headers.put("Authorization", token);
                 return headers;
             }
         };

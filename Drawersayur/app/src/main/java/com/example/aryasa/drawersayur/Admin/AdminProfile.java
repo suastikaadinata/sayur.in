@@ -31,6 +31,7 @@ import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.ServerAPI.Server;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayInputStream;
@@ -42,7 +43,7 @@ import java.util.Map;
 public class AdminProfile extends AppCompatActivity {
     TextView txt_email, txt_name, txt_nomor_telepon,txt_simpan;
     Button btn_logout,btn_editgambar;
-    String name, email, nomor_telepon;
+    String name, email, nomor_telepon, foto;
     SharedPreferences sharedpreferencesAdmnin;
     ImageView gambar_admin;
     int id;
@@ -50,11 +51,14 @@ public class AdminProfile extends AppCompatActivity {
     public static final String TAG_NAME_ADMIN = "name";
     public static final String TAG_EMAIL_ADMIN = "email";
     public static final String TAG_NOMOR_TELEPON_ADMIN = "nomor_telepon";
+    public final static String TAG_FOTO = "foto";
+    public static final String TAG_TOKEN = "token";
     private String API_URL_detailuser = Server.URL + "user/detail";
     private String API_URL = Server.URL + "user/edit";
     Bitmap bitmap, decoded;
     int PICK_IMAGE_REQUEST = 1;
     int bitmap_size = 60; // range 1 - 100
+    String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -75,8 +79,11 @@ public class AdminProfile extends AppCompatActivity {
         name = sharedpreferencesAdmnin.getString(TAG_NAME_ADMIN, null);
         email = sharedpreferencesAdmnin.getString(TAG_EMAIL_ADMIN, null);
         nomor_telepon = sharedpreferencesAdmnin.getString(TAG_NOMOR_TELEPON_ADMIN, null);
+        token = sharedpreferencesAdmnin.getString(TAG_TOKEN, null);
+        foto = Server.URLIMAGE + sharedpreferencesAdmnin.getString(TAG_FOTO, null);
         final Context context = this.getApplicationContext();
-        gambar(String.valueOf(id) ,context);
+        //gambar(String.valueOf(id) ,context);
+        showImage(foto);
 
         txt_name.setText(name);
         txt_email.setText(email);
@@ -116,6 +123,11 @@ public class AdminProfile extends AppCompatActivity {
         });
     }
 
+    public String getToken()
+    {
+        return this.token;
+    }
+
     private void gambar(final String ID, final Context context) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, API_URL_detailuser , new Response.Listener<String>() {
             @Override
@@ -123,7 +135,7 @@ public class AdminProfile extends AppCompatActivity {
                 String json = response.toString();
                 try {
                     JSONObject jsonObject = new JSONObject(json);
-                    showImage("http://10.0.2.2/img/"+jsonObject.getString("foto"));
+                    showImage(Server.URLIMAGE+jsonObject.getString("foto"));
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -139,7 +151,7 @@ public class AdminProfile extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put("Accept", "application/json");
-                headers.put("Authorization", Server.TOKEN);
+                headers.put("Authorization", token);
                 return headers;
             }
 
@@ -185,13 +197,22 @@ public class AdminProfile extends AppCompatActivity {
                                 new Response.Listener<String>() {
                                     @Override
                                     public void onResponse(String response) {
-                                        SharedPreferences.Editor editor = sharedpreferencesAdmnin.edit();
-                                        editor.putString(TAG_NAME_ADMIN,txt_name.getText().toString() );
-                                        editor.putString(TAG_EMAIL_ADMIN,txt_email.getText().toString() );
-                                        editor.putString(TAG_NOMOR_TELEPON_ADMIN,txt_nomor_telepon.getText().toString() );
-                                        editor.commit();
-                                        Toast.makeText(getApplicationContext(), "Edit Profile Berhasil", Toast.LENGTH_SHORT).show();
-                                        startActivity( new Intent(AdminProfile.this,AdminHome.class));
+                                        String json = response.toString();
+
+                                        try {
+                                            JSONObject jsonObject = new JSONObject(json);
+                                            SharedPreferences.Editor editor = sharedpreferencesAdmnin.edit();
+                                            editor.putString(TAG_NAME_ADMIN, jsonObject.getString("name") );
+                                            editor.putString(TAG_EMAIL_ADMIN, jsonObject.getString("email") );
+                                            editor.putString(TAG_NOMOR_TELEPON_ADMIN, jsonObject.getString("nomor_telepon") );
+                                            editor.putString("foto", jsonObject.getString("foto"));
+                                            editor.commit();
+                                            Toast.makeText(getApplicationContext(), "Edit Profile Berhasil", Toast.LENGTH_SHORT).show();
+                                            startActivity( new Intent(AdminProfile.this,AdminHome.class));
+                                        }catch (JSONException e) {
+                                            e.printStackTrace();
+                                        }
+
                                     }
                                 },
                                 new Response.ErrorListener() {

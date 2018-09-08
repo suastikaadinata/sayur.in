@@ -54,6 +54,7 @@
         <activity android:name=".Admin.AdminHome" />
         <activity android:name=".Admin.AdminProfile" />
         <activity android:name=".MapsDirection" />
+        <activity android:name=".ServerAPI.Server"/>
     </application>
 
 </manifest>

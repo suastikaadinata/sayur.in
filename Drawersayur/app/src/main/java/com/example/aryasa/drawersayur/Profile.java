@@ -24,9 +24,12 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
+import com.example.aryasa.drawersayur.Admin.AdminHome;
+import com.example.aryasa.drawersayur.Admin.AdminProfile;
 import com.example.aryasa.drawersayur.ServerAPI.Server;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
 
+import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.ByteArrayInputStream;
@@ -40,7 +43,7 @@ public class Profile extends AppCompatActivity {
     TextView txt_email, txt_name, txt_nomor_telepon,txt_simpan;
     Button btn_logout;
     int id;
-    String name, email, nomor_telepon;
+    String name, email, nomor_telepon, token, foto;
     SharedPreferences sharedpreferences;
     Button btn_edit_user;
     ImageView gambar_user;
@@ -52,12 +55,12 @@ public class Profile extends AppCompatActivity {
     public static final String TAG_NAME = "name";
     public static final String TAG_EMAIL = "email";
     public static final String TAG_NOMOR_TELEPON = "nomor_telepon";
-
+    public final static String TAG_TOKEN = "token";
+    public final static String TAG_FOTO = "foto";
 
     Bitmap bitmap, decoded;
     int PICK_IMAGE_REQUEST = 1;
     int bitmap_size = 60;
-
 
         @Override
         protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +83,10 @@ public class Profile extends AppCompatActivity {
             name = sharedpreferences.getString(TAG_NAME, null);
             email = sharedpreferences.getString(TAG_EMAIL, null);
             nomor_telepon = sharedpreferences.getString(TAG_NOMOR_TELEPON, null);
-            gambar(String.valueOf(id) ,context);
+            token = "Bearer "+ sharedpreferences.getString(TAG_TOKEN, null);
+            foto = Server.URLIMAGE + sharedpreferences.getString(TAG_FOTO, null);
+            //gambar(String.valueOf(id) ,context);
+            showImage(foto);
             //if (mBundle != null) {
                 txt_name.setText(name);
                 txt_email.setText(email);
@@ -122,6 +128,10 @@ public class Profile extends AppCompatActivity {
 
         }
 
+        public String getToken()
+        {
+            return this.token;
+        }
 
     private void gambar(final String ID, final Context context) {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, API_URL_detailuser , new Response.Listener<String>() {
@@ -130,7 +140,7 @@ public class Profile extends AppCompatActivity {
                 String json = response.toString();
                 try {
                     JSONObject jsonObject = new JSONObject(json);
-                    showImage("http://10.0.2.2/img/"+jsonObject.getString("foto"));
+                    showImage(Server.URLIMAGE+jsonObject.getString("foto"));
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -139,14 +149,14 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onErrorResponse(VolleyError error) {
                 error.printStackTrace();
-                Toast.makeText(context,"Error Bro",Toast.LENGTH_LONG ).show();
+                //Toast.makeText(context,"Error Bro",Toast.LENGTH_LONG ).show();
             }
         }){
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put("Accept", "application/json");
-                headers.put("Authorization", Server.TOKEN);
+                headers.put("Authorization", token);
                 return headers;
             }
 
@@ -194,13 +204,21 @@ public class Profile extends AppCompatActivity {
                                new Response.Listener<String>() {
                                    @Override
                                    public void onResponse(String response) {
-                                       SharedPreferences.Editor editor = sharedpreferences.edit();
-                                       editor.putString(TAG_NAME,txt_name.getText().toString() );
-                                       editor.putString(TAG_EMAIL,txt_email.getText().toString() );
-                                       editor.putString(TAG_NOMOR_TELEPON,txt_nomor_telepon.getText().toString() );
-                                       editor.commit();
-                                       Toast.makeText(getApplicationContext(), "Edit Profile Berhasil", Toast.LENGTH_SHORT).show();
-                                       startActivity( new Intent(Profile.this,Drawer.class));
+                                       String json = response.toString();
+
+                                       try {
+                                           JSONObject jsonObject = new JSONObject(json);
+                                           SharedPreferences.Editor editor = sharedpreferences.edit();
+                                           editor.putString(TAG_NAME, jsonObject.getString("name") );
+                                           editor.putString(TAG_EMAIL, jsonObject.getString("email") );
+                                           editor.putString(TAG_NOMOR_TELEPON, jsonObject.getString("nomor_telepon") );
+                                           editor.putString("foto", jsonObject.getString("foto"));
+                                           editor.commit();
+                                           Toast.makeText(getApplicationContext(), "Edit Profile Berhasil", Toast.LENGTH_SHORT).show();
+                                           startActivity( new Intent(Profile.this,Drawer.class));
+                                       }catch (JSONException e) {
+                                           e.printStackTrace();
+                                       }
                                    }
                                },
                                new Response.ErrorListener() {

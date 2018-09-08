@@ -1,5 +1,7 @@
 package com.example.aryasa.drawersayur.Admin;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -12,6 +14,7 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.Request;
@@ -19,7 +22,9 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.aryasa.drawersayur.Adpater.SayurGudangAdapter;
+import com.example.aryasa.drawersayur.Login;
 import com.example.aryasa.drawersayur.Model.SayurGudangModel;
+import com.example.aryasa.drawersayur.Profile;
 import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.ServerAPI.Server;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
@@ -36,6 +41,7 @@ public class AdminSayurGudang extends Fragment {
     private String API_URL = Server.URL + "sayur";;
     ArrayList<SayurGudangModel> sayurGudangList = new ArrayList<SayurGudangModel>();
     SwipeRefreshLayout swipeRefreshLayout;
+    String token;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,7 +50,8 @@ public class AdminSayurGudang extends Fragment {
         swipeRefreshLayout = view.findViewById(R.id.swipecontainer);
         final SayurGudangAdapter sayurGudangAdapter = new SayurGudangAdapter(view.getContext(), sayurGudangList);
         getSayurApi(API_URL, view, sayurGudangAdapter);
-
+        SharedPreferences sharedpreferencesAdmnin = this.getActivity().getSharedPreferences(Login.my_shared_preferences2, Context.MODE_PRIVATE);
+        token = "Bearer "+sharedpreferencesAdmnin.getString("token", null);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -68,7 +75,7 @@ public class AdminSayurGudang extends Fragment {
                try{
                    for (int i = 0; i < response.length(); i++){
                        JSONObject jsonObject = response.getJSONObject(i);
-                       sayurGudangList.add(new SayurGudangModel(jsonObject.getInt("id") ,"http://10.0.2.2/img/"+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
+                       sayurGudangList.add(new SayurGudangModel(jsonObject.getInt("id") ,Server.URLIMAGE+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
                        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewsayurgudang);
                        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                        recyclerView.setLayoutManager(gridLayoutManager);
@@ -88,7 +95,7 @@ public class AdminSayurGudang extends Fragment {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put("Accept", "application/json");
-                headers.put("Authorization", Server.TOKEN);
+                headers.put("Authorization", token);
                 return headers;
             }
 

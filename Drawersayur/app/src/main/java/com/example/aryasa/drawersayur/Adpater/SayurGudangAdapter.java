@@ -32,6 +32,7 @@ import com.example.aryasa.drawersayur.Admin.Admintambahsayur;
 import com.example.aryasa.drawersayur.Admin.Adminubahsayur;
 import com.example.aryasa.drawersayur.Admin.Adminviewuser;
 import com.example.aryasa.drawersayur.Model.SayurGudangModel;
+import com.example.aryasa.drawersayur.Profile;
 import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.ServerAPI.Server;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
@@ -44,6 +45,7 @@ public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.
     private Context context;
     private ArrayList<SayurGudangModel> sayurGudangList;
     private String API_URL = Server.URL + "sayur";
+    Profile profile;
 
     public SayurGudangAdapter(Context context, ArrayList<SayurGudangModel> sayurGudangList){
         this.context = context;
@@ -110,7 +112,7 @@ public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.
                             public Map<String, String> getHeaders() throws AuthFailureError {
                                 HashMap<String, String> headers = new HashMap<>();
                                 headers.put("Accept", "application/json");
-                                headers.put("Authorization", Server.TOKEN);
+                                headers.put("Authorization", profile.getToken());
                                 return headers;
                             }
 

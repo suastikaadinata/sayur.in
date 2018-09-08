@@ -44,6 +44,7 @@ public class Login extends AppCompatActivity{
 //    private static final String TAG_MESSAGE = "message";
 //    String tag_json_obj = "json_obj_req";
     public final static String TAG_TOKEN = "token";
+    public final static String TAG_FOTO = "foto";
     public final static String TAG_ID = "id";
     public final static String TAG_NAME = "name";
     public final static String TAG_EMAIL = "email";
@@ -175,11 +176,13 @@ public class Login extends AppCompatActivity{
                     if(jsonObject.getString("status").equals("failed")){
                         Toast.makeText(getApplicationContext(),"Email atau password salah", Toast.LENGTH_SHORT).show();
                     }else{
+                        int id = jsonObject.getInt("id");
+                        String name = jsonObject.getString("name");
+                        String tlp = jsonObject.getString("nomor_telepon");
+                        String token = jsonObject.getString("token");
+                        String foto = jsonObject.getString("foto");
+
                         if(jsonObject.getString("tipe").equals("admin")) {
-                            int id = jsonObject.getInt("id");
-                            String name = jsonObject.getString("name");
-                            String tlp = jsonObject.getString("nomor_telepon");
-                            String token = jsonObject.getString("token");
                             SharedPreferences.Editor editor = sharedpreferencesAdmnin.edit();
                             editor.putBoolean(session_status2, true);
                             editor.putInt(TAG_ID,id);
@@ -187,6 +190,7 @@ public class Login extends AppCompatActivity{
                             editor.putString(TAG_EMAIL,email );
                             editor.putString(TAG_NOMOR_TELEPON,tlp );
                             editor.putString(TAG_TOKEN,token );
+                            editor.putString(TAG_FOTO, foto);
                             editor.commit();
                             Intent intent = new Intent(getApplicationContext(), AdminHome.class);
 //                            intent.putExtra(TAG_ID,id);
@@ -197,10 +201,7 @@ public class Login extends AppCompatActivity{
                             finish();
                         }
                         if(jsonObject.getString("tipe").equals("user")) {
-                            int id = jsonObject.getInt("id");
-                            String name = jsonObject.getString("name");
-                            String tlp = jsonObject.getString("nomor_telepon");
-                            String token = jsonObject.getString("token");
+
                             SharedPreferences.Editor editor = sharedpreferences.edit();
                             editor.putBoolean(session_status, true);
                             editor.putInt(TAG_ID,id);
@@ -208,6 +209,7 @@ public class Login extends AppCompatActivity{
                             editor.putString(TAG_EMAIL,email );
                             editor.putString(TAG_NOMOR_TELEPON,tlp );
                             editor.putString(TAG_TOKEN,token );
+                            editor.putString(TAG_FOTO, foto);
                             editor.commit();
                             Intent intent = new Intent(getApplicationContext(), Drawer.class);
 //                            intent.putExtra(TAG_ID,id);

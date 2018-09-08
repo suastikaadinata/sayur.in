@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -20,6 +21,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
 import com.example.aryasa.drawersayur.Login;
+import com.example.aryasa.drawersayur.Profile;
 import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.ServerAPI.Server;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
@@ -40,6 +42,7 @@ public class Adminviewuser extends AppCompatActivity {
     private String API_URL = Server.URL + "user/delete";
     private String API_URL_detailuser = Server.URL + "user/detail";
     ProgressDialog pd;
+    String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +55,8 @@ public class Adminviewuser extends AppCompatActivity {
         imguser = findViewById(R.id.userphoto);
         btn_hapus = findViewById(R.id.btn_hapus);
         pd = new ProgressDialog(Adminviewuser.this);
-
+        SharedPreferences sharedpreferencesAdmnin = getSharedPreferences(Login.my_shared_preferences2, Context.MODE_PRIVATE);
+        token = "Bearer "+sharedpreferencesAdmnin.getString("token", null);
 
         final Bundle mBundle = getIntent().getExtras();
         if (mBundle != null) {
@@ -81,7 +85,7 @@ public class Adminviewuser extends AppCompatActivity {
                     txt_nama.setText(jsonObject.getString("name"));
                     txt_email.setText(jsonObject.getString("email"));
                     txt_no.setText(jsonObject.getString("nomor_telepon"));
-                    showImage("http://10.0.2.2/img/"+jsonObject.getString("foto"));
+                    showImage(Server.URLIMAGE+jsonObject.getString("foto"));
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -97,7 +101,7 @@ public class Adminviewuser extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put("Accept", "application/json");
-                headers.put("Authorization", Server.TOKEN);
+                headers.put("Authorization", token);
                 return headers;
             }
 
@@ -168,7 +172,7 @@ public class Adminviewuser extends AppCompatActivity {
                             public Map<String, String> getHeaders() throws AuthFailureError {
                                 HashMap<String, String> headers = new HashMap<>();
                                 headers.put("Accept", "application/json");
-                                headers.put("Authorization", Server.TOKEN);
+                                headers.put("Authorization", token);
                                 return headers;
                             }
 

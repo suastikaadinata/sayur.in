@@ -14,6 +14,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
+import com.example.aryasa.drawersayur.Admin.AdminHome;
 import com.example.aryasa.drawersayur.Fragment.FragmentHelp;
 import com.example.aryasa.drawersayur.Fragment.FragmentNotifikasi;
 import com.example.aryasa.drawersayur.Fragment.HomeFragment;
@@ -36,8 +37,10 @@ public class Drawer extends AppCompatActivity  {
     public static final String TAG_NOMOR_TELEPON = "nomor_telepon";
     public static final String my_shared_preferences = "my_shared_preferences";
     public static final String session_status = "session_status";
+    public static final String session_status2 = "session_status2";
 
     Boolean session = false;
+    Boolean sessionAdmin = false;
     int id;
     String name, nameIntent;
     String email, emailIntent;
@@ -53,8 +56,9 @@ public class Drawer extends AppCompatActivity  {
         myDialog = new Dialog(this);
 
         sharedpreferences = getSharedPreferences(Login.my_shared_preferences, Context.MODE_PRIVATE);
-        sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
+        //sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
         session = sharedpreferences.getBoolean(session_status, false);
+        sessionAdmin = sharedpreferences.getBoolean(session_status2, false);
         id = sharedpreferences.getInt(TAG_ID, 0);
         name = sharedpreferences.getString(TAG_NAME, null);
         email = sharedpreferences.getString(TAG_EMAIL, null);
@@ -73,6 +77,12 @@ public class Drawer extends AppCompatActivity  {
 //            nomor_teleponIntent = nomor_telepon;
 //        }
         //Untuk mengganti icon login ke akun jika user sudah login
+        if(sessionAdmin){
+            Intent intent = new Intent(getApplicationContext(), AdminHome.class);
+            startActivity(intent);
+            finish();
+        }
+
         if(!session){
             bottomNavigation.inflateMenu(R.menu.activity_drawer_drawer);
         }else{

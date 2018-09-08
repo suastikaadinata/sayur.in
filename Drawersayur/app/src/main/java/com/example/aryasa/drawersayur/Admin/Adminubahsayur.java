@@ -29,6 +29,7 @@ import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.example.aryasa.drawersayur.Drawer;
+import com.example.aryasa.drawersayur.Login;
 import com.example.aryasa.drawersayur.Model.SayurListModel;
 import com.example.aryasa.drawersayur.Profile;
 import com.example.aryasa.drawersayur.R;
@@ -61,6 +62,7 @@ public class Adminubahsayur extends AppCompatActivity {
     Button btn_delete;
     ProgressDialog pd;
     Button btn_ubah;
+    String token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +78,8 @@ public class Adminubahsayur extends AppCompatActivity {
         final Context context = this.getApplicationContext();
         final Bundle mBundle = getIntent().getExtras();
         pd = new ProgressDialog(Adminubahsayur.this);
+        SharedPreferences sharedpreferencesAdmnin = getSharedPreferences(Login.my_shared_preferences2, Context.MODE_PRIVATE);
+        token = "Bearer "+sharedpreferencesAdmnin.getString("token", null);
 
         if (mBundle != null) {
             txt_nama.setText(mBundle.getString("nama"));
@@ -138,7 +142,7 @@ public class Adminubahsayur extends AppCompatActivity {
                             public Map<String, String> getHeaders() throws AuthFailureError {
                                 HashMap<String, String> headers = new HashMap<>();
                                 headers.put("Accept", "application/json");
-                                headers.put("Authorization", Server.TOKEN);
+                                headers.put("Authorization", token);
                                 return headers;
                             }
                             @Override
@@ -182,7 +186,7 @@ public class Adminubahsayur extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(json);
                     txt_nama.setText(jsonObject.getString("nama"));
                     txt_harga.setText(jsonObject.getString("harga"));
-                    showImage("http://10.0.2.2/img/"+jsonObject.getString("foto"));
+                    showImage(Server.URLIMAGE+jsonObject.getString("foto"));
                 }catch (Exception e){
                     e.printStackTrace();
                 }
@@ -198,7 +202,7 @@ public class Adminubahsayur extends AppCompatActivity {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 HashMap<String, String> headers = new HashMap<>();
                 headers.put("Accept", "application/json");
-                headers.put("Authorization", Server.TOKEN);
+                headers.put("Authorization", token);
                 return headers;
             }
 
@@ -263,7 +267,7 @@ public class Adminubahsayur extends AppCompatActivity {
                             public Map<String, String> getHeaders() throws AuthFailureError {
                                 HashMap<String, String> headers = new HashMap<>();
                                 headers.put("Accept", "application/json");
-                                headers.put("Authorization", Server.TOKEN);
+                                headers.put("Authorization", token);
                                 return headers;
                             }
 
