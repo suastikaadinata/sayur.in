@@ -1,53 +1,205 @@
 @extends('layout')
 
-@section('title', 'Manage Sayur')
+@section('title', 'Menejemen Transaksi')
 
 @section('content')
-    <div style="margin-bottom: 20px;" class="all-header">
+    <div class="all-header">
         <div class="container">
             <div class="row">
-                <div style="margin-bottom: 20px;"class="col-lg-6">
-                    <h1>Manage Transaksi</h1>
+                <div class="col-lg-6">
+                    <h2 style=" padding-top: 20px;">Menejemen Transaksi</h2>
                 </div>
-                <div class="col-lg-2"></div>
-                    <div class="col-lg-4 manage-sayur-header-search">
-                        <form action="/manage-sayur/search" method="GET">
-                            <div class="input-group">
-                                <input type="text" class="form-control input-lg" name="search" id="search" required autofocus placeholder="Cari sayur...">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-default btn-lg btn-modif submit-btn" type="submit">
-                                        <img src="{{ asset('img/search.png') }}">
-                                    </button>
-                                </span>                     
-                            </div> 
-                        </form> 
-                    </div>  
-                <div class="col-lg-7"></div>
+                <div class="col-lg-6"></div>
             </div>
         </div>
     </div>
     <div class="section-content">
         <div class="container">
-            <table style="text-align: center;" class="table table-bordered table-hover table-light table-striped" >
+            <div class="row">
+                <div class="col-lg-4">
+                    <div id="belumdibayar-container" class="status-pesanan-container">
+                        <img src="{{ asset('img/transaksi-wait.png') }}" style="width: 60px; float: left; margin: 0px 5px 10px 5px;">
+                        <h4>{{ $belumdibayar }} Pesanan 
+                            <br>
+                        belum dibayar</h4>
+                    </div>
+                </div>
+                <div class="col-lg-4">
+                    <div id="telahdibayar-container" class="status-pesanan-container">
+                        <img src="{{ asset('img/success-ok.png') }}" style="width: 60px; float: left; margin: 0px 5px 10px 5px;">
+                        <h4>{{ $sukses }} 
+                            <br>
+                        Transaksi sukses</h4>
+                    </div>
+                </div>
+            </div>
+            <div id="tabel-belum-dibayar-container" style="display:none; margin-top: 50px;" class="table-responsive-lg">
+                <table style="text-align: center;" id="table_id_blm_byr" class="display">
                     <thead>
                         <tr class="table-success">
                             <th scope="col">Nama</th>
-                            <th scope="col">Jumlah</th>
-                            <th scope="col">Total belanja</th>
+                            <th scope="col">Jumlah Pembelian</th>
+                            <th scope="col">Total Harga</th>
+                            <th scope="col">Waktu Pemesanan</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
-                    <tbody>
-                    @for($i = 0; $i < 6; $i++)
-                        <tr>
-                            <td><a href="/manage-transaksi/detail-transaksi" style="text-decoration:none; color: black;">Suastika Adinata</a> </td>
-                            <td><a href="/manage-transaksi/detail-transaksi" style="text-decoration: none; color: black;">3</a></td>
-                            <td><a href="/manage-transaksi/detail-transaksi" style="text-decoration:none; color: black;">15000</a></td>
-                        </tr>
-                    @endfor
-                    </a>
+                    <tbody id="tabel-belum-dibayar">
+                       
                     </tbody>
                 </table>
+            </div>
+            <div id="tabel-telah-dibayar-container" style="display:none; margin-top: 50px;" class="table-responsive-lg">
+                <table style="text-align: center;" id="table_id_telahdibayar" class="display">
+                    <thead>
+                        <tr class="table-success">
+                            <th scope="col">Nama</th>
+                            <th scope="col">Jumlah Pembelian</th>
+                            <th scope="col">Total Harga</th>
+                            <th scope="col">Waktu Pembayaran</th>
+                            <th scope="col">Status</th>
+                            <th scope="col">Aksi</th>
+                        </tr>
+                    </thead>
+                    <tbody id="tabel-telah-dibayar">
+                      
+                    </tbody>
+                </table>
+            </div>
         </div>
+        <input type="hidden" id="link-blm-byr" value="/manage-transaksi/belumbayar">
+        <input type="hidden" id="link-sdh-byr" value="/manage-transaksi/sudahbayar">
     </div> 
-    
+    <script>
+        var temp_blm_byr = 0, temp_sdh_byr = 0;
+
+        $(document).ready( function () {
+            $('#manage-transaksi-txt').css('color', '#ffc87b');
+        } );
+
+        $('#belumdibayar-container').click(function(){
+            $.ajax({
+                type: "GET",
+                url: $('#link-blm-byr').val(),
+                success: function(data){
+                    var htmlblmbyr;
+                    var tempidtransaksi = 0;
+                    
+                    if(data.length == 0){
+                        htmlblmbyr += '<tr>';
+                        htmlblmbyr += '<td></td>';
+                        htmlblmbyr += '<td></td>';
+                        htmlblmbyr += '<td></td>';
+                        htmlblmbyr += '<td></td>';
+                        htmlblmbyr += '<td></td>';
+                        htmlblmbyr += '<td></td>';
+                        htmlblmbyr += '</tr>';
+                    }else{
+                        for(var i = 0; i < data.length; i++){
+                            if(tempidtransaksi != data[i].id){
+                                htmlblmbyr += '<tr>';
+                                htmlblmbyr += '<td>'+ data[i].name +'</td>';
+                                htmlblmbyr += '<td>'+ hitungJumlahPembelian(data[i].id, data) +'</td>';
+                                htmlblmbyr += '<td>'+ hitungTotalHarga(data[i].id, data) +'</td>';
+                                htmlblmbyr += '<td>'+ data[i].created_at +'</td>';
+                                htmlblmbyr += '<td> Belum dibayar </td>';
+                                htmlblmbyr += '<td><button class="btn btn-default hapus-user-btn" style="background-color: #e67e22; color: white;">'+
+                                        'Lihat'+
+                                    '</button></td>';
+                                htmlblmbyr += '</tr>';
+                                
+                                tempidtransaksi = data[i].id
+                            }
+                        }
+                    }
+
+                    $('#tabel-belum-dibayar').empty();
+                    $('#tabel-belum-dibayar').append(htmlblmbyr);
+                    $("#tabel-telah-dibayar-container").hide("slow");
+                    $("#tabel-belum-dibayar-container").show("slow");  
+                    if(temp_blm_byr == 0){
+                        $('#table_id_blm_byr').DataTable({"ordering": false});
+                        temp_blm_byr = 1;
+                    }    
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }   
+            }); 
+        });
+
+        $('#telahdibayar-container').click(function(){
+            $.ajax({
+                type: "GET",
+                url: $('#link-sdh-byr').val(),
+                success: function(data){
+                    var htmlsdhbyr;
+                    var tempidtransaksi = 0;
+                        
+                    if(data.length == 0){
+                        htmlblmbyr += '<tr>';
+                        htmlblmbyr += '<td></td>';
+                        htmlblmbyr += '<td></td>';
+                        htmlblmbyr += '<td></td>';
+                        htmlblmbyr += '<td></td>';
+                        htmlblmbyr += '<td></td>';
+                        htmlblmbyr += '<td></td>';
+                        htmlblmbyr += '</tr>';
+                    }else{
+                        for(var a = 0; a < data.length; a++){
+                            if(tempidtransaksi != data[a].id){
+                                htmlsdhbyr += '<tr>';
+                                htmlsdhbyr += '<td>'+ data[a].name +'</td>';
+                                htmlsdhbyr += '<td>'+ hitungJumlahPembelian(data[a].id, data) +'</td>';
+                                htmlsdhbyr += '<td>'+ hitungTotalHarga(data[a].id, data) +'</td>';
+                                htmlsdhbyr += '<td>'+ data[a].created_at +'</td>';
+                                htmlsdhbyr += '<td> Sudah dibayar </td>';
+                                htmlsdhbyr += '<td><button class="btn btn-default hapus-user-btn" style="background-color: #e67e22; color: white;">'+
+                                        'Lihat'+
+                                    '</button></td>';
+                                htmlsdhbyr += '</tr>';
+                                
+                                tempidtransaksi = data[a].id
+                            }
+                        }
+                    }
+                    
+                    $('#tabel-telah-dibayar').empty();
+                    $('#tabel-telah-dibayar').append(htmlsdhbyr);
+                    $("#tabel-belum-dibayar-container").hide("slow");
+                    $("#tabel-telah-dibayar-container").show("slow");  
+                    if(temp_sdh_byr == 0){
+                        $('#table_id_telahdibayar').DataTable({"ordering": false});
+                        temp_sdh_byr = 1;
+                    }
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    alert(errorThrown);
+                }   
+            }); 
+        });
+
+        function hitungTotalHarga(idtransaksi, data){
+            var jumlah = 0;
+            for(var j = 0; j < data.length; j++){
+                if(data[j].transaksi_id == idtransaksi){
+                    jumlah += parseInt(data[j].total_harga);
+                }
+            }
+
+            return jumlah;
+        }
+
+        function hitungJumlahPembelian(idtransaksi, data){
+            var jumlah = 0;
+            for(var k = 0; k < data.length; k++){
+                if(data[k].transaksi_id == idtransaksi){
+                    jumlah += parseInt(data[k].jumlah_sayur);
+                }
+            }
+            
+            return jumlah;
+        }
+    </script>
 @endsection

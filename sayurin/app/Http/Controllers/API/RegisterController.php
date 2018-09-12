@@ -43,6 +43,7 @@ class RegisterController extends BaseController
                 'email'         => $data['email'],
                 'nomor_telepon' => $data['nomor_telepon'],
                 'password'      => Hash::make($data['password']),
+                'foto'          => "user/user-icon.png",
                 'tipe'          => $data['tipe'],
             ]);
             

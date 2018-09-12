@@ -20,6 +20,7 @@ $(document).ready(function(){
 </script>
     
     <link href="https://fonts.googleapis.com/css?family=Cabin:400,600|Raleway:400,700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <link rel="stylesheet" href="{{ asset('/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/style.css') }}">
     
@@ -29,14 +30,15 @@ $(document).ready(function(){
             <div class="col-lg-2 icon">
                 <a href="/"><img src="{{ asset('img/letter-sayur.png') }}" style="  width: 85%; margin: 0px 20px 20px 0px"></a>
             </div>
-            <div class="col-lg-8"></div>
-            <div class="col-lg-2 icon">
+            <div class="col-lg-7"></div>
+            <div class="col-lg-3 icon">
+                {{-- <a href="/chat"><img src="{{ asset('img/message-white.png') }}" style="width: 45px; margin: 20px 10px 20px 100px; float: left;" ></a> --}}
+                <a href="/"><img src="{{ asset('img/round-logo.png') }}" style="width: 50px; margin: 10px 20px 10px 5px; float: left; pointer-events: none;cursor: default; "></a> 
                  <div class="btn-group" style="margin-top: 15px;">
-  <button  type="button" class="btn btn-logout dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;"><img src="{{ asset('img/round-logo.png') }}" style="width: 30px; height: 30px;">
-    Hello!!
+  <button type="button" class="btn btn-logout dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+    Hello,{{ Auth::User()->name }}
   </button>
   <div class="dropdown-menu">
-    <a class="dropdown-item" href="/">{{ Auth::User()->name }}</a>
     <a class="dropdown-item" href="/logout">Logout</a>
   </div>
 </div>
@@ -50,11 +52,9 @@ $(document).ready(function(){
         <div class="row">
             <div class="col-lg-2" style="background-color: #49A75B">
                 <div id="myMenu" class="section-left-side ">
-                    <a class="menu " href="/manage-sayur"><h5>Manage Sayur</h5></a>
-                    <a class="menu" href="/manage-transaksi"><h5>Manage Transaksi</h5></a>
-                    <a class="menu" href="/manage-user"><h5>Manage User</h5></a>
-                    <a class="menu" href="/logout"><h5>out</h5></a>
-                    
+                    <a class="menu " href="/manage-sayur"><h5 id="manage-sayur-txt">Menejemen Sayur</h5></a>
+                    <a class="menu" href="/manage-transaksi"><h5 id="manage-transaksi-txt">Menejemen Transaksi</h5></a>
+                    <a class="menu" href="/manage-user"><h5 id="manage-user-txt">Menejemen Pengguna</h5></a>
                 </div>
             </div>
             <div class="col-lg-10">
@@ -73,6 +73,7 @@ $(document).ready(function(){
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 <script src="{{ asset('/js/manage-sayur.js') }}"></script>
 <script src="{{ asset('/js/manage-user.js') }}"></script>
 

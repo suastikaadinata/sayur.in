@@ -18,6 +18,7 @@ class APITransaksiController extends BaseController
         $keranjang->cart($request);
         $user_id = $request->user_id;
         $data_cart = Keranjang::where('user_id',$user_id)->get();
+        date_default_timezone_set('Asia/Jakarta');
 
         $transaksi = Transaksi::create([
             'user_id'           => $user_id,

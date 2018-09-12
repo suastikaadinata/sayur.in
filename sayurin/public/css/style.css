@@ -93,9 +93,8 @@ footer{
 
 }
 .status-pesanan-container:hover{
-
     background-color: #F0F0ED;
-
+    cursor: pointer;
 }
 
 .sayur-home-container, .user-home-container, .manage-sayur-container{
@@ -107,15 +106,20 @@ footer{
     border: 3px solid #bdc3c7;
     margin-bottom: 20px;
     border-radius: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap; 
+}
+
+.sayur-home-container, .user-home-container{
+    overflow-x: scroll;
+    white-space: nowrap;
+    overflow-x: hidden;
 }
 
 .sayur-home-container:hover, .user-home-container:hover, .manage-sayur-container:hover{
     cursor: pointer;
     border: 3px solid #53B666;
-}
-
-.user-home-container{
-    text-align: center;
 }
 
 .sayur-home-img, .user-home-img{

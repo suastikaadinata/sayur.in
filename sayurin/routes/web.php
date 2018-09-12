@@ -28,7 +28,9 @@ Route::group(['prefix' => 'manage-sayur'], function(){
 
 Route::group(['prefix' => 'manage-transaksi'], function(){
     Route::get('/', 'TransaksiController@manageTransaksi');
-Route::get('/detail-transaksi', 'TransaksiController@detilTransaksi');
+    Route::get('/detail-transaksi', 'TransaksiController@detilTransaksi');
+    Route::get('/belumbayar', 'TransaksiController@belumBayar');
+    Route::get('/sudahbayar', 'TransaksiController@sudahBayar');
 });
 
 Route::group(['prefix' => 'manage-user'], function(){

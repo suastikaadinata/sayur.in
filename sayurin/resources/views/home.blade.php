@@ -14,7 +14,7 @@
                 <div class="col-lg-4">
                     <div class="status-pesanan-container">
                         <img src="{{ asset('img/transaksi-wait.png') }}" style="width: 60px; float: left; margin: 0px 5px 10px 5px;">
-                        <h4>10 Pesanan 
+                        <h4>{{ $belumdibayar }} Pesanan 
                             <br>
                         belum dibayar</h4>
                     </div>
@@ -22,13 +22,13 @@
                 <div class="col-lg-4">
                     <div class="status-pesanan-container">
                         <img src="{{ asset('img/success-ok.png') }}" style="width: 60px; float: left; margin: 0px 5px 10px 5px;">
-                        <h4>9 
+                        <h4>{{ $sukses }} 
                             <br>
                         Transaksi sukses</h4>
                     </div>
                 </div>
             </div>
-            <h3 style="margin-top: 30px; margin-bottom: 15px;">Sisa Sayur</h3>
+            <h3 style="margin-top: 30px; margin-bottom: 15px;">Sisa sayur yang tersedia pada gudang</h3>
             <div class="row">
                 @foreach($sayur as $s)
                 <div class="col-lg-3">
@@ -59,16 +59,19 @@
                 </div>
                 @endforeach
             </div>
-            <h3 style="margin-top: 30px; margin-bottom: 15px;">User Terbaru</h3>
+            <h3 style="margin-top: 30px; margin-bottom: 15px;">Pengguna Aplikasi Mobile</h3>
             <div class="row">
-                @for($i = 0; $i < 4; $i++)
+                @foreach($user as $u)
                 <div class="col-lg-3">
                     <div class="user-home-container">
-                        <div class="user-home-img" style="background-image: url({{ asset('img/atomix_user31.png') }})"></div>
-                        <h5 style="margin-top: 15px;">Username</h5>
+                        <div class="user-home-img" style="background-image: url({{ $u->foto() }})"></div>
+                        <hr>
+                        <h5 style="margin-top: 15px;">{{ $u->name }}</h5>
+                        <hr>
+                        <h6 style="margin-top: 15px;">{{ $u->email }}</h6>
                     </div>
                 </div>
-                @endfor
+                @endforeach
             </div>
         </div>
     </div>

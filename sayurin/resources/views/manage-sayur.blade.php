@@ -1,13 +1,13 @@
 @extends('layout')
 
-@section('title', 'Manage Sayur')
+@section('title', 'Menejemen Sayur')
 
 @section('content')
     <div style="margin-bottom: 20px;" class="all-header">
         <div class="container">
             <div class="row">
                 <div style="margin-bottom: 20px;"class="col-lg-6">
-                    <h2 style=" padding-top: 20px;">Manage sayur</h2>
+                    <h2 style=" padding-top: 20px;">Menejemen sayur</h2>
                 </div>
                 <div class="col-lg-2"></div>
                     <div class="col-lg-4 manage-sayur-header-search">
@@ -71,4 +71,7 @@
             </div>
         </div>
     </div>  
+    <script>
+        $('#manage-sayur-txt').css('color', '#ffc87b');
+    </script>
 @endsection

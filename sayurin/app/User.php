@@ -25,11 +25,7 @@ class User extends Authenticatable
 
     public function foto()
     {
-        if($this->foto == null){
-            //return '/images/default-profile.png';
-        }else{
-            //return '/images/' . $this->foto;
-        }
+        return '/img/' . $this->foto;
     }
 
     public function karanjang()
