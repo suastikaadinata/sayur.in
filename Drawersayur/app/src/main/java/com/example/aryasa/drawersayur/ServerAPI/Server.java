@@ -1,14 +1,5 @@
 package com.example.aryasa.drawersayur.ServerAPI;
 
-import android.content.Context;
-import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
-
-import com.example.aryasa.drawersayur.Login;
-
 public class Server{
     //untuk emu genymotion menggunakan ip = http://10.0.3.2/
     //untuk emu avd android menggunakan ip = http://10.0.2.2/
