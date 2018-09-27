@@ -29,7 +29,6 @@ import com.google.android.gms.common.GooglePlayServicesNotAvailableException;
 import com.google.android.gms.common.GooglePlayServicesRepairableException;
 import com.google.android.gms.location.places.Place;
 import com.google.android.gms.location.places.ui.PlacePicker;
-import com.example.aryasa.drawersayur.Adpater.Callbacks;
 
 import org.json.JSONArray;
 import org.json.JSONObject;

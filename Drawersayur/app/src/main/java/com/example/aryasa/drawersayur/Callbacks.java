@@ -1,4 +1,4 @@
-package com.example.aryasa.drawersayur.Adpater;
+package com.example.aryasa.drawersayur;
 
 import com.example.aryasa.drawersayur.Model.Sayur;
 
