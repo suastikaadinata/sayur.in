@@ -70,7 +70,7 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
     private View persistentbottomSheet;
     private TextView cart,totalHarga, opencart;
     private com.example.aryasa.drawersayur.Adpater.CartAdapter CartAdapter;
-    private Callbacks callbacks;
+    // private Callbacks callbacks;
     private ScrollView scroll;
     SharedPreferences shared;
     SharedPreferences prefcart;

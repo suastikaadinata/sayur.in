@@ -24,8 +24,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
-import com.example.aryasa.drawersayur.Admin.AdminHome;
-import com.example.aryasa.drawersayur.Admin.AdminProfile;
 import com.example.aryasa.drawersayur.ServerAPI.Server;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
 
@@ -105,7 +103,7 @@ public class Profile extends AppCompatActivity {
                     editor.putString(TAG_EMAIL, null);
                     editor.putString(TAG_NOMOR_TELEPON, null);
                     editor.commit();
-                    Intent intent = new Intent(Profile.this, Drawer.class);
+                    Intent intent = new Intent(Profile.this, Main.class);
                     finish();
                     startActivity(intent);
                 }
@@ -215,7 +213,7 @@ public class Profile extends AppCompatActivity {
                                            editor.putString("foto", jsonObject.getString("foto"));
                                            editor.commit();
                                            Toast.makeText(getApplicationContext(), "Edit Profile Berhasil", Toast.LENGTH_SHORT).show();
-                                           startActivity( new Intent(Profile.this,Drawer.class));
+                                           startActivity( new Intent(Profile.this,Main.class));
                                        }catch (JSONException e) {
                                            e.printStackTrace();
                                        }

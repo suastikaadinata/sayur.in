@@ -211,7 +211,7 @@ public class Login extends AppCompatActivity{
                             editor.putString(TAG_TOKEN,token );
                             editor.putString(TAG_FOTO, foto);
                             editor.commit();
-                            Intent intent = new Intent(getApplicationContext(), Drawer.class);
+                            Intent intent = new Intent(getApplicationContext(), Main.class);
 //                            intent.putExtra(TAG_ID,id);
 //                            intent.putExtra(TAG_NAME,name);
 //                            intent.putExtra(TAG_EMAIL,email);
@@ -265,7 +265,7 @@ public class Login extends AppCompatActivity{
 //                        editor.commit();
 //
 //                        // Memanggil main activity
-//                        Intent intent = new Intent(Login.this, Drawer.class);
+//                        Intent intent = new Intent(Login.this, Main.class);
 //                        intent.putExtra(TAG_ID, id);
 //                        intent.putExtra(TAG_USERNAME, username);
 //                        finish();
@@ -321,7 +321,7 @@ public class Login extends AppCompatActivity{
 
     @Override
     public void onBackPressed() {
-        intent = new Intent(Login.this, Drawer.class);
+        intent = new Intent(Login.this, Main.class);
         finish();
         startActivity(intent);
     }

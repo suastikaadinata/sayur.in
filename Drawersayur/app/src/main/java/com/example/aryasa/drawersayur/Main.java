@@ -19,7 +19,7 @@ import com.example.aryasa.drawersayur.Fragment.FragmentHelp;
 import com.example.aryasa.drawersayur.Fragment.FragmentNotifikasi;
 import com.example.aryasa.drawersayur.Fragment.HomeFragment;
 
-public class Drawer extends AppCompatActivity  {
+public class Main extends AppCompatActivity  {
 
 
     Dialog myDialog;
@@ -121,7 +121,7 @@ public class Drawer extends AppCompatActivity  {
                             loadFragment(fragment);
                             break;
                         case R.id.nav_login:
-                            intent = new Intent(Drawer.this, Login.class);
+                            intent = new Intent(Main.this, Login.class);
                             startActivity(intent);
                             break;
                     }
@@ -148,7 +148,7 @@ public class Drawer extends AppCompatActivity  {
                             loadFragment(fragment);
                             break;
                         case R.id.nav_profile_admin:
-                            Intent intent = new Intent(Drawer.this, Profile.class);
+                            Intent intent = new Intent(Main.this, Profile.class);
 //                            intent.putExtra("id", idIntent);
 //                            intent.putExtra(TAG_NAME, nameIntent);
 //                            intent.putExtra(TAG_EMAIL, emailIntent);
@@ -195,7 +195,7 @@ public class Drawer extends AppCompatActivity  {
 //            return true;
 //        }
 //        if (id == R.id.cart) {
-//            Intent cart = new Intent(Drawer.this, Chart.class);
+//            Intent cart = new Intent(Main.this, Chart.class);
 //            startActivity(cart);
 //        }
 //

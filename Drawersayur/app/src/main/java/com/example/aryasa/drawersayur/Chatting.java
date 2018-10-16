@@ -124,7 +124,7 @@ public class Chatting extends AppCompatActivity implements RoomListener {
     }
     @Override
     public void onBackPressed() {
-        intent = new Intent(Chatting.this, Drawer.class);
+        intent = new Intent(Chatting.this, Main.class);
         finish();
         startActivity(intent);
     }

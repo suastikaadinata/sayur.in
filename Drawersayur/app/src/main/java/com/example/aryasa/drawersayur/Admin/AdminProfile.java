@@ -24,9 +24,8 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.ImageLoader;
 import com.android.volley.toolbox.StringRequest;
-import com.example.aryasa.drawersayur.Drawer;
+import com.example.aryasa.drawersayur.Main;
 import com.example.aryasa.drawersayur.Login;
-import com.example.aryasa.drawersayur.Profile;
 import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.ServerAPI.Server;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
@@ -102,7 +101,7 @@ public class AdminProfile extends AppCompatActivity {
                 editor.putString(TAG_EMAIL_ADMIN, null);
                 editor.putString(TAG_NOMOR_TELEPON_ADMIN, null);
                 editor.commit();
-                Intent intent = new Intent(AdminProfile.this, Drawer.class);
+                Intent intent = new Intent(AdminProfile.this, Main.class);
                 finish();
                 startActivity(intent);
             }

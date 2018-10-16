@@ -215,7 +215,7 @@ public class Chart extends AppCompatActivity implements Callbacks{
             public void onResponse(String response) {
                 String json = response.toString();
                 try {
-                    startActivity(new Intent(getApplicationContext(), Drawer.class));
+                    startActivity(new Intent(getApplicationContext(), Main.class));
                     Toast.makeText(getApplicationContext(),"Transaksi berhasil",Toast.LENGTH_LONG).show();
                 } catch (Exception e){
                     e.printStackTrace();

@@ -4,29 +4,16 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-import com.example.aryasa.drawersayur.Chart;
-import com.example.aryasa.drawersayur.Drawer;
 import com.example.aryasa.drawersayur.Fragment.AdminListSayur;
-import com.example.aryasa.drawersayur.Fragment.FragmentHelp;
-import com.example.aryasa.drawersayur.Fragment.FragmentNotifikasi;
-import com.example.aryasa.drawersayur.Fragment.HomeFragment;
-import com.example.aryasa.drawersayur.History;
-import com.example.aryasa.drawersayur.Login;
 import com.example.aryasa.drawersayur.R;
 import android.app.Dialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.support.v7.app.AppCompatActivity;
-import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
 public class AdminHome extends AppCompatActivity {
     Dialog myDialog;
