@@ -5,8 +5,13 @@ public class Server{
     //untuk emu avd android menggunakan ip = http://10.0.2.2/
     //untuk langsung coba dihandphone menggunakan jaringan yang sama dan liat ipnya contoh http://192.168.1.14/
 
+<<<<<<< HEAD
     public static final String URL = "http://10.0.2.2:81/api/";
     public static final String URLIMAGE = "http://10.0.2.2:81/img/";
+=======
+    public static final String URL = "http://10.0.2.2/api/";
+    public static final String URLIMAGE = "http://10.0.2.2/img/";
+>>>>>>> master
         //SharedPreferences sharedpreferences = getSharedPreferences(Login.my_shared_preferences2, Context.MODE_PRIVATE);
         //token = "Bearer "+ sharedpreferences.getString(Login.TAG_TOKEN, null);
 
