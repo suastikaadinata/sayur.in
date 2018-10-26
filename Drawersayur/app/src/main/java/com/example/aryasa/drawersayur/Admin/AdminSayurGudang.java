@@ -38,7 +38,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class AdminSayurGudang extends Fragment {
-    private String API_URL = Server.URL + "sayur";;
+    private String API_URL = Server.URL + "sayur";
     ArrayList<SayurGudangModel> sayurGudangList = new ArrayList<SayurGudangModel>();
     SwipeRefreshLayout swipeRefreshLayout;
     String token;

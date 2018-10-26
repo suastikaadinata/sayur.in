@@ -112,7 +112,7 @@ public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.
                             public Map<String, String> getHeaders() throws AuthFailureError {
                                 HashMap<String, String> headers = new HashMap<>();
                                 headers.put("Accept", "application/json");
-                                headers.put("Authorization", profile.getToken());
+                                headers.put("Authorization", Server.TOKEN);
                                 return headers;
                             }
 

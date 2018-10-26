@@ -38,7 +38,7 @@
             android:inputType="number"
             android:ems="10"
             android:id="@+id/txt_notelp"
-            android:hint="No Telp"
+            android:hint="Email"
             android:paddingLeft="0dp"
             android:drawablePadding="5dp"
             android:textColorHint="#fff"/>
@@ -54,7 +54,7 @@
             android:inputType="textEmailAddress"
             android:ems="10"
             android:id="@+id/txt_email"
-            android:hint="Email"
+            android:hint="No Telp"
             android:paddingLeft="0dp"
             android:drawablePadding="5dp"
             android:textColorHint="#fff"/>
