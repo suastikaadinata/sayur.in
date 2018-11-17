@@ -8,21 +8,6 @@ public class UserInprogress {
     private String textView_tanggal;
     private String textView_jam, status,metode,alamat,nomor,namauser,idtransaksi;
 
-    public UserInprogress(String textView_barang1, String textView_barang2 ,String textView_barang3, Integer imageView,String textView_tanggal,String textView_jam){
-        this.textView_barang1= textView_barang1;
-        this.textView_barang2= textView_barang2;
-        this.textView_barang3= textView_barang3;
-        this.imageView= imageView;
-        this.textView_tanggal= textView_tanggal;
-        this.textView_jam= textView_jam;
-    }
-    public UserInprogress(String id ,String status, String metode,String waktu,String alamat){
-        this.status =status;
-        this.metode = metode;
-        this.textView_tanggal =waktu;
-        this.alamat = alamat;;
-
-    }
     public UserInprogress(String idtransaksi,String namauser,String status, String nomor,String waktu,String alamat){
         this.status =status;
         this.nomor = nomor;
