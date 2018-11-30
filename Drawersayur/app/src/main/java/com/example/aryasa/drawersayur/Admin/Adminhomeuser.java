@@ -124,7 +124,6 @@ public class Adminhomeuser extends Fragment {
     }
 
     private void cariData(final String keyword, final Context context ) {
-
         StringRequest SearchReq = new StringRequest(Request.Method.POST, API_URL_Search,
                 new Response.Listener<String>() {
                     @Override
@@ -139,7 +138,7 @@ public class Adminhomeuser extends Fragment {
 
                             for(int i = 0; i < jsonArray.length(); i++){
                                 JSONObject jsonObjectArray = jsonArray.getJSONObject(i);
-                                userdata.add(new Userdata(jsonObject.getInt("id"),Server.URLIMAGE+jsonObject.getString("foto"), jsonObject.getString("name") ,jsonObject.getString("email"), jsonObject.getString("nomor_telepon")));
+                                userdata.add(new Userdata(jsonObjectArray.getInt("id"),Server.URLIMAGE+jsonObjectArray.getString("foto"), jsonObjectArray.getString("name") ,jsonObjectArray.getString("email"), jsonObjectArray.getString("nomor_telepon")));
                                 adminuserAdapter.notifyDataSetChanged();
                             }
                         }catch (Exception e){
@@ -168,9 +167,7 @@ public class Adminhomeuser extends Fragment {
                 return map;
             }
         };
-
         Singleton.getInstance(context).addToRequestQueue(SearchReq);
-
     }
 
     @Override

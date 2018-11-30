@@ -50,7 +50,9 @@ class APIUserController extends BaseController
                     $pathDatabase = 'user/'.$pathFile;
                     $path = public_path() . '/img/'.$pathDatabase;
                     imagepng($img[0], $path);
-                    unlink(public_path() . '/img/'. $user->foto);
+                    if($user->foto != "user/user-icon.png"){
+                        unlink(public_path() . '/img/'. $user->foto);
+                    }
                     $user->foto = $pathDatabase;
                 }
             }
