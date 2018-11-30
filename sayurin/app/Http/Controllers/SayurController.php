@@ -54,7 +54,8 @@ class SayurController extends Controller
             'foto'      => $path
         ]);
 
-        return redirect('/manage-sayur/tambah-sayur')->with('addSayur',['tambah']);
+        // return redirect('/manage-sayur/tambah-sayur')->with('addSayur',['tambah']);
+        return redirect('/manage-sayur');
     }
 
     public function searchSayur()
@@ -73,13 +74,60 @@ class SayurController extends Controller
         return response()->json($sayur,200);
     }
 
-    public function detilSayur()
+    public function detilSayur($id)
     {
-        return view('detail-sayur');
+        $sayur = Sayur::findOrFail($id);
+        return view('detail-sayur', [
+            'sayur' => $sayur
+        ]);
     }
 
-    public function editSayur()
+    public function editSayur($id)
     {
-        return view('edit-sayur');
+        $sayur = Sayur::findOrFail($id);
+        return view('edit-sayur', [
+            'sayur' => $sayur
+        ]);
     }
+
+    public function delete($id)
+    {
+        $sayur = Sayur::findOrFail($id);
+        $sayur->delete();
+        return redirect('/manage-sayur');
+    }
+
+    public function simpanPerbaharuan(Request $request)
+    {
+        $sayur = Sayur::findOrFail($request->sayur_id);
+        $validation = [
+            'nama'          =>  'required|string|max:191',
+            'harga'         =>  'required|numeric',
+            'stok'          =>  'required|numeric',
+            'kuantitas'     =>  'required|numeric'
+        ];
+
+        $this->validate($request, $validation);
+        
+        $data = $request->all();
+
+        if($request->hasFile('gambar-sayur')){
+            $files = $request->file('gambar-sayur');
+            $path = $files->store('sayur', 'uploads');
+            unlink(public_path() . '/img/'.$sayur->foto);
+        }else{
+            $path = $sayur->foto;
+        }
+
+        $sayur->nama    = $data['nama'];
+        $sayur->jumlah  = $data['stok'];
+        $sayur->berat   = $data['kuantitas'];
+        $sayur->harga   = $data['harga'];
+        $sayur->foto    = $path;
+
+        $sayur->save();
+
+        return redirect('/manage-sayur');
+    }
+
 }

@@ -14,7 +14,7 @@
                     <h3>Pengguna</h3>
                 </div>
                 <div class="col-lg-3">
-                    <a href="/manage-sayur/tambah-sayur"><button class="btn btn-default btn-lg btn-modif">
+                    <a href="/manage-user/tambah-user"><button class="btn btn-default btn-lg btn-modif">
                         Tambah Pengguna
                     </button></a>
                 </div>
@@ -31,20 +31,24 @@
                             <th scope="col">Nama</th>
                             <th scope="col">Email</th>
                             <th scope="col">No Telp</th>
+                            <th scope="col">Tipe</th>
                             <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
                     @foreach($user as $u)
-                        <tr>
-                            <td>{{ $u->name }}</td>
-                            <td>{{ $u->email }}</td>
-                            <td>{{ $u->nomor_telepon }}</td>
-                            <td><button data-id="{{ $u->id }}" class="btn btn-default hapus-user-btn" data-toggle="modal" 
-                                data-target=".hapus-user" style="background-color: #e67e22; color: white;">
-                                Hapus
-                            </button></td>
-                        </tr>
+                        @if($u->id != Auth::User()->id)
+                            <tr>
+                                <td>{{ $u->name }}</td>
+                                <td>{{ $u->email }}</td>
+                                <td>{{ $u->nomor_telepon }}</td>
+                                <td>{{ $u->tipe }}</td>
+                                <td><button data-id="{{ $u->id }}" class="btn btn-default hapus-user-btn" data-toggle="modal" 
+                                    data-target=".hapus-user" style="background-color: #e67e22; color: white;">
+                                    Hapus
+                                </button></td>
+                            </tr>
+                        @endif
                     @endforeach
                     </tbody>
                 </table>

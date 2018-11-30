@@ -11,7 +11,8 @@
     <div class="section-content">
         <div class="container">
             <form rule="form" method="POST" enctype="multipart/form-data" action="/manage-sayur/tambah-sayur/tambah">
-            {{ csrf_field() }}
+                {{ csrf_field() }}
+                
                 <div class="row">
                     <div class="col-lg-3">
                         <div class="image-place-upload"></div>

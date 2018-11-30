@@ -34,14 +34,14 @@ $(document).ready(function(){
             <div class="col-lg-3 icon">
                 {{-- <a href="/chat"><img src="{{ asset('img/message-white.png') }}" style="width: 45px; margin: 20px 10px 20px 100px; float: left;" ></a> --}}
                 <a href="/"><img src="{{ asset('img/round-logo.png') }}" style="width: 50px; margin: 10px 20px 10px 5px; float: left; pointer-events: none;cursor: default; "></a> 
-                 <div class="btn-group" style="margin-top: 15px;">
-  <button type="button" class="btn btn-logout dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
-    Hello,{{ Auth::User()->name }}
-  </button>
-  <div class="dropdown-menu">
-    <a class="dropdown-item" href="/logout">Logout</a>
-  </div>
-</div>
+            <div class="btn-group" style="margin-top: 15px;">
+                <button type="button" class="btn btn-logout dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;">
+                    Hello,{{ Auth::User()->name }}
+                </button>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="/logout">Logout</a>
+                </div>
+            </div>
 
             </div>
             
@@ -72,7 +72,7 @@ $(document).ready(function(){
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 <script src="{{ asset('/js/manage-sayur.js') }}"></script>
 <script src="{{ asset('/js/manage-user.js') }}"></script>

@@ -21,7 +21,7 @@
                         <img src="{{ asset('img/transaksi-wait.png') }}" style="width: 60px; float: left; margin: 0px 5px 10px 5px;">
                         <h4>{{ $belumdibayar }} Pesanan 
                             <br>
-                        belum dibayar</h4>
+                        belum selesai</h4>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -71,6 +71,7 @@
         <input type="hidden" id="link-blm-byr" value="/manage-transaksi/belumbayar">
         <input type="hidden" id="link-sdh-byr" value="/manage-transaksi/sudahbayar">
     </div> 
+
     <script>
         var temp_blm_byr = 0, temp_sdh_byr = 0;
 
@@ -103,10 +104,15 @@
                                 htmlblmbyr += '<td>'+ hitungJumlahPembelian(data[i].id, data) +'</td>';
                                 htmlblmbyr += '<td>'+ hitungTotalHarga(data[i].id, data) +'</td>';
                                 htmlblmbyr += '<td>'+ data[i].created_at +'</td>';
-                                htmlblmbyr += '<td> Belum dibayar </td>';
-                                htmlblmbyr += '<td><button class="btn btn-default hapus-user-btn" style="background-color: #e67e22; color: white;">'+
+                                if(data[i].status_transaksi == 0){
+                                    htmlblmbyr += '<td> Belum dibayar </td>';
+                                }
+                                if(data[i].status_transaksi == 1){
+                                    htmlblmbyr += '<td> Sedang dikirim </td>';
+                                }
+                                htmlblmbyr += '<td><a href="/manage-transaksi/detail-transaksi/'+ data[i].id +'" class="btn btn-default hapus-user-btn" style="background-color: #e67e22; color: white;">'+
                                         'Lihat'+
-                                    '</button></td>';
+                                    '</a></td>';
                                 htmlblmbyr += '</tr>';
                                 
                                 tempidtransaksi = data[i].id
@@ -119,7 +125,12 @@
                     $("#tabel-telah-dibayar-container").hide("slow");
                     $("#tabel-belum-dibayar-container").show("slow");  
                     if(temp_blm_byr == 0){
-                        $('#table_id_blm_byr').DataTable({"ordering": false});
+                        $('#table_id_blm_byr').DataTable({
+                            "ordering": false,
+                            "language": {
+                                "emptyTable": "Tidak ada data"
+                            },
+                        });
                         temp_blm_byr = 1;
                     }    
                 },
@@ -138,14 +149,14 @@
                     var tempidtransaksi = 0;
                         
                     if(data.length == 0){
-                        htmlblmbyr += '<tr>';
-                        htmlblmbyr += '<td></td>';
-                        htmlblmbyr += '<td></td>';
-                        htmlblmbyr += '<td></td>';
-                        htmlblmbyr += '<td></td>';
-                        htmlblmbyr += '<td></td>';
-                        htmlblmbyr += '<td></td>';
-                        htmlblmbyr += '</tr>';
+                        htmlsdhbyr += '<tr>';
+                        htmlsdhbyr += '<td></td>';
+                        htmlsdhbyr += '<td></td>';
+                        htmlsdhbyr += '<td></td>';
+                        htmlsdhbyr += '<td></td>';
+                        htmlsdhbyr += '<td></td>';
+                        htmlsdhbyr += '<td></td>';
+                        htmlsdhbyr += '</tr>';
                     }else{
                         for(var a = 0; a < data.length; a++){
                             if(tempidtransaksi != data[a].id){
@@ -154,10 +165,10 @@
                                 htmlsdhbyr += '<td>'+ hitungJumlahPembelian(data[a].id, data) +'</td>';
                                 htmlsdhbyr += '<td>'+ hitungTotalHarga(data[a].id, data) +'</td>';
                                 htmlsdhbyr += '<td>'+ data[a].created_at +'</td>';
-                                htmlsdhbyr += '<td> Sudah dibayar </td>';
-                                htmlsdhbyr += '<td><button class="btn btn-default hapus-user-btn" style="background-color: #e67e22; color: white;">'+
+                                htmlsdhbyr += '<td> Sukses </td>';
+                                htmlsdhbyr += '<td><a href="/manage-transaksi/detail-transaksi/'+ data[a].id +'" class="btn btn-default hapus-user-btn" style="background-color: #e67e22; color: white;">'+
                                         'Lihat'+
-                                    '</button></td>';
+                                    '</a></td>';
                                 htmlsdhbyr += '</tr>';
                                 
                                 tempidtransaksi = data[a].id
@@ -170,7 +181,12 @@
                     $("#tabel-belum-dibayar-container").hide("slow");
                     $("#tabel-telah-dibayar-container").show("slow");  
                     if(temp_sdh_byr == 0){
-                        $('#table_id_telahdibayar').DataTable({"ordering": false});
+                        $('#table_id_telahdibayar').DataTable({
+                            "ordering": false,
+                            "language": {
+                                "emptyTable": "Tidak ada data"
+                            },
+                        });
                         temp_sdh_byr = 1;
                     }
                 },
@@ -201,5 +217,7 @@
             
             return jumlah;
         }
+
+        
     </script>
 @endsection

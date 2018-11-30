@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Input;
+use App\Http\Controllers\Controller;
+use Validator;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {    
@@ -15,7 +19,7 @@ class UserController extends Controller
 
     public function manageUser()
     {
-        $user = User::where('tipe', 'user')->get();
+        $user = User::get();
         return view('manage-user', [
             'user' => $user
         ]);
@@ -41,5 +45,37 @@ class UserController extends Controller
         $users = User::findOrFail($id);
         $users->delete();
         return redirect()->back();
+    }
+
+    public function tambahUser()
+    {
+        return view('tambah-user');
+    }
+
+    public function save(Request $request)
+    {
+        $validation = [
+            'name'          => 'required|string|max:191',
+            'email'         => 'required|string|email|max:255|unique:users',
+            'nomor_telepon' => 'required',
+            'password'      => 'required|confirmed',
+            'tipe'          => 'required',
+        ];
+        
+        $this->validate($request, $validation);
+
+        $data = $request->all();
+
+        $user = User::create([
+            'name'          => $data['name'],
+            'email'         => $data['email'],
+            'nomor_telepon' => $data['nomor_telepon'],
+            'password'      => Hash::make($data['password']),
+            'foto'          => "user/user-icon.png",
+            'tipe'          => $data['tipe'],
+        ]);
+        
+        // return redirect('/manage-user/tambah-user')->with('addUser',['tambah']);
+        return redirect('/manage-user');
     }
 }

@@ -61,12 +61,15 @@ class APISayurController extends BaseController
         }else{
             $sayur->nama = $data['nama'];
             $sayur->harga = $data['harga'];
-            if($sayur->foto != $data['foto']){
-                $img[0] = imagecreatefromstring($file);
-                $pathDatabase = 'sayur/'.$pathFile;
-                $path = public_path() . '/img/'.$pathDatabase;
-                imagepng($img[0], $path);
-                $sayur->foto = $pathDatabase;
+            if($data['foto'] != null){
+                if($sayur->foto != $data['foto']){
+                    $img[0] = imagecreatefromstring($file);
+                    $pathDatabase = 'sayur/'.$pathFile;
+                    $path = public_path() . '/img/'.$pathDatabase;
+                    imagepng($img[0], $path);
+                    unlink(public_path() . '/img/'.$sayur->foto);
+                    $sayur->foto = $pathDatabase;
+                }
             }
             
             $sayur->save();

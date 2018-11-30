@@ -44,16 +44,19 @@ class APIUserController extends BaseController
             $user->name = $data['name'];
             $user->email = $data['email'];
             $user->nomor_telepon = $data['nomor_telepon'];
-            if($user->foto != $data['foto']){
-                $img[0] = imagecreatefromstring($file);
-                $pathDatabase = 'user/'.$pathFile;
-                $path = public_path() . '/img/'.$pathDatabase;
-                imagepng($img[0], $path);
-                $user->foto = $pathDatabase;
+            if($data['foto'] != null){
+                if($user->foto != $data['foto']){
+                    $img[0] = imagecreatefromstring($file);
+                    $pathDatabase = 'user/'.$pathFile;
+                    $path = public_path() . '/img/'.$pathDatabase;
+                    imagepng($img[0], $path);
+                    unlink(public_path() . '/img/'. $user->foto);
+                    $user->foto = $pathDatabase;
+                }
             }
             $user->save();
-            $response['status'] = "success";
-            return $this->sendResponse($response); 
+            $user_response = User::findOrFail($request->id);
+            return $this->sendResponse($user_response); 
         }   
 
     }

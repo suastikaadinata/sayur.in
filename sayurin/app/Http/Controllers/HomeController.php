@@ -18,7 +18,7 @@ class HomeController extends Controller
     {
         $sayur = Sayur::all();
         $user = User::all();
-        $belumdibayar = count(Transaksi::where('status_transaksi', 0)->get());
+        $belumdibayar = count(Transaksi::where('status_transaksi', 0)->orWhere('status_transaksi', 1)->get());
         $sukses = count(Transaksi::where('status_transaksi', 2)->get());
         return view('home',[
             'sayur'             => $sayur,

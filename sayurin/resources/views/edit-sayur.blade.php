@@ -10,26 +10,30 @@
     </div>
     <div class="section-content">
         <div class="container">
-            <form rule="form" method="POST" enctype="multipart/form-data" action="/manage-sayur/tambah-sayur/tambah">
+            <form rule="form" method="POST" enctype="multipart/form-data" action="/manage-sayur/edit-sayur/simpan">
             {{ csrf_field() }}
                 <div class="row">
+                <input type="hidden" name="sayur_id" value="{{ $sayur->id }}">
                     <div class="col-lg-3">
-                        <div class="image-place-upload"></div>
+                        <div class="image-place-upload">
+                        <input type="hidden" id="img-val" value="{{ $sayur->foto }}">
+                            <img src="{{ $sayur->foto() }}" alt="Gambar sayur">
+                        </div>
                         <label class="btn btn-default btn-lg btn-modif image-upload-btn">
                             <input class="input-image" type="file" multiple id="uploadPhotoSayur" name="gambar-sayur">
                             <div id="text-upload"></div>
 
-                            @if ($errors->has('gambar-sayur'))
+                            {{-- @if ($errors->has('gambar-sayur'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('gambar-sayur') }}</strong>
                                 </span>
-                            @endif
+                            @endif --}}
                         </label>
                     </div>
                     <div class="col-lg-5">  
                         <h4>Nama Sayur</h4>
                         <div class="form-group form{{ $errors->has('nama') ? ' has-error' : '' }}">
-                            <input id="nama" type="text" class="form-control input-lg" required autofocus placeholder="Nama Sayur" name="nama"
+                        <input id="nama" type="text" class="form-control input-lg" value="{{ $sayur->nama }}" name="nama"
                             >
 
                             @if ($errors->has('nama'))
@@ -41,8 +45,7 @@
                             
                         <h4>Harga Sayur</h4>
                         <div class="form-group form{{ $errors->has('harga') ? ' has-error' : '' }}">
-                            <input id="harga" type="number" class="form-control input-lg" required autofocus placeholder="0" name="harga"
-                            >
+                        <input id="harga" type="number" class="form-control input-lg" value="{{ $sayur->harga }}" name="harga">
                                 
                             @if ($errors->has('harga'))
                                 <span class="help-block">
@@ -53,7 +56,7 @@
 
                         <h4>Stok Sayur</h4>
                         <div class="form-group form{{ $errors->has('stok') ? ' has-error' : '' }}">
-                            <input id="stok" type="number" class="form-control input-lg" required placeholder="0" 
+                        <input id="stok" type="number" class="form-control input-lg" value="{{ $sayur->jumlah }}" 
                                 name="stok" >
                             
                             @if ($errors->has('stok'))
@@ -66,7 +69,7 @@
                     <div class="col-lg-4">
                         <h4>Kuantitas Sayur</h4>
                         <div class="form-group form{{ $errors->has('kuantitas') ? ' has-error' : '' }}">
-                            <input id="kuantitas" type="number" class="form-control input-lg" required placeholder="0" 
+                            <input id="kuantitas" type="number" class="form-control input-lg" value="{{ $sayur->berat }}" 
                                 name="kuantitas" >
                             
                             @if ($errors->has('kuantitas'))
@@ -105,3 +108,4 @@
         </div>
     </div>
 @endsection
+

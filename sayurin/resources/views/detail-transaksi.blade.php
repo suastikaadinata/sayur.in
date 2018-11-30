@@ -10,76 +10,86 @@
     </div>
     <div class="section-content">
         <div class="container">
-                    <table class="table " style="text-align: left; color: #53B666; border: none!important;" >
-                            <thead class="table-success">
-                                <tr>
-                                    <th scope="col">Nama user</th>
-                                    <th scope="col">Tanggal transaksi</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td style="font-weight: bold;">nomor handphone</td>
-                                    <td style="font-weight: bold">alamatemail@email</td>
-                                </tr>
-                            </tbody>
-                            <tfoot>
-                                <tr>
-                                    <td colspan="2">alamat pengiriman</td>
-                                </tr>
-                            </tfoot>
-
-                        </table>
-                    <div class="col-lg-3">
-                        <h3>Pesanan</h3>
-                    </div>
-                    <table style="text-align: center;" class="table table-bordered table-light table-striped">
-                    <thead>
-                        <tr class="table-success">
-                            <th scope="col">Sayur</th>
-                            <th scope="col">Jumlah</th>
-                            <th scope="col">Total</th>
-                        </tr>
-                    </thead>
-                    <tbody >
-                    @for($i = 0; $i < 2; $i++)
-                        <tr>
-                            <td>bayam</td>
-                            <td>3</td>
-                            <td>15000</td>
-                        </tr>
-                    @endfor
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <td colspan="2">Total</td>
-                            <td scope="">30000</td>
-                        </tr>
-                    </tfoot>
-                </table>
-                <div class="row">
-                    <div class="col-lg-5">
-                        <span style="font-weight: bold;">Metode pembayaran :</span>
-                        <span>On the spot</span>
-                    </div>
-                    <div class="col-lg-7">
-                    <span>Status Transaksi :</span>
-                     <select class="col-lg-4 custom-select">
-                    <option value="1">Pengiriman</option>
-                    <option value="2">Menunggu Pembayaran</option>
-  <option value="3">Terkonfirmasi</option>
-</select>
-<button class="btn btn-default btn-lg btn-modif" style="text-align: center;">
-    simpan
-</button>
-
-                    </div>
+            <table class="table " style="text-align: left; color: #53B666; border: none!important;" >
+                <thead class="table-success">
+                    <tr>
+                        <th scope="col">{{ $transaksi[0]->name }}</th>
+                        <th scope="col">{{ $transaksi[0]->updated_at }}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="font-weight: bold;">{{ $transaksi[0]->nomor_telepon }}</td>
+                        <td style="font-weight: bold">{{ $transaksi[0]->email }}</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">{{ $transaksi[0]->alamat }}</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="col-lg-3">
+                <h3>Pesanan</h3>
+            </div>
+            <table style="text-align: center;" class="table table-bordered table-light table-striped">
+                <thead>
+                    <tr class="table-success">
+                        <th scope="col">Sayur</th>
+                        <th scope="col">Jumlah</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                </thead>
+                <tbody >
+                @foreach($transaksi as $t)
+                    <tr>
+                        <td>{{ $t->nama }}</td>
+                        <td>{{ $t->jumlah }}</td>
+                        <td>{{ $t->total_harga }}</td>
+                    </tr>
+                @endforeach
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="2">Total</td>
+                    <td scope="">{{ $totalHarga }}</td>
+                    </tr>
+                </tfoot>
+            </table>
+            <div class="row">
+                <div class="col-lg-5">
+                    <span style="font-weight: bold;">Metode pembayaran : </span>
+                    <span>On the spot</span>
                 </div>
-                
-                    
-                    
-                    
-               
+                <div class="col-lg-7">
+                    @if($transaksi[0]->status_transaksi == 0)
+                        <span style="font-weight: bold;">Status Transaksi : </span>
+                        <span>Belum dibayar</span>
+                    @endif
+                    @if($transaksi[0]->status_transaksi == 1)
+                        <span style="font-weight: bold;">Status Transaksi : </span>
+                        <span>Belum dikirim</span>
+                    @endif
+                    @if($transaksi[0]->status_transaksi == 2)
+                        <span style="font-weight: bold;">Status Transaksi : </span>
+                        <span>Sukses</span>
+                    @endif
+                </div>
+                {{-- <div class="col-lg-5">
+                    <form method="POST" rule="form" action="">
+                        {{ csrf_field() }}
+                        <select class="col-sm-8 custom-select">
+                            <option selected value="">Status Pengiriman</option>
+                            <option value="">Menunggu Pembayaran</option>
+                            <option value="">Sedang Dikirim</option>
+                            <option value="">Terkirim</option>
+                        </select>
+                        <button type="submit" class="btn btn-default btn-lg btn-modif" style="text-align: center;">
+                            simpan
+                        </button>
+                    </form>
+                </div> --}}
+            </div>      
         </div>
     </div>
     <div class="modal fade" id="myModal" role="dialog" style="position: fixed; top: 50%;left: 50%;

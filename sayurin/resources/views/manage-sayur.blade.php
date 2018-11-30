@@ -40,8 +40,8 @@
                 @foreach($sayur as $s)
                 <div class="col-lg-3">
                     <div class="manage-sayur-container">
-                        <a href="/manage-sayur/detail-sayur" style="text-decoration: none;" >
-                        <h4 style="text-align: center; color: #e67e22"">{{ $s->nama }}</h4>
+                        <a href="/manage-sayur/detail-sayur/{{ $s->id }}" style="text-decoration: none;" >
+                        <h4 style="text-align: center; color: #e67e22">{{ $s->nama }}</h4>
                         <div class="sayur-home-img" style="background-image: url({{ $s->foto() }})"></div>
                         <table class="table" style="text-align: center; color: #e67e22" >
                             <thead >
