@@ -5,6 +5,7 @@ import android.content.ClipData;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
@@ -31,6 +32,7 @@ import com.example.aryasa.drawersayur.Admin.AdminSayurGudang;
 import com.example.aryasa.drawersayur.Admin.Admintambahsayur;
 import com.example.aryasa.drawersayur.Admin.Adminubahsayur;
 import com.example.aryasa.drawersayur.Admin.Adminviewuser;
+import com.example.aryasa.drawersayur.Login;
 import com.example.aryasa.drawersayur.Model.SayurGudangModel;
 import com.example.aryasa.drawersayur.Profile;
 import com.example.aryasa.drawersayur.R;
@@ -46,10 +48,13 @@ public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.
     private ArrayList<SayurGudangModel> sayurGudangList;
     private String API_URL = Server.URL + "sayur";
     Profile profile;
+    String token;
 
     public SayurGudangAdapter(Context context, ArrayList<SayurGudangModel> sayurGudangList){
         this.context = context;
         this.sayurGudangList = sayurGudangList;
+        SharedPreferences sharedpreferencesAdmnin = context.getSharedPreferences(Login.my_shared_preferences2, Context.MODE_PRIVATE);
+        token = "Bearer "+sharedpreferencesAdmnin.getString("token", null);
     }
 
     @Override
@@ -112,7 +117,7 @@ public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.
                             public Map<String, String> getHeaders() throws AuthFailureError {
                                 HashMap<String, String> headers = new HashMap<>();
                                 headers.put("Accept", "application/json");
-                                headers.put("Authorization", Server.TOKEN);
+                                headers.put("Authorization", token);
                                 return headers;
                             }
 

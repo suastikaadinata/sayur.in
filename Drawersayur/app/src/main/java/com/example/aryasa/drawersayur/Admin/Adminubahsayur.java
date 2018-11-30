@@ -143,8 +143,11 @@ public class Adminubahsayur extends AppCompatActivity {
                                 map.put("id",ID);
                                 map.put("nama",txt_nama.getText().toString());
                                 map.put("harga",txt_harga.getText().toString());
-                                map.put("foto", getStringImage(decoded));
-
+                                if(decoded != null) {
+                                    map.put("foto", getStringImage(decoded));
+                                }else{
+                                    map.put("foto", "");
+                                }
                                 return map;
                             }
                         };

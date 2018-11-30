@@ -276,7 +276,7 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.search){
+        if (id == R.id.action_search){
             return true;
         }
         if (id == R.id.cart) {

@@ -26,6 +26,7 @@ public class Main extends AppCompatActivity  {
     int idIntent;
     String username;
     SharedPreferences sharedpreferences;
+    SharedPreferences sharedpreferencesAdmin;
     public static final String TAG_ID = "id";
     public static final String TAG_USERNAME = "username";
     private ActionBar toolbar;
@@ -36,6 +37,7 @@ public class Main extends AppCompatActivity  {
     public final static String TAG_EMAIL = "email";
     public static final String TAG_NOMOR_TELEPON = "nomor_telepon";
     public static final String my_shared_preferences = "my_shared_preferences";
+    public static final String my_shared_preferences2 = "my_shared_preferences2";
     public static final String session_status = "session_status";
     public static final String session_status2 = "session_status2";
 
@@ -56,9 +58,10 @@ public class Main extends AppCompatActivity  {
         myDialog = new Dialog(this);
 
         sharedpreferences = getSharedPreferences(Login.my_shared_preferences, Context.MODE_PRIVATE);
+        sharedpreferencesAdmin = getSharedPreferences(Login.my_shared_preferences2, Context.MODE_PRIVATE);
         //sharedpreferences = getSharedPreferences(my_shared_preferences, Context.MODE_PRIVATE);
         session = sharedpreferences.getBoolean(session_status, false);
-        sessionAdmin = sharedpreferences.getBoolean(session_status2, false);
+        sessionAdmin = sharedpreferencesAdmin.getBoolean(session_status2, false);
         id = sharedpreferences.getInt(TAG_ID, 0);
         name = sharedpreferences.getString(TAG_NAME, null);
         email = sharedpreferences.getString(TAG_EMAIL, null);
