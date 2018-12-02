@@ -72,6 +72,7 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
 
         holder.mTitle.setText(mSayurlist.get(position).getNama());
         holder.mHarga.setText(String.valueOf(mSayurlist.get(position).getHarga()));
+        holder.mKuantitas.setText(String.valueOf(mSayurlist.get(position).getBerat()) + " " + mSayurlist.get(position).getKuantitas());
         holder.mButtonAdd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -120,6 +121,7 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
         ImageView mImage;
         TextView mHarga, mTextQ;
         TextView mTitle;
+        TextView mKuantitas;
         CardView mCardView;
         Button mButtonAdd, mTambahQ, mKurangQ;
         LinearLayout mLayoutKuantitas;
@@ -139,6 +141,7 @@ public class SayurAdapter extends RecyclerView.Adapter<SayurAdapter.SayurViewHol
             if(mTextQ.getText().equals("0")){
                 mLayoutKuantitas.setVisibility(View.INVISIBLE);
             }
+            mKuantitas = itemView.findViewById(R.id.kuantitasbarang);
 
         }
     }

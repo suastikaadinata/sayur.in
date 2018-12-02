@@ -47,13 +47,13 @@
                             <thead >
                                 <tr>
                                     <th>Stok</th>
-                                    <th>Satuan</th>
+                                    <th>Kuantitas</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
                                     <td>{{ $s->jumlah }}</td>
-                                    <td>{{ $s->berat }}</td>
+                                    <td>{{ $s->berat }} {{ $s->kuantitas }}</td>
                                 </tr>
                             </tbody>
                             <tfoot>

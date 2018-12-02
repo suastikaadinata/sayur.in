@@ -23,6 +23,7 @@ class APITransaksiController extends BaseController
         $transaksi = Transaksi::create([
             'user_id'           => $user_id,
             'alamat'            => $request->alamat,
+            'note_alamat'       => $request->note_alamat,
             'metode_transaksi'  => 'COD',
             'waktu_pengiriman'  => $request->waktu_pengiriman,
         ]);

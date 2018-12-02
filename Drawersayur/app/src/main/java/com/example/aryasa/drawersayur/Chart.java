@@ -68,6 +68,7 @@ public class Chart extends AppCompatActivity implements Callbacks{
     private LinearLayoutManager linearLayoutManager;
     private Checkout adapter;
     String tanggal_kirim, waktu, alamat="malang";
+    private TextView note_alamat;
 
 
     @Override
@@ -104,6 +105,7 @@ public class Chart extends AppCompatActivity implements Callbacks{
         txOngkir = (TextView) findViewById(R.id.editText_harga_pengiriman);
         txTotal = (TextView) findViewById(R.id.editText_total);
         txOngkir.setText("Rp. "+String.valueOf(ongkir));
+        note_alamat = (TextView) findViewById(R.id.note_alamat);
 
         Spinnerjam = (Spinner) findViewById(R.id.spinner_jam);
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>(
@@ -246,6 +248,7 @@ public class Chart extends AppCompatActivity implements Callbacks{
                     params.put("sayur_id["+i+"]",String.valueOf(listKeranjang.get(i).getId()));
                     params.put("jumlah["+i+"]",String.valueOf(listKeranjang.get(i).getJumlah()));
                 }
+                params.put("note_alamat", note_alamat.getText().toString());
                 return params;
             }
 

@@ -44,13 +44,13 @@
                                 <thead>
                                     <tr>
                                         <th scope="col">Stok</th>
-                                        <th scope="col">Satuan</th>
+                                        <th scope="col">Kuantitas</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <tr >
                                         <td>{{ $s->jumlah }}</td>
-                                        <td>{{ $s->berat }}</td>
+                                        <td>{{ $s->berat }} {{ $s->kuantitas }}</td>
                                     </tr>
                                 </tbody>
                                 <tfoot>

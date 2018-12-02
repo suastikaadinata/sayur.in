@@ -66,6 +66,22 @@
                     </div>
                     <div class="col-lg-4">
                         <h4>Kuantitas Sayur</h4>
+                            <div class="form-group form{{ $errors->has('jeniskuantitas') ? ' has-error' : '' }}">
+                               <select id="jeniskuantitas" class="form-control input-lg" name="jeniskuantitas">
+                                    <option selected value="" disabled>Pilih Kuantitas</option>
+                                    <option value="Gram">Gram</option>
+                                    <option value="Ikat">Ikat</option>
+                                    <option value="Biji">Biji</option>
+                               </select>
+    
+                            @if ($errors->has('jeniskuantitas'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('jeniskuantitas') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <h4>Jumlah Kuantitas Sayur</h4>
                         <div class="form-group form{{ $errors->has('kuantitas') ? ' has-error' : '' }}">
                             <input id="kuantitas" type="number" class="form-control input-lg" required placeholder="0" 
                                 name="kuantitas" >

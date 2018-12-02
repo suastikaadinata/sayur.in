@@ -160,7 +160,6 @@
                         android:contentDescription="profile image"
                         android:src="@drawable/ic_location_on_black_24dp" />
 
-
                     <TextView
                         android:id="@+id/textView_Lokasi"
                         android:layout_width="match_parent"
@@ -170,6 +169,20 @@
                         android:text="Jl. Soekarno Hatta No .12 , Gang kuda , Lowokwaru , Malang"
                         android:textColor="#5faf50"
                         android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/admin_note_alamat"
+                        android:layout_width="306dp"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/textView_Lokasi"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginStart="52dp"
+                        android:layout_marginLeft="52dp"
+                        android:text="Note Alamat"
+                        android:textColor="#afafaf"
+                        android:textSize="12sp"
+                        android:textStyle="italic"/>
 
                 </RelativeLayout>
 

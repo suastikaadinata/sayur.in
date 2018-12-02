@@ -27,6 +27,9 @@
                     <tr>
                         <td colspan="2">{{ $transaksi[0]->alamat }}</td>
                     </tr>
+                    <tr>
+                        <td colspan="2">Note: {{ $transaksi[0]->note_alamat }}</td>
+                    </tr>
                 </tfoot>
             </table>
             <div class="col-lg-3">

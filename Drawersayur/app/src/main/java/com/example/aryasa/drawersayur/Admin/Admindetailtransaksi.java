@@ -33,8 +33,8 @@ import java.util.Map;
 
 
 public class Admindetailtransaksi extends AppCompatActivity {
-    String iduser,idtransaksi, tanggalkirim, alamat, namauser, telpuser,status;
-    private TextView Txtanggalkirim, Txalamat,txTotalharga,txOngkir,txTotal,TxUser,TxTelp,TxUbah;
+    String iduser,idtransaksi, tanggalkirim, alamat, namauser, telpuser,status, json_note_alamat;
+    private TextView Txtanggalkirim, Txalamat,txTotalharga,txOngkir,txTotal,TxUser,TxTelp,TxUbah, note_alamat;
     private Adapterdetailtransaksi adapter;
     private String API_TRANSAKSI = Server.URL + "transaksi/list/detail";
     private String API_UbahComplete = Server.URL + "transaksi/complete";
@@ -63,7 +63,7 @@ public class Admindetailtransaksi extends AppCompatActivity {
         btnComplete =(Button) findViewById(R.id.buttonSelesai);
         TxUbah =(TextView)findViewById(R.id.textUbahStatus) ;
         cView =(CardView)findViewById(R.id.layoutUbah);
-
+        note_alamat = (TextView)findViewById(R.id.admin_note_alamat);
 
         cView.setVisibility(View.GONE);
         idtransaksi = getIntent().getExtras().getString("idtransaksi");
@@ -188,6 +188,7 @@ public class Admindetailtransaksi extends AppCompatActivity {
                             telpuser = jsonobject.getString("nomor_telepon");
                             totalharga = totalharga + jsonobject.getInt("total_harga");
                             status = jsonobject.getString("status_transaksi");
+                            json_note_alamat = jsonobject.getString("note_alamat");
                     }
                     if (status.equals("0")){
                         cView.setVisibility(View.VISIBLE);
@@ -204,6 +205,7 @@ public class Admindetailtransaksi extends AppCompatActivity {
                     Txtanggalkirim.setText(tanggalkirim);
                     TxUser.setText("Nama  : " +namauser);
                     TxTelp.setText("Nomor : " +telpuser);
+                    note_alamat.setText("Note : " + json_note_alamat);
 
                 } catch (Exception e) {
                     e.printStackTrace();

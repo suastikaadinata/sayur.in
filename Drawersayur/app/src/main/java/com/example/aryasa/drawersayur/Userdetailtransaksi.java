@@ -28,8 +28,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Userdetailtransaksi extends AppCompatActivity {
-    String iduser,idtransaksi, tanggalkirim, alamat, namauser, telpuser,status;
-    private TextView Txtanggalkirim, Txalamat,txTotalharga,txOngkir,txTotal,TxUser,TxTelp;
+    String iduser,idtransaksi, tanggalkirim, alamat, namauser, telpuser,status, note_alamat;
+    private TextView Txtanggalkirim, Txalamat,txTotalharga,txOngkir,txTotal,TxUser,TxTelp, user_note_alamat;
     private Adapterusertransaksi adapter;
     private String API_TRANSAKSI = Server.URL + "transaksi/list/detail";
     private RecyclerView mList;
@@ -49,8 +49,8 @@ public class Userdetailtransaksi extends AppCompatActivity {
         txOngkir.setText("Rp. "+String.valueOf(ongkir));
         TxUser= (TextView) findViewById(R.id.TextviewUser);
         TxTelp = (TextView)findViewById(R.id.TextviewTelp);
+        user_note_alamat = (TextView)findViewById(R.id.user_note_alamat);
         idtransaksi = getIntent().getExtras().getString("idtransaksi");
-
 
 
         adapter = new Adapterusertransaksi(this,listKeranjang);
@@ -89,10 +89,12 @@ public class Userdetailtransaksi extends AppCompatActivity {
                         telpuser = jsonobject.getString("nomor_telepon");
                         totalharga = totalharga + jsonobject.getInt("total_harga");
                         status = jsonobject.getString("status_transaksi");
+                        note_alamat = jsonobject.getString("note_alamat");
                     }
                     txTotalharga.setText("Rp. "+String.valueOf(totalharga));
                     txTotal.setText("Rp. "+String.valueOf(totalharga+ongkir));
                     Txalamat.setText(alamat);
+                    user_note_alamat.setText("Note : " + note_alamat);
                     Txtanggalkirim.setText(tanggalkirim);
                     TxUser.setText("Nama  : " +namauser);
                     TxTelp.setText("Nomor : " +telpuser);

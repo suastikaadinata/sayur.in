@@ -232,7 +232,11 @@ public class Profile extends AppCompatActivity {
                                map.put("name",txt_name.getText().toString());
                                map.put("email",txt_email.getText().toString());
                                map.put("nomor_telepon",txt_nomor_telepon.getText().toString());
-                               map.put("foto", getStringImage(decoded));
+                               if(decoded != null){
+                                   map.put("foto", getStringImage(decoded));
+                               }
+                               map.put("foto", "");
+
 
                                return map;
                            }

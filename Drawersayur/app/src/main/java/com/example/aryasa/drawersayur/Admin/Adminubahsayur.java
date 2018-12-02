@@ -16,6 +16,7 @@ import android.util.Base64;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +45,8 @@ public class Adminubahsayur extends AppCompatActivity {
     ImageView gambar_sayur;
     TextView txt_nama;
     TextView txt_harga;
+    TextView txt_berat;
+    Spinner jenis_kuantitas;
     Button btn_edit;
     Bitmap bitmap, decoded;
     private String API_URL = Server.URL + "sayur/delete";
@@ -67,6 +70,8 @@ public class Adminubahsayur extends AppCompatActivity {
         btn_edit = (Button) findViewById(R.id.btn_ubahgambarsayuredit);
         gambar_sayur = (ImageView) findViewById(R.id.gambar_sayur_edit);
         btn_delete = (Button)findViewById(R.id.button_delete);
+        txt_berat = (TextView)findViewById(R.id.txt_beratsayur);
+        jenis_kuantitas = (Spinner)findViewById(R.id.spinnerkuantitas);
         final Context context = this.getApplicationContext();
         final Bundle mBundle = getIntent().getExtras();
         pd = new ProgressDialog(Adminubahsayur.this);
@@ -148,6 +153,8 @@ public class Adminubahsayur extends AppCompatActivity {
                                 }else{
                                     map.put("foto", "");
                                 }
+                                map.put("kuantitas", txt_berat.getText().toString());
+                                map.put("jeniskuantitas", jenis_kuantitas.getSelectedItem().toString());
                                 return map;
                             }
                         };
@@ -182,6 +189,7 @@ public class Adminubahsayur extends AppCompatActivity {
                     txt_nama.setText(jsonObject.getString("nama"));
                     txt_harga.setText(jsonObject.getString("harga"));
                     showImage(Server.URLIMAGE+jsonObject.getString("foto"));
+                    txt_berat.setText(jsonObject.getString("berat"));
                 }catch (Exception e){
                     e.printStackTrace();
                 }

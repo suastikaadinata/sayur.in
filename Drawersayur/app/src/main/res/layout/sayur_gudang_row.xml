@@ -38,6 +38,7 @@
                 android:textStyle="bold" />
 
             <TextView
+                android:id="@+id/stokkuantitas"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="12sp"

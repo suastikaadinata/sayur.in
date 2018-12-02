@@ -83,7 +83,7 @@ public class AdminSayurGudang extends Fragment {
                try{
                    for (int i = 0; i < response.length(); i++){
                        JSONObject jsonObject = response.getJSONObject(i);
-                       sayurGudangList.add(new SayurGudangModel(jsonObject.getInt("id") ,Server.URLIMAGE+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga")));
+                       sayurGudangList.add(new SayurGudangModel(jsonObject.getInt("id") ,Server.URLIMAGE+jsonObject.getString("foto") ,jsonObject.getString("nama"), jsonObject.getInt("harga"), jsonObject.getInt("jumlah"), jsonObject.getInt("berat"), jsonObject.getString("kuantitas")));
                        RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerviewsayurgudang);
                        GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                        recyclerView.setLayoutManager(gridLayoutManager);
@@ -150,7 +150,7 @@ public class AdminSayurGudang extends Fragment {
 
                             for(int i = 0; i < jsonArray.length(); i++){
                                 JSONObject jsonObjectArray = jsonArray.getJSONObject(i);
-                                sayurGudangList.add(new SayurGudangModel(jsonObjectArray.getInt("id") ,Server.URLIMAGE+jsonObjectArray.getString("foto") ,jsonObjectArray.getString("nama"), jsonObjectArray.getInt("harga")));
+                                sayurGudangList.add(new SayurGudangModel(jsonObjectArray.getInt("id") ,Server.URLIMAGE+jsonObjectArray.getString("foto") ,jsonObjectArray.getString("nama"), jsonObjectArray.getInt("harga"), jsonObjectArray.getInt("jumlah"), jsonObjectArray.getInt("berat"), jsonObjectArray.getString("kuantitas")));
                                 sayurGudangAdapter.notifyDataSetChanged();
                             }
                         }catch (Exception e){

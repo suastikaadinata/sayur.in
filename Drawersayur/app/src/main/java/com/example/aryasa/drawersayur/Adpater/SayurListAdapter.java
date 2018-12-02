@@ -22,6 +22,8 @@ import com.example.aryasa.drawersayur.R;
 import com.example.aryasa.drawersayur.Singleton.Singleton;
 
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +67,7 @@ public class SayurListAdapter extends RecyclerView.Adapter<SayurListAdapter.Sayu
 
         holder.mTitle.setText(mSayurlist.get(position).getNama());
         holder.mHarga.setText(String.valueOf(mSayurlist.get(position).getHarga()));
+        holder.mKuantitas.setText(String.valueOf(mSayurlist.get(position).getBerat()) + " " + mSayurlist.get(position).getKuantitas());
 
         holder.Edit.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -82,6 +85,7 @@ public class SayurListAdapter extends RecyclerView.Adapter<SayurListAdapter.Sayu
         ImageView mImage;
         TextView mHarga;
         TextView mTitle;
+        TextView mKuantitas;
         CardView mCardView;
         Button Edit;
 
@@ -91,7 +95,8 @@ public class SayurListAdapter extends RecyclerView.Adapter<SayurListAdapter.Sayu
             mTitle = itemView.findViewById(R.id.nama_sayur_admin_list);
             mHarga = itemView.findViewById(R.id.harga_sayur_admin_list);
             mCardView = itemView.findViewById(R.id.cardviewadminlist);
-            Edit =itemView.findViewById(R.id.btn_edit_sayur_admin_list);
+            Edit = itemView.findViewById(R.id.btn_edit_sayur_admin_list);
+            mKuantitas = itemView.findViewById(R.id.kuantitas);
             //mToggle = itemView.findViewById(R.id.toggle);
         }
     }

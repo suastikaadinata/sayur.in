@@ -18,14 +18,17 @@ public class SayurListModel {
     private int berat;
     private int harga;
     private String foto;
+    private String kuantitas;
     private String created_at;
     private String updated_at;
 
-    public SayurListModel(int id,String foto, String nama, int harga){
+    public SayurListModel(int id,String foto, String nama, int harga, int berat, String kuantitas){
         this.id = id;
         this.foto = foto;
         this.nama = nama;
         this.harga = harga;
+        this.berat = berat;
+        this.kuantitas = kuantitas;
     }
 
     public int getId() {
@@ -74,6 +77,14 @@ public class SayurListModel {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public String getKuantitas() {
+        return kuantitas;
+    }
+
+    public void setKuantitas(String kuantitas) {
+        this.kuantitas = kuantitas;
     }
 
     public String getCreated_at() {

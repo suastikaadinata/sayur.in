@@ -68,6 +68,7 @@ public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.
     public void onBindViewHolder(final SayurGudangViewHolder holder, final int position) {
         holder.mNama.setText(sayurGudangList.get(position).getNama());
         holder.mHarga.setText(String.valueOf(sayurGudangList.get(position).getHarga()));
+        holder.mStokkuantitas.setText("Stok " + String.valueOf(sayurGudangList.get(position).getJumlah()) + " / " + String.valueOf(sayurGudangList.get(position).getBerat()) + " " + sayurGudangList.get(position).getKuantitas());
 
         ImageLoader imageLoader = Singleton.getInstance(context).getImageLoader();
         imageLoader.get(sayurGudangList.get(position).getFoto(), new ImageLoader.ImageListener() {
@@ -154,6 +155,7 @@ public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.
     public class SayurGudangViewHolder extends RecyclerView.ViewHolder {
         TextView mHarga;
         TextView mNama;
+        TextView mStokkuantitas;
         CardView mCardView;
         ImageView mFoto;
         Button btn_add;
@@ -165,6 +167,7 @@ public class SayurGudangAdapter extends RecyclerView.Adapter<SayurGudangAdapter.
             mHarga = view.findViewById(R.id.harga_sayurgudang);
             mCardView = view.findViewById(R.id.cradview_sayurgudang);
             btn_add = view.findViewById(R.id.btn_add_sayur_admin);
+            mStokkuantitas = view.findViewById(R.id.stokkuantitas);
 
         }
     }

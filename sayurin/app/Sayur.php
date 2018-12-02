@@ -8,7 +8,7 @@ class Sayur extends Model
 {
     protected $table = 'sayur';
     protected $fillable = [
-        'nama', 'jumlah', 'berat', 'harga', 'foto',
+        'nama', 'jumlah', 'berat', 'harga', 'foto', 'kuantitas',
     ];
 
     public function foto()

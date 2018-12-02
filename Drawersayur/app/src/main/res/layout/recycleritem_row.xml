@@ -39,32 +39,24 @@
                 android:textSize="18sp"
                 android:textAlignment="center"
                 android:textStyle="bold" />
-            <LinearLayout
-                android:layout_width="match_parent"
+
+            <TextView
+                android:id="@+id/kuantitasbarang"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center"
-                >
+                android:paddingLeft="5dp"
+                android:text="@string/kuantitas_barang"
+                android:textColor="#808080"
+                android:textSize="12sp" />
 
-                <TextView
-                    android:id="@+id/harga_sayur"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="end"
-                    android:text="@string/harga"
-                    android:textAlignment="textEnd"
-                    android:textColor="@color/colorAccent"
-                    android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="5dp"
-                    android:text="@string/kuantitas_barang"
-                    android:textColor="#808080"
-                    android:textSize="12sp" />
-
-            </LinearLayout>
+            <TextView
+                android:id="@+id/harga_sayur"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/harga"
+                android:textColor="@color/colorAccent"
+                android:textStyle="bold" />
 
             <RelativeLayout
                 android:layout_width="wrap_content"

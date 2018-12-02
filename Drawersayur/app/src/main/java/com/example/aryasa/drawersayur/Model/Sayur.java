@@ -18,19 +18,24 @@ public class Sayur {
     private int berat;
     private int harga;
     private String foto;
+    private String kuantitas;
     private String created_at;
     private String updated_at;
 
-    public Sayur(String foto, int id, String nama, int harga){
+    public Sayur(String foto, int id, String nama, int harga, int berat, String kuantitas){
         this.foto = foto;
         this.id = id;
         this.nama = nama;
         this.harga = harga;
+        this.berat = berat;
+        this.kuantitas = kuantitas;
     }
+
     public Sayur(int id, int jumlah){
         this.id = id;
         this.jumlah = jumlah;
     }
+
     public Sayur(String foto, int id, String nama, int harga, int jumlah){
         this.foto = foto;
         this.id = id;
@@ -38,6 +43,7 @@ public class Sayur {
         this.harga = harga;
         this.jumlah = jumlah;
     }
+
     public  Sayur(){
 
     }
@@ -88,6 +94,14 @@ public class Sayur {
 
     public void setFoto(String foto) {
         this.foto = foto;
+    }
+
+    public String getKuantitas() {
+        return kuantitas;
+    }
+
+    public void setKuantitas(String kuantitas) {
+        this.kuantitas = kuantitas;
     }
 
     public String getCreated_at() {

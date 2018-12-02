@@ -34,7 +34,8 @@ class SayurController extends Controller
             'nama'          =>  'required|string|max:191',
             'harga'         =>  'required|numeric',
             'stok'          =>  'required|numeric',
-            'kuantitas'     =>  'required|numeric'
+            'kuantitas'     =>  'required|numeric',
+            'jeniskuantitas'=>  'required|string|max:191',
         ];
 
         $this->validate($request, $validation);
@@ -51,7 +52,8 @@ class SayurController extends Controller
             'jumlah'    => $data['stok'],
             'berat'     => $data['kuantitas'],
             'harga'     => $data['harga'],
-            'foto'      => $path
+            'foto'      => $path,
+            'kuantitas' => $data['jeniskuantitas']
         ]);
 
         // return redirect('/manage-sayur/tambah-sayur')->with('addSayur',['tambah']);
@@ -104,7 +106,8 @@ class SayurController extends Controller
             'nama'          =>  'required|string|max:191',
             'harga'         =>  'required|numeric',
             'stok'          =>  'required|numeric',
-            'kuantitas'     =>  'required|numeric'
+            'kuantitas'     =>  'required|numeric',
+            'jeniskuantitas'=>  'required|string|max:191',
         ];
 
         $this->validate($request, $validation);
@@ -119,11 +122,12 @@ class SayurController extends Controller
             $path = $sayur->foto;
         }
 
-        $sayur->nama    = $data['nama'];
-        $sayur->jumlah  = $data['stok'];
-        $sayur->berat   = $data['kuantitas'];
-        $sayur->harga   = $data['harga'];
-        $sayur->foto    = $path;
+        $sayur->nama      = $data['nama'];
+        $sayur->jumlah    = $data['stok'];
+        $sayur->berat     = $data['kuantitas'];
+        $sayur->harga     = $data['harga'];
+        $sayur->foto      = $path;
+        $sayur->kuantitas = $data['jeniskuantitas'];
 
         $sayur->save();
 

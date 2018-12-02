@@ -68,6 +68,21 @@
                     </div>
                     <div class="col-lg-4">
                         <h4>Kuantitas Sayur</h4>
+                        <div class="form-group form{{ $errors->has('jeniskuantitas') ? ' has-error' : '' }}">
+                            <select id="jeniskuantitas" class="form-control input-lg" name="jeniskuantitas">
+                                 <option id="gram" value="Gram">Gram</option>
+                                 <option id="ikat" value="Ikat">Ikat</option>
+                                 <option id="biji" value="Biji">Biji</option>
+                            </select>
+    
+                            @if ($errors->has('jeniskuantitas'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('jeniskuantitas') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+
+                        <h4>Jumlah Kuantitas Sayur</h4>
                         <div class="form-group form{{ $errors->has('kuantitas') ? ' has-error' : '' }}">
                             <input id="kuantitas" type="number" class="form-control input-lg" value="{{ $sayur->berat }}" 
                                 name="kuantitas" >
@@ -91,6 +106,7 @@
             <input type="hidden" id="addSayur" value="0">
         @endif
     </div>
+    <input type="hidden" id="hiddenjeniskuantitas" value="{{ $sayur->kuantitas }}">
     <div id="modal-add-sayur" class="modal fade" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -107,5 +123,18 @@
             </div>
         </div>
     </div>
+
+    <script>
+        var kuantitas = $('#hiddenjeniskuantitas').val();
+        if(kuantitas == "Gram"){
+            $('#gram').attr('selected', true);
+        }
+        if(kuantitas == "Ikat"){
+            $('#ikat').attr('selected', true);
+        }
+        if(kuantitas == "Biji"){
+            $('#biji').attr('selected', true);
+        }
+    </script>
 @endsection
 

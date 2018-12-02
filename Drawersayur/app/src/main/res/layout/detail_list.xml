@@ -10,14 +10,14 @@
         android:layout_height="wrap_content"
         android:background="#ffffff"
         android:padding="10dp"
-        tools:layout_editor_absoluteX="67dp"
-        tools:layout_editor_absoluteY="0dp"
-        tools:ignore="MissingConstraints">
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="0dp">
 
         <ImageView
             android:id="@+id/deatail_imageView"
-            android:layout_width="77dp"
-            android:layout_height="77dp"
+            android:layout_width="wrap_content"
+            android:layout_height="62dp"
             android:layout_marginLeft="10dp"
             android:contentDescription="profile image"
             android:src="@mipmap/ic_launcher" />
@@ -28,11 +28,11 @@
             android:layout_height="wrap_content"
             android:layout_alignTop="@+id/deatail_imageView"
             android:layout_toEndOf="@+id/deatail_imageView"
+            android:layout_toRightOf="@+id/deatail_imageView"
             android:text="Bayam"
             android:textColor="#5faf50"
             android:textSize="16sp"
-            android:textStyle="bold"
-            android:layout_toRightOf="@+id/deatail_imageView" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/textView3"
@@ -40,11 +40,11 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/detail_nama"
             android:layout_toEndOf="@+id/deatail_imageView"
+            android:layout_toRightOf="@+id/deatail_imageView"
             android:text="harga / ikat"
             android:textColor="#afafaf"
             android:textSize="12sp"
-            android:textStyle="italic"
-            android:layout_toRightOf="@+id/deatail_imageView" />
+            android:textStyle="italic" />
 
         <TextView
             android:id="@+id/detail_hargaSayur"
@@ -52,34 +52,22 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/textView3"
             android:layout_toEndOf="@+id/deatail_imageView"
+            android:layout_toRightOf="@+id/deatail_imageView"
             android:text="Rp. 12.000"
             android:textColor="#ff8200"
             android:textSize="12sp"
-            android:textStyle="bold"
-            android:layout_toRightOf="@+id/deatail_imageView" />
-
-        <TextView
-            android:id="@+id/textViewnote1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/detail_hargaSayur"
-            android:layout_toEndOf="@+id/deatail_imageView"
-            android:text="note : Yang segar."
-            android:textColor="#afafaf"
-            android:textSize="12sp"
-            android:textStyle="italic"
-            android:layout_toRightOf="@+id/deatail_imageView" />
+            android:textStyle="bold" />
 
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="60dp"
             android:layout_height="30dp"
+            android:layout_alignParentTop="true"
             android:layout_alignParentEnd="true"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"
+            android:layout_marginTop="19dp"
             android:layout_marginEnd="12dp"
             android:layout_marginRight="12dp"
-            android:layout_marginTop="19dp"
             android:background="@drawable/custom_layout">
 
             <TextView

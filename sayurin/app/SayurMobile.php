@@ -8,7 +8,7 @@ class SayurMobile extends Model
 {
     protected $table = 'sayurmobile';
     protected $fillable = [
-        'nama', 'jumlah', 'berat', 'harga', 'foto',
+        'nama', 'jumlah', 'berat', 'harga', 'foto', 'kuantitas',
     ];
 
     public function foto()

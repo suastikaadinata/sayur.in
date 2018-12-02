@@ -32,6 +32,7 @@ class APISayurController extends BaseController
             'berat'     => $sayur->berat,
             'harga'     => $sayur->harga,
             'foto'      => $sayur->foto,
+            'kuantitas' => $sayur->kuantitas,
         ]);
 
         $sayur->delete();
@@ -51,8 +52,10 @@ class APISayurController extends BaseController
         }
 
          $validation = Validator::make($request->all(), [
-            'nama'      => 'required|string|max:191',
-            'harga'     => 'required|numeric',
+            'nama'          => 'required|string|max:191',
+            'harga'         => 'required|numeric',
+            'kuantitas'     =>  'required|numeric',
+            'jeniskuantitas'=>  'required|string|max:191',
         ]);   
 
         if($validation->fails()){
@@ -61,6 +64,8 @@ class APISayurController extends BaseController
         }else{
             $sayur->nama = $data['nama'];
             $sayur->harga = $data['harga'];
+            $sayur->berat = $data['kuantitas'];
+            $sayur->kuantitas = $data['jeniskuantitas'];
             if($data['foto'] != null){
                 if($sayur->foto != $data['foto']){
                     $img[0] = imagecreatefromstring($file);

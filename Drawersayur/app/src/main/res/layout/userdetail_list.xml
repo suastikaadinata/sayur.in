@@ -16,8 +16,8 @@
 
         <ImageView
             android:id="@+id/deatail_imageView"
-            android:layout_width="77dp"
-            android:layout_height="77dp"
+            android:layout_width="wrap_content"
+            android:layout_height="62dp"
             android:layout_marginLeft="10dp"
             android:contentDescription="profile image"
             android:src="@mipmap/ic_launcher" />
@@ -56,18 +56,6 @@
             android:textColor="#ff8200"
             android:textSize="12sp"
             android:textStyle="bold"
-            android:layout_toRightOf="@+id/deatail_imageView" />
-
-        <TextView
-            android:id="@+id/textViewnote1"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/detail_hargaSayur"
-            android:layout_toEndOf="@+id/deatail_imageView"
-            android:text="note : Yang segar."
-            android:textColor="#afafaf"
-            android:textSize="12sp"
-            android:textStyle="italic"
             android:layout_toRightOf="@+id/deatail_imageView" />
 
         <LinearLayout

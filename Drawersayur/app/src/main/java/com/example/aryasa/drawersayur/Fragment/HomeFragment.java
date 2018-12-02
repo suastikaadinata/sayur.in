@@ -149,7 +149,7 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
                 try{
                     for (int i = 0; i < response.length(); i++){
                         JSONObject jsonObject = response.getJSONObject(i);
-                        listSayur.add(new Sayur(Server.URLIMAGE+ jsonObject.getString("foto") ,jsonObject.getInt("id"),jsonObject.getString("nama"), jsonObject.getInt("harga")));
+                        listSayur.add(new Sayur(Server.URLIMAGE+ jsonObject.getString("foto") ,jsonObject.getInt("id"),jsonObject.getString("nama"), jsonObject.getInt("harga"), jsonObject.getInt("berat"), jsonObject.getString("kuantitas")));
                         RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.recyclerview1);
                         GridLayoutManager gridLayoutManager = new GridLayoutManager(getContext(), 2);
                         recyclerView.setLayoutManager(gridLayoutManager);
@@ -246,7 +246,7 @@ public class HomeFragment extends BottomSheetDialogFragment implements Callbacks
 
                             for(int i = 0; i < jsonArray.length(); i++){
                                 JSONObject jsonObjectArray = jsonArray.getJSONObject(i);
-                                listSayur.add(new Sayur(Server.URLIMAGE+ jsonObjectArray.getString("foto") ,jsonObjectArray.getInt("id"),jsonObjectArray.getString("nama"), jsonObjectArray.getInt("harga")));
+                                listSayur.add(new Sayur(Server.URLIMAGE+ jsonObjectArray.getString("foto") ,jsonObjectArray.getInt("id"),jsonObjectArray.getString("nama"), jsonObjectArray.getInt("harga"), jsonObjectArray.getInt("berat"), jsonObjectArray.getString("kuantitas")));
                                 sayurAdapter.notifyDataSetChanged();
                             }
                         }catch (Exception e){

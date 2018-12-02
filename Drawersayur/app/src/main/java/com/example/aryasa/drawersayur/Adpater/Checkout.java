@@ -118,9 +118,11 @@ public class Checkout extends RecyclerView.Adapter<Checkout .MyViewHolder> {
         holder.btn_del.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                keranjang.remove(position);
                 notifyItemRemoved(position);
-                callbacks.updateharga(0,2);
+                int harga = keranjang.get(position).getHarga() * jumlah;
+                keranjang.remove(position);
+                kurangtotal(harga);
+                callbacks.updateharga(harga,1);
             }
         });
 
