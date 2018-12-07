@@ -234,9 +234,9 @@ public class Profile extends AppCompatActivity {
                                map.put("nomor_telepon",txt_nomor_telepon.getText().toString());
                                if(decoded != null){
                                    map.put("foto", getStringImage(decoded));
+                               }else{
+                                   map.put("foto", "");
                                }
-                               map.put("foto", "");
-
 
                                return map;
                            }
