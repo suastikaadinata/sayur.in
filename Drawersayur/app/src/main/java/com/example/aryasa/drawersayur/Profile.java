@@ -300,6 +300,7 @@ public class Profile extends AppCompatActivity {
         //menampilkan gambar yang dipilih dari camera/gallery ke ImageView
         gambar_user.setImageBitmap(decoded);
     }
+
     // fungsi resize image
     public Bitmap getResizedBitmap(Bitmap image, int maxSize) {
         int width = image.getWidth();
